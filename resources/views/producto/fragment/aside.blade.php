@@ -1,6 +1,3 @@
-<p class="alert alert-info">
-
-Desde aqui podemos crear, eliminar, listar y editar los productos...
-
-
+<p class="alert alert-info text-center">
+Desde aqui podemos crear, editar, ver, eliminar los productos...
 </p>

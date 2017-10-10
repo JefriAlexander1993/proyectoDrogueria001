@@ -26,7 +26,7 @@
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
                                                     <th>Username</th>
-                                                     <th colspan="2">&nbsp;</th>	
+                                                    <th colspan="2">Acción</th>	
                                                 </tr>
                                             </thead>
                                             <tbody>

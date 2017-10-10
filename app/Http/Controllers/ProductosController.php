@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Producto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductoRequest;
+
+
 
 class ProductosController extends Controller
 {
@@ -13,11 +16,14 @@ class ProductosController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-     
+ 
+  
+
     public function index()
     {
-    
-        return  view('producto.index', compact('producto'));// SE carga en vista y le pasamos la variable
+        $productos = Producto::orderBy('id', 'DESC')->paginate();;
+        // return $productos;
+        return  view('producto.index', compact('productos'));// SE carga en vista y le pasamos la variable
     }
     
 
@@ -37,18 +43,18 @@ class ProductosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoRequest $request)
     {
-        $product =new Producto;/*Crear un instancia*/
+        $product = new Producto;/*Crear un instancia*/
         $product->fechaLlegada= $request->fechaLlegada;
-        $product->nombre=$request->nombre;
-        $product->precioCompra=$request->precioCompra;
-        $product->cantidad=$request->cantidad;
-        $product->iva=$request->iva;
-        $product->precioVenta=$request->precioVenta;
-        $product->fechaVencimiento=$request->fechaVencimiento;
-        $product->nombreProveedor=$request->nombreProveedor;
-        $product->stock=$request->stock;
+        $product->nombre= $request->nombre;
+        $product->precioCompra= $request->precioCompra;
+        $product->cantidad= $request->cantidad;
+        $product->iva= $request->iva;
+        $product->precioVenta= $request->precioVenta;
+        $product->fechaVencimiento= $request->fechaVencimiento;
+        $product->nombreProveedor= $request->nombreProveedor;
+        $product->stock= $request->stock;
 
 
      /*$request->Validacion*/
@@ -68,9 +74,8 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-  
         $product = Producto::find($id); // Busca un Producto por medio del  id-
-        
+         return view('producto.show', compact('product'));
     }
 
     /**

@@ -11,13 +11,15 @@
     <title>{{ config('app.name', 'Sistema de Control J & D') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    
 </head>
 <body>
 <div id="app">
            <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -71,41 +73,53 @@
             </div>
         </nav>
 </div>
-<div>
-<div class="container">
-      <div class="row">
-      <div class="col-sm-12">
-        <h1>@yield('heading')</h1>
+
+
+<div class="container-fluid">
+      <div class="row">   
+      <div class="col-md-12">
+      <h1>@yield('heading')</h1>
         @include('entrust-gui::partials.notifications')
       </div>
-    </div>
-  </div>
-    <div class="row">
-        <div class="col-sm-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Escritorio</div>
-                <div class="row">
-<div class="col-sm-2">
-<div class="list-group">
-    <a href="{{route('producto.index')}}" class="list-group-item">Productos</a>
-    <a href="{{route('venta.index')}}" class="list-group-item">Ventas</a>
-    <a href="{{route('proveedor.index')}}" class="list-group-item">Proveedores</a>
-    <a href="{{route('cliente.index')}}" class="list-group-item ">Clientes</a>
-    <a href="#" class="list-group-item">Caja</a>      
-    <a class="{{ (Request::is('*users*') ? 'active' : '') }}">
-    <a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class=" m-r-10" aria-hidden="true"></i>Usuarios</a>
-    <a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class=" m-r-10" aria-hidden="true"></i>Roles</a>
-    <a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class=" m-r-10" aria-hidden="true"></i>Permisos</a>
-     
-</div>                    
-</div>
+      </div>
+      </div>
 
-<div class="col-sm-9">
+ <div class="row">
+    <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Escritorio</div><!-- Escritorio-->
+                   <div class="panel-body">   
+<div class="row"><!--Menú de navegación-->                   
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="dropdown">
+        <a class="list-group-item" data-toggle="dropdown" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;Administración</a>
+      <ul class="dropdown-menu">
+        <li><a class="{{ (Request::is('*users*') ? 'active' : '') }}"></a> </li>
+        <li><a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Usuarios</a> </li>
+        <li><a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Roles</a> </li>
+        <li><a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class="fa fa-hand-paper-o" aria-hidden="true"></i>&nbsp;Permisos</a></li>               
+      </ul>
+         </li>
+         <li><a href="{{route('producto.index')}}" class="list-group-item"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Compras</a></li>
+         <li> <a href="{{route('venta.index')}}" class="list-group-item">Ventas</a></li>
+         <li><a href="{{route('proveedor.index')}}" class="list-group-item"><i class="fa fa-id-card-o " aria-hidden="true"></i>&nbsp;Proveedores</a></li>
+         <li><a href="{{route('cliente.index')}}" class="list-group-item "><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Clientes</a></li>
+         <li><a href="{{route('caja.index')}}" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Caja</a></li>    
       
-   <br>
-    @yield('content')
-</div>
-</div>
+       </ul>
+</div> 
+<div class="col-md-10">   
+    <br>
+    @yield('content')<!-- Espación para contenido-->
+   </div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div>  
          
 <div class="panel-body">
                     @if (session('status'))
@@ -120,6 +134,8 @@
 </div>
 </div>
      <script src="{{ asset('js/app.js') }}"></script>
+         <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script> -->
 
 </body>
 </html>

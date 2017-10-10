@@ -21,6 +21,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
   use Authenticatable, CanResetPassword, ValidatingModelTrait, EntrustUserTrait;
 
 
+
+
   protected $throwValidationExceptions = true;
 
     

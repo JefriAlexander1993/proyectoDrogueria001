@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateProductosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Producto', function (Blueprint $table) {
+       // Create table from product
+        Schema::create('Productos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fechaLlegada');
             $table->string('nombre');
@@ -28,6 +29,7 @@ class CreateProductsTable extends Migration
 
         });
     }
+    
 
     /**
      * Reverse the migrations.
@@ -36,6 +38,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Producto');
+        Schema::dropIfExists('Productos');
     }
 }

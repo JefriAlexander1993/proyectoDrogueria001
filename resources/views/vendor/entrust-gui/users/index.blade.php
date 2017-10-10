@@ -1,12 +1,8 @@
 @extends(Config::get('entrust-gui.layout'))
 @section('content')
-<div class="models--actions">
-    
-    <a class="btn btn-labeled btn-success" href="{{ route('entrust-gui::users.create') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
-  
-  
-  </div>
 
+<!-- 
+<div class="col-sm-12 table-responsive"> -->
 <table class="table table-hover" style="margin-top:8px">
   <tr>
     <th>Email</th>
@@ -21,11 +17,14 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <a class="btn btn-labeled btn-default" href="{{ route('entrust-gui::users.edit', $user->id) }}"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
           <button type="submit" class="btn btn-labeled btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          <a class="btn btn-labeled btn-success" href="{{ route('entrust-gui::users.create') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
         </form>
       </td>
     </tr>
   @endforeach
 </table>
+<!-- </div> -->
+
 <div class="text-center">
   {!! $users->render() !!}
 </div>

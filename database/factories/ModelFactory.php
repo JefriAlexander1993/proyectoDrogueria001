@@ -32,11 +32,12 @@ $factory->define(App\Producto::class, function (Faker $faker) {
         'nombre' => $faker->realText($maxNbChars = 20,
         'precioCompra' => $faker->numberBetween(1, 100),
         'cantidad' => $faker->numberBetween(1, 100),
-        'iva' =>$faker-> numberBetween(1, 100),
-        'precioVenta'=>$faker-> numberBetween(1, 100),
+        'iva' => $faker->numberBetween(1, 100),
+        'precioVenta'=> $faker->numberBetween(1, 100),
         'fechaVencimiento'=>$faker->date($format = 'Y-m-d', $max = 'now'),
         'nombreProveedor'=>$faker->realText($maxNbChars = 20),
-        'stock'=>$faker-> numberBetween(1, 100),
+        'stock'=> $faker->numberBetween(1, 100),
     ];
 });
+
 

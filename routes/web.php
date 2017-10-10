@@ -22,9 +22,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/error', 'ErrorController@index')->name('home');
 
-Route::get('profile', function () {
-    // Only authenticated users may enter...
-})->middleware('auth');
+// Route::get('profile', function () {
+//     // Only authenticated users may enter...
+// })->middleware('auth');
 
 Route::resource('proveedor','ProveedorController');
 Route::resource('producto','ProductosController');
@@ -33,7 +33,18 @@ Route::resource('cliente','ClienteController');
 Route::resource('caja','CajaController');
 
 
-
 Route::get('/demo', function () {
     return new App\Mail\UserWelcome();
 });
+
+
+
+Route::group(['middleware' => 'auth'], function(){
+   Route::resource('producto','ProductosController');  
+});
+
+// Route::group(['middleware'=> 'usuarioAdmin'], function() {
+//  Route::get('producto' , 'ProductosController@index');
+// Route::get('create' , 'ProductosController@create');
+
+// })
