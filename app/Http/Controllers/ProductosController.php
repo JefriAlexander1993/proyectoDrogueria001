@@ -100,8 +100,9 @@ class ProductosController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductoRequest $request, $id)
     {
+        
         $product =Producto::find($id);/*Buscar en Product*/
         $product->fechaLlegada= $request->fechaLlegada;
         $product->nombre=$request->nombre;
