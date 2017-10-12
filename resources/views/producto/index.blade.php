@@ -31,7 +31,7 @@
 		@foreach ($productos as $producto)
 	   <tr>
 	   <td class="text-center">{{$producto->id}}</td>
-	   <td class="text-center"><strong>{{$producto->fechaLlegada}}</strong>
+	   <td class="text-center">{{$producto->fechaLlegada}}
        <td class="text-center">{{$producto->nombre}}</td>
        <td class="text-center">{{$producto->precioCompra}}</td>
        <td class="text-center">{{$producto->cantidad}}</td>
@@ -53,14 +53,14 @@
 @endforeach
 	</tbody>
 </table>
-</div>
-</div>
-
-<div class="col-md-2 ">
-{!! $productos->render() !!}
+<div class="col-md-11" align="center" >
+{!!$productos->render() !!}
 <?php 
 echo phpversion('tidy');
 ?>
+</div>
+</div>
+
 </div>
 </div>
 

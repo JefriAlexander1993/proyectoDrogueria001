@@ -87,12 +87,12 @@
       </div>
 
  <div class="row">
-    <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Escritorio</div><!-- Escritorio-->
-                   <div class="panel-body">   
+    <div class="col-md-12"  >
+            <div class="panel panel-default" >
+                <div class="panel-heading" >Escritorio</div><!-- Escritorio-->
+                   <div class="panel-body" >   
 <div class="row"><!--Menú de navegación-->                   
-    <div class="col-md-2">
+    <div class="col-md-2" >
       <ul class="nav nav-pills nav-stacked">
         <li class="dropdown">
         <a class="list-group-item" data-toggle="dropdown" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;Administración</a>
@@ -104,7 +104,7 @@
       </ul>
          </li>
          <li><a href="{{route('producto.index')}}" class="list-group-item"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Compras</a></li>
-         <li> <a href="{{route('venta.index')}}" class="list-group-item">Ventas</a></li>
+         <li> <a href="{{route('venta.index')}}" class="list-group-item"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Ventas</a></li>
          <li><a href="{{route('proveedor.index')}}" class="list-group-item"><i class="fa fa-id-card-o " aria-hidden="true"></i>&nbsp;Proveedores</a></li>
          <li><a href="{{route('cliente.index')}}" class="list-group-item "><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Clientes</a></li>
          <li><a href="{{route('caja.index')}}" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Caja</a></li>    

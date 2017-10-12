@@ -21,7 +21,7 @@ class ProductosController extends Controller
 
     public function index()
     {
-        $productos = Producto::orderBy('id', 'DESC')->paginate();;
+        $productos = Producto::orderBy('id')->paginate('8');;
         // return $productos;
         return  view('producto.index', compact('productos'));// SE carga en vista y le pasamos la variable
     }
