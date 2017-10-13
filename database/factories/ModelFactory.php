@@ -40,4 +40,19 @@ $factory->define(App\Producto::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Caja::class, function (Faker $faker) {
+
+    return [
+        
+        'nombreUsuario' => $faker->realText($maxNbChars = 20),
+        'valorInicial' => $faker->numberBetween(1,100),
+        'valorFinal' => $faker->numberBetween(1,100),
+        'ganancia' => $faker->numberBetween(1,100),
+
+
+    
+        
+    ];
+});
+
 
