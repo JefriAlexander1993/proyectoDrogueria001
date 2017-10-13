@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Caja;
-
 class CajasTableSeeder extends Seeder
 {
     /**
@@ -12,6 +11,6 @@ class CajasTableSeeder extends Seeder
      */
     public function run()
     {
-              factory(Caja::class,20)->create();
+    factory(Caja::class,20)->create();
     }
 }
