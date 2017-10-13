@@ -77,7 +77,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container">
       <div class="row">   
       <div class="col-md-12">
       <h1>@yield('heading')</h1>
@@ -89,10 +89,10 @@
  <div class="row">
     <div class="col-md-12"  >
             <div class="panel panel-default" >
-                <div class="panel-heading" >Escritorio</div><!-- Escritorio-->
+                <div class="panel-heading">ESCRITORIO.</div><!-- Escritorio-->
                    <div class="panel-body" >   
 <div class="row"><!--Menú de navegación-->                   
-    <div class="col-md-2" >
+    <div class="div1 col-md-2 " >
       <ul class="nav nav-pills nav-stacked">
         <li class="dropdown">
         <a class="list-group-item" data-toggle="dropdown" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;Administración</a>

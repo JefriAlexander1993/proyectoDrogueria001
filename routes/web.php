@@ -43,8 +43,8 @@ Route::group(['middleware' => 'auth'], function(){
    Route::resource('producto','ProductosController');  
 });
 
-// Route::group(['middleware'=> 'usuarioAdmin'], function() {
-//  Route::get('producto' , 'ProductosController@index');
-// Route::get('create' , 'ProductosController@create');
 
-// })
+
+Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
+    Route::get('/', 'ProductoController@store');
+  });

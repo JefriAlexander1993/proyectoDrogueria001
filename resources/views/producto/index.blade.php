@@ -2,15 +2,23 @@
 @section('content')
 
 <div class="row">
-<div class="col-sm-7"><h2><strong>Listado de productos.</strong></h2></div>
-<div class="col-sm-5">
+<div class="col-sm-8"><h2><strong>Listado de productos.</strong></h2>
+<div clas="row">
+<div class="col-sm-3">
+<a href="{{route('producto.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+</div>
+</div>
+</div>
+<div class="col-sm-4">
 @include('producto.fragment.aside') 
 </div>
 </div>
 </div>
 
+
+
 <div class="col-md-10 table-responsive">
-<table class="table table-hover">
+<table class="table table-hover ">
 	<thead>
 		<tr>
 		<th class="text-center" >Id</th>
@@ -31,7 +39,7 @@
 		@foreach ($productos as $producto)
 	   <tr>
 	   <td class="text-center">{{$producto->id}}</td>
-	   <td class="text-center">{{$producto->fechaLlegada}}
+	   <td class="text-center">{{$producto->fechaLlegada}}</td>
        <td class="text-center">{{$producto->nombre}}</td>
        <td class="text-center">{{$producto->precioCompra}}</td>
        <td class="text-center">{{$producto->cantidad}}</td>
@@ -40,7 +48,6 @@
        <td class="text-center">{{$producto->fechaVencimiento}}</td>
        <td class="text-center">{{$producto->nombreProveedor}}</td>
        <td class="text-center">{{$producto->stock}}</td>
-	   <td><a href="{{route('producto.create')}}" class="btn btn-success pull-right"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></div></td>
 	   <td> <a href="{{route('producto.edit', $producto->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 	   <td> <a href="{{route('producto.show', $producto->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 	   <td><form action="{{route('producto.destroy', $producto->id)}}" method="POST">

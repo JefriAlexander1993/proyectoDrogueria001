@@ -51,10 +51,10 @@
 
 @if ($message = Session::get('info'))
 <div class="row">
-  <div class="col-sm-10">
-		<div class="alert alert-info alert-dismissable">
+  <div class="col-sm-12" align="center">
+		<div class="alert alert-danger alert-dismissable">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<h4>Deje el campo de contraseña en blanco si desea mantenerlo igual.</h4>
+<h4>Se ha eliminado con exitos.</h4>
 		</div>
 		{{ Session::forget('info') }}
 	</div>
