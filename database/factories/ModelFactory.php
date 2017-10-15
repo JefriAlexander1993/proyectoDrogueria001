@@ -48,9 +48,20 @@ $factory->define(App\Caja::class, function (Faker $faker) {
         'valorInicial' => $faker->numberBetween(1,100),
         'valorFinal' => $faker->numberBetween(1,100),
         'ganancia' => $faker->numberBetween(1,100),
+        
+    ];
+});
+$factory->define(App\Proveedor::class, function (Faker $faker) {
 
-
-    
+    return [
+        
+        'nit' => $faker->numberBetween(1,20),
+        'nombreProveedor' => $faker->realText($maxNbChars = 20),
+        'nombreRepresentante' => $faker->realText($maxNbChars =20),
+        'direccion' => $faker->realText($maxNbChars = 20),
+        'telefono' => $faker->realText($maxNbChars = 15),
+        'email' => $faker->realText($maxNbChars = 20),
+        'observacion' => $faker->text(40),   
         
     ];
 });

@@ -107,7 +107,7 @@ class CajaController extends Controller
      * @param  \App\cajas  $cajas
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
         $caja = Caja::find($id);
         $caja->delete();

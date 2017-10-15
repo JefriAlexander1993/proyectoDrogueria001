@@ -11,7 +11,7 @@
 <!--Nombre -->
 <div class="form-group">
 {!! Form:: label('valorInicial','Valor inicial')!!}
-{!!Form::text('valorInicial',null,['class'=>'form-control'])!!}
+{!!Form::number('valorInicial',null,['class'=>'form-control'])!!}
 </div>
 </div>
 <div class="col-sm-4">

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\proveedor;
+use App\Proveedor;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProveedorRequest;
 
 class ProveedorController extends Controller
 {
@@ -14,7 +15,8 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        return  view('proveedor.index', compact('proveedor'));// SE carga en vista y le pasamos la variable
+        $proveedors = Proveedor::orderBy('id')->paginate('5');;
+        return  view('proveedor.index', compact('proveedors'));// SE carga en vista y le pasamos la variable
         
     }
 
@@ -25,7 +27,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('proveedor.create');
     }
 
     /**
@@ -34,9 +36,25 @@ class ProveedorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProveedorRequest $request)
     {
-        //
+       $proveedor = new Proveedor; 
+       $proveedor->nit=$request->nit;
+       $proveedor->nombreProveedor=$request->nombreProveedor;
+       $proveedor->nombreRepresentante=$request->nombreRepresentante;
+       $proveedor->dirección=$request->dirección;
+       $proveedor->telefono=$request->telefono;
+       $proveedor->email=$request->email;
+       $proveedor->observación=$request->observación;
+
+
+       /*$request->Validacion*/
+       $proveedor->save();
+       return redirect()->route('proveedor.index')
+       ->with('info', 'El proveedor fue guardado.');
+//*Guardado todos los camppos guardados y mira si todos los capos son validos*//
+
+       return ;
     }
 
     /**
@@ -45,9 +63,10 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function show(proveedor $proveedor)
+    public function show($id)
     {
-        //
+        $proveedor = Proveedor::find($id); // Busca un Producto por medio del  id-
+        return view('proveedor.show', compact('proveedor'));
     }
 
     /**
@@ -56,9 +75,12 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function edit(proveedor $proveedor)
+    public function edit($id)
     {
-        //
+        $proveedor = Proveedor::find($id); // Busca un Producto por medio del  id-
+        
+        return view('proveedor.edit', compact('proveedor'));
+        
     }
 
     /**
@@ -68,9 +90,23 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, proveedor $proveedor)
+    public function update(ProveedorRequest $request,$id)
     {
-        //
+        $proveedor = new Proveedor; 
+        $proveedor->nit=$request->nit;
+        $proveedor->nombreProveedor=$request->nombreProveedor;
+        $proveedor->nombreRepresentante=$request->nombreRepresentante;
+        $proveedor->dirección=$request->dirección;
+        $proveedor->telefono=$request->telefono;
+        $proveedor->email=$request->email;
+        $proveedor->observación=$request->observación;
+
+ 
+        /*$request->Validacion*/
+        $proveedor->save();
+        return redirect()->route('proveedor.index')
+        ->with('info', 'El proveedor fue actualizado.');
+        
     }
 
     /**
@@ -79,8 +115,10 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(proveedor $proveedor)
+    public function destroy($id)
     {
-        //
+        $proveedor = Proveedor::find($id);
+        $proveedor->delete();
+        return back()->with('info', 'El proveedor fue eliminado');
     }
 }

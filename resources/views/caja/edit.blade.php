@@ -4,7 +4,7 @@
 @include('caja.fragment.error')
 </div>
 
- <div class="panel  panel-default">
+ <div class="panel1  panel-default">
       <div class="panel-heading"><strong>Editar caja.</strong>&nbsp;&nbsp;<a href="{{route('caja.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
       </div>
 <div class="panel-body">

@@ -1,23 +1,19 @@
 @extends('layouts.apphome')
 @section('content')
-
-<div class="row">
-<div class="col-sm-8"><h2><strong>Listado de productos.</strong></h2>
-<div clas="row">
-<div class="col-sm-3">
+<div class="col-sm-12">
 <a href="{{route('producto.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
 </div>
-</div>
+
+<div class="row">
+<div class="col-sm-8" style="text-align:center"><h2><strong>LISTADO DE PRODUCTO.</strong></h2>
 </div>
 <div class="col-sm-4">
 @include('producto.fragment.aside') 
 </div>
-</div>
-</div>
+</div> 
 
 
-
-<div class="col-md-10 table-responsive">
+<div class="col-md-12 table-responsive">
 <table class="table table-hover ">
 	<thead>
 		<tr>

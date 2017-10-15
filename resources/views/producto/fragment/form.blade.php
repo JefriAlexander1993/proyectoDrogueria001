@@ -1,8 +1,8 @@
 
 <!-- Fecha -->
 <div class="form-group">
-{!! Form:: label('Fecha de compra')!!}
-{!!Form::date('Fecha', null,['class'=>'form-control'])!!}
+{!! Form:: label('fechaLlegada','Fecha de compra')!!}
+{!!Form::date('fechaLlegada', null,['class'=>'form-control'])!!}
 </div>
 
 <!-- se unieron nombre y precio de compra-->
@@ -10,7 +10,7 @@
 <div class="col-sm-8">
 <!--Nombre -->
 <div class="form-group">
-{!! Form:: label('Nombre','Nombre del producto')!!}
+{!! Form:: label('nombre','Nombre del producto')!!}
 {!!Form::text('nombre',null,['class'=>'form-control'])!!}
 </div>
 </div>

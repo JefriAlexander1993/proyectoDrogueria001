@@ -88,8 +88,8 @@
 
  <div class="row">
     <div class="col-md-12"  >
-            <div class="panel panel-default" >
-                <div class="panel-heading">ESCRITORIO.</div><!-- Escritorio-->
+            <div class="pane1 panel-default" >
+                <div class="panel-heading"><h4><b>ESCRITORIO.</b></h4></div><!-- Escritorio-->
                    <div class="panel-body" >   
 <div class="row"><!--Menú de navegación-->                   
     <div class="div1 col-md-2 " >

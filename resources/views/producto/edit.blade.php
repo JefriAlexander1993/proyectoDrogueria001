@@ -4,7 +4,7 @@
 @include('producto.fragment.error')
 </div>
 
- <div class="panel1  panel-default">
+ <div class="panel1 panel-default1">
       <div class="panel-heading"><strong>Editar producto.</strong>&nbsp;&nbsp;<a href="{{route('producto.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
    
      </div>

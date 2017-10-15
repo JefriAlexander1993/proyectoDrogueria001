@@ -1,7 +1,7 @@
 @extends('layouts.apphome')
 @section('content')
 
- <div class="panel panel-primary">
+ <div class="panel1 panel-primary">
       <div class="panel-heading"><strong>Infirmación de la caja.</strong>&nbsp;&nbsp;&nbsp;<a href="{{route('caja.edit', $caja->id)}}" class="btn btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
 
 </div>

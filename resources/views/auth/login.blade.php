@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-success">
+            <div class="panel2 panel-success">
                 <div class="panel-heading"><h5><strong>LOGIN<h5></strong></div>
 
                 <div class="panel-body">
