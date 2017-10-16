@@ -6,7 +6,7 @@
 <div class="panel-body">
 <div class="col-md-12">
 <p>Nit:&nbsp;{{$proveedor->nit}}</p> <!-- Imprimir el nombre del proveedor-->
-<p>Nombre proveedot:&nbsp;{{$proveedor->nombreProveedor}}</p><!-- Descripcion corta-->
+<p>Nombre proveedor:&nbsp;{{$proveedor->nombreProveedor}}</p><!-- Descripcion corta-->
 <p>Nombre de representante:&nbsp;{!!$proveedor->nombreRepresentante!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Dirección:&nbsp;{!!$proveedor->direccion!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Teléfono:&nbsp;{!!$proveedor->telefono!!}</p> <!-- Descripcion larga y se va interpretar-->

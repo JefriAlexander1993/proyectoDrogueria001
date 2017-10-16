@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ventas;
 use Illuminate\Http\Request;
-
+use App\Venta;
+use App\Http\Requests\VentaRequest;
 class VentasController extends Controller
 {
     /**
@@ -14,6 +15,7 @@ class VentasController extends Controller
      */
     public function index()
     {
+        $ventas = Venta::orderBy('id')->paginate('5');;
         return  view('venta.index', compact('ventas'));// SE carga en vista y le pasamos la variable
         
     }
@@ -25,7 +27,7 @@ class VentasController extends Controller
      */
     public function create()
     {
-        //
+        return view('venta.create');
     }
 
     /**
@@ -34,9 +36,23 @@ class VentasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VentaRequest $request)
     {
-        //
+
+        $venta = new Venta; 
+        $venta->fechaVenta=$request->fechaVenta;
+        $venta->nombreventa=$request->usuario;
+        $venta->nombreProducto=$request->nombreProducto;
+        $venta->cantidad=$request->cantidad;
+        $venta->precioUnitario=$request->precioUnitario;
+        $venta->iva=$request->iva;
+        $venta->valorTotal=$request->valorTotal;
+ 
+        /*$request->Validacion*/
+        $venta->save();
+        return redirect()->route('venta.index')
+        ->with('info', 'El venta fue guardado.');
+        
     }
 
     /**
@@ -45,9 +61,10 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function show(ventas $ventas)
+    public function show($id)
     {
-        //
+        $venta = Venta::find($id); // Busca un Producto por medio del  id-
+        return view('venta.show', compact('venta'));
     }
 
     /**
@@ -56,9 +73,11 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function edit(ventas $ventas)
+    public function edit($id)
     {
-        //
+        $venta = Venta::find($id); // Busca un Producto por medio del  id-
+        
+        return view('venta.edit', compact('venta'));
     }
 
     /**
@@ -68,9 +87,22 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ventas $ventas)
+    public function update(VentaRequest $request, $id)
     {
-        //
+    
+        $venta = new Venta; 
+        $venta->fechaVenta=$request->fechaVenta;
+        $venta->nombreventa=$request->usuario;
+        $venta->nombreProducto=$request->nombreProducto;
+        $venta->cantidad=$request->cantidad;
+        $venta->precioUnitario=$request->precioUnitario;
+        $venta->iva=$request->iva;
+        $venta->valorTotal=$request->valorTotal;
+ 
+        /*$request->Validacion*/
+        $venta->save();
+        return redirect()->route('venta.index')
+        ->with('info', 'El venta fue guardado.');
     }
 
     /**
@@ -79,8 +111,10 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ventas $ventas)
+    public function destroy($id)
     {
-        //
+        $venta = Venta::find($id);
+        $venta->delete();
+        return back()->with('info', 'El venta fue eliminado');
     }
 }

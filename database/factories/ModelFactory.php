@@ -51,6 +51,7 @@ $factory->define(App\Caja::class, function (Faker $faker) {
         
     ];
 });
+
 $factory->define(App\Proveedor::class, function (Faker $faker) {
 
     return [
@@ -62,6 +63,22 @@ $factory->define(App\Proveedor::class, function (Faker $faker) {
         'telefono' => $faker->realText($maxNbChars = 15),
         'email' => $faker->realText($maxNbChars = 20),
         'observacion' => $faker->text(40),   
+        
+    ];
+});
+
+$factory->define(App\Venta::class, function (Faker $faker) {
+
+    return [
+    
+        'fechaVenta' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'usuario'=> $faker->realText($maxNbChars = 20),
+        'nombreProducto' => $faker->realText($maxNbChars = 20),
+        'cantidad' => $faker->numberBetween(1,30),
+        'precioUnitario' => $faker->numberBetween(1,30),
+        'iva' => $faker->numberBetween(1,20),
+        'precioTotal' => $faker->numberBetween(1,20),
+     
         
     ];
 });
