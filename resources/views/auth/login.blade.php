@@ -4,10 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel2 panel-success">
+            <div class="panel1 panel-success " align="center" >
                 <div class="panel-heading"><h5><strong>LOGIN<h5></strong></div>
 
                 <div class="panel-body">
+                <img class="" src="/ic/logo.png" alt="" data-src="/ic/logo.png" style="width: 310px;margin-top:21px;">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -40,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-3 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recuérdame
@@ -50,8 +51,8 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-success">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-success " style="align:center" >
                                    Iniciar sesión
                                 </button>
 

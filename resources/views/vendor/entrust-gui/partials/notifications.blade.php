@@ -1,18 +1,20 @@
-@if (isset($errors) && count($errors->all()) > 0)
+
 <div class="row">
-  <div class="col-sm-12 ">
-		<div class="alert alert-danger alert-dissmissable">
+@if (isset($errors) && count($errors->all()) > 0)
+
+  <div class="col-sm-12">
+		<div class="alert alert-danger alert-dissmissable text-center">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<h4>Error: Se ha producido el siguiente error: Alguno de los campos a llenar esta vacio.
-		 </h4>
+			<h5>Error:Alguno(s) de los campos a llenar esta vacio.
+		 </h5>
 		    
 		</div>
 	</div>
-</div>
+
 @endif
+</div>
 
-
-@if ($message = Session::get('success'))
+<!-- @if ($message = Session::get('success'))
 <div class="row">
   <div class="col-sm-12">
 		<div class="alert alert-success alert-dismissable">
@@ -24,9 +26,8 @@
 	</div>
 </div>
 @endif
-
-@if ($message = Session::get('error'))
 <div class="row">
+@if ($message = Session::get('error'))
   <div class="col-sm-12">
 		<div class="alert alert-danger alert-dismissable">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -34,9 +35,8 @@
 		</div>
 		{{ Session::forget('error') }}
 	</div>
-</div>
 @endif
-
+</div>
 @if ($message = Session::get('warning'))
 <div class="row">
   <div class="col-sm-12">
@@ -47,19 +47,14 @@
 		{{ Session::forget('warning') }}
 	</div>
 </div>
-@endif
+@endif -->
 
-@if ($message = Session::get('info'))
-<div class="row">
-  <div class="col-sm-12" align="center">
-		<div class="alert alert-danger alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<h4>Se ha eliminado con exito.</h4>
-		</div>
-		{{ Session::forget('info') }}
-	</div>
-</div>
-@endif
-
-
-
+@if(Session::has('info'))
+<div class="col-sm-12">
+<div class="alert alert-info alert-dissmissable text-center">
+<button type="button" class="close" data-dismiss="alert">
+&times;
+</button>
+<h5>{{Session::get('info')}}</h5>
+@endif 
+</div></div>

@@ -13,7 +13,7 @@ class ProductoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,15 +24,20 @@ class ProductoRequest extends FormRequest
     public function rules()
     {
         return [
+           'codigo'=>'required',
            'fechaLlegada'=>'required',
            'nombre'=>'required',
-           'precioCompra'=>'required',
+           'rubio'=>'required',
+           'nombreProveedor'=>'required',
+           'precioUnitario'=>'required',
            'cantidad'=>'required',
+           'totalCompra'=>'required',
            'iva'=>'required',
            'precioVenta'=>'required',
            'fechaVencimiento'=>'required', 
-           'nombreProveedor'=>'required',
            'stock'=>'required'
+          
+        
         ];
     }
 }

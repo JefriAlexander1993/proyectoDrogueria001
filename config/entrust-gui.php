@@ -8,7 +8,7 @@ return [
         "permissions" => 5,
     ],
     "middleware" => ['web', 'entrust-gui.admin'],
-    "unauthorized-url" => 'error/401',
+    // "unauthorized-url" => 'error/401',
     "middleware-role" => 'admin',
     "confirmable" => false,
     "users" => [

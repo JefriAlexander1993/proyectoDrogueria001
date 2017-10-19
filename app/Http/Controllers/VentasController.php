@@ -15,9 +15,8 @@ class VentasController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::orderBy('id')->paginate('5');;
+        $ventas = Venta::orderBy('codigo')->paginate('5');;
         return  view('venta.index', compact('ventas'));// SE carga en vista y le pasamos la variable
-        
     }
 
     /**
@@ -38,15 +37,20 @@ class VentasController extends Controller
      */
     public function store(VentaRequest $request)
     {
-
+        
+       
         $venta = new Venta; 
-        $venta->fechaVenta=$request->fechaVenta;
-        $venta->nombreventa=$request->usuario;
+        $venta->fechaActual=$request->fechaActual;
+        $venta->numFactura=$request->numFactura;
+        $venta->usuario=$request->usuario;
+        $venta->codigo=$request->codigo;
         $venta->nombreProducto=$request->nombreProducto;
         $venta->cantidad=$request->cantidad;
         $venta->precioUnitario=$request->precioUnitario;
+        $venta->unidades=$request->stock;
         $venta->iva=$request->iva;
-        $venta->valorTotal=$request->valorTotal;
+        $venta->subTotal=$request->subTotal;
+        $venta->total=$request->total;
  
         /*$request->Validacion*/
         $venta->save();
@@ -61,9 +65,9 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($codigo)
     {
-        $venta = Venta::find($id); // Busca un Producto por medio del  id-
+        $venta = Venta::find($codigo); // Busca un Producto por medio del  id-
         return view('venta.show', compact('venta'));
     }
 
@@ -73,9 +77,9 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($codigo)
     {
-        $venta = Venta::find($id); // Busca un Producto por medio del  id-
+        $venta = Venta::find($codigo); // Busca un Producto por medio del  id-
         
         return view('venta.edit', compact('venta'));
     }
@@ -87,17 +91,21 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function update(VentaRequest $request, $id)
+    public function update(VentaRequest $request, $codigo)
     {
-    
         $venta = new Venta; 
-        $venta->fechaVenta=$request->fechaVenta;
-        $venta->nombreventa=$request->usuario;
+        $venta->fechaActual=$request->fechaActual;
+        $venta->numFactura=$request->numFactura;
+        $venta->usuario=$request->usuario;
+        $venta->codigo=$request->codigo;
+        $venta->precioUnitario=$request->precioUnitario;
         $venta->nombreProducto=$request->nombreProducto;
         $venta->cantidad=$request->cantidad;
-        $venta->precioUnitario=$request->precioUnitario;
+        $venta->unidades=$request->stock;
         $venta->iva=$request->iva;
-        $venta->valorTotal=$request->valorTotal;
+        $venta->subTotal=$request->subTotal;
+        $venta->total=$request->total;
+ 
  
         /*$request->Validacion*/
         $venta->save();
@@ -111,9 +119,9 @@ class VentasController extends Controller
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($codigo)
     {
-        $venta = Venta::find($id);
+        $venta = Venta::find($codigo);
         $venta->delete();
         return back()->with('info', 'El venta fue eliminado');
     }

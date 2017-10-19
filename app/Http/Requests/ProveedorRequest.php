@@ -13,7 +13,7 @@ class ProveedorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,10 +28,10 @@ class ProveedorRequest extends FormRequest
            'nit'=>'required',
            'nombreProveedor'=>'required',
            'nombreRepresentante'=>'required',
-           'dirección'=>'required',
+           'direccion'=>'required',
            'telefono'=>'required',
            'email'=>'required',
-           'observación'=>'required',
+           'observacion'=>'',
         ];
     }
 }

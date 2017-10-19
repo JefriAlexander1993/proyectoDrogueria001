@@ -27,16 +27,22 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define(App\Producto::class, function (Faker $faker) {
 
     return [
-        
+       
+        'codigo' => $faker->numberBetween(1,200),
         'fechaLlegada' =>$faker->date($format = 'Y-m-d', $max = 'now'),
         'nombre' => $faker->realText($maxNbChars = 20),
-        'precioCompra' => $faker->numberBetween(1,100),
+        'rubio' => $faker->realText($maxNbChars = 20),
+        'nombreProveedor'=>$faker->realText($maxNbChars = 20),
+        'precioUnitario' => $faker->numberBetween(1,100),
         'cantidad' => $faker->numberBetween(1,100),
+        'totalCompra' => $faker->numberBetween(1,100),
         'iva' => $faker->numberBetween(1,100),
         'precioVenta'=> $faker->numberBetween(1,100),
         'fechaVencimiento'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'nombreProveedor'=>$faker->realText($maxNbChars = 20),
         'stock'=> $faker->numberBetween(1,100),
+
+
+        
     ];
 });
 
@@ -71,14 +77,19 @@ $factory->define(App\Venta::class, function (Faker $faker) {
 
     return [
     
-        'fechaVenta' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'fechaActual' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'numFactura' => $faker->numberBetween(1,30),
         'usuario'=> $faker->realText($maxNbChars = 20),
+        'codigo' => $faker->numberBetween(1,30),
         'nombreProducto' => $faker->realText($maxNbChars = 20),
         'cantidad' => $faker->numberBetween(1,30),
         'precioUnitario' => $faker->numberBetween(1,30),
+        'stock' => $faker->numberBetween(1,30),
         'iva' => $faker->numberBetween(1,20),
-        'precioTotal' => $faker->numberBetween(1,20),
-     
+        'subTotal' => $faker->numberBetween(1,20),
+        'total' => $faker->numberBetween(1,20),
+  
+
         
     ];
 });

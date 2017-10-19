@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
 
-    protected $fillable=['fechaLlegada','nombre','precioCompra','cantidad','iva','precioVenta','fechaVencimiento', 'nombreProveedor','stock',];
-    
-    
+    protected $fillable=['codigo','fechaLlegada','nombre','rubio',
+    'nombreProveedor','precioUnitario','cantidad','totalCompra',
+    'iva','precioVenta','fechaVencimiento',
+    'stock',];
+      
    
 }

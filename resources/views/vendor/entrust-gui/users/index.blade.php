@@ -1,5 +1,18 @@
 @extends(Config::get('entrust-gui.layout'))
 @section('content')
+<div class="col-sm-12">
+<a class="btn btn-labeled btn-success" href="{{ route('entrust-gui::users.create') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+</div>
+
+<div class="row">
+<div class="col-sm-8" style="text-align:center"><h2><strong>LISTADO DE USUARIOS.</strong></h2>
+</div>
+<div class="col-sm-4">
+@include('venta.fragment.aside') 
+</div>
+</div> 
+
+
 
 <!-- 
 <div class="col-sm-12 table-responsive"> -->
@@ -17,7 +30,6 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <a class="btn btn-labeled btn-default" href="{{ route('entrust-gui::users.edit', $user->id) }}"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
           <button type="submit" class="btn btn-labeled btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-          <a class="btn btn-labeled btn-success" href="{{ route('entrust-gui::users.create') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
         </form>
       </td>
     </tr>

@@ -38,14 +38,15 @@ class ProveedorController extends Controller
      */
     public function store(ProveedorRequest $request)
     {
+        // dd($request);
        $proveedor = new Proveedor; 
        $proveedor->nit=$request->nit;
        $proveedor->nombreProveedor=$request->nombreProveedor;
        $proveedor->nombreRepresentante=$request->nombreRepresentante;
-       $proveedor->dirección=$request->dirección;
+       $proveedor->direccion=$request->direccion;
        $proveedor->telefono=$request->telefono;
        $proveedor->email=$request->email;
-       $proveedor->observación=$request->observación;
+       $proveedor->observacion=$request->observacion;
 
 
        /*$request->Validacion*/
@@ -96,10 +97,10 @@ class ProveedorController extends Controller
         $proveedor->nit=$request->nit;
         $proveedor->nombreProveedor=$request->nombreProveedor;
         $proveedor->nombreRepresentante=$request->nombreRepresentante;
-        $proveedor->dirección=$request->dirección;
+        $proveedor->direccion=$request->direccion;
         $proveedor->telefono=$request->telefono;
         $proveedor->email=$request->email;
-        $proveedor->observación=$request->observación;
+        $proveedor->observacion=$request->observacion;
 
  
         /*$request->Validacion*/

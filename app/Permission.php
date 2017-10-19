@@ -19,4 +19,5 @@ class Permission extends EntrustPermission implements ValidatingModelInterface
   protected $rules = [
     'name'      => 'required|unique:permissions',
   ];
+
 }

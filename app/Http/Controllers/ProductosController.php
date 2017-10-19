@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductoRequest;
+use App\Http\Controllers\Auth;
 
 
 
@@ -17,8 +18,6 @@ class ProductosController extends Controller
      */
 
  
-  
-
     public function index()
     {
         $productos = Producto::orderBy('id')->paginate('8');;
@@ -45,26 +44,31 @@ class ProductosController extends Controller
      */
     public function store(ProductoRequest $request)
     {
+      
         $product = new Producto;/*Crear un instancia*/
+        $product->codigo=$request->codigo;
         $product->fechaLlegada= $request->fechaLlegada;
         $product->nombre= $request->nombre;
-        $product->precioCompra= $request->precioCompra;
+        $product->rubio= $request->rubio;
+        $product->nombreProveedor= $request->nombreProveedor;
+        $product->precioUnitario= $request->precioUnitario;
         $product->cantidad= $request->cantidad;
+        $product->totalCompra= $request->totalCompra;
         $product->iva= $request->iva;
         $product->precioVenta= $request->precioVenta;
         $product->fechaVencimiento= $request->fechaVencimiento;
-        $product->nombreProveedor= $request->nombreProveedor;
         $product->stock= $request->stock;
-
 
      /*$request->Validacion*/
         $product->save();
+       
         return redirect()->route('producto.index')
-        ->with('info', 'El producto fue guardado.');
+         ->with('info', 'El producto fue guardado.');
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//
 
-        return ;
-    }
+return ;
+
+}
 
     /**
      * Display the specified resource.
@@ -72,9 +76,10 @@ class ProductosController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($codigo)
     {
-        $product = Producto::find($id); // Busca un Producto por medio del  id-
+        
+        $product = Producto::find($codigo); // Busca un Producto por medio del  id-
          return view('producto.show', compact('product'));
     }
 
@@ -84,10 +89,10 @@ class ProductosController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($codigo)
     {
-    
-        $product = Producto::find($id); // Busca un Producto por medio del  id-
+        
+        $product = Producto::find($codigo); // Busca un Producto por medio del  id-
         
         return view('producto.edit', compact('product'));
     
@@ -100,19 +105,22 @@ class ProductosController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductoRequest $request, $id)
+    public function update(ProductoRequest $request, $codigo)
     {
-        
-        $product =Producto::find($id);/*Buscar en Product*/
+ 
+        $product = Producto::find($codigo);/*Buscar en Product*/
+        $product->codigo=$request->codigo;
         $product->fechaLlegada= $request->fechaLlegada;
-        $product->nombre=$request->nombre;
-        $product->precioCompra=$request->precioCompra;
-        $product->cantidad=$request->cantidad;
-        $product->iva=$request->iva;
-        $product->precioVenta=$request->precioVenta;
-        $product->fechaVencimiento=$request->fechaVencimiento;
-        $product->nombreProveedor=$request->nombreProveedor;
-        $product->stock=$request->stock;
+        $product->nombre= $request->nombre;
+        $product->rubio= $request->rubio;
+        $product->nombreProveedor= $request->nombreProveedor;
+        $product->precioUnitario= $request->precioUnitario;
+        $product->cantidad= $request->cantidad;
+        $product->totalCompra= $request->totalCompra;
+        $product->iva= $request->iva;
+        $product->precioVenta= $request->precioVenta;
+        $product->fechaVencimiento= $request->fechaVencimiento;
+        $product->stock= $request->stock;
      /*$request->Validacion*/
         $product->save();
         return redirect()->route('producto.index')
@@ -125,9 +133,10 @@ class ProductosController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy( $codigo)
     {
-        $product = Producto::find($id);
+       
+        $product = Producto::find($codigo);
         $product->delete();
         return back()->with('info', 'El producto fue eliminado');
     }

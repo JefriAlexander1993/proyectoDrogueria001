@@ -16,17 +16,20 @@ class CreateProductosTable extends Migration
        // Create table from product
         Schema::create('Productos', function (Blueprint $table) {
             $table->increments('id');
+            $table->float('codigo');
             $table->date('fechaLlegada');
             $table->string('nombre');
-            $table->float('precioCompra');  
+            $table->string('rubio');
+            $table->string('nombreProveedor');
+            $table->float('precioUnitario');  
             $table->integer('cantidad');
+            $table->integer('totalCompra');
             $table->float('iva');
             $table->float('precioVenta');  
             $table->date('fechaVencimiento');
-            $table->string('nombreProveedor');
             $table->integer('stock');
             $table->timestamps();
-
+            
         });
     }
     

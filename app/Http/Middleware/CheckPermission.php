@@ -16,11 +16,11 @@ class CheckPermission
      */
     public function handle($request, Closure $next)
     {
-        if (! $request->user()->hasRole($role)) {
-           return redirect('/Error/401');
+        if ($request->user()->hasRole($role)==='admin') {
+     
+            return $next($request);
         }
 
-        return $next($request);
-    }
+    
 
-}
+}}

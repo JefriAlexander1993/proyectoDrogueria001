@@ -7,9 +7,11 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>SISTEMA DE DE INFORMACIÓN</title>
-
+    
+    <title>
+    
+    SISTEMA DE DE INFORMACIÓN
+    </title>
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">

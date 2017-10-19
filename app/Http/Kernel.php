@@ -61,6 +61,9 @@ class Kernel extends HttpKernel
         'entrust-gui.admin' => \Acoustep\EntrustGui\Http\Middleware\AdminAuth::class,
         'usuarioAdmin'=>\App\Http\Middleware\MDusuarioAdmin::class,
         'usuarioEstandar'=> \App\Http\Middleware\MDusuarioEstandar::class,
+        'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
     ];
     
   }
