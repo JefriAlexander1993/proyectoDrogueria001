@@ -97,15 +97,19 @@
     <div class="div1 col-md-2 " >
       <ul class="nav nav-pills nav-stacked">
         <li class="dropdown">
+        @role('admin')
         <a class="list-group-item" data-toggle="dropdown" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;Administración</a>
+        @endrole
       <ul class="dropdown-menu">
         <li><a class="{{ (Request::is('*users*') ? 'active' : '') }}"></a> </li>
         <li><a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Usuarios</a> </li>
         <li><a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Roles</a> </li>
         <li><a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class="fa fa-hand-paper-o" aria-hidden="true"></i>&nbsp;Permisos</a></li>               
+     
       </ul>
          </li>
          <li><a href="{{route('producto.index')}}" class="list-group-item"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Compras</a></li>
+         <li><a href="{{route('articulo.index')}}" class="list-group-item"><i class="fa fa-medkit" aria-hidden="true"></i>&nbsp; Articulos</a></li>
          <li> <a href="{{route('venta.index')}}" class="list-group-item"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Ventas</a></li>
          <li><a href="{{route('proveedor.index')}}" class="list-group-item"><i class="fa fa-id-card-o " aria-hidden="true"></i>&nbsp;Proveedores</a></li>
          <li><a href="{{route('cliente.index')}}" class="list-group-item "><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Clientes</a></li>

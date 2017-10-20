@@ -6,9 +6,11 @@
 </div>
 <div class="panel-body">
 <div class="col-md-12">
+<!-- @permmisions('store') -->
 {!!Form::open(['route'=>'producto.store'])!!}<!--Se le pasa, la variable del metodo-->
 @include('producto.fragment.form') <!--Incluyo el formulario-->
 {!!Form::close()!!}
+<!-- @endpermmisions -->
 </div>
 </div>
 </div>

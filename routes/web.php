@@ -17,15 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/error', 'ErrorController@index')->name('home');
 
-Route::resource('venta','VentasController');
-Route::resource('cliente','ClienteController');
-Route::resource('caja','CajaController'); 
-Route::resource('proveedor','ProveedorController');
-Route::resource('producto', 'ProductosController');
 
- 
+Auth::routes();
+  
+        Route::resource('proveedor','ProveedorController');
+        Route::resource('venta','VentasController');
+        Route::resource('cliente','ClienteController');
+        Route::resource('caja','CajaController'); 
+        Route::resource('producto', 'ProductosController');
+        Route::resource('articulo', 'ArticuloController');
+       
+      

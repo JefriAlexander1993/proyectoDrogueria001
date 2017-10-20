@@ -35,7 +35,10 @@
 <div class="col-sm-4">
 <div class="form-group">
 {!!Form::label('nombreProveedor','Nombre de proveedor.')!!}
- {!!Form::text('nombreProveedor', null,['class'=>'form-control'])!!} 
+<?php $producto = DB::table('productos')->pluck('nombreProveedor');
+ echo Form::select('nombreProveedore', $producto, null,['class'=>'form-control', 'type'=>'text' ,'placeholde'=>'Proveedores']);
+?> 
+ <!-- {!!Form::text('nombreProveedor', null,['class'=>'form-control', 'placeholder'=>'Proveedores'])!!}  -->
 
 </div>
 </div>
@@ -89,10 +92,7 @@
 </div> 
 
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
 
 </div> 
 
-<?php #$producto = DB::table('productos')->pluck('nombreProveedor');
- #echo Form::select('nombreProveedores', $producto, null,['class'=>'form-control']);
-?> 

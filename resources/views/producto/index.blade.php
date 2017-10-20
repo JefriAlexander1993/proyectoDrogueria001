@@ -1,8 +1,10 @@
 @extends('layouts.apphome')
 @section('content')
 <div class="col-sm-12">
+@role('admin')
    <a href="{{route('producto.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
-   </div>  
+   @endrole</div>  
+
    <div class="row">
    <div class="col-sm-7" style="text-align:center"><h2>LISTADO DE PRODUCTO.</h2>
    </div>
@@ -40,7 +42,7 @@
        <td class="text-center">{{$producto->nombre}}</td>
        <td class="text-center">{{$producto->rubio}}</td>
 	   <td class="text-center">{{$producto->nombreProveedor}}</td>
-       <td class="text-center">{{$producto->precioCompra}}</td>
+       <td class="text-center">{{$producto->precioUnitario}}</td>
        <td class="text-center">{{$producto->cantidad}}</td>
        <td class="text-center">{{$producto->totalCompra}}</td>
        <td class="text-center">{{$producto->iva}}</td>
@@ -59,13 +61,13 @@
 	
 ?>
        <td class="text-center">{{$producto->stock}}</td>
-	   <td><a href="{{route('producto.edit', $producto->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+	   <td>@role('admin')<a href="{{route('producto.edit', $producto->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>@endrole</td>
 	   <td> <a href="{{route('producto.show', $producto->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-	   <td><form action="{{route('producto.destroy', $producto->id)}}" method="POST">
+	   <td>@role('admin')<form action="{{route('producto.destroy', $producto->id)}}" method="POST">
        {{csrf_field()}} <!--Toque para que sea eliminado por la aplicacion-->
        <input type="hidden" name="_method" value="DELETE">	
 	   <button class="btn btn-labeled btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>	
-	   </form>
+	   </form>@endrole('admin')
 	   </td>
 	   </tr>
 @endforeach

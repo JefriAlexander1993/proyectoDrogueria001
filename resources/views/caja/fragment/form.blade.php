@@ -1,30 +1,31 @@
-
 <!-- Fecha -->
+<div class="row">
+<div class="col-sm-6">
 <div class="form-group">
-{!! Form:: label('Nombre del usuario de la caja')!!}
+{!!Form::label('nombreUsuario','Nombre del usuario de la caja')!!}
 {!!Form::text('nombreUsuario', null,['class'=>'form-control'])!!}
 </div>
-
-<!-- se unieron nombre y precio de compra-->
-<div class="row">
-<div class="col-sm-8">
+</div>
+<div class="col-sm-6">
 <!--Nombre -->
 <div class="form-group">
 {!! Form:: label('valorInicial','Valor inicial')!!}
-{!!Form::number('valorInicial',null,['class'=>'form-control'])!!}
+<input type="number"  class="form-control" step="any" name="valorInicial" />
+<!-- {!!Form::number('valorInicial',null,['class'=>'form-control'])!!} --> 
 </div>
 </div>
-<div class="col-sm-4">
+</div>
+<!-- se unieron nombre y precio de compra-->
+
+<div class="col-sm-6">
 <!--Precio de compra -->
 <div class="form-group">
 {!! Form:: label('valorFinal','Valor final')!!}
 {!!Form::number('valorFinal',null,['class'=>'form-control'])!!}
 </div>
 </div>
-</div>
-<!--                          row 2                                             -->
 <div class="row">
-<div class="col-sm-4">
+<div class="col-sm-6">
 <!--Cantidad -->
 <div class="form-group">
 {!!Form:: label('ganancia','Ganancia')!!}
@@ -32,7 +33,10 @@
 </div>
 </div>
 
+</div>
+<!--                          row 2                                             -->
+
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
 
 </div>

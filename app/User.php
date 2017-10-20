@@ -74,4 +74,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
    $this->notify(new ResetPassword($token));
  }  
    
+
+//  protected function hasTooManyLoginAttempts(Request $request){
+//     $maxLoginAttempts = 3;
+ 
+//     $lockoutTime = 1; // In minutes
+ 
+//     return $this->limiter()->tooManyAttempts(
+//         $this->throttleKey($request), $maxLoginAttempts, $lockoutTime
+//     );
+// }
 }

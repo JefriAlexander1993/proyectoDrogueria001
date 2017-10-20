@@ -1,6 +1,6 @@
 @extends(Config::get('entrust-gui.layout'))
 @section('content')
-
+<a class="btn btn-labeled btn-success" href="{{ route('entrust-gui::roles.create') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
 <table class="table table-hover" style="margin-top:8px">
     <tr>
         <th>Nombre</th>
@@ -15,7 +15,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <a class="btn btn-labeled btn-default" href="{{ route('entrust-gui::roles.edit', $model->id) }}"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                     <button type="submit" class="btn btn-labeled btn-danger"><i class="fa fa-trash"></i></button>
-                <a class="btn btn-labeled btn-success" href="{{ route('entrust-gui::roles.create') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+
 
                 </form>
             </td>

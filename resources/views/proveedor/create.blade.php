@@ -3,7 +3,7 @@
 
 
 <div class="panel1  panel-success">
-      <div class="panel-heading"><strong>Crear un nuevo proveedor.</strong>&nbsp;&nbsp;<a href="{{route('proveedor.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+      <div class="panel-heading"><strong>Crear un nuevo proveedor.</strong>&nbsp;&nbsp;@role('admin')<a href="{{route('proveedor.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>@endrole
       </div>
 <div class="panel-body">
 <div class="col-md-12">

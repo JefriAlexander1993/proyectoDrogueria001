@@ -35,21 +35,22 @@ class CajaController extends Controller
      */
     public function store(CajaRequest $request)
     {
-        $caja = new Caja;/*Crear un instancia*/
-        $caja->nombreUsuario= $request->nombreUsuario;
-        $caja->valorInicial= $request->valorInicial;
-        $caja->valorFinal= $request->valorFinal;
-        $caja->ganancia= $request->ganancia;
-       
-
-
-     /*$request->Validacion*/
-        $caja->save();
+        $caja = (new Caja)->fill($request->all());   /*Crear un instancia*/
+        
+       if($caja->save()){
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue guardada.');
+
+       }
+
+     /*$request->Validacion*/
+   // $caja->nombreUsuario= $request->nombreUsuario;
+        // $caja->valorInicial= $request->valorInicial;
+        // $caja->valorFinal= $request->valorFinal;
+        // $caja->ganancia= $request->ganancia;
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//
 
-        return ;
+        return back();
     }
 
     /**
@@ -98,7 +99,7 @@ class CajaController extends Controller
      /*$request->Validacion*/
         $caja->save();
         return redirect()->route('caja.index')
-        ->with('info', 'El caja fue actualizado.');
+        ->with('info', 'La caja fue actualizado.');
     }
 
     /**
@@ -111,6 +112,6 @@ class CajaController extends Controller
     {
         $caja = Caja::find($id);
         $caja->delete();
-        return back()->with('info', 'El caja fue eliminado');
+        return back()->with('danger', 'La caja fue eliminado');
     }
 }

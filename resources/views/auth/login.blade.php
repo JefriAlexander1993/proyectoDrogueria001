@@ -5,10 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel1 panel-success " align="center" >
-                <div class="panel-heading"><h5><strong>LOGIN<h5></strong></div>
-
+                <div class="panel-heading"><h4><strong>LOGIN</strong></h4></div>
                 <div class="panel-body">
-                <img class="" src="/ic/logo.png" alt="" data-src="/ic/logo.png" style="width: 310px;margin-top:21px;">
+                <img class="" src="/ic/logo.png" alt="" data-src="/ic/logo.png" style="width: 290px;margin-top:21px;">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -31,7 +30,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
-
+                     
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>

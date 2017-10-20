@@ -2,7 +2,7 @@
 @section('content')
 
  <div class="panel1 panel-primary">
-      <div class="panel-heading"><strong>Información del producto.</strong>&nbsp;&nbsp;&nbsp;<a href="{{route('producto.edit', $product->id)}}" class="btn btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
+      <div class="panel-heading"><strong>Información del producto.</strong>&nbsp;&nbsp;&nbsp;@role('admin')<a href="{{route('producto.edit', $product->id)}}" class="btn btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>@endrole
 
 </div>
 <div class="panel-body">

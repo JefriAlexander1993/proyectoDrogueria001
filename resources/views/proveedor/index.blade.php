@@ -3,10 +3,11 @@
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
    @section('content')
+   @role('admin')
    <div class="col-sm-12">
    <a href="{{route('proveedor.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
    </div>
-   
+   @endrole 
    <div class="row">
    <div class="col-sm-8" style="text-align:center"><h2><strong>LISTADO DE PROVEEDOR.</strong></h2>
    </div>
