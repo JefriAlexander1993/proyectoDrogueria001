@@ -176,7 +176,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Acoustep\EntrustGui\EntrustGuiServiceProvider::class,
-        'Collective\Html\HtmlServiceProvider',
+        'Collective\Html\HtmlServiceProvider', 
+        Barryvdh\DomPDF\ServiceProvider::class,
+
       
 
     ],
@@ -230,6 +232,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

@@ -8,12 +8,12 @@
       <div class="panel-heading"><strong>Crear una nueva caja.</strong>&nbsp;&nbsp;<a href="{{route('caja.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
       </div>
 <div class="panel-body">
-<div class="col-md-12">
+<div class="col-md-12"></div>
+{!!Form::open(['route'=>'caja.store'])!!}
+<br>
+<br>
 
-{!!Form::open(['route'=>'caja.store'])!!}<!--Se le pasa, la variable del metodo-->
-<br>
-<br>
-@include('caja.fragment.form') <!--Incluyo el formulario-->
+@include('caja.fragment.form')
 
 {!!Form::close()!!}
 

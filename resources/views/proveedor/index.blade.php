@@ -6,6 +6,7 @@
    @role('admin')
    <div class="col-sm-12">
    <a href="{{route('proveedor.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+   <a href="{{url('/proveedorpdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
    </div>
    @endrole 
    <div class="row">
@@ -29,7 +30,6 @@
 		<th class="text-center">Email</th>
 		<th class="text-center">Observación</th>
 		<th class="text-center" colspan="3" >Acción</th>	
-        
 		</tr>
 	</thead>
 	<tbody>
@@ -43,7 +43,6 @@
        <td class="text-center">{{$proveedor->telefono}}</td>
        <td class="text-center">{{$proveedor->email}}</td>
        <td class="text-justify">{{$proveedor->observacion}}</td>
-      
 	   <td> <a href="{{route('proveedor.edit', $proveedor->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 	   <td> <a href="{{route('proveedor.show', $proveedor->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 	   <td><form action="{{route('proveedor.destroy', $proveedor->id)}}" method="POST">

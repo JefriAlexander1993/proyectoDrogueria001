@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Caja;
 use Illuminate\Http\Request;
 use App\Http\Requests\CajaRequest;
+use PDF;
 
 class CajaController extends Controller
 
@@ -14,7 +15,9 @@ class CajaController extends Controller
         $cajas = Caja::orderBy('id')->paginate('8');;
         // return $caja;
         return  view('caja.index', compact('cajas'));// SE carga en vista y le pasamos la variable
-    }
+       
+    
+}
     
 
     /**
@@ -35,22 +38,19 @@ class CajaController extends Controller
      */
     public function store(CajaRequest $request)
     {
-        $caja = (new Caja)->fill($request->all());   /*Crear un instancia*/
+        dd($request);
+        $caja = new Caja;   /*Crear un instancia*/
         
-       if($caja->save()){
+        $caja->nombreUsuario= $request->nombreUsuario;
+        $caja->valorInicial= $request->valorInicial;
+        $caja->valorFinal= $request->valorFinal;
+        $caja->ganancia= $request->ganancia;
+     
+        $caja->save();
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue guardada.');
 
-       }
-
-     /*$request->Validacion*/
-   // $caja->nombreUsuario= $request->nombreUsuario;
-        // $caja->valorInicial= $request->valorInicial;
-        // $caja->valorFinal= $request->valorFinal;
-        // $caja->ganancia= $request->ganancia;
-//*Guardado todos los camppos guardados y mira si todos los capos son validos*//
-
-        return back();
+        return ;
     }
 
     /**
@@ -114,4 +114,6 @@ class CajaController extends Controller
         $caja->delete();
         return back()->with('danger', 'La caja fue eliminado');
     }
+
+ 
 }

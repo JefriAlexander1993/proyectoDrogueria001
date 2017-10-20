@@ -64,14 +64,14 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-          <div class="row">
+        
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <button type="submit" class="btn btn-success  btn-lg btn-block">
+                                <button type="submit" class="btn btn-success  btn-lg ">
                                     Registro
                                 </button>
                             </div>
-                            </div>
+                            
                         </div>
                     </form>
                 </div>

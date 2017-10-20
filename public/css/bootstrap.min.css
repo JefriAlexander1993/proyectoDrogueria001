@@ -1407,8 +1407,8 @@ textarea {
 }
 
 a {
-    color: #337ab7;
-    text-decoration: none
+    color: red;
+    text-decoration: none;
 }
 
 a:focus,
@@ -3682,7 +3682,7 @@ textarea.input-lg {
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid transparent;
+    border: 1px solid;
     border-radius: 4px
 }
 
@@ -6543,8 +6543,8 @@ button.list-group-item-danger.active:hover {
 
 .panel1 {
     /* margin-bottom: 20px; */
-    background-color: #fff;
-    border: 1px solid #BDBDBD;
+    background-color: #FCFFFE;
+    border: 1px solid transparent;
     border-radius: 6px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);

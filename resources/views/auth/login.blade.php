@@ -51,7 +51,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-success " style="align:center" >
+                                <button type="submit" class="btn btn-success btn-lg " style="align:center" >
                                    Iniciar sesión
                                 </button>
 

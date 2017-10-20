@@ -3,10 +3,12 @@
 <div class="col-sm-12">
 @role('admin')
    <a href="{{route('producto.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+   <a href="{{url('/productopdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+
    @endrole</div>  
 
    <div class="row">
-   <div class="col-sm-7" style="text-align:center"><h2>LISTADO DE PRODUCTO.</h2>
+   <div class="col-sm-7" style="text-align:center"><h2><strong>LISTADO DE PRODUCTO.</strong></h2>
    </div>
    <div class="col-sm-4">
    @include('producto.fragment.aside') 
@@ -48,19 +50,7 @@
        <td class="text-center">{{$producto->iva}}</td>
        <td class="text-center">{{$producto->precioVenta}}</td>
        <td class="text-center">{{$producto->fechaVencimiento}}</td>
-	   <?php
-	  
-	   
-	//    $stock = DB::table('productos')->select('cantidad')->where('id'=='2')->value('stock');
-	//    $cantidad = DB::table('productos')->where('id', '13')->value('cantidad');
-	//    $suma = $stock + $cantidad ;
-	//    $stockActual = DB::table('productos')
-	//    ->where('id', 13)
-	//   ->update(['stock' => $suma]);
-	
-	
-?>
-       <td class="text-center">{{$producto->stock}}</td>
+	   <td class="text-center">{{$producto->stock}}</td>
 	   <td>@role('admin')<a href="{{route('producto.edit', $producto->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>@endrole</td>
 	   <td> <a href="{{route('producto.show', $producto->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 	   <td>@role('admin')<form action="{{route('producto.destroy', $producto->id)}}" method="POST">
