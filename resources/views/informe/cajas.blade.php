@@ -8,10 +8,13 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <img class="" src="../public/ic/logo.png" alt="" data-src="/ic/logo.png" style="width:90px;margin-top:21px;">
         <title>INFORME DE CAJAS</title>
         <?php  $fecha=date("j/n/Y");?>
+
         <p><h1 align="center">SISTEMA DE CONTROL J & D.</h1>
         <strong>DROGUERIA EL TRIUNFO.</strong>
+
         <br>
         <strong>Fecha de realizacion del reporte:</strong> <?php echo $fecha;?>
         <br>
