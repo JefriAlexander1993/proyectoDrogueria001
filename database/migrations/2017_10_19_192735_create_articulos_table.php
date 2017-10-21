@@ -15,6 +15,12 @@ class CreateArticulosTable extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('codigo');
+            $table->string('descripcion');
+            $table->string('marca');
+            $table->string('rubro');
+            $table->float('precioVenta');
+            $table->integer('stock');
             $table->timestamps();
         });
     }

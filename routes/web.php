@@ -32,4 +32,5 @@ Auth::routes();
         Route::get("/cajapdf","PdfController@cajasPDF");  
         Route::get("/proveedorpdf","PdfController@proveedoresPDF");  
         Route::get("/productopdf","PdfController@productosPDF");  
+        Route::get("/articulopdf","PdfController@articulosPDF"); 
    

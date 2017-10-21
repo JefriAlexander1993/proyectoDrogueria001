@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Faker\Generator as Faker;
 
@@ -94,4 +94,21 @@ $factory->define(App\Venta::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Articulo::class, function (Faker $faker) {
 
+    return [
+       
+        'codigo' => $faker->numberBetween(1,20),
+        'descripcion' => $faker->realText($maxNbChars = 20),
+        'marca' => $faker->realText($maxNbChars =20),
+        'rubro' => $faker->realText($maxNbChars = 20),
+        'precioVenta' => $faker->numberBetween(1,20),
+        'stock' => $faker->numberBetween(1,20),
+
+
+
+        
+    ];
+});
+
+        

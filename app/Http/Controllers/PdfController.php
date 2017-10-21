@@ -7,6 +7,7 @@ use App\Http\Requests\CajaRequest;
 use App\Caja;
 use App\Producto;
 use App\Proveedor;
+use App\Articulo;
 use PDF;
 
 class PdfController extends Controller
@@ -41,6 +42,18 @@ class PdfController extends Controller
                 
                 $pdf2 = PDF::loadView('informe.proveedores',['proveedores1'=>$proveedores1]);
                 return $pdf2->stream('proveedores.pdf');
+        
+            }
+
+
+
+        public function articulosPDF()
+        
+            {
+                $articulos1 = Articulo::all();
+                
+                $pdf3 = PDF::loadView('informe.articulos',['articulos1'=>$articulos1]);
+                return $pdf3->stream('articulos.pdf');
         
             }
 }
