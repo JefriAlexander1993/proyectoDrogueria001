@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
         <title>Sistma de control J & D</title>
 
@@ -13,7 +15,9 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+
+                background-image: url('/ic/logocentrado.png');*/
+                /*background-color: #fff;                */
                 color:#000;
                 font: ARIAL;
                 font-weight: 100;
@@ -72,7 +76,7 @@
                         <a href="{{ url('/home') }}">Home</a>
                         
                     @else
-                        <a href="{{ route('login') }}"><strong>LOGIN</strong>
+                        <a href="{{ route('login') }}" ><strong>LOGIN</strong>
                         <a href="{{ url('/register') }}"><strong>REGISTRO<h5></strong>
                
                     @endauth
