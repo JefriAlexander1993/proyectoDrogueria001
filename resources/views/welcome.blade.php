@@ -1,18 +1,25 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-       
-         <title>Sistema de control J & D</title>
-         
-         <style>
-         html, body {
-                background-color: #fff;
-                color: #fff;
-                font-family: 'Arial';
+
+
+        <title>Sistma de control J & D</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
+        <!-- Styles -->
+        <style>
+            html, body {
+
+                background-image: url('/ic/logocentrado.png');*/
+                /*background-color: #fff;                */
+                color:#000;
+                font: ARIAL;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -63,14 +70,14 @@
     </head>
     <body>
 
-        <div class="flex-center" style="height:50px; border:1px solid;  background-color:#31B404;">
+        <div class="flex-center" style="height:50px;  background-color:#31B404;">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>                 
                     @else
-                        <a href="{{ route('login') }}">LOGIN
-                        <a href="{{ url('/register') }}">REGISTRO
+                        <a href="{{ route('login') }}" ><strong>LOGIN</strong>
+                        <a href="{{ url('/register') }}"><strong>REGISTRO<h5></strong>
                
                     @endauth
                 </div>
