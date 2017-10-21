@@ -14,7 +14,11 @@ class ClienteController extends Controller
      */
     public function index()
     {
-    
+
+        $clientes = cliente::orderBy('id')->paginate('8');;
+        // return $cliente;
+        return  view('cliente.index', compact('clientes'));// SE carga en vista y le pasamos la variable
+       
 
     
 }
@@ -27,7 +31,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('articulo.create');
+        return view('cliente.create');
     }
 
     /**
@@ -36,21 +40,21 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(articuloRequest $request)
+    public function store(clienteRequest $request)
     {
         dd($request);
-        $articulo = new articulo;   /*Crear un instancia*/
+        $cliente = new cliente;   /*Crear un instancia*/
         
-        $articulo->codigo= $request->codigo;
-        $articulo->descripcion= $request->descripcion;
-        $articulo->marca= $request->marca;
-        $articulo->rubro= $request->rubro;
-        $articulo->precioVenta= $request->precioVenta;
-        $articulo->stock= $request->stock;
+        $cliente->nombre= $request->nombre;
+        $cliente->telefono= $request->telefono;
+        $cliente->direccion= $request->direccion;
+        $cliente->correoElectronico= $request->correoElectronico;
+        $cliente->nombreMedicamento= $request->nombreMedicamento;
+        $cliente->observacion= $request->observacion;
       
-        $articulo->save();
-        return redirect()->route('articulo.index')
-        ->with('info', 'El articulo fue guardado.');
+        $cliente->save();
+        return redirect()->route('cliente.index')
+        ->with('info', 'El cliente a sido guardado con exito.');
 
         return ;
     }
@@ -58,27 +62,27 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\articulos  $articulos
+     * @param  \App\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $articulo = articulo::find($id); // Busca un articulo por medio del  id-
-         return view('articulo.show', compact('articulo'));
+        $cliente = cliente::find($id); // Busca un cliente por medio del  id-
+         return view('cliente.show', compact('cliente'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\articulos  $articulos
+     * @param  \App\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
     
-        $articulo = articulo::find($id); // Busca un articulo por medio del  id-
+        $cliente = cliente::find($id); // Busca un cliente por medio del  id-
         
-        return view('articulo.edit', compact('articulo'));
+        return view('cliente.edit', compact('cliente'));
     
     }
 
@@ -86,37 +90,37 @@ class ClienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\articulos  $articulos
+     * @param  \App\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(articuloRequest $request, $id)
+    public function update(clienteRequest $request, $id)
     {
         
-        $articulo =articulo::find($id);/*Buscar en articulo*/
+        $cliente =cliente::find($id);/*Buscar en cliente*/
 
-        $articulo->codigo= $request->codigo;
-        $articulo->descripcion= $request->descripcion;
-        $articulo->marca= $request->marca;
-        $articulo->rubro= $request->rubro;
-        $articulo->precioVenta= $request->precioVenta;
-        $articulo->stock= $request->stock;
+        $cliente->nombre= $request->nombre;
+        $cliente->telefono= $request->telefono;
+        $cliente->direccion= $request->direccion;
+        $cliente->correoElectronico= $request->correoElectronico;
+        $cliente->nombreMedicamento= $request->nombreMedicamento;
+        $cliente->observacion= $request->observacion;
       
      /*$request->Validacion*/
-        $articulo->save();
-        return redirect()->route('articulo.index')
-        ->with('info', 'E articulo fue actualizado.');
+        $cliente->save();
+        return redirect()->route('cliente.index')
+        ->with('info', 'E cliente fue actualizado.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\articulos  $articulos
+     * @param  \App\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $articulo = articulo::find($id);
-        $articulo->delete();
-        return back()->with('danger', 'El articulo fue eliminado');
+        $cliente = cliente::find($id);
+        $cliente->delete();
+        return back()->with('danger', 'El cliente fue eliminado');
     }
 }

@@ -8,6 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <img class="" src="../public/ic/logo.png" alt="" data-src="/ic/logo.png" style="width:90px;margin-top:21px;">
         <title>INFORME DE CAJAS</title>
         <img  src="../public/ic/logo.png"  style="width:150px;margin-top:21px;">
     

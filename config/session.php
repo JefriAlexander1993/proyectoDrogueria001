@@ -29,9 +29,9 @@ return [
     |
     */
 
-    'lifetime' => 10,
+    'lifetime' => 1440, //tiempo que dure cuando este cerrado en navegador
 
-    'expire_on_close' => false,
+    'expire_on_close' =>false, /*Para que se cierre uando se cierre el navegación*/
 
     /*
     |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'encrypt' => false,
+    'encrypt' => false, /**todo lo la sesión se encripta*/
 
     /*
     |--------------------------------------------------------------------------
