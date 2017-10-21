@@ -14,27 +14,26 @@
 @include('caja.fragment.aside') 
 </div>
 </div> 
-<div class="container" style="text-align:center">
-<div class="col-md-12 table-responsive" style="text-align:center" >
+<div class="col-md-12 table-responsive">
 <table class="table table-hover">
     <thead>
         <tr>
-        <th class="text-center">Id</th>
-        <th class="text-center">Nombre usuario</th>
-        <th class="text-center">Caja inicial</th>
-        <th class="text-center">Caja final</th>
-        <th class="text-center">Ganancia</th>
-        <th class="text-center" colspan="3" >Acción</th>	
+        <th  class="text-center">Id</th>
+        <th  class="text-center">Nombre usuario</th>
+        <th  class="text-center">Caja inicial</th>
+        <th  class="text-center">Caja final</th>
+        <th  class="text-center">Ganancia</th>
+        <th  class="text-center"colspan="3" >Acción</th>	
         </tr>
         </thead>
     <tbody>
         @foreach ($cajas as $caja)
        <tr>
-       <td class="text-center">{{$caja->id}}</td>
-       <td class="text-center">{{$caja->nombreUsuario}}</td>
-       <td class="text-center">{{$caja->valorInicial}}</td>
-       <td class="text-center">{{$caja->valorFinal}}</td>
-       <td class="text-center">{{$caja->ganancia}}</td>
+       <td align="center">{{$caja->id}}</td>
+       <td align="center">{{$caja->nombreUsuario}}</td>
+       <td align="center">{{$caja->valorInicial}}</td>
+       <td align="center">{{$caja->valorFinal}}</td>
+       <td align="center">{{$caja->ganancia}}</td>
        <td><a href="{{route('caja.edit', $caja->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 	   <td><a href="{{route('caja.show', $caja->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
        <td><form action="{{route('caja.destroy', $caja->id)}}" method="POST">
@@ -52,7 +51,6 @@
 <?php 
 echo phpversion('tidy');
 ?>
-</div>
 </div>
 </div>
 </div>

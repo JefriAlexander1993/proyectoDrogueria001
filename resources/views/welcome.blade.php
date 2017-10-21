@@ -4,18 +4,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Sistma de control J & D</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
+        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+       
+         <title>Sistema de control J & D</title>
+         
+         <style>
+         html, body {
                 background-color: #fff;
-                color:#000;
-                font: ARIAL;
+                color: #fff;
+                font-family: 'Arial';
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -50,7 +47,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -65,19 +62,20 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+
+        <div class="flex-center" style="height:50px; border:1px solid;  background-color:#31B404;">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                        
+                        <a href="{{ url('/home') }}">Home</a>                 
                     @else
-                        <a href="{{ route('login') }}"><strong>LOGIN</strong>
-                        <a href="{{ url('/register') }}"><strong>REGISTRO<h5></strong>
+                        <a href="{{ route('login') }}">LOGIN
+                        <a href="{{ url('/register') }}">REGISTRO
                
                     @endauth
                 </div>
             @endif
+          </div>
           </div>
     </body>
 </html>

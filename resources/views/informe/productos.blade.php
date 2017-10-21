@@ -8,13 +8,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <img class="" src="/ic/logo.png" alt="" data-src="/ic/logo.png" style="width:90px;margin-top:21px;">
-                
+        <meta name="viewport" content="width=device-width, initial-scale=1">         
         <title>INFORME DE PRODUCTOS</title>
-
+        <img  src="../public/ic/logo.png"  style="width:150px;margin-top:21px;">
+    
         <?php  $fecha=date("j/n/Y");?>
         <p><h1 align="center">SISTEMA DE CONTROL J & D.</h1>
+       
         <strong>DROGUERIA EL TRIUNFO.</strong>
         <br>
         <strong>Fecha de realizacion del reporte:</strong> <?php echo $fecha;?>
@@ -23,6 +23,7 @@
                
         <meta name="description" content="">
         <style type="text/css">
+    
 
 		table{
 

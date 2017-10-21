@@ -6,11 +6,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Informe de articulos</title>
+        <img  src="../public/ic/logo.png"  style="width:150px;margin-top:21px;">    
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <img class="" src="/ic/logo.png" alt="" data-src="/ic/logo.png" style="width:90px;margin-top:21px;">
-                
+               
         <title>INFORME DE ARTICULOS</title>
 
         <?php  $fecha=date("j/n/Y");?>
@@ -60,8 +60,8 @@
 	   <tr>
 	   <td align="center">{{$articulo->codigo}}</td>
 	   <td align="center">{{$articulo->descripcion}}</td>
-       <td align="center">{{$articulo->nombre}}</td>
        <td align="center">{{$articulo->marca}}</td>
+       <td align="center">{{$articulo->rubro}}</td>
 	   <td align="center">{{$articulo->precioVenta}}</td>
        <td align="center">{{$articulo->stock}}</td>
        

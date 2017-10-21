@@ -90,7 +90,7 @@
 
  <div class="row">
     <div class="col-md-12"  >
-            <div class="pane1 panel-default" >
+            <div class="panel panel-default" >
                 <div class="panel-heading"><h4><b>ESCRITORIO.</b></h4></div><!-- Escritorio-->
                    <div class="panel-body" >   
 <div class="row"><!--Menú de navegación-->                   
@@ -105,6 +105,7 @@
         <li><a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Usuarios</a> </li>
         <li><a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Roles</a> </li>
         <li><a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class="fa fa-hand-paper-o" aria-hidden="true"></i>&nbsp;Permisos</a></li>               
+        <li><a href="#" class="list-group-item "><i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Backup</a></li>               
      
       </ul>
          </li>

@@ -14,10 +14,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $articulos = articulo::orderBy('id')->paginate('8');;
-        // return $articulo;
-        return  view('cliente.index', compact('articulos'));// SE carga en vista y le pasamos la variable
-       
+    
+
     
 }
     

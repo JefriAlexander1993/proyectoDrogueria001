@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/error', 'ErrorController@index')->name('home');
+Route::get("/backup","backupController@index")->name('backup'); 
 
 
 Auth::routes();

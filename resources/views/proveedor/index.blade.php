@@ -16,32 +16,31 @@
    @include('proveedor.fragment.aside') 
    </div>
    </div> 
-
 <div class="col-md-12 table-responsive">
 <table class="table table-hover ">
 	<thead>
 		<tr>
-		<th class="text-center" >Id</th>
-		<th class="text-center">Nit</th>
-		<th class="text-center">Nombre de proveedor</th>
-		<th class="text-center">Nombre de representante</th>
-		<th class="text-center">Dirección</th>
-		<th class="text-center">Telefono</th>
-		<th class="text-center">Email</th>
-		<th class="text-center">Observación</th>
-		<th class="text-center" colspan="3" >Acción</th>	
+		<th align="center" >Id</th>
+		<th align="center">Nit</th>
+		<th align="center">Nombre de proveedor</th>
+		<th align="center">Nombre de representante</th>
+		<th align="center">Dirección</th>
+		<th align="center">Telefono</th>
+		<th align="center">Email</th>
+		<th align="justify">Observación</th>
+		<th align="center" colspan="3" >Acción</th>	
 		</tr>
 	</thead>
 	<tbody>
 		@foreach ($proveedors as $proveedor)
 	   <tr>
-       <td class="text-center">{{$proveedor->id}}</td>
-	   <td class="text-center">{{$proveedor->nit}}</td>
-       <td class="text-center">{{$proveedor->nombreProveedor}}</td>
-       <td class="text-center">{{$proveedor->nombreRepresentante}}</td>
-       <td class="text-center">{{$proveedor->direccion}}</td>
-       <td class="text-center">{{$proveedor->telefono}}</td>
-       <td class="text-center">{{$proveedor->email}}</td>
+       <td align="center">{{$proveedor->id}}</td>
+	   <td align="center">{{$proveedor->nit}}</td>
+       <td align="center">{{$proveedor->nombreProveedor}}</td>
+       <td align="center">{{$proveedor->nombreRepresentante}}</td>
+       <td align="center">{{$proveedor->direccion}}</td>
+       <td align="center">{{$proveedor->telefono}}</td>
+       <td align="center">{{$proveedor->email}}</td>
        <td class="text-justify">{{$proveedor->observacion}}</td>
 	   <td> <a href="{{route('proveedor.edit', $proveedor->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 	   <td> <a href="{{route('proveedor.show', $proveedor->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -62,7 +61,6 @@ echo phpversion('tidy');
 ?>
 </div>
 </div>
-
 </div>
 </div>
 

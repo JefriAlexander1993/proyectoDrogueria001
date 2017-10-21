@@ -9,6 +9,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>INFORME DE CAJAS</title>
+        <img  src="../public/ic/logo.png"  style="width:150px;margin-top:21px;">
+    
         <?php  $fecha=date("j/n/Y");?>
         <p><h1 align="center">SISTEMA DE CONTROL J & D</h1>
         <strong>DROGUERIA EL TRIUNFO.</strong>
