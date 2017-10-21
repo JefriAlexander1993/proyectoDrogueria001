@@ -8,6 +8,7 @@ use App\Caja;
 use App\Producto;
 use App\Proveedor;
 use App\Articulo;
+use App\Cliente;
 use PDF;
 
 class PdfController extends Controller
@@ -54,6 +55,17 @@ class PdfController extends Controller
                 
                 $pdf3 = PDF::loadView('informe.articulos',['articulos1'=>$articulos1]);
                 return $pdf3->stream('articulos.pdf');
+        
+            }
+
+
+            public function clientesPDF()
+        
+            {
+                $clientes1 = Cliente::all();
+                
+                $pdf4 = PDF::loadView('informe.clientes',['clientes1'=>$clientes1]);
+                return $pdf4->stream('clientes.pdf');
         
             }
 }

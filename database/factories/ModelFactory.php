@@ -112,3 +112,21 @@ $factory->define(App\Articulo::class, function (Faker $faker) {
 });
 
         
+
+
+$factory->define(App\Cliente::class, function (Faker $faker) {
+
+    return [
+       
+        'nombre' => $faker->realText($maxNbChars = 20),
+        'direccion' => $faker->realText($maxNbChars = 20),
+        'telefono' => $faker->realText($maxNbChars =20),
+        'correoElectronico' => $faker->realText($maxNbChars = 20),
+        'nombreMedicamento' => $faker->realText($maxNbChars = 20),
+        'observacion' => $faker->realText($maxNbChars = 20),
+
+
+
+        
+    ];
+});
