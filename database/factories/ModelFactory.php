@@ -24,7 +24,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Producto::class, function (Faker $faker) {
+$factory->define(App\Compra::class, function (Faker $faker) {
 
     return [
        

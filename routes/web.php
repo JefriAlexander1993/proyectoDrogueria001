@@ -30,6 +30,7 @@ Auth::routes();
         Route::resource('caja','CajaController'); 
         Route::resource('producto', 'ProductosController');
         Route::resource('articulo', 'ArticuloController');
+        Route::resource('compra', 'CompraController');
         Route::get("/cajapdf","PdfController@cajasPDF");  
         Route::get("/proveedorpdf","PdfController@proveedoresPDF");  
         Route::get("/productopdf","PdfController@productosPDF");  
