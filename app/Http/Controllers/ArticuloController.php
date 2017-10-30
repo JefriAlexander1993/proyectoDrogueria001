@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Proveedor;
 use App\Articulo;
+use App\Articulo_proveedor;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticuloRequest;
 use PDF;
+use Illuminate\Support\Facades\DB;
 
 
 class ArticuloController extends Controller
 {
     public function index()
     {
-        $articulos = articulo::orderBy('id')->paginate('8');;
+        $articulos = articulo::orderBy('id')->paginate('8');
         // return $articulo;
         return  view('articulo.index', compact('articulos'));// SE carga en vista y le pasamos la variable
        
@@ -27,7 +30,10 @@ class ArticuloController extends Controller
      */
     public function create()
     {
-        return view('articulo.create');
+       
+        $proveedores = Proveedor::pluck('nombreproveedor','id');
+        return view('articulo.create', compact('proveedores'));
+       
     }
 
     /**
@@ -36,23 +42,37 @@ class ArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(articuloRequest $request)
+    public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $articulo = new articulo;   /*Crear un instancia*/
         
         $articulo->codigo= $request->codigo;
-        $articulo->descripcion= $request->descripcion;
-        $articulo->marca= $request->marca;
+        $articulo->fechavencimiento=$request->fechavencimiento;
+        $articulo->nombre= $request->nombre;
         $articulo->rubro= $request->rubro;
-        $articulo->precioVenta= $request->precioVenta;
-        $articulo->stock= $request->stock;
-      
+        $articulo->marca= $request->marca;
+        $articulo->preciounitario= $request->preciounitario;
+        $articulo->precioventa= $request->precioventa;
+        $articulo->stockmin= $request->stockmin;
         $articulo->save();
-        return redirect()->route('articulo.index')
+
+        $art_id = $articulo->id;
+        $prov_id= $request->proveedor;
+
+        //  print_r($art_id);
+        //  print_r($prov_id);
+        //  exit();
+        $pivot = new articulo_proveedor;
+        $pivot->articulo_id= $art_id;
+        $pivot->proveedor_id= $prov_id;
+       
+
+        $pivot->save();
+        return redirect()->route('articulo.index', $pivot)
         ->with('info', 'El articulo fue guardado.');
 
-        return ;
+        // return ;
     }
 
     /**
@@ -73,12 +93,12 @@ class ArticuloController extends Controller
      * @param  \App\articulos  $articulos
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request )
     {
     
         $articulo = articulo::find($id); // Busca un articulo por medio del  id-
-        
-        return view('articulo.edit', compact('articulo'));
+        $proveedores =$request-> proveedor;
+        return view('articulo.edit', compact('articulo'),compact('proveedores') );
     
     }
 
@@ -89,17 +109,19 @@ class ArticuloController extends Controller
      * @param  \App\articulos  $articulos
      * @return \Illuminate\Http\Response
      */
-    public function update(articuloRequest $request, $id)
+    public function update(Request $request, $id)
     {
         
         $articulo =articulo::find($id);/*Buscar en articulo*/
 
         $articulo->codigo= $request->codigo;
-        $articulo->descripcion= $request->descripcion;
-        $articulo->marca= $request->marca;
+        $articulo->fechavencimiento=$request->fechavencimiento;
+        $articulo->nombre= $request->nombre;
         $articulo->rubro= $request->rubro;
-        $articulo->precioVenta= $request->precioVenta;
-        $articulo->stock= $request->stock;
+        $articulo->marca= $request->marca;
+        $articulo->preciounitario= $request->preciounitario;
+        $articulo->precioventa= $request->precioventa;
+        $articulo->stockmin= $request->stockmin;
       
      /*$request->Validacion*/
         $articulo->save();
@@ -119,4 +141,24 @@ class ArticuloController extends Controller
         $articulo->delete();
         return back()->with('danger', 'El articulo fue eliminado');
     }
+
+    public function getArticuloByCodigo($codigo)
+    {
+             
+        $articulo=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre','precioventa', 'iva']);
+        if(count($articulo)>0){
+            $answer=array(
+                "datos" => $articulo,
+                "code" => 200
+            ); 
+        }else{
+        $answer=array(
+            "error" => 'No existen datos con ese codigo.',
+            "code" => 600
+        ); 
+    }
+         return response()->json($answer);
+        
+    }
+
 }

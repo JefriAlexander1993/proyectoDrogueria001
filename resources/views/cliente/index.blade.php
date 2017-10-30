@@ -38,8 +38,8 @@
        <td class="text-center">{{$cliente->nombre}}</td>
        <td class="text-center">{{$cliente->telefono}}</td>
        <td class="text-center">{{$cliente->direccion}}</td>
-       <td class="text-center">{{$cliente->correoElectronico}}</td>
-       <td class="text-center">{{$cliente->nombreMedicamento}}</td>
+       <td class="text-center">{{$cliente->correoelectronico}}</td>
+       <td class="text-center">{{$cliente->nombremedicamento}}</td>
        <td class="text-center">{{$cliente->observacion}}</td>
        <td>@role('admin')<a href="{{route('cliente.edit', $cliente->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>@endrole
        <td><a href="{{route('cliente.show', $cliente->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>

@@ -1,8 +1,6 @@
 @extends('layouts.apphome')
 @section('content')
-<div class="col-md-3">
-@include('articulo.fragment.error')
-</div>
+
 
  <div class="panel1 panel-default1">
       <div class="panel-heading"><strong>Editar articulo.</strong>&nbsp;&nbsp;<a href="{{route('articulo.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>

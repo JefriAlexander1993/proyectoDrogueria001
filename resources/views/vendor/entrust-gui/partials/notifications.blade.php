@@ -50,7 +50,7 @@
 @endif -->
 
 @if(Session::has('info'))
-<div class="col-sm-12">
+<!-- <div class="col-sm-12"> -->
 <div class="alert alert-info alert-dissmissable text-center" role="alert">
 <button type="button" class="close" data-dismiss="alert">
 &times;

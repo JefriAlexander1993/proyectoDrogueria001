@@ -19,12 +19,11 @@
 	<thead>
 		<tr>
 		<th class="text-center" >Codigo</th>
-		<th class="text-center">Fecha de actual</th>
+		<th class="text-center">Fecha</th>
 		<th class="text-center">NumFactura</th>
 		<th class="text-center">Nombre producto</th>
 		<th class="text-center">Cantidad</th>
 		<th class="text-center">Precio unitario</th>
-		<th class="text-center">Stock</th>
 		<th class="text-center">Iva</th>
 		<th class="text-center">Sub-Total</th>
 		<th class="text-center">Total</th>
@@ -42,8 +41,7 @@
        <td class="text-center">{{$venta->codigo}}</td>
        <td class="text-center">{{$venta->nombreProducto}}</td>
        <td class="text-center">{{$venta->cantidad}}</td>
-       <td class="text-center">{{$venta->precioUnitario}}</td>
-       <td class="text-center">{{$venta->stock }}</td>
+       <td class="text-center">{{$venta->precioUnitario}}</td>  
        <td class="text-center">{{$venta->iva}}</td>
        <td class="text-center">{{$venta->subTotal}}</td>
        <td class="text-center">{{$venta->total}}</td>

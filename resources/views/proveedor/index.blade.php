@@ -36,8 +36,8 @@
 	   <tr>
        <td align="center">{{$proveedor->id}}</td>
 	   <td align="center">{{$proveedor->nit}}</td>
-       <td align="center">{{$proveedor->nombreProveedor}}</td>
-       <td align="center">{{$proveedor->nombreRepresentante}}</td>
+       <td align="center">{{$proveedor->nombreproveedor}}</td>
+       <td align="center">{{$proveedor->nombrerepresentante}}</td>
        <td align="center">{{$proveedor->direccion}}</td>
        <td align="center">{{$proveedor->telefono}}</td>
        <td align="center">{{$proveedor->email}}</td>

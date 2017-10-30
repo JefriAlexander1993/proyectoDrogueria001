@@ -12,14 +12,14 @@
 </div>
 <div class="col-sm-2">
 <div class="form-group row has-success">
-{!! Form::label('descripcion','Descripcion.')!!}
-{!!Form::text('descripcion',null,['class'=>'form-control', 'placeholder'=>'Ej: Acetaminofen'])!!}
+{!! Form::label('fechavencimiento','Fecha de vencimiento.')!!}
+{!!Form::date('fechavencimiento',null,['class'=>'form-control', 'placeholder'=>'Ej: 23/10/2017'])!!}
 </div>
 </div>
 <div class="col-sm-5">
 <div class="form-group row has-success">
-{!! Form::label('marca','Marca del articulo.')!!}
-{!!Form::text('marca',null,['class'=>'form-control', 'placeholder'=>'Ej: La Santè'])!!}
+{!! Form::label('nombre','Nombre.')!!}
+{!!Form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Ej: Acetaminofen'])!!}
 </div>
 </div>
 </div>
@@ -27,38 +27,47 @@
 <div class="row">
 <div class="col-sm-4">
 <div class="form-group row has-success">
-{!!Form::label('rubro','Rubro.')!!}
-{!!Form::text('rubro', null,['class'=>'form-control', 'placeholder'=>'Ej: Farmacia'])!!}
+{!! Form::label('rubro','Rubro.')!!}
+{!!Form::text('rubro',null,['class'=>'form-control', 'placeholder'=>'Ej: Farmacia'])!!}
 </div>
 </div>
-
 <div class="col-sm-4">
 <div class="form-group row has-success">
-{!!Form::label('precioVenta','Precio unitario de venta.')!!}
-{!!Form::number('precioVenta',null,['class'=>'form-control','placeholder'=>'Ej: 10000'])!!}
+{!! Form::label('marca','Marca.')!!}
+{!!Form::text('marca',null,['class'=>'form-control'])!!}
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group row has-success">
+{!! Form::label('proveedor','Proveedor')!!}
+{!!Form::select('proveedor',$proveedores, null,['class'=>'form-control','name'=>'proveedor','placeholder'=>'Elije un proveedor'])!!}
 </div>
 </div>
 </div>
-                                                        
+
 <div class="row">
-<div class="col-sm-2">
+<div class="col-sm-4">
 <div class="form-group row has-success">
-{!!Form::label('cantidad','Cantidad.')!!}
-{!!Form::number('cantidad',null,['class'=>'form-control', 'placeholder'=>'Ej: 10'])!!}
-</div> 
-</div> 
-
-<div class="col-sm-2">
-<div class="form-group row has-success">
-{!!Form::label('stock','Stock.')!!}
-{!!Form::number('stock',null,['class'=>'form-control','placeholder'=>'Ej: 20 '])!!}
+{!! Form::label('preciounitario','Precio unitario.')!!}
+{!!Form::number('preciounitario',null,['class'=>'form-control', 'placeholder'=>'Ej: 1000'])!!}
 </div>
 </div>
-
+<div class="col-sm-5 ">
+<div class="form-group row has-success">
+{!!Form::label('precioventa','Precio de venta.')!!}
+{!!Form::number('precioventa', null,['class'=>'form-control', 'placeholder'=>'Ej: 1200', 'align'=>'center'])!!}
+</div>
+</div>
+<div class="col-sm-3">
+<div class="form-group row has-success">
+{!!Form::label('stockmin','Stock minimo.')!!}
+{!!Form::number('stockmin',null,['class'=>'form-control','placeholder'=>'Ej: 20 ', 'align'=>'center'])!!}
+</div>
+</div>
 </div> 
 
 <br>
 <br>
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
 </div> 

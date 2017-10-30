@@ -38,7 +38,7 @@ class CajaController extends Controller
      */
     public function store(CajaRequest $request)
     {
-        dd($request);
+    
         $caja = new Caja;   /*Crear un instancia*/
         
         $caja->nombreUsuario= $request->nombreUsuario;

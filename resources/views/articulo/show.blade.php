@@ -9,13 +9,23 @@
 <div class="panel-body">
 <div class="col-md-12">
 <p><strong>Codigo:&nbsp;</strong>{{$articulo->codigo}}</p> <!-- Imprimir el nombre del articulo-->
-<p>Descripcion:&nbsp;{{$articulo->descripcion}}</p><!-- Descripcion corta-->
+<p>Fecha de vencimiento:&nbsp;{{$articulo->fechavencimiento}}</p><!-- Descripcion corta-->
+<p>Nombre:&nbsp;{{$articulo->nombre}}</p><!-- Descripcion corta-->
+<p>Rubro:&nbsp;{!!$articulo->rubro!!}</p>
 <p>Marca:&nbsp;{!!$articulo->marca!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Rubro:&nbsp;{!!$articulo->rubro!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Precio Venta:&nbsp;{!!$articulo->precioVenta!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Stock:&nbsp;{!!$articulo->stock!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Precio unitario:&nbsp;{!!$articulo->preciounitario!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Precio venta:&nbsp;{!!$articulo->precioventa!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Stock:&nbsp;{!!$articulo->stockmin!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Stock:&nbsp;{!!$articulo->created_at!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Stock:&nbsp;{!!$articulo->updated_at!!}</p> <!-- Descripcion larga y se va interpretar-->
+
+
 </div>
 </div>
 </div>
+
+
+   
+
 
 @endsection

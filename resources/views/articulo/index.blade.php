@@ -22,27 +22,33 @@
     <thead>
         <tr>
         <th class="text-center">Codigo</th>
-        <th class="text-center">Descripcion</th>
-        <th class="text-center">Marca</th>
+        <th class="text-center">Fecha vencimiento</th>
+        <th class="text-center">Nombre</th>
         <th class="text-center">Rubro</th>
-        <th class="text-center">Precio Venta</th>
-        <th class="text-center">Stock</th>
-        <th class="text-center">F. Compra</th>
-        <th class="text-center">F. Modif</th>
+        <th class="text-center">Marca</th>
+        <th class="text-center">preciounitario</th>
+        <th class="text-center">precioventa</th>
+        <th class="text-center">Stock minimo</th>
+        <th class="text-center">Fecha de creación</th>
+     
+   
         <th class="text-center" colspan="3" >Acción</th>	
+    
         </tr>
         </thead>
     <tbody>
         @foreach ($articulos as $articulo)
        <tr>
        <td class="text-center">{{$articulo->codigo}}</td>
-       <td class="text-center">{{$articulo->descripcion}}</td>
-       <td class="text-center">{{$articulo->marca}}</td>
+       <td class="text-center">{{$articulo->fechavencimiento}}</td>
+       <td class="text-center">{{$articulo->nombre}}</td>
        <td class="text-center">{{$articulo->rubro}}</td>
-       <td class="text-center">{{$articulo->precioVenta}}</td>
-       <td class="text-center">{{$articulo->stock}}</td>
+       <td class="text-center">{{$articulo->marca}}</td>
+       <td class="text-center">{{$articulo->preciounitario}}</td>
+       <td class="text-center">{{$articulo->precioventa}}</td>
+       <td class="text-center">{{$articulo->stockmin}}</td>
        <td class="text-center">{{$articulo->created_at}}</td>
-       <td class="text-center">{{$articulo->updated_at}}</td>
+     
        <td>@role('admin')<a href="{{route('articulo.edit', $articulo->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>@endrole
 	   <td><a href="{{route('articulo.show', $articulo->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
        <td>@role('admin')<form action="{{route('articulo.destroy', $articulo->id)}}" method="POST">

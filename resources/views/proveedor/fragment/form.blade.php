@@ -1,8 +1,18 @@
 
 <!-- nit -->
+<div class="row">
+<div class="col-sm-8">
 <div class="form-group">
-{!! Form:: label('nit')!!}
+{!!Form:: label('nit', 'Nit')!!}
 {!!Form::number('nit',null,['class'=>'form-control','placeholder' => 'Ej: 12324242'])!!}
+</div>
+</div>
+<!-- <div class="col-sm-4">
+<div class="form-group">
+{!! Form:: label('articulo_id','Articulo ')!!}
+{!!Form::select('articulo_id', $articulos ,null,['class'=>'form-control', 'name' => 'articulo', 'value'=>'id' ,'placeholder' => 'Ej: Elige tu articulo'])!!}
+</div>
+</div> -->
 </div>
 
 <!-- se unieron nombre y precio de compra-->
@@ -60,6 +70,6 @@
 
 
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
 
 </div>

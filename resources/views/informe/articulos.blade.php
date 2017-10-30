@@ -6,16 +6,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Informe de articulos</title>
-        <img  src="../public/ic/logo.png"  style="width:150px;margin-top:21px;">    
-        <meta name="description" content="">
+       <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
                
-=======
-        
-                
->>>>>>> 863dfb281e8f8663128392e5c9acdfa0ea7c715d
         <title>INFORME DE ARTICULOS</title>
         <img class="" src="../public/ic/logo.png" alt="" data-src="/ic/logo.png" style="width:90px;margin-top:21px;">
 
@@ -54,9 +47,10 @@
 	<thead>
 		<tr>
 		<th align="center">Codigo</th>
-		<th align="center">Descripcion</th>
+		<th align="center">Nombre</th>
 		<th align="center">Marca</th>
 		<th align="center">Rubro</th>
+		<th align="center">Precio Unitario</th>
 		<th align="center">Precio Venta</th>
 		<th align="center">Stock</th>
 		</tr>
@@ -65,11 +59,12 @@
 		@foreach ($articulos1 as $articulo)
 	   <tr>
 	   <td align="center">{{$articulo->codigo}}</td>
-	   <td align="center">{{$articulo->descripcion}}</td>
+	   <td align="center">{{$articulo->nombre}}</td>
        <td align="center">{{$articulo->marca}}</td>
        <td align="center">{{$articulo->rubro}}</td>
-	   <td align="center">{{$articulo->precioVenta}}</td>
-       <td align="center">{{$articulo->stock}}</td>
+       <td align="center">{{$articulo->preciounitario}}</td>
+	   <td align="center">{{$articulo->precioventa}}</td>
+       <td align="center">{{$articulo->stockmin}}</td>
        
 	  
 	   </tr>

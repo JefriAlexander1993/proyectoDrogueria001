@@ -99,15 +99,15 @@ $factory->define(App\Articulo::class, function (Faker $faker) {
     return [
        
         'codigo' => $faker->numberBetween(1,20),
-        'descripcion' => $faker->realText($maxNbChars = 20),
+        'fechavencimiento' =>$faker->date($format = 'Y-m-d', $max = 'now'),
+        'nombre' => $faker->realText($maxNbChars = 20),
         'marca' => $faker->realText($maxNbChars =20),
         'rubro' => $faker->realText($maxNbChars = 20),
-        'precioVenta' => $faker->numberBetween(1,20),
-        'stock' => $faker->numberBetween(1,20),
-
-
-
-        
+        'nombreProveedor'=>$faker->realText($maxNbChars = 20),
+        'preciounitario' => $faker->numberBetween(1,100),
+        'precioventa' => $faker->numberBetween(1,20),
+        'stockmin' => $faker->numberBetween(1,20),
+       
     ];
 });
 

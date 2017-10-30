@@ -7,13 +7,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-        <title>Sistma de control J & D</title>
+        <title>Sistema de control J & D</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    {{-- dataTables --}}
+    <link href="{{ asset('assets/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{ asset('assets/bootstrap/css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('assets/bootstrap/css/navbar-fixed-top.css') }}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ asset('assets/bootstrap/js/ie-emulation-modes-warning.js') }}"></script>
 
         <!-- Styles -->
-        <style>
+        <!-- <style>
             html, body {
 
                 background-image: url('/ic/logocentrado.png');*/
@@ -66,23 +80,91 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-        </style>
+        </style> -->
     </head>
     <body>
+<!-- 
+        -->
 
-        <div class="flex-center" style="height:50px;  background-color:#31B404;">
+          <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistema de control J & D</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <!-- <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contactanos</a></li> -->
+            <!-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul> -->
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+            <div>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>                 
+                    <li class="active"> <a href="{{ url('/home') }}">Home<span class="sr-only">(current)</span></a> </li>                
                     @else
-                        <a href="{{ route('login') }}" ><strong>LOGIN</strong>
-                        <a href="{{ url('/register') }}"><strong>REGISTRO<h5></strong>
+                    <li class="active">  <a href="{{ route('login') }}" >LOGIN<span class="sr-only">(current)</span></a> </li>
+                    <li class="active">  <a href="{{ url('/register') }}">REGISTRO<span class="sr-only">(current)</span></a></li> 
                
                     @endauth
                 </div>
             @endif
           </div>
           </div>
+             </li>
+          </ul>
+        </div>
+     <!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <!-- <div class="container"> -->
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <!-- <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div> -->
+
+    <!-- </div> -->
+
+
+          <script src="{{ asset('assets/jquery/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+
+    {{-- dataTables --}}
+    <script src="{{ asset('assets/dataTables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/dataTables/js/dataTables.bootstrap.min.js') }}"></script>
+
+    {{-- Validator --}}
+    <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ asset('assets/bootstrap/js/ie10-viewport-bug-workaround.js') }}"></script>
+ 
     </body>
 </html>

@@ -1,30 +1,46 @@
 
-<div class="form-group">
-{!!Form:: label('cantidad','Cantidad')!!}
-{!!Form::number('cantidad',null,['class'=>'form-control'])!!}
-</div>
+<input id="url_traerproducto" type="hidden" value="{{url('articulo/getArticulo/')}}">
 
-                                     
-<!--Cantidad -->
+<div class="row">
+<div class="col-sm-8">
 <div class="form-group">
 {!!Form:: label('codigo','Codigo')!!}
-{!!Form::number('codigo',null,['class'=>'form-control'])!!}
+{!!Form::number('codigo',null,['class'=>'form-control' , 'id'=>'codigo' ])!!}
 </div>
-
-
-<!-- Fecha vencimiento -->
+</div>
+<div class="col-sm-3">
 <div class="form-group">
-{!! Form:: label('nombre','Nombre')!!}
-{!!Form::text('nombre', null,['class'=>'form-control'])!!}
+{!!Form::button('<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Agregar', array('type' => 'button', 'class'=>'btn btn-success', 'id'=>'btn-venta'))!!}
 </div>
-
-<!-- iva -->
-<div class="form-group">
-{!! Form:: label('precioUnitario',' Precio unitario')!!}
-{!!Form::number('precioUnitario',null,['class'=>'form-control'])!!}
+</div>
 </div>
 
 
+
+<div class="row">
+<div class="col-md-12 table-responsive">
+<table class="table table-header" id="tbl-venta">
+	<thead>
+		<tr>
+		<th class="text-center" >Codigo</th>
+        <th class="text-center" style="width:10px">Cantidad</th>
+		<th class="text-center">Producto</th>
+		<th class="text-center">Precio unitario</th>
+		<th class="text-center">Sub-Total</th>
+		<th class="text-center">Iva</th>
+		<th class="text-center">Total</th>
+		<th class="text-center" colspan="3">Acción</th>	
+        </tr>
+	</thead>
+	<tbody>
+
+	</tbody>
+</table>
+<br>
+<br>
+<br>
+</div>
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;', array('type' => 'submit', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
+</div>
 </div>

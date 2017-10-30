@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+use App\cliente;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,10 +24,15 @@ class ClienteRequest extends FormRequest
      */
     public function rules()
     {
+   
+     
         return [
            'nombre'=>'required',
            'telefono'=>'required',
-           'nombreMedicamento'=>'required'
+           'direccion'=>'required',
+           'correoelectronico'=>'',
+           'nombreMedicamento'=>'required',
+           'observacion'=>''
           
            
         ];

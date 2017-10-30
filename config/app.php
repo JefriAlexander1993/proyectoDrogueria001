@@ -163,6 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+       
 
         /*
          * Package Service Providers...
@@ -178,7 +179,7 @@ return [
         Acoustep\EntrustGui\EntrustGuiServiceProvider::class,
         'Collective\Html\HtmlServiceProvider', 
         Barryvdh\DomPDF\ServiceProvider::class,
-
+        Yajra\DataTables\DataTablesServiceProvider::class,
       
 
     ],
@@ -233,6 +234,7 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

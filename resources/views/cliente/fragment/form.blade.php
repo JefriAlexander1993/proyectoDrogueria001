@@ -26,29 +26,31 @@
 <div class="row">
 <div class="col-sm-4">
 <div class="form-group row has-success">
-{!!Form::label('correoElectronico','Correo Electronico.')!!}
-{!!Form::text('correoElectronico', null,['class'=>'form-control', 'placeholder'=>'Ej: ejemplo@correo.com'])!!}
+{!!Form::label('correoelectronico','Correo Electronico.')!!}
+{!!Form::text('correoelectronico', null,['class'=>'form-control', 'placeholder'=>'Ej: ejemplo@correo.com'])!!}
 </div>
 </div>
 
 <div class="col-sm-4">
 <div class="form-group row has-success">
-{!!Form::label('nombreMedicamento','Nombre del Medicamento.')!!}
-{!!Form::number('nombreMedicamento',null,['class'=>'form-control','placeholder'=>'Ej: Vitamina B'])!!}
+{!!Form::label('nombremedicamento','Nombre del Medicamento.')!!}
+{!!Form::select('nombremedicamento', $articulos , null,['class'=>'form-control', 'placeholder'=>'Ej:Acetaminofen', 'name'=>'codigo_id', 'value'=>'id'])!!}
+
+
 </div>
 </div>
 </div>
                                                         
 <div class="row">
-<div class="col-sm-2">
+<div class="col-sm-12">
 <div class="form-group row has-success">
 {!!Form::label('observacion','Observacion.')!!}
-{!!Form::number('observacion',null,['class'=>'form-control'])!!}
+{!!Form::text('observacion',null,['class'=>'form-control','placeholder'=>'Ej: Llamar al cliente cada 5 de mes.'])!!}
 </div> 
 </div> 
 
 <br>
 <br>
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-success btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
 </div> 

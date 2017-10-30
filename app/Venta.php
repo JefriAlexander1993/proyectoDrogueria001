@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
+    protected $table = 'ventas';
+
+
     protected $fillable = [
      
-      'fechaActual','numFactura','usuario','codigo','nombreProducto','cantidad','precioUnitario','stock','iva','subTotal', 'total'  ];
-}
+      'nombreuser','codigo','cantidad','nombreproducto','iva','subtotal','total',  ];
+
+
+      public function user()
+      {
+          return $this->belongsTo('App\User');
+      }
+    }

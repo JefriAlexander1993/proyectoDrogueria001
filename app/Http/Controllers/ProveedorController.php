@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Proveedor;
+use App\Articulo;
+use App\Articulo_proveedor;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProveedorRequest;
 
@@ -27,7 +29,9 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('proveedor.create');
+        $articulos = Articulo::pluck('nombre','id');
+
+        return view('proveedor.create' , compact('articulos'));
     }
 
     /**
@@ -47,11 +51,18 @@ class ProveedorController extends Controller
        $proveedor->telefono=$request->telefono;
        $proveedor->email=$request->email;
        $proveedor->observacion=$request->observacion;
-
-
        /*$request->Validacion*/
        $proveedor->save();
-       return redirect()->route('proveedor.index')
+
+       $art_id = $request->articulo;
+       $prov_id =$request->id;
+
+       $pivot = new articulo_proveedor;
+       $pivot->id_articulo= $art_id;
+       $pivot->id_proveedor= $prov_id;
+ 
+
+       return redirect()->route('proveedor.index', $pivot)
        ->with('info', 'El proveedor fue guardado.');
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//
 
@@ -79,7 +90,7 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         $proveedor = Proveedor::find($id); // Busca un Producto por medio del  id-
-        
+      
         return view('proveedor.edit', compact('proveedor'));
         
     }

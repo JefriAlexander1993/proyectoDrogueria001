@@ -27,8 +27,8 @@ class CajaRequest extends FormRequest
            'codigo'=>'required',
            'descripcion'=>'required',
            'marca'=>'required',
-           'rubro'=>'required'
-           'precioVenta'=>'required'
+           'rubro'=>'required',
+           'precioVenta'=>'required',
            'stock'=>'required'
            
         ];

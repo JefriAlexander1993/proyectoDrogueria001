@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\cliente;
+use App\Articulo;
+use App\Detalle_cliente_articulo;
 use Illuminate\Http\Request;
+// use  App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -31,7 +34,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('cliente.create');
+
+        $articulos = Articulo::pluck('nombre','id');
+        return view('cliente.create', compact('articulos') );
     }
 
     /**
@@ -40,22 +45,32 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(clienteRequest $request)
+    public function store(Request $request)
     {
-        dd($request);
+        
+      
+        
+        // dd($request);
         $cliente = new cliente;   /*Crear un instancia*/
         
         $cliente->nombre= $request->nombre;
         $cliente->telefono= $request->telefono;
         $cliente->direccion= $request->direccion;
-        $cliente->correoElectronico= $request->correoElectronico;
-        $cliente->nombreMedicamento= $request->nombreMedicamento;
+        $cliente->correoelectronico= $request->correoelectronico;
         $cliente->observacion= $request->observacion;
-      
         $cliente->save();
+
+        $cliente_id= $cliente->id;
+        $art_id = $request->codigo_id;
+    
+
+        $articulo_cliente = new Detalle_cliente_articulo;
+        $articulo_cliente->cliente_id=$cliente_id ;
+        $articulo_cliente->articulo_id=$art_id;
+
         return redirect()->route('cliente.index')
         ->with('info', 'El cliente a sido guardado con exito.');
-
+     
         return ;
     }
 
@@ -93,7 +108,7 @@ class ClienteController extends Controller
      * @param  \App\clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(clienteRequest $request, $id)
+    public function update(Request $request, $id)
     {
         
         $cliente =cliente::find($id);/*Buscar en cliente*/
@@ -101,9 +116,14 @@ class ClienteController extends Controller
         $cliente->nombre= $request->nombre;
         $cliente->telefono= $request->telefono;
         $cliente->direccion= $request->direccion;
-        $cliente->correoElectronico= $request->correoElectronico;
-        $cliente->nombreMedicamento= $request->nombreMedicamento;
+        $cliente->correoelectronico= $request->correoelectronico;
+        $cliente->nombremedicamento= $request->nombremedicamento;
         $cliente->observacion= $request->observacion;
+
+        
+
+        
+        
       
      /*$request->Validacion*/
         $cliente->save();

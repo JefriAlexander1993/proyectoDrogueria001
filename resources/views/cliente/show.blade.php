@@ -11,8 +11,7 @@
 <p><strong>Codigo:&nbsp;</strong>{{$cliente->nombre}}</p> <!-- Imprimir el nombre del cliente-->
 <p>Descripcion:&nbsp;{{$cliente->telefono}}</p><!-- Descripcion corta-->
 <p>Marca:&nbsp;{!!$cliente->direccion!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Rubro:&nbsp;{!!$cliente->correoElectronico!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Precio Venta:&nbsp;{!!$cliente->nombreMedicamento!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Rubro:&nbsp;{!!$cliente->correoelectronico!!}</p> <!-- Descripcion larga y se va interpretar--><!-- Descripcion larga y se va interpretar-->
 <p>Stock:&nbsp;{!!$cliente->observacion!!}</p> <!-- Descripcion larga y se va interpretar-->
 </div>
 </div>
