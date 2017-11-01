@@ -10,7 +10,7 @@
     
     <title>
     
-    SISTEMA DE DE INFORMACIÓN
+    SISTEMA DE INFORMACIÓN
     </title>
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
