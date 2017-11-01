@@ -87,24 +87,7 @@ Schema::create('proveedores', function (Blueprint $table) {
 
     });
 
-    Schema::create('detalle_cliente_articulo', function (Blueprint $table) {
-        
-           $table->increments('id');
-          $table->integer('cliente_id')->unsigned();
-          $table->integer('articulo_id')->unsigned();
-
-          $table->foreign('cliente_id')->references('id')->on('clientes')
-              ->onUpdate('cascade')->onDelete('cascade');
-
-          $table->foreign('articulo_id')->references('id')->on('articulos')
-          ->onUpdate('cascade')->onDelete('cascade');
   
-         
-  
-          $table->timestamps();
-  
-      });
-
 
 
 /*--------------------------VENTAS------------------------------------*/
@@ -121,6 +104,10 @@ Schema::create('ventas', function (Blueprint $table) {
     $table->double('total');  
     $table->integer('users_id')->unsigned();
     $table->foreign('users_id')->references('id')->on('users');
+    $table->integer('cajas_id')->unsigned();
+    $table->foreign('cajas_id')->references('id')->on('cajas');
+    $table->integer('inventario_id')->unsigned();
+    $table->foreign('inventario_id')->references('id')->on('inventarios');
     $table->timestamps();
     
     
@@ -132,16 +119,12 @@ Schema::create('ventas', function (Blueprint $table) {
 /*--------------------------CAJAS------------------------------------*/
 
     Schema::create('cajas', function (Blueprint $table) {
-        $table->engine = 'InnoDB';
+       
         $table->increments('id');
         $table->string('nombreusuario')->unique();
         $table->float('valorinicial');
         $table->float('valorfinal');
         $table->float('ganancia');
-        $table->integer('venta_id')->unsigned();
-        $table->foreign('venta_id')->references('id')->on('ventas');
-        $table->integer('user_id')->unsigned();
-        $table->foreign('user_id')->references('id')->on('users');
         $table->timestamps();
 
         
@@ -150,16 +133,12 @@ Schema::create('ventas', function (Blueprint $table) {
    /*--------------------------COMPRAS------------------------------------*/
  
     Schema::create('compras', function (Blueprint $table) {
-    
         $table->increments('id');
-        $table->date('fechacompra');
-        $table->date('nombre');
+        $table->string('nombre');
         $table->integer('cantidad');
         $table->float('valorunitario');
         $table->float('iva');
         $table->float('valortotal');
-    
-   
         $table->timestamps();
     });
 
@@ -227,7 +206,6 @@ Schema::create('inventarios', function (Blueprint $table) {
             $table->integer('cantidad');
             $table->integer('compras_id')->unsigned();
             $table->foreign('compras_id')->references('id')->on('compras');
-            
             $table->integer('articulos_id')->unsigned();
             $table->foreign('articulos_id')->references('id')->on('articulos');
             $table->timestamps();
@@ -271,10 +249,10 @@ Schema::create('inventarios', function (Blueprint $table) {
         Schema::dropIfExists('proveedores');
         Schema::dropIfExists('clientes');
         Schema::dropIfExists('cajas');
-        Schema::dropIfExists('articulo_proveedor');
         Schema::dropIfExists('compras');
         Schema::dropIfExists('inventarios');
         Schema::dropIfExists('facturas');
+        Schema::dropIfExists('articulo_proveedor');
         Schema::dropIfExists('detalle_factura');
         Schema::dropIfExists('venta_articulo');
         Schema::dropIfExists('compra_articulo');

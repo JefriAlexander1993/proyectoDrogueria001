@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class InventarioController extends Controller
 {
+    public function __construct()
+    {
+        // Filtrar todos los métodos
+        $this->middleware('auth');
+
+    }
+    
     /**
      * Display a listing of the resource.
      *

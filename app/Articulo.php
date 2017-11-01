@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Illuminate\Database\Eloquent\Builder;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class Articulo extends Model
     protected $table = 'articulos';
    
 
-    protected $fillable=['id','codigo','fechavencimiento','nombre', 'rubro','marca','iva','preciounitario','precioventa', 'stockmin'];
+    protected $fillable=['id','codigo','fechavencimiento','nombre', 'rubro','marca','preciounitario','iva','precioventa', 'stockmin'];
 
 
     public function proveedor()
@@ -33,5 +34,11 @@ class Articulo extends Model
         return $this->belongsToMany('App\Inventario');
     }
 
+    public function scopeSearch($query, $codigo){
+
+return $query->where('codigo','LIKE',"%$codigo%");
+// return $query->where('type', $type);
+    }
+   
 
 }

@@ -15,7 +15,8 @@
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
-     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> 
+     <!-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">  -->
+     <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
 
 </head>
 <body>
@@ -84,6 +85,7 @@
       <div class="col-md-12">
       <h1>@yield('heading')</h1>
         @include('entrust-gui::partials.notifications')
+
       </div>
       </div>
       </div>
@@ -106,7 +108,7 @@
         <li><a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Roles</a> </li>
         <li><a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class="fa fa-hand-paper-o" aria-hidden="true"></i>&nbsp;Permisos</a></li>               
         <li><a href="#" class="list-group-item "><i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Backup</a></li>               
-     
+    
       </ul>
          </li>
          <li><a href="{{route('compra.index')}}" class="list-group-item"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Compras</a></li>
@@ -121,6 +123,7 @@
 </div> 
 <div class="col-md-10">   
     <br>
+  
     @yield('content')<!-- Espación para contenido-->
    </div> 
 </div> 
@@ -147,8 +150,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/documento.js') }}"></script>
-    <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script> -->
+
+    <!--  <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
+    <!-- <script src="{{ asset('js/jquery.min.js') }}"></script> -->
 </body>
 </html>
 

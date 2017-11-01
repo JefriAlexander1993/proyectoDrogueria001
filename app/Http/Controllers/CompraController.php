@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Compra;
+use App\Compra_articulo;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductoRequest;
 use App\Http\Controllers\Auth;
@@ -11,6 +12,14 @@ use App\Http\Controllers\Auth;
 
 class CompraController extends Controller
 {
+    public function __construct()
+    {
+        // Filtrar todos los métodos
+        $this->middleware('auth');
+
+    }
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -51,13 +60,17 @@ class CompraController extends Controller
         $compra->valorunitario= $request->valorunitario;
         $compra->iva= $request->iva;
         $compra->valortotal= $request->valortotal;
-       
-
-        
-
      /*$request->Validacion*/
         $compra->save();
        
+        $compra_id = $compra->id;
+        $art_id= $request->articulo_sel;
+
+        $Compra_articulo= new Compra_articulo;        
+        $Compra_articulo->compra_id=$compra_id;
+        $Compra_articulo->articulo_id= $art_id;
+        $Compra_articulo->save();
+
         return redirect()->route('compra.index')
          ->with('info', 'La compra fue guardado.');
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//

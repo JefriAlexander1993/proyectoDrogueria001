@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Caja extends Model
 {
     protected $table = 'cajas';
-    protected $fillable=['nombreUsuario','valorInicial','valorFinal','ganancia',];
+    protected $fillable=['venta_id','user_id','nombreUsuario','valorInicial','valorFinal','ganancia',];
 
     public function user()
     {

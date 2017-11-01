@@ -46,13 +46,19 @@
 </div>
 
 <div class="row">
-<div class="col-sm-4">
+<div class="col-sm-3">
 <div class="form-group row has-success">
 {!! Form::label('preciounitario','Precio unitario.')!!}
 {!!Form::number('preciounitario',null,['class'=>'form-control', 'placeholder'=>'Ej: 1000'])!!}
 </div>
 </div>
-<div class="col-sm-5 ">
+<div class="col-sm-3">
+<div class="form-group row has-success">
+{!! Form::label('iva','Iva.')!!}
+{!!Form::number('iva',null,['class'=>'form-control', 'placeholder'=>'Ej: 19'])!!}
+</div>
+</div>
+<div class="col-sm-3">
 <div class="form-group row has-success">
 {!!Form::label('precioventa','Precio de venta.')!!}
 {!!Form::number('precioventa', null,['class'=>'form-control', 'placeholder'=>'Ej: 1200', 'align'=>'center'])!!}

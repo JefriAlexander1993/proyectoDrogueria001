@@ -10,6 +10,16 @@ use PDF;
 class CajaController extends Controller
 
 {
+
+
+    public function __construct()
+    {
+        // Filtrar todos los métodos
+        $this->middleware('auth');
+
+    }
+
+
  public function index()
     {
         $cajas = Caja::orderBy('id')->paginate('8');;
@@ -45,7 +55,7 @@ class CajaController extends Controller
         $caja->valorInicial= $request->valorInicial;
         $caja->valorFinal= $request->valorFinal;
         $caja->ganancia= $request->ganancia;
-     
+       
         $caja->save();
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue guardada.');
@@ -87,7 +97,7 @@ class CajaController extends Controller
      * @param  \App\cajas  $cajas
      * @return \Illuminate\Http\Response
      */
-    public function update(cajaRequest $request, $id)
+    public function update(CajaRequest $request, $id)
     {
         
         $caja =Caja::find($id);/*Buscar en caja*/

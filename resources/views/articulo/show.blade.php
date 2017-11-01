@@ -14,6 +14,7 @@
 <p>Rubro:&nbsp;{!!$articulo->rubro!!}</p>
 <p>Marca:&nbsp;{!!$articulo->marca!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Precio unitario:&nbsp;{!!$articulo->preciounitario!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Iva:&nbsp;{!!$articulo->iva!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Precio venta:&nbsp;{!!$articulo->precioventa!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Stock:&nbsp;{!!$articulo->stockmin!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Stock:&nbsp;{!!$articulo->created_at!!}</p> <!-- Descripcion larga y se va interpretar-->

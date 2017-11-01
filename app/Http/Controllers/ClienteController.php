@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    
+    public function __construct()
+    {
+        // Filtrar todos los métodos
+        $this->middleware('auth');
+
+    }
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -120,11 +129,6 @@ class ClienteController extends Controller
         $cliente->nombremedicamento= $request->nombremedicamento;
         $cliente->observacion= $request->observacion;
 
-        
-
-        
-        
-      
      /*$request->Validacion*/
         $cliente->save();
         return redirect()->route('cliente.index')

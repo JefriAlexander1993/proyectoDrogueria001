@@ -8,6 +8,14 @@ use App\Venta;
 use App\Http\Requests\VentaRequest;
 class VentasController extends Controller
 {
+    public function __construct()
+    {
+        // Filtrar todos los métodos
+        $this->middleware('auth');
+
+    }
+    
+    
     /**
      * Display a listing of the resource.
      *

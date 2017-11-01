@@ -9,13 +9,23 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ArticuloRequest;
 use PDF;
 use Illuminate\Support\Facades\DB;
+use App\Exceptions\Handler;
 
 
 class ArticuloController extends Controller
 {
-    public function index()
+
+      public function __construct()
     {
-        $articulos = articulo::orderBy('id')->paginate('8');
+        $this->middleware('auth');
+    }
+   
+
+
+    public function index(Request $request)
+    {
+        
+        $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
         // return $articulo;
         return  view('articulo.index', compact('articulos'));// SE carga en vista y le pasamos la variable
        
@@ -44,7 +54,7 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        
         $articulo = new articulo;   /*Crear un instancia*/
         
         $articulo->codigo= $request->codigo;
@@ -66,11 +76,13 @@ class ArticuloController extends Controller
         $pivot = new articulo_proveedor;
         $pivot->articulo_id= $art_id;
         $pivot->proveedor_id= $prov_id;
-       
-
         $pivot->save();
+
+      
         return redirect()->route('articulo.index', $pivot)
         ->with('info', 'El articulo fue guardado.');
+
+        
 
         // return ;
     }
@@ -93,7 +105,7 @@ class ArticuloController extends Controller
      * @param  \App\articulos  $articulos
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Request $request )
+    public function edit($id, ArticuloRequest $request )
     {
     
         $articulo = articulo::find($id); // Busca un articulo por medio del  id-
@@ -109,7 +121,7 @@ class ArticuloController extends Controller
      * @param  \App\articulos  $articulos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticuloRequest $request, $id)
     {
         
         $articulo =articulo::find($id);/*Buscar en articulo*/
@@ -120,13 +132,25 @@ class ArticuloController extends Controller
         $articulo->rubro= $request->rubro;
         $articulo->marca= $request->marca;
         $articulo->preciounitario= $request->preciounitario;
+        $articulo->iva=$request->iva;
         $articulo->precioventa= $request->precioventa;
         $articulo->stockmin= $request->stockmin;
       
      /*$request->Validacion*/
-        $articulo->save();
-        return redirect()->route('articulo.index')
-        ->with('info', 'E articulo fue actualizado.');
+       $articulo->save();
+       $art_id = $articulo->id;
+       $prov_id= $request->proveedor;
+
+       //  print_r($art_id);
+       //  print_r($prov_id);
+       //  exit();
+       $pivot = new articulo_proveedor;
+       $pivot->articulo_id= $art_id;
+       $pivot->proveedor_id= $prov_id;
+       $pivot->save();
+
+       
+        
     }
 
     /**

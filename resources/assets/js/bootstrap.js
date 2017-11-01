@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -7,11 +6,29 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-try {
-    window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass');
-} catch (e) {}
+window.$ = window.jQuery = require('jquery');
+require('bootstrap-sass');
+toastr = require('toastr');
+
+
+toastr.options = {
+    "closeButton": true,
+    "debug": true,
+    "newestOnTop": true,
+    "progressBar": true,
+    "positionClass": "toast-top-full-width",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

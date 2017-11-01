@@ -13,6 +13,16 @@ use PDF;
 
 class PdfController extends Controller
 {
+   
+    public function __construct()
+    {
+        // Filtrar todos los métodos
+        $this->middleware('auth');
+
+    }
+   
+   
+   
     public function cajasPDF()
     
         {

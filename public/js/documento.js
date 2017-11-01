@@ -29,11 +29,12 @@ function addRowSale() {
                     $('#tbl-venta tbody').append(row);
 
                 });
+                toastr.info('Se ha agregado un articulo.', '!A la venta.')
             } else {
                 if (data.code === 600) {
-                    alert(data.error);
+                    toastr.error(data.error);
                 } else {
-                    alert('error');
+                    toastr.error('error');
 
                 }
 
@@ -49,6 +50,7 @@ function addRowSale() {
             $('#modalError').modal({ show: true });
         }
     });
+
 }
 
 function addRowBuy() {
@@ -69,6 +71,11 @@ function totalizar(id) {
 }
 
 function deleteRow(id) {
-    $('#fila' + id).remove();
+
+    if ($('#fila' + id).remove()) {
+
+        toastr.success('Se ha eliminado correctamente', '!El articulo.')
+
+    }
 
 }

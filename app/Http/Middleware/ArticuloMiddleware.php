@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use \App\User;
 
-class MDusuarioAdmin
+class ArticuloMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,8 +14,7 @@ class MDusuarioAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {  
-    
-    Entrust :: ability ('admin' ,'store');
+    {
+        return $next($request);
     }
 }

@@ -20,15 +20,15 @@
 <table class="table table-hover ">
 	<thead>
 		<tr>
-		<th align="center" >Id</th>
-		<th align="center">Nit</th>
-		<th align="center">Nombre de proveedor</th>
-		<th align="center">Nombre de representante</th>
-		<th align="center">Dirección</th>
-		<th align="center">Telefono</th>
-		<th align="center">Email</th>
-		<th align="justify">Observación</th>
-		<th align="center" colspan="3" >Acción</th>	
+		<th class="text-center" >Id</th>
+		<th class="text-center">Nit</th>
+		<th class="text-center">Nombre de proveedor</th>
+		<th class="text-center">Nombre de representante</th>
+		<th class="text-center">Dirección</th>
+		<th class="text-center">Telefono</th>
+		<th class="text-center">Email</th>
+		<th class="text-center">Observación</th>
+		<th class="text-center" colspan="3" >Acción</th>	
 		</tr>
 	</thead>
 	<tbody>
@@ -42,12 +42,12 @@
        <td align="center">{{$proveedor->telefono}}</td>
        <td align="center">{{$proveedor->email}}</td>
        <td class="text-justify">{{$proveedor->observacion}}</td>
-	   <td> <a href="{{route('proveedor.edit', $proveedor->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-	   <td> <a href="{{route('proveedor.show', $proveedor->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+	   <td> <a href="{{route('proveedor.edit', $proveedor->id)}}" class="btn btn-xs btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+	   <td> <a href="{{route('proveedor.show', $proveedor->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 	   <td><form action="{{route('proveedor.destroy', $proveedor->id)}}" method="POST">
        {{csrf_field()}} <!--Toque para que sea eliminado por la aplicacion-->
        <input type="hidden" name="_method" value="DELETE">	
-	   <button class="btn btn-labeled btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>	
+	   <button class="btn btn-xs btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>	
 	   </form>
 	   </td>
 	   </tr>

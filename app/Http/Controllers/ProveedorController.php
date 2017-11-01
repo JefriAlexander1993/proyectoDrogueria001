@@ -10,6 +10,13 @@ use App\Http\Requests\ProveedorRequest;
 
 class ProveedorController extends Controller
 {
+    public function __construct()
+    {
+        // Filtrar todos los métodos
+        $this->middleware('auth');
+
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -60,7 +67,7 @@ class ProveedorController extends Controller
        $pivot = new articulo_proveedor;
        $pivot->id_articulo= $art_id;
        $pivot->id_proveedor= $prov_id;
- 
+       $pivot->save();
 
        return redirect()->route('proveedor.index', $pivot)
        ->with('info', 'El proveedor fue guardado.');

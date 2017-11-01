@@ -27,7 +27,6 @@
         <th class="text-center">Telefono</th>
         <th class="text-center">Direccion</th>
         <th class="text-center">Correo Electronico</th>
-        <th class="text-center">Nombre Medicamento</th>
         <th class="text-center">Observacion</th>
         <th class="text-center" colspan="3" >Acción</th>    
         </tr>
@@ -39,7 +38,6 @@
        <td class="text-center">{{$cliente->telefono}}</td>
        <td class="text-center">{{$cliente->direccion}}</td>
        <td class="text-center">{{$cliente->correoelectronico}}</td>
-       <td class="text-center">{{$cliente->nombremedicamento}}</td>
        <td class="text-center">{{$cliente->observacion}}</td>
        <td>@role('admin')<a href="{{route('cliente.edit', $cliente->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>@endrole
        <td><a href="{{route('cliente.show', $cliente->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>

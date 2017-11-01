@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CajaRequest extends FormRequest
+class ArticuloRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,15 @@ class CajaRequest extends FormRequest
     public function rules()
     {
         return [
-           'codigo'=>'required',
-           'descripcion'=>'required',
-           'marca'=>'required',
-           'rubro'=>'required',
-           'precioVenta'=>'required',
-           'stock'=>'required'
-           
+            'nombreUsuario'=>'required',
+            'codigo'=> 'required',
+            'fechavencimiento'=> 'required',
+            'nombre'=> 'required', 
+            'rubro'=> 'required', 
+            'marca'=> 'required', 
+            'preciounitario'=> 'required', 
+            'precioventa'=> 'required', 
+            'stockmin'=> 'required', 
         ];
     }
 }

@@ -20,9 +20,6 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/error', 'ErrorController@index')->name('home');
 Route::get("/backup","backupController@index")->name('backup'); 
-
-
-Auth::routes();
   
         Route::resource('proveedor','ProveedorController');
         Route::resource('venta','VentasController');
@@ -37,4 +34,7 @@ Auth::routes();
         Route::get("/productopdf","PdfController@productosPDF");  
         Route::get("/articulopdf","PdfController@articulosPDF"); 
         Route::get("/clientepdf","PdfController@clientesPDF"); 
-   
+      
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

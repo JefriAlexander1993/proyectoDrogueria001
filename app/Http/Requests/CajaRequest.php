@@ -24,11 +24,10 @@ class CajaRequest extends FormRequest
     public function rules()
     {
         return [
-           'nombreUsuario'=>'required',
-           'valorInicial'=>'required',
-           'valorFinal'=>'required',
-           'ganancia'=>'required'
-           
+            'nombreUsuario'=>'required',
+            'valorInicial'=>'required',
+            'valorFinal'=>'',
+            'ganancia'=>''
         ];
     }
 }
