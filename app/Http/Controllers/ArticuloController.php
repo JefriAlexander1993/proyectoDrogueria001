@@ -63,6 +63,7 @@ class ArticuloController extends Controller
         $articulo->rubro= $request->rubro;
         $articulo->marca= $request->marca;
         $articulo->preciounitario= $request->preciounitario;
+        $articulo->iva=$request->iva;
         $articulo->precioventa= $request->precioventa;
         $articulo->stockmin= $request->stockmin;
         $articulo->save();

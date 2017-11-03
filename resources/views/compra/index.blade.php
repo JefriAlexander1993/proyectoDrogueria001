@@ -14,7 +14,14 @@
    @include('compra.fragment.aside') 
    </div>
    </div> 
-
+{!!Form::open(['route'=>'compra.index', 'method'=>'GET','class'=>'navbar-form'])!!}
+<div class="col-sm-5 input-group">
+{!!Form::number('codigo',null,['class'=>'form-control' , 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
+<span class="input-group-addon" id="search">
+<i class="fa fa-search" aria-hidden="true"></i>
+</span>
+</div>
+{!!Form::close()!!}
 
 <div class="col-md-12 table-responsive">
 <table class="table table-hover ">
@@ -36,7 +43,7 @@
 		@foreach ($compras as $compra)
 	   <tr>
 	   <td class="text-center">{{$compra->id}}</tdd>
-	   <td class="text-center">{{$compra->fechacompra}}</td>
+	   <td class="text-center">{{$compra->created_at}}</td>
 	   <td class="text-center">{{$compra->nombre}}</td>
 	   <td class="text-center">{{$compra->cantidad}}</td>
        <td class="text-center">{{$compra->valorunitario}}</td>

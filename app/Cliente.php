@@ -17,4 +17,11 @@ class cliente extends Model
      {
          return $this->belongsTo('App\Articulo');
      }
+
+
+     public function scopeSearch($query, $codigo){
+
+return $query->where('codigo','LIKE',"%$codigo%");
+// return $query->where('type', $type);
+    }
 }

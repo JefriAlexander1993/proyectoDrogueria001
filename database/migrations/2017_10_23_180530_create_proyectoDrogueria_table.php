@@ -87,36 +87,7 @@ Schema::create('proveedores', function (Blueprint $table) {
 
     });
 
-  
-
-
-/*--------------------------VENTAS------------------------------------*/
-Schema::create('ventas', function (Blueprint $table) {
-    $table->engine = 'InnoDB';
-    $table->increments('id');
-    $table->string('nombreuser');
-    $table->integer('codigo');
-    $table->string('nombreproducto');
-    $table->integer('cantidad');  
-    $table->integer('preciounitario');  
-    $table->double('iva');
-    $table->double('subtotal');
-    $table->double('total');  
-    $table->integer('users_id')->unsigned();
-    $table->foreign('users_id')->references('id')->on('users');
-    $table->integer('cajas_id')->unsigned();
-    $table->foreign('cajas_id')->references('id')->on('cajas');
-    $table->integer('inventario_id')->unsigned();
-    $table->foreign('inventario_id')->references('id')->on('inventarios');
-    $table->timestamps();
-    
-    
-
- });
-
-
-
-/*--------------------------CAJAS------------------------------------*/
+  /*--------------------------CAJAS------------------------------------*/
 
     Schema::create('cajas', function (Blueprint $table) {
        
@@ -129,6 +100,9 @@ Schema::create('ventas', function (Blueprint $table) {
 
         
     });
+
+
+
 
    /*--------------------------COMPRAS------------------------------------*/
  
@@ -143,28 +117,6 @@ Schema::create('ventas', function (Blueprint $table) {
     });
 
 
-
-/*--------------------------VENTA_ARTICULO------------------------------------*/
-
- Schema::create('venta_articulo', function (Blueprint $table) {
-    
-    $table->increments('id');
-    
-    
-    $table->integer('venta_id')->unsigned();       
-     $table->integer('articulo_id')->unsigned();
-     
-     $table->foreign('venta_id')->references('id')->on('ventas')
-     ->onUpdate('cascade')->onDelete('cascade');
-
-     $table->foreign('articulo_id')->references('id')->on('articulos')
-         ->onUpdate('cascade')->onDelete('cascade');
-  
-     $table->timestamps();
-     
-     
-
- });
 
 /*--------------------------FACTURACIÓN------------------------------------*/
 
@@ -235,7 +187,64 @@ Schema::create('inventarios', function (Blueprint $table) {
     });
     
     
+/*--------------------------VENTAS------------------------------------*/
+Schema::create('ventas', function (Blueprint $table) {
+ 
+    $table->increments('id');
+    $table->string('nombreuser');
+    $table->integer('codigo');
+    $table->string('nombreproducto');
+    $table->integer('cantidad');  
+    $table->integer('preciounitario');  
+    $table->double('iva');
+    $table->double('subtotal');
+    $table->double('total');  
+    $table->integer('users_id')->unsigned();
+    $table->foreign('users_id')->references('id')->on('users');
+    $table->integer('cajas_id')->unsigned();
+    $table->foreign('cajas_id')->references('id')->on('cajas');
+    $table->integer('inventario_id')->unsigned();
+    $table->foreign('inventario_id')->references('id')->on('inventarios');
+    $table->timestamps();
+    
+    
+
+ });
+
+
+
+/*--------------------------VENTA_ARTICULO------------------------------------*/
+
+ Schema::create('venta_articulo', function (Blueprint $table) {
+    
+    $table->increments('id');
+    
+    
+    $table->integer('venta_id')->unsigned();       
+     $table->integer('articulo_id')->unsigned();
+     
+     $table->foreign('venta_id')->references('id')->on('ventas')
+     ->onUpdate('cascade')->onDelete('cascade');
+
+     $table->foreign('articulo_id')->references('id')->on('articulos')
+         ->onUpdate('cascade')->onDelete('cascade');
+  
+     $table->timestamps();
+     
+     
+
+ });
+
+
+
     }
+
+
+
+
+
+
+
 
     /**
      * Reverse the migrations.

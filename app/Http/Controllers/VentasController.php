@@ -51,7 +51,7 @@ class VentasController extends Controller
         $venta->fechaActual=$request->fechaActual;
         $venta->numFactura=$request->numFactura;
         $venta->usuario=$request->usuario;
-        $venta->codigo=$request->codigo;
+        // $venta->codigo=$request->codigo;
         $venta->nombreProducto=$request->nombreProducto;
         $venta->cantidad=$request->cantidad;
         $venta->precioUnitario=$request->precioUnitario;
@@ -105,7 +105,7 @@ class VentasController extends Controller
         $venta->fechaActual=$request->fechaActual;
         $venta->numFactura=$request->numFactura;
         $venta->usuario=$request->usuario;
-        $venta->codigo=$request->codigo;
+        // $venta->codigo=$request->codigo;
         $venta->precioUnitario=$request->precioUnitario;
         $venta->nombreProducto=$request->nombreProducto;
         $venta->cantidad=$request->cantidad;

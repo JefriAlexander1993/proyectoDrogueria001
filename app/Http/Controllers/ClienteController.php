@@ -126,7 +126,7 @@ class ClienteController extends Controller
         $cliente->telefono= $request->telefono;
         $cliente->direccion= $request->direccion;
         $cliente->correoelectronico= $request->correoelectronico;
-        $cliente->nombremedicamento= $request->nombremedicamento;
+        // $cliente->nombremedicamento= $request->nombremedicamento;
         $cliente->observacion= $request->observacion;
 
      /*$request->Validacion*/
