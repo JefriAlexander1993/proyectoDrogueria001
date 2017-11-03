@@ -62,6 +62,7 @@ class ClienteController extends Controller
         // dd($request);
         $cliente = new cliente;   /*Crear un instancia*/
         
+        $cliente->nuip= $request->nuip;
         $cliente->nombre= $request->nombre;
         $cliente->telefono= $request->telefono;
         $cliente->direccion= $request->direccion;
@@ -69,13 +70,6 @@ class ClienteController extends Controller
         $cliente->observacion= $request->observacion;
         $cliente->save();
 
-        $cliente_id= $cliente->id;
-        $art_id = $request->codigo_id;
-    
-
-        $articulo_cliente = new Detalle_cliente_articulo;
-        $articulo_cliente->cliente_id=$cliente_id ;
-        $articulo_cliente->articulo_id=$art_id;
 
         return redirect()->route('cliente.index')
         ->with('info', 'El cliente a sido guardado con exito.');
@@ -122,17 +116,17 @@ class ClienteController extends Controller
         
         $cliente =cliente::find($id);/*Buscar en cliente*/
 
+        $cliente->nuip= $request->nuip;
         $cliente->nombre= $request->nombre;
         $cliente->telefono= $request->telefono;
         $cliente->direccion= $request->direccion;
         $cliente->correoelectronico= $request->correoelectronico;
-        $cliente->nombremedicamento= $request->nombremedicamento;
         $cliente->observacion= $request->observacion;
 
      /*$request->Validacion*/
         $cliente->save();
         return redirect()->route('cliente.index')
-        ->with('info', 'E cliente fue actualizado.');
+        ->with('info', 'El cliente fue actualizado.');
     }
 
     /**

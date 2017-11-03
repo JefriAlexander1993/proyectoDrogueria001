@@ -1,7 +1,7 @@
 @extends('layouts.apphome')
 @section('content')
 <div class="col-md-3">
-@include('cliente.fragment.error')
+
 </div>
 
  <div class="panel1 panel-default1">
