@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\cliente;
+use App\Cliente;
 use App\Articulo;
 use App\Detalle_cliente_articulo;
 use Illuminate\Http\Request;
@@ -24,10 +24,9 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        $clientes = cliente::orderBy('id')->paginate('8');;
+        $clientes = Cliente::search1($request->nuip)->orderBy('id')->paginate('8');
         // return $cliente;
         return  view('cliente.index', compact('clientes'));// SE carga en vista y le pasamos la variable
        
@@ -44,8 +43,7 @@ class ClienteController extends Controller
     public function create()
     {
 
-        $articulos = Articulo::pluck('nombre','id');
-        return view('cliente.create', compact('articulos') );
+        return view('cliente.create');
     }
 
     /**
@@ -55,26 +53,30 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
+    {      
+      
+        if(Cliente::nuipUnico($request->nuip)){
+            $cliente = new Cliente; 
+            $cliente->nuip= $request->nuip;
+            $cliente->nombre= $request->nombre;
+            $cliente->telefono= $request->telefono;
+            $cliente->direccion= $request->direccion;
+            $cliente->correoelectronico= $request->correoelectronico;
+            $cliente->observacion= $request->observacion;
+            $cliente->save();
+    
+            return redirect()->route('cliente.index')
+            ->with('info', 'El cliente a sido guardado con exito.');
+        }    else{
+
+
+            return redirect()->route('cliente.create')
+            ->with('info', 'Ya existe un cliente con el nuip digitado.');
+
+        }
+        // dd($request);
       
         
-        // dd($request);
-        $cliente = new cliente;   /*Crear un instancia*/
-        
-        $cliente->nuip= $request->nuip;
-        $cliente->nombre= $request->nombre;
-        $cliente->telefono= $request->telefono;
-        $cliente->direccion= $request->direccion;
-        $cliente->correoelectronico= $request->correoelectronico;
-        $cliente->observacion= $request->observacion;
-        $cliente->save();
-
-
-        return redirect()->route('cliente.index')
-        ->with('info', 'El cliente a sido guardado con exito.');
-     
-        return ;
     }
 
     /**
@@ -85,7 +87,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        $cliente = cliente::find($id); // Busca un cliente por medio del  id-
+        $cliente = Cliente::find($id); // Busca un cliente por medio del  id-
          return view('cliente.show', compact('cliente'));
     }
 
@@ -98,7 +100,7 @@ class ClienteController extends Controller
     public function edit($id)
     {
     
-        $cliente = cliente::find($id); // Busca un cliente por medio del  id-
+        $cliente = Cliente::find($id); // Busca un cliente por medio del  id-
         
         return view('cliente.edit', compact('cliente'));
     
@@ -114,7 +116,7 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         
-        $cliente =cliente::find($id);/*Buscar en cliente*/
+        $cliente =Cliente::find($id);/*Buscar en cliente*/
 
         $cliente->nuip= $request->nuip;
         $cliente->nombre= $request->nombre;
@@ -137,8 +139,11 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = cliente::find($id);
+        $cliente = Cliente::find($id);
         $cliente->delete();
         return back()->with('danger', 'El cliente fue eliminado');
     }
+
+
+
 }

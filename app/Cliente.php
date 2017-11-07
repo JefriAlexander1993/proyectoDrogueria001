@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class cliente extends Model
 {
@@ -13,8 +14,23 @@ class cliente extends Model
 
 
 
-     public function articulo()
-     {
-         return $this->belongsTo('App\Articulo');
-     }
+
+     public function scopeSearch1($query, $nuip){
+
+   return $query->where('nuip','LIKE',"%$nuip%");
+
+
+    }
+
+    public static function nuipUnico($nuip){
+        
+        $nuips = Cliente::where('nuip', '=', $nuip)->count();
+        if($nuips == 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }

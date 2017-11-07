@@ -55,7 +55,8 @@ class CompraController extends Controller
     {
       
         $compra = new Compra;/*Crear un instancia*/
-        $compra->fechacompra= $request->fechacompra;
+        // $compra->fechacompra= $request->fechacompra;
+        $compra->nombre= $request->nombre;
         $compra->cantidad= $request->cantidad;
         $compra->valorunitario= $request->valorunitario;
         $compra->iva= $request->iva;
@@ -72,7 +73,7 @@ class CompraController extends Controller
         $Compra_articulo->save();
 
         return redirect()->route('compra.index')
-         ->with('info', 'La compra fue guardado.');
+         ->with('info', 'La compra fue guardada.');
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//
 
 return ;
@@ -119,7 +120,7 @@ return ;
  
         $compra = Producto::find($codigo);/*Buscar en Product*/
         $compra->codigo=$request->codigo;
-        $compra->fechaLlegada= $request->fechaLlegada;
+        // $compra->fechaLlegada= $request->fechaLlegada;
         $compra->nombre= $request->nombre;
         $compra->rubio= $request->rubio;
         $compra->nombreProveedor= $request->nombreProveedor;
@@ -148,5 +149,25 @@ return ;
         $compra = Compra::find($id);
         $compra->delete();
         return back()->with('info', 'La compra fue eliminado');
+    }
+
+    public function getCompraById($id)
+    {
+             
+        $compra=DB::table('compras')->where('id', $id)->get(['id', 'created_at', 'nombre',
+            'cantidad', 'valorunitario', 'iva']);
+        if(count($compra)>0){
+            $answer=array(
+                "datos" => $compra,
+                "code" => 200
+            ); 
+        }else{
+        $answer=array(
+            "error" => 'No existen datos con ese codigo.',
+            "code" => 600
+        ); 
+    }
+         return response()->json($answer);
+        
     }
 }

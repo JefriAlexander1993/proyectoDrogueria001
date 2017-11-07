@@ -17,12 +17,20 @@
 @include('cliente.fragment.aside') 
 </div>
 </div> 
-
+{!!Form::open(['route'=>'cliente.index', 'method'=>'GET','class'=>'navbar-form'])!!}
+<div class="col-sm-5 input-group">
+{!!Form::number('nuip',null,['class'=>'form-control' , 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
+<span class="input-group-addon" id="search">
+<i class="fa fa-search" aria-hidden="true"></i>
+</span>
+</div>
+{!!Form::close()!!}
 <div class="col-md-12 table-responsive" style="text-align:center" >
 
 <table class="table table-hover">
     <thead>
         <tr>
+        <th class="text-center">Nuip</th>
         <th class="text-center">Nombre</th>
         <th class="text-center">Telefono</th>
         <th class="text-center">Direccion</th>
@@ -34,17 +42,18 @@
     <tbody>
         @foreach ($clientes as $cliente)
        <tr>
-       <td class="text-center">{{$cliente->nombre}}</td>
-       <td class="text-center">{{$cliente->telefono}}</td>
-       <td class="text-center">{{$cliente->direccion}}</td>
-       <td class="text-center">{{$cliente->correoelectronico}}</td>
-       <td class="text-center">{{$cliente->observacion}}</td>
-       <td>@role('admin')<a href="{{route('cliente.edit', $cliente->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>@endrole
-       <td><a href="{{route('cliente.show', $cliente->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-       <td>@role('admin')<form action="{{route('cliente.destroy', $cliente->id)}}" method="POST">
+       <td align="center">{{$cliente->nuip}}</td>
+       <td align="center">{{$cliente->nombre}}</td>
+       <td align="center">{{$cliente->telefono}}</td>
+       <td align="center">{{$cliente->direccion}}</td>
+       <td align="center">{{$cliente->correoelectronico}}</td>
+       <td align="center">{{$cliente->observacion}}</td>
+       <td align="center">@role('admin')<a href="{{route('cliente.edit', $cliente->id)}}" class="btn btn-xs btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>@endrole
+       <td align="center"><a href="{{route('cliente.show', $cliente->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+       <td align="center">@role('admin')<form action="{{route('cliente.destroy', $cliente->id)}}" method="POST">
        {{csrf_field()}} <!--Toque para que sea eliminado por la aplicacion-->
        <input type="hidden" name="_method" value="DELETE">  
-       <button class="btn btn-labeled btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> 
+       <button class="btn btn-xs btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> 
        </form>@endrole
        </td>
        </tr>

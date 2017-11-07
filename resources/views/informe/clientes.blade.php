@@ -48,22 +48,22 @@
     <table class="table table-hover ">
 	<thead>
 		<tr>
+		<th align="center">Nuip</th>
 		<th align="center">Nombre</th>
 		<th align="center">Telefono</th>
 		<th align="center">Direccion</th>
 		<th align="center">Correo Electronico</th>
-		<th align="center">Nombre Medicamento</th>
 		<th align="center">Observacion</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach ($clientes1 as $cliente)
 	   <tr>
+	   <td align="center">{{$cliente->nuip}}</td>
 	   <td align="center">{{$cliente->nombre}}</td>
 	   <td align="center">{{$cliente->telefono}}</td>
        <td align="center">{{$cliente->direccion}}</td>
-       <td align="center">{{$cliente->correoElectronico}}</td>
-	   <td align="center">{{$cliente->nombreMedicamento}}</td>
+       <td align="center">{{$cliente->correoelectronico}}</td>
        <td align="center">{{$cliente->observacion}}</td>
        
 	  

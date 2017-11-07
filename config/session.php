@@ -31,7 +31,7 @@ return [
 
     'lifetime' => 1440, //tiempo que dure cuando este cerrado en navegador
 
-    'expire_on_close' =>false, /*Para que se cierre uando se cierre el navegación*/
+    'expire_on_close' =>false, /*Para que se cierre cuando se cierre el navegación*/
 
     /*
     |--------------------------------------------------------------------------

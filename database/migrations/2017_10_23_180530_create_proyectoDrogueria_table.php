@@ -88,10 +88,7 @@ Schema::create('proveedores', function (Blueprint $table) {
 
     });
 
-  
-
-
-/*--------------------------CAJAS------------------------------------*/
+  /*--------------------------CAJAS------------------------------------*/
 
     Schema::create('cajas', function (Blueprint $table) {
        
@@ -104,6 +101,9 @@ Schema::create('proveedores', function (Blueprint $table) {
 
         
     });
+
+
+
 
    /*--------------------------COMPRAS------------------------------------*/
  
@@ -190,20 +190,11 @@ Schema::create('inventarios', function (Blueprint $table) {
 Schema::create('ventas', function (Blueprint $table) {
     
     $table->increments('id');
-    $table->string('nombreuser');
-    $table->integer('codigo')->unique();
-    $table->string('nombreproducto');
-    $table->integer('cantidad');  
-    $table->integer('preciounitario');  
-    $table->double('iva');
-    $table->double('subtotal');
-    $table->double('total');  
+    $table->double('totalventa');  
+    
     $table->integer('users_id')->unsigned();
     $table->foreign('users_id')->references('id')->on('users');
-    $table->integer('cajas_id')->unsigned();
-    $table->foreign('cajas_id')->references('id')->on('cajas');
-    $table->integer('inventario_id')->unsigned();
-    $table->foreign('inventario_id')->references('id')->on('inventarios');
+   
     $table->timestamps();
     
     
@@ -217,10 +208,12 @@ Schema::create('ventas', function (Blueprint $table) {
 Schema::create('venta_articulo', function (Blueprint $table) {
     
     $table->increments('id');
-    
-    
+    $table->integer('cantidad');
+    $table->float('preciounitario');
+    $table->float('subtotal');
+    $table->float('total');
     $table->integer('venta_id')->unsigned();       
-     $table->integer('articulo_id')->unsigned();
+    $table->integer('articulo_id')->unsigned();
      
      $table->foreign('venta_id')->references('id')->on('ventas')
      ->onUpdate('cascade')->onDelete('cascade');
@@ -236,6 +229,13 @@ Schema::create('venta_articulo', function (Blueprint $table) {
 
 
     }
+
+
+
+
+
+
+
 
     /**
      * Reverse the migrations.

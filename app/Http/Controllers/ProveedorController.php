@@ -61,15 +61,15 @@ class ProveedorController extends Controller
        /*$request->Validacion*/
        $proveedor->save();
 
-       $art_id = $request->articulo;
-       $prov_id =$request->id;
+       // // $art_id = $request->articulo;
+       // $prov_id =$request->id;
 
-       $pivot = new articulo_proveedor;
-       $pivot->id_articulo= $art_id;
-       $pivot->id_proveedor= $prov_id;
-       $pivot->save();
+       // $pivot = new articulo_proveedor;
+       // // $pivot->id_articulo= $art_id;
+       // $pivot->id_proveedor= $prov_id;
+       // $pivot->save();
 
-       return redirect()->route('proveedor.index', $pivot)
+       return redirect()->route('proveedor.index')
        ->with('info', 'El proveedor fue guardado.');
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//
 

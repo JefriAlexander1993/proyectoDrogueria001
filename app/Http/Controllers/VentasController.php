@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\ventas;
+use App\Articulos;
 use Illuminate\Http\Request;
 use App\Venta;
+use App\Venta_articulo;
 use App\Http\Requests\VentaRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+
 class VentasController extends Controller
 {
     public function __construct()
@@ -24,6 +29,7 @@ class VentasController extends Controller
     public function index()
     {
         $ventas = Venta::orderBy('codigo')->paginate('5');;
+      
         return  view('venta.index', compact('ventas'));// SE carga en vista y le pasamos la variable
     }
 
@@ -34,6 +40,7 @@ class VentasController extends Controller
      */
     public function create()
     {
+       
         return view('venta.create');
     }
 
@@ -43,25 +50,36 @@ class VentasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VentaRequest $request)
-    {
-        
-       
+    public function store(Request $request)
+    {   $id = Auth::id();
+        $totalVenta=$request->totalVenta;
         $venta = new Venta; 
-        $venta->fechaActual=$request->fechaActual;
-        $venta->numFactura=$request->numFactura;
-        $venta->usuario=$request->usuario;
-        $venta->codigo=$request->codigo;
-        $venta->nombreProducto=$request->nombreProducto;
-        $venta->cantidad=$request->cantidad;
-        $venta->precioUnitario=$request->precioUnitario;
-        $venta->unidades=$request->stock;
-        $venta->iva=$request->iva;
-        $venta->subTotal=$request->subTotal;
-        $venta->total=$request->total;
- 
-        /*$request->Validacion*/
+        $venta->totalventa=$totalVenta;
+        $venta->users_id=$id;
         $venta->save();
+     
+       $idV= DB::table('ventas')->max('id');
+       
+     
+        for($x = 0; $x < $request->cantidadarticulos; $x++) {
+               
+
+        $venta_articulo= new Venta_articulo;
+        //  $c='cantidad'.$request->cantidad[$x].'pu'.$request->precio_u[$x].'st'.$request->sub_t[$x]. 't'.$request->total[$x].'v'.$idV.'a'.$request->codigo[$x];
+        //  return $c;
+    $venta_articulo->cantidad=$request->cantidad[$x];
+    $venta_articulo->preciounitario=$request->precio_u[$x];
+    $venta_articulo->subtotal=$request->sub_t[$x];
+    $venta_articulo->total=$request->total[$x];
+    $venta_articulo->venta_id=$idV;
+    $venta_articulo->articulo_id=$request->codigo[$x];
+   
+       $venta_articulo->save();
+      
+
+        }
+
+        
         return redirect()->route('venta.index')
         ->with('info', 'El venta fue guardado.');
         
@@ -102,17 +120,8 @@ class VentasController extends Controller
     public function update(VentaRequest $request, $codigo)
     {
         $venta = new Venta; 
-        $venta->fechaActual=$request->fechaActual;
-        $venta->numFactura=$request->numFactura;
-        $venta->usuario=$request->usuario;
-        $venta->codigo=$request->codigo;
-        $venta->precioUnitario=$request->precioUnitario;
-        $venta->nombreProducto=$request->nombreProducto;
-        $venta->cantidad=$request->cantidad;
-        $venta->unidades=$request->stock;
-        $venta->iva=$request->iva;
-        $venta->subTotal=$request->subTotal;
-        $venta->total=$request->total;
+        $venta->totalventa=$request->totalventa;
+       
  
  
         /*$request->Validacion*/

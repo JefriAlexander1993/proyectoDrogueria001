@@ -63,10 +63,11 @@ class ArticuloController extends Controller
         $articulo->rubro= $request->rubro;
         $articulo->marca= $request->marca;
         $articulo->preciounitario= $request->preciounitario;
+        $articulo->iva=$request->iva;
         $articulo->precioventa= $request->precioventa;
         $articulo->stockmin= $request->stockmin;
         $articulo->save();
-
+       
         $art_id = $articulo->id;
         $prov_id= $request->proveedor;
 
@@ -82,7 +83,7 @@ class ArticuloController extends Controller
         return redirect()->route('articulo.index', $pivot)
         ->with('info', 'El articulo fue guardado.');
 
-        
+    
 
         // return ;
     }

@@ -9,10 +9,8 @@ class Venta extends Model
     protected $table = 'ventas';
 
 
-    protected $fillable = [
-     
-      'nombreuser','codigo','cantidad','nombreproducto','iva','subtotal','total',  ];
-
+    protected $fillable = ['totalventa'];
+   
 
       public function user()
       {
