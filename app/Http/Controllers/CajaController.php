@@ -6,6 +6,7 @@ use App\Caja;
 use Illuminate\Http\Request;
 use App\Http\Requests\CajaRequest;
 use PDF;
+use DB;
 
 class CajaController extends Controller
 
@@ -22,8 +23,9 @@ class CajaController extends Controller
 
  public function index()
     {
+       
         $cajas = Caja::orderBy('id')->paginate('8');;
-        // return $caja;
+      
         return  view('caja.index', compact('cajas'));// SE carga en vista y le pasamos la variable
        
     
@@ -37,6 +39,12 @@ class CajaController extends Controller
      */
     public function create()
     {
+        // $ventas = DB::table('venta_articulo')
+        // ->join('ventas', 'ventas.id', '=', 'venta_articulo.venta_id')
+        // ->select('ventas.totalventa')
+        // ->get();
+        
+        // dd($ventas);
         return view('caja.create');
     }
 

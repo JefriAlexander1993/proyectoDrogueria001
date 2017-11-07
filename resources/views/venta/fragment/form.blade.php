@@ -6,25 +6,26 @@
 <div class="col-sm-12">
 <div class="form-group">
 {!!Form:: label('codigo','Codigo')!!}
-{!!Form::number('codigo',null,['class'=>'form-control','id'=>'codigo', 'name'=>'codigo' , 'title'=>'Ingresa un codigo de un articulo existente', 'required' =>'required'])!!}
+{!!Form::number('codigo',null,['class'=>'form-control','id'=>'codigo', 'name'=>'codigo' , 'title'=>'Ingresa un codigo de un articulo existente'])!!}
 </div>
 </div>
 </div>
+
 <div class="row">
 <div class="col-sm-6">
 <div class="form-group">
 {!!Form::button('<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Agregar', array('type' => 'button', 'class'=>'btn btn-success', 'id'=>'btn-venta'))!!}
 </div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-2 ">
+<div class="form-group">
+<input  value="0" type="hidden" id="venta" name="cantidadarticulos" class="form-control" >
+</div>
+</div>
+<div class="col-sm-4" >
 <div class="form-group">
 {!!Form:: label('totalventa','Total de venta')!!}
-<input class="form-control" id="totalVenta" name="totalVenta" readonly="readonly" value="0">
-</div>
-</div>
-<div class="col-sm-2">
-<div class="form-group">
-<input  value="0" type="number" id="venta" name="cantidadarticulos" class="form-control" >
+<input class="form-control" id="totalVenta" name="totalVenta" readonly="readonly" value="0" text-aling="right">
 </div>
 </div>
 </div>

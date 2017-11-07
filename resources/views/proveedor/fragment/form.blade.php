@@ -4,10 +4,9 @@
 <div class="col-sm-12">
 <div class="form-group">
 {!!Form:: label('nit', 'Nit')!!}
-{!!Form::number('nit',null,['class'=>'form-control','placeholder' => 'Ej: 12324242'])!!}
+{!!Form::number('nit',null,['class'=>'form-control','placeholder' => 'Ej: 12324242', 'required'=>'required','onKeyPress'=>'return soloNumeros(event)'])!!}
 </div>
 </div>
-
 </div>
 
 <!-- se unieron nombre y precio de compra-->
@@ -16,14 +15,14 @@
 <!--Nombre -->
 <div class="form-group">
 {!! Form:: label('nombreProveedor','Nombre del proveedor')!!}
-{!!Form::text('nombreProveedor',null,['class'=>'form-control', 'placeholder' => 'Ej: Tecnoquimica'])!!}
+{!!Form::text('nombreProveedor',null,['class'=>'form-control', 'placeholder' => 'Ej: Tecnoquimica','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-4">
 <!--Precio de compra -->
 <div class="form-group">
 {!! Form:: label('nombreRepresentante','Nombre de representante')!!}
-{!!Form::text('nombreRepresentante',null,['class'=>'form-control','placeholder' => 'Ej: Fredy Alan Mora Chavéz'])!!}
+{!!Form::text('nombreRepresentante',null,['class'=>'form-control','required'=>'required','placeholder' => 'Ej: Fredy Alan Mora Chavéz','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
 </div>
 </div>
 </div>
@@ -41,7 +40,7 @@
 <!-- iva -->
 <div class="form-group">
 {!! Form:: label('telefono','Teléfono')!!}
-{!!Form::text('telefono',null,['class'=>'form-control','placeholder' => 'Ej: 3245341234'])!!}
+{!!Form::text('telefono',null,['class'=>'form-control','placeholder' => 'Ej: 3245341234','onKeyPress'=>'return soloNumeros(event)'])!!}
 </div>
 </div>
 <div class="col-sm-4">

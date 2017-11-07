@@ -28,9 +28,19 @@ class VentasController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::orderBy('codigo')->paginate('5');;
+
+        // dd($ventas);
+        
+        // $ventas = DB::table('venta_articulo')
+        // ->join('articulos', 'articulos.id', '=', 'venta_articulo.articulo_id')
+        // ->select('articulos.nombre', 'articulos.id')
+        // ->get();
       
-        return  view('venta.index', compact('ventas'));// SE carga en vista y le pasamos la variable
+        $ventas_articulos = Venta_articulo::orderBy('id')->paginate('5');;
+      
+        return  view('venta.index', compact('ventas_articulos'));// SE carga en vista y le pasamos la variable
+   
+   
     }
 
     /**
@@ -51,7 +61,9 @@ class VentasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   $id = Auth::id();
+    {   
+     
+        $id = Auth::id();
         $totalVenta=$request->totalVenta;
         $venta = new Venta; 
         $venta->totalventa=$totalVenta;
@@ -59,32 +71,30 @@ class VentasController extends Controller
         $venta->save();
      
        $idV= DB::table('ventas')->max('id');
+        
+    
+       $venta_articulo= new Venta_articulo;
+
        
+
      
         for($x = 0; $x < $request->cantidadarticulos; $x++) {
-               
-
+             
         $venta_articulo= new Venta_articulo;
-        //  $c='cantidad'.$request->cantidad[$x].'pu'.$request->precio_u[$x].'st'.$request->sub_t[$x]. 't'.$request->total[$x].'v'.$idV.'a'.$request->codigo[$x];
-        //  return $c;
-    $venta_articulo->cantidad=$request->cantidad[$x];
-    $venta_articulo->preciounitario=$request->precio_u[$x];
-    $venta_articulo->subtotal=$request->sub_t[$x];
-    $venta_articulo->total=$request->total[$x];
-    $venta_articulo->venta_id=$idV;
-    $venta_articulo->articulo_id=$request->codigo[$x];
+        
+        $venta_articulo->cantidad=$request->cantidad[$x];
+        $venta_articulo->preciounitario=$request->precio_u[$x];
+        $venta_articulo->subtotal=$request->sub_t[$x];
+        $venta_articulo->total=$request->total[$x];
+        $venta_articulo->venta_id=$idV;
+        $venta_articulo->articulo_id=$request->codigo[$x];
    
        $venta_articulo->save();
-      
-
-        }
-
-        
-        return redirect()->route('venta.index')
-        ->with('info', 'El venta fue guardado.');
-        
     }
+return redirect()->route('venta.index')
+->with('info', 'El venta fue guardado.');
 
+}
     /**
      * Display the specified resource.
      *

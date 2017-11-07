@@ -42,6 +42,7 @@ class ArticuloController extends Controller
     {
        
         $proveedores = Proveedor::pluck('nombreproveedor','id');
+   
         return view('articulo.create', compact('proveedores'));
        
     }
@@ -106,12 +107,12 @@ class ArticuloController extends Controller
      * @param  \App\articulos  $articulos
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, ArticuloRequest $request )
+    public function edit($id)
     {
-    
+        
         $articulo = articulo::find($id); // Busca un articulo por medio del  id-
-        $proveedores =$request-> proveedor;
-        return view('articulo.edit', compact('articulo'),compact('proveedores') );
+        $proveedores = Proveedor::pluck('nombreproveedor','id');
+        return view('articulo.edit', compact('articulo','proveedores') );
     
     }
 
@@ -122,7 +123,7 @@ class ArticuloController extends Controller
      * @param  \App\articulos  $articulos
      * @return \Illuminate\Http\Response
      */
-    public function update(ArticuloRequest $request, $id)
+    public function update(Request $request, $id)
     {
         
         $articulo =articulo::find($id);/*Buscar en articulo*/

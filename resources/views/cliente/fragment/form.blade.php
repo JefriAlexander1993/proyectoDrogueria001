@@ -2,19 +2,19 @@
 <div class="col-sm-2">
 <div class="form-group row has-success">
 {!! Form::label('nuip','Numero de cedula.')!!}
-{!!Form::number('nuip',null,['class'=>'form-control','min'=>'11','placeholder'=>'Ej: 66.345.234','id'=>'nuip','required'=>'required'])!!}
+{!!Form::number('nuip',null,['class'=>'form-control','min'=>'11','placeholder'=>'Ej: 66.345.234','onkeypress'=>'return soloNumeros(event)','id'=>'nuip','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
-{!! Form::label('nombre','Nombre del usuario.')!!}
-{!!Form::text('nombre',null,['class'=>'form-control','onblur'=>'limpia()','title'=>'Solo se permite numeros','onkeypress'=>'return soloLetra(event)','placeholder'=>'Ej: Juan Perez','id'=>'nombreCliente','required'=>'required' ])!!}
+{!! Form::label('nombre','Nombre del cliente.')!!}
+{!!Form::text('nombre',null,['class'=>'form-control','onblur'=>'limpia()','title'=>'Solo se permite numeros','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()','placeholder'=>'Ej: Juan Perez','id'=>'nombreCliente','required'=>'required' ])!!}
 </div>
 </div>
 <div class="col-sm-2">
 <div class="form-group row has-success">
 {!! Form::label('telefono','Telefono.')!!}
-{!!Form::text('telefono',null,['class'=>'form-control','onkeypress'=>'return valida(event)','placeholder'=>'Ej: 3207697523','id'=>'telefonoCliente','required'=>'required'])!!}
+{!!Form::text('telefono',null,['class'=>'form-control','onkeypress'=>'return soloNumeros(event)','placeholder'=>'Ej: 3207697523','id'=>'telefonoCliente','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-2">

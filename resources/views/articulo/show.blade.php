@@ -17,8 +17,8 @@
 <p>Iva:&nbsp;{!!$articulo->iva!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Precio venta:&nbsp;{!!$articulo->precioventa!!}</p> <!-- Descripcion larga y se va interpretar-->
 <p>Stock:&nbsp;{!!$articulo->stockmin!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Stock:&nbsp;{!!$articulo->created_at!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Stock:&nbsp;{!!$articulo->updated_at!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Fecha ingreso:&nbsp;{!!$articulo->created_at!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Fecha actualización:&nbsp;{!!$articulo->updated_at!!}</p> <!-- Descripcion larga y se va interpretar-->
 
 
 </div>

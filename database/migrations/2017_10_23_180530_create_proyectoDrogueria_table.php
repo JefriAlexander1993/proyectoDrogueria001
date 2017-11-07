@@ -117,55 +117,8 @@ Schema::create('proveedores', function (Blueprint $table) {
         $table->timestamps();
     });
 
-/*--------------------------FACTURACIÓN------------------------------------*/
-
-
-    Schema::create('facturas', function (Blueprint $table) {
-     
-        $table->increments('id');
-        $table->date('fecha');
-        $table->timestamps();      
-    });
-   
-    /*--------------------------ARTICULO_FACTURA------------------------------------*/
-
-
-    Schema::create('detalle_factura', function (Blueprint $table) {
-        
-        $table->increments('id');
-        $table->integer('cantidad');   
-        $table->integer('factura_id')->unsigned();       
-        $table->integer('articulo_id')->unsigned();
-        
-        $table->foreign('factura_id')->references('id')->on('facturas')
-        ->onUpdate('cascade')->onDelete('cascade');
-
-        $table->foreign('articulo_id')->references('id')->on('articulos')
-            ->onUpdate('cascade')->onDelete('cascade');
-     
-      
-        $table->timestamps();
-       
-/*--------------------------INVENTARIO------------------------------------*/
-
-Schema::create('inventarios', function (Blueprint $table) {
-    
-            $table->increments('id');
-            $table->float('preciodecompra');
-            $table->float('preciomedio');
-            $table->float('preciodeventa');
-            $table->integer('cantidad');
-            $table->integer('compras_id')->unsigned();
-            $table->foreign('compras_id')->references('id')->on('compras');
-            $table->integer('articulos_id')->unsigned();
-            $table->foreign('articulos_id')->references('id')->on('articulos');
-            $table->timestamps();
-    
-        });
-
-
          /*--------------------------PRODO_FACTURA------------------------------------*/
-    });
+  
     
     Schema::create('compra_articulo', function (Blueprint $table) {
         
@@ -245,15 +198,12 @@ Schema::create('venta_articulo', function (Blueprint $table) {
     public function down()
     {
         Schema::dropIfExists('articulos');   
-        Schema::dropIfExists('rubros');
         Schema::dropIfExists('proveedores');
         Schema::dropIfExists('clientes');
         Schema::dropIfExists('cajas');
-        Schema::dropIfExists('compras');
-        Schema::dropIfExists('inventarios');
-        Schema::dropIfExists('facturas');
+        Schema::dropIfExists('compras'); 
+        Schema::dropIfExists('ventas'); 
         Schema::dropIfExists('articulo_proveedor');
-        Schema::dropIfExists('detalle_factura');
         Schema::dropIfExists('venta_articulo');
         Schema::dropIfExists('compra_articulo');
     }
