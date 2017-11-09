@@ -31,10 +31,16 @@
 {!!Form::text('rubro',null,['class'=>'form-control', 'placeholder'=>'Ej: Farmacia','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
 </div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-2">
 <div class="form-group row has-success">
 {!! Form::label('marca','Marca.')!!}
-{!!Form::text('marca',null,['class'=>'form-control','required'=>'required','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
+{!!Form::text('marca',null,['class'=>'form-control','required'=>'required','onkeypress'=>'return soloLetras(event)' ])!!}
+</div>
+</div>
+<div class="col-sm-2">
+<div class="form-group row has-success">
+{!! Form::label('cantidad','Cantidad.')!!}
+{!!Form::text('cantidad',null,['class'=>'form-control','required'=>'required','onKeyPress'=>'return soloNumeros(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
 </div>
 </div>
 <div class="col-sm-4">

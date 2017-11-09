@@ -9,7 +9,7 @@ class Compra extends Model
 
 
     protected $table = 'compras';
-    protected $fillable=['nombre','cantidad', 'valorunitario','iva', 'valortotal', 'codigo_id',
+    protected $fillable=['totalCompra'
 
 
     ];

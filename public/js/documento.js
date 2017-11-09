@@ -17,7 +17,64 @@ $(document).ready(function() {
 
     });
 });
+
+
 var listcodigo = new Array();
+<<<<<<< HEAD
+/*  Acción del botón de compra, en el momento de añadir un articulo.  */
+
+$(document).ready(function() {
+    $('#btn-compra').on('click', function() {
+        if ($('#codigo').val() == '') {
+
+            toastr.error('El campo de codigo esta vacio.', 'Compra!.')
+            return false;
+        }
+
+        for (i = 0; i < listcodigo.length; i++) {
+            if (listcodigo[i] == $('#codigo').val()) {
+                toastr.warning('No se puede agregar el mismo codigo.', 'Compra!.')
+                return false;
+            }
+        }
+
+        addRowBuy();
+
+    });
+});
+var listcodigo = new Array();
+
+/*==========================VALIDACIONES============================*/
+
+
+/************    Valida  que solo permita letras ************/
+function soloLetras (e){
+
+    if (e.keyCode >45 && e.keyCode < 57)
+        e.returnValue=false;
+}
+
+
+// function soloLetras(e) {
+//     key = e.keyCode || e.which;
+//     tecla = String.fromCharCode(key).toLowerCase();
+//     letras = " áéíóúabcdefghijklmnñopqrstuvwxyz"; /** Estas son las letras que SI permite (abecedario normal y tildes) **/
+//     especiales = [8, 37, 39, 46]; * 8 = Espacio, 46 = Supr, 37 = flecha izquierda, 39 = flecha derecha *
+
+//     tecla_especial = false
+//     for (var i in especiales) {
+//         if (key == especiales[i]) {
+//             tecla_especial = true;
+//             break;
+//         }
+//     }
+
+//     if (letras.indexOf(tecla) == -1 && !tecla_especial)
+//         toastr.warning('No se puede agregar numeros en este campo.')
+//     return false;
+// }
+
+=======
 
 // function soloLetras() {
 //     if (event.keyCode > 45 && event.keyCode < 57) event.returnValue = false;
@@ -55,6 +112,7 @@ function soloLetras(e) {
         return false;
     }
 }
+>>>>>>> c3b9b73b55d36b2bcb121ab61d1dc71858d06a1d
 /************    Valida  que solo permita numeros ************/
 function soloNumeros(evt) {
     if (window.event) { //asignamos el valor de la tecla a keynum
@@ -106,7 +164,7 @@ function addRowSale() {
 
             } else {
                 if (data.code === 600) {
-                    toastr.error(data.error);
+                    toastr.error('data.error');
                 } else {
                     toastr.error('error');
 
@@ -127,10 +185,60 @@ function addRowSale() {
 
 }
 
-/*************    Adicionar filas de venta    ************/
+/*************    Adicionar filas de compra    ************/
 
 function addRowBuy() {
 
+    $.ajax({
+        url: $('#url_traerproducto').val() + '/' + $('#codigo').val(),
+        dataType: 'json',
+        type: 'GET',
+        success: function(data) {
+            console.log(data);
+            if (data.code === 200) {
+                $(data.datos).each(function(index, el) {
+                    // var totaIva = parseFloat(el.precioventa) * parseFloat(el.iva) / 100;
+                    // var total = parseFloat(el.precioventa) + totaIva;
+                    var row = '<tr id="fila' + el.id + '">\n\
+    <td ><input readonly="readonly" type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
+    <td ><input readonly="readonly" type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
+    <td ><input style="width:100px"  type="text" id="cantidad' + el.id + '" name="cantidad[]" value="' + el.cantidad + ' "></td>\n\
+    <td ><input readonly="readonly" style="width:100px" type="text" id="precio_u' + el.id + '" name="precio_u[]" value="' + el.precioventa + '"></td>\n\
+    <td ><input readonly="readonly"style="width:30px" type="text" id="iva' + el.id + '" name="iva[]" value="' + el.iva + '"></td>\n\
+    <td ><a id="btn-borrar' + el.id + '" class="btn btn-danger btn-xs" onclick="deleteRow(' + el.id + ')" ><i class="fa fa-trash" ></i></a></td>\n\
+    </tr>';
+
+                    $('#tbl-compra tbody').append(row);
+                    var c = parseInt($('#compra').val()) + 1;
+                    $('#compra').val(c);
+                    // $('#totalVenta').val(parseFloat($('#totalVenta').val()) + total);
+
+                    listcodigo.push($('#codigo').val());
+
+
+                    toastr.info('Se ha agregado un articulo.', 'Venta!.')
+                });
+
+            } else {
+                if (data.code === 600) {
+                    toastr.error('data.error');
+                } else {
+                    toastr.error('error');
+
+                }
+
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+
+            data = {
+                error: jqXHR + ' - ' + textStatus + ' - ' + errorThrown
+            }
+            $('#modal' + 1).modal('toggle');
+            $('body').append('<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title" id="myModalLabel">ERROR EN TRANSACCIÓN</h4></div><div class="modal-body">' + data.error + '</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button></div></div></div></div>');
+            $('#modalError').modal({ show: true });
+        }
+    });
 
 }
 
@@ -164,6 +272,35 @@ function totalizar(id) {
         $('#total' + id).val(0);
     }
 
+
+}
+
+function totalizarCompra(id) {
+
+    var cantidad = $('#cantidad' + id).val();
+    if (cantidad != '') {
+
+        var precio = $('#precio_u' + id).val();
+
+        var subtotal = parseFloat(precio) * parseFloat(cantidad);
+        $('#sub_t' + id).val(subtotal);
+
+        var totalIva = (subtotal * parseFloat($('#iva' + id).val())) / 100;
+        var total = subtotal + totalIva;
+        $('#total' + id).val(total);
+
+
+        var totalVenta = 0;
+        var fila = $("#tbl-compra > tbody > tr").each(function(index, element) {
+            var idfila = element.id.replace("fila", "#total");
+            totalVenta += parseInt($(idfila).val());
+
+        });
+        $('#totalVenta').val(totalVenta);
+    } else {
+        $('#sub_t' + id).val(0);
+        $('#total' + id).val(0);
+    }
 
 }
 /*--------- Eliminar fila por medio del id-------------*/
@@ -206,6 +343,13 @@ function deleteRow(id, e) {
     }
 }
 
+<<<<<<< HEAD
+
+
+
+/************   Cuando se vaya a guarda primero se consulta que el contador sea mayor a cero si no es asi,
+                                 se envia un mersaje y se cancela el guardado ************/
+=======
 /************   Cuando se vaya a guarda primero se consulta que el contador sea mayor a cero si no es asi, se envia un mersaje y se cancela el guardado ************/
 
 
@@ -216,14 +360,34 @@ function deleteRow(id, e) {
 
 //     if ((confirmacion == true) && ($('#codigo').val() !== '')) {
 
+>>>>>>> c3b9b73b55d36b2bcb121ab61d1dc71858d06a1d
 $('#enviarVenta').on("click", function() {
 
     if ($('#venta').val() < 1) {
 
+<<<<<<< HEAD
+        toastr.warning('No se puede agregar la venta', '!No hay ningun articulo agregado.')
+        return false;
+=======
+>>>>>>> c3b9b73b55d36b2bcb121ab61d1dc71858d06a1d
 
         toastr.warning('No se puede agregar la venta', '!No hay ningun articulo agregado.')
         return false;
     }
+<<<<<<< HEAD
+});
+
+$('#enviarCompra').on("click", function() {
+    if ($('#compra').val() < 1) {
+
+        toastr.warning('No se puede agregar la compra', '!No hay ningun articulo agregado.')
+        return false;
+
+    }
+});
+
+
+=======
 
 
 });
@@ -235,3 +399,4 @@ $('#enviarVenta').on("click", function() {
 //     }
 //     document.getElementById("#enviarVentas").innerHTML = mensaje;
 // }
+>>>>>>> c3b9b73b55d36b2bcb121ab61d1dc71858d06a1d

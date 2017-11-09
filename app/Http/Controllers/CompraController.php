@@ -54,29 +54,39 @@ class CompraController extends Controller
     public function store(Request $request)
     {
       
-        $compra = new Compra;/*Crear un instancia*/
-        // $compra->fechacompra= $request->fechacompra;
-        $compra->nombre= $request->nombre;
-        $compra->cantidad= $request->cantidad;
-        $compra->valorunitario= $request->valorunitario;
-        $compra->iva= $request->iva;
-        $compra->valortotal= $request->valortotal;
-     /*$request->Validacion*/
+
+        $id = Auth::id();
+        $totalCompra=$request->totalCompra;
+
+        $compra->totalCompra=$totalCompra;
+        $compra->users_id=$id;
         $compra->save();
+
+
+        $idV= DB::table('compras')->max('id');
+        
+     
+        $Compra_articulo= new Compra_articulo;
+
        
-        $compra_id = $compra->id;
-        $art_id= $request->articulo_sel;
 
-        $Compra_articulo= new Compra_articulo;        
-        $Compra_articulo->compra_id=$compra_id;
-        $Compra_articulo->articulo_id= $art_id;
-        $Compra_articulo->save();
+        for($x = 0; $x < $request->cantidadarticulos; $x++) {
+             
+        $Compra_articulo= new Compra_articulo;
+        
+        $Compra_articulo->cantidad=$request->cantidad[$x];
+        $Compra_articulo->preciounitario=$request->precio_u[$x];
+        $Compra_articulo->subtotal=$request->sub_t[$x];
+        $Compra_articulo->total=$request->total[$x];
+        $Compra_articulo->venta_id=$idV;
+        $Compra_articulo->articulo_id=$request->codigo[$x];
+   
+       $Compra_articulo->save();
 
+       }
         return redirect()->route('compra.index')
          ->with('info', 'La compra fue guardada.');
-//*Guardado todos los camppos guardados y mira si todos los capos son validos*//
 
-return ;
 
 }
 

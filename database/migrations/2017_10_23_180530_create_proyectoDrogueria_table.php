@@ -109,31 +109,48 @@ Schema::create('proveedores', function (Blueprint $table) {
  
     Schema::create('compras', function (Blueprint $table) {
         $table->increments('id');
-        $table->string('nombre');
-        $table->integer('cantidad');
-        $table->float('valorunitario');
-        $table->float('iva');
-        $table->float('valortotal');
+        $table->double('totalCompra');
+       
+        $table->integer('users_id')->unsigned();
+        $table->foreign('users_id')->references('id')->on('users');
+
         $table->timestamps();
     });
 
-         /*--------------------------PRODO_FACTURA------------------------------------*/
+         /*--------------------------COMPRA_ARTICULO------------------------------------*/
   
     
     Schema::create('compra_articulo', function (Blueprint $table) {
         
         $table->increments('id');
+        $table->integer('cantidad');
+        $table->float('preciounitario');
+        $table->float('subtotal');
+        $table->float('total');
         $table->integer('compra_id')->unsigned();       
         $table->integer('articulo_id')->unsigned();
-        
-        $table->foreign('compra_id')->references('id')->on('compras')
-        ->onUpdate('cascade')->onDelete('cascade');
+
+
+         $table->foreign('compra_id')->references('id')->on('compras')
+         ->onUpdate('cascade')->onDelete('cascade');
 
         $table->foreign('articulo_id')->references('id')->on('articulos')
-            ->onUpdate('cascade')->onDelete('cascade');
+         ->onUpdate('cascade')->onDelete('cascade');
+    
+         $table->timestamps();
+
+        // $table->increments('id');
+        // $table->integer('compra_id')->unsigned();       
+        // $table->integer('articulo_id')->unsigned();
+        
+        // $table->foreign('compra_id')->references('id')->on('compras')
+        // ->onUpdate('cascade')->onDelete('cascade');
+
+        // $table->foreign('articulo_id')->references('id')->on('articulos')
+        //     ->onUpdate('cascade')->onDelete('cascade');
      
 
-        $table->timestamps();
+        // $table->timestamps();
            
 
     });
