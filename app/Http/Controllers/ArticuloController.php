@@ -63,6 +63,7 @@ class ArticuloController extends Controller
         $articulo->nombre= $request->nombre;
         $articulo->rubro= $request->rubro;
         $articulo->marca= $request->marca;
+        // $articulo->cantidad= $request->cantidad;
         $articulo->preciounitario= $request->preciounitario;
         $articulo->iva=$request->iva;
         $articulo->precioventa= $request->precioventa;
@@ -133,6 +134,7 @@ class ArticuloController extends Controller
         $articulo->nombre= $request->nombre;
         $articulo->rubro= $request->rubro;
         $articulo->marca= $request->marca;
+        // $articulo->cantidad= $request->cantidad;
         $articulo->preciounitario= $request->preciounitario;
         $articulo->iva=$request->iva;
         $articulo->precioventa= $request->precioventa;
@@ -168,10 +170,12 @@ class ArticuloController extends Controller
         return back()->with('danger', 'El articulo fue eliminado');
     }
 
+
     public function getArticuloByCodigo($codigo)
     {
              
-        $articulo=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre','precioventa', 'iva']);
+        $articulo=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre',
+             'cantidad', 'precioventa', 'iva']);
         if(count($articulo)>0){
             $answer=array(
                 "datos" => $articulo,
@@ -185,6 +189,7 @@ class ArticuloController extends Controller
     }
          return response()->json($answer);
         
-    }
+    }    
 
+   
 }

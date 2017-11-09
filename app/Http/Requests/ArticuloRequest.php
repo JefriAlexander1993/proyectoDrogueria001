@@ -30,6 +30,7 @@ class ArticuloRequest extends FormRequest
             'nombre'=> 'required', 
             'rubro'=> 'required', 
             'marca'=> 'required', 
+            'cantidad'=> 'required',
             'preciounitario'=> 'required', 
             'precioventa'=> 'required', 
             'stockmin'=> 'required', 

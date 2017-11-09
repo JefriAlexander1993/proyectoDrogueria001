@@ -62,6 +62,9 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {   
+
+        // echo 'hola mundo';
+        // exit();
      
         $id = Auth::id();
         $totalVenta=$request->totalVenta;
@@ -71,11 +74,6 @@ class VentasController extends Controller
         $venta->save();
      
        $idV= DB::table('ventas')->max('id');
-        
-    
-       $venta_articulo= new Venta_articulo;
-
-       
 
      
         for($x = 0; $x < $request->cantidadarticulos; $x++) {
@@ -90,6 +88,8 @@ class VentasController extends Controller
         $venta_articulo->articulo_id=$request->codigo[$x];
    
        $venta_articulo->save();
+
+       // return $venta_articulo;
     }
 return redirect()->route('venta.index')
 ->with('info', 'El venta fue guardado.');
