@@ -9,7 +9,9 @@ use App\Producto;
 use App\Proveedor;
 use App\Articulo;
 use App\Cliente;
+use App\Venta_articulo;
 use PDF;
+use App\Venta;
 
 class PdfController extends Controller
 {
@@ -76,6 +78,15 @@ class PdfController extends Controller
                 
                 $pdf4 = PDF::loadView('informe.clientes',['clientes1'=>$clientes1]);
                 return $pdf4->stream('clientes.pdf');
+        
+            }
+            public function facturaPDF(Venta $venta)
+        
+            {
+                $venta_articulo = Venta_articulo::with('articulo')->where('venta_id', '=', $venta->id)->get();
+                // así lo tengo yo, no falta mas , falta lo de la variablepara el largo de la hoja
+                $pdf4 = PDF::loadView('informe.factura',['venta_articulo'=>$venta_articulo, 'venta' => $venta]);
+                return $pdf4->stream('factura.pdf');
         
             }
 }

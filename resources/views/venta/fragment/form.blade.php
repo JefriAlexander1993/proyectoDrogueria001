@@ -6,7 +6,7 @@
 <div class="col-sm-12">
 <div class="form-group">
 {!!Form:: label('codigo','Codigo')!!}
-{!!Form::number('codigo',null,['class'=>'form-control','id'=>'codigo', 'name'=>'codigo' , 'title'=>'Ingresa un codigo de un articulo existente'])!!}
+{!!Form::number('codigo',null,['class'=>'form-control','id'=>'codigo', 'name'=>'codigo', 'onkeypress'=>'return isNumberKey(event)','min'=>'1', 'title'=>'Ingresa un codigo de un articulo existente'])!!}
 </div>
 </div>
 </div>
@@ -15,6 +15,7 @@
 <div class="col-sm-6">
 <div class="form-group">
 {!!Form::button('<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Agregar', array('type' => 'button', 'class'=>'btn btn-success', 'id'=>'btn-venta'))!!}
+<a class="btn btn btn-warning"  href="{{url('/facturapdf')}}"><i class="fa fa-file-text" aria-hidden="true">&nbsp;Factura</i></a>
 </div>
 </div>
 <div class="col-sm-2 ">
@@ -50,6 +51,6 @@
 	</tbody>
 </table>
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;', array('type' => 'sublime', 'id'=>'enviarVenta', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;', array('type' => 'sublime', 'id'=>'enviarVenta', 'class'=>'btn btn-primary btn-lg btn-block', 'onclick'=>'confirmacion()' ))!!}
 </div>
 </div>

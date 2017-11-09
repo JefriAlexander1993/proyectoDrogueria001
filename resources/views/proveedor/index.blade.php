@@ -42,12 +42,12 @@
        <td align="center">{{$proveedor->telefono}}</td>
        <td align="center">{{$proveedor->email}}</td>
        <td class="text-justify">{{$proveedor->observacion}}</td>
-	   <td> <a href="{{route('proveedor.edit', $proveedor->id)}}" class="btn btn-xs btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-	   <td> <a href="{{route('proveedor.show', $proveedor->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+	   <td> <a href="{{route('proveedor.edit', $proveedor->id)}}" class="btn btn-sm btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+	   <td> <a href="{{route('proveedor.show', $proveedor->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 	   <td><form action="{{route('proveedor.destroy', $proveedor->id)}}" method="POST">
        {{csrf_field()}} <!--Toque para que sea eliminado por la aplicacion-->
        <input type="hidden" name="_method" value="DELETE">	
-	   <button class="btn btn-xs btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>	
+	   <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>	
 	   </form>
 	   </td>
 	   </tr>

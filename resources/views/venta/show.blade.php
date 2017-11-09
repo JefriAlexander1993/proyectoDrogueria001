@@ -5,13 +5,17 @@
 </div>
 <div class="panel-body">
 <div class="col-md-12">
-<p>Fecha:&nbsp;{{$venta->fechaVenta}}</p> <!-- Imprimir el nombre del venta-->
-<p>Usuario:&nbsp;{{$venta->usuario}}</p><!-- Descripcion corta-->
-<p>Nombre Proveedor:&nbsp;{!!$venta->nombreProducto!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Cantidad:&nbsp;{!!$venta->cantidad!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Precio unitario:&nbsp;{!!$venta->precioUnitario!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Iva:&nbsp;{!!$venta->iva!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Valor total:&nbsp;{!!$venta->valorTotal!!}</p> <!-- Descripcion larga y se va interpretar--><!-- Descripcion larga y se va interpretar-->
+@foreach($detalles as $detalle)
+---------------------------------------------------------------------------------------
+<p>Numero de venta:&nbsp;{{ $detalle->venta_id }}</p> 
+<p>Nombre:&nbsp;{{$detalle->nombre}}</p><!-- Descripcion corta-->
+<p>Cantidad:&nbsp;{{$detalle->cantidad}}</p><!-- Descripcion corta-->
+<p>Precio unitario:&nbsp;{!!$detalle->preciounitario!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Subtotal:&nbsp;{!!$detalle->subtotal!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p>Total:&nbsp;{!!$detalle->total!!}</p> <!-- Descripcion larga y se va interpretar-->
+
+
+@endforeach
 </div>
 </div>
 </div>

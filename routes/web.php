@@ -35,6 +35,7 @@ Route::get("/backup","backupController@index")->name('backup');
         Route::get("/productopdf","PdfController@productosPDF");  
         Route::get("/articulopdf","PdfController@articulosPDF"); 
         Route::get("/clientepdf","PdfController@clientesPDF"); 
+        Route::get("/facturapdf","PdfController@facturaPDF"); 
       
 Auth::routes();
 

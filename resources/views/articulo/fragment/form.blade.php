@@ -7,7 +7,7 @@
 <div class="col-sm-5">
 <div class="form-group row has-success">
 {!! Form::label('codigo','Ingrese el codigo.')!!}
-{!!Form::number('codigo',null,['class'=>'form-control' , 'placeholder'=>'Ej: 12345657' , 'onKeyPress'=>'return soloNumeros(event)','required'=>'required'])!!}
+{!!Form::number('codigo',null,['class'=>'form-control' , 'placeholder'=>'Ej: 12345657' ,'min'=>'1', 'onkeypress'=>'return isNumberKey(event)','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-2">
@@ -49,25 +49,25 @@
 <div class="col-sm-3">
 <div class="form-group row has-success">
 {!! Form::label('preciounitario','Precio unitario.')!!}
-{!!Form::number('preciounitario',null,['class'=>'form-control', 'placeholder'=>'Ej: 1000','required'=>'required', 'onKeyPress'=>'return soloNumeros(event)'])!!}
+{!!Form::number('preciounitario',null,['class'=>'form-control','min'=>'1' ,'step'=>'0.01','placeholder'=>'Ej: 1000','required'=>'required', 'onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
 {!! Form::label('iva','Iva.')!!}
-{!!Form::number('iva',null,['class'=>'form-control', 'placeholder'=>'Ej: 19','onKeyPress'=>'return soloNumeros(event)'])!!}
+{!!Form::number('iva',null,['class'=>'form-control','step'=>'0.01','min'=>'1','onkeypress'=>'return isNumberKey(event)','placeholder'=>'Ej: 19', 'title'=>'Si va ingresar decimales que sea con . Ej :14.6'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
 {!!Form::label('precioventa','Precio de venta.')!!}
-{!!Form::number('precioventa', null,['class'=>'form-control', 'placeholder'=>'Ej: 1200', 'align'=>'center','required'=>'required','onKeyPress'=>'return soloNumeros(event)'])!!}
+{!!Form::number('precioventa', null,['class'=>'form-control','min'=>'1' ,'step'=>'0.01', 'placeholder'=>'Ej: 1200', 'align'=>'center','required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
 {!!Form::label('stockmin','Stock minimo.')!!}
-{!!Form::number('stockmin',null,['class'=>'form-control','placeholder'=>'Ej: 20 ', 'align'=>'center','required'=>'required','onKeyPress'=>'return soloNumeros(event)'])!!}
+{!!Form::number('stockmin',null,['class'=>'form-control','placeholder'=>'Ej: 20 ','min'=>'1' , 'align'=>'center','required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 </div> 

@@ -19,33 +19,23 @@
 	<thead>
 		<tr>
 		<th class="text-center">#Factura</th>
-		<th class="text-center">Codigo articulo</th>
 		<th class="text-center">Fecha</th>
-		<th class="text-center">Cantidad</th>
-		<!-- <th class="text-center">Nombre</th> -->
-		<th class="text-center">Precio unitario</th>
-		<th class="text-center">Sub-Total</th>
 		<th class="text-center">Total</th>
 		<th class="text-center" colspan="3">Acción</th>	
         </tr>
 	</thead>
 	<tbody>
-		@foreach ($ventas_articulos as $venta)
+		@foreach ($ventas as $venta)
 	   <tr>
-	   <td class="text-center">{{$venta->id}}</td>
-	   <td class="text-center">{{$venta->articulo_id}}</td>
-	   <td class="text-center">{{$venta->created_at}}</td>
-	   <td class="text-center">{{$venta->cantidad}}</td>
-   
-       <td class="text-center">{{$venta->preciounitario}}</td>
-       <td class="text-center">{{$venta->subtotal}}</td>
-       <td class="text-center">{{$venta->total}}</td>
-	   <td> <a href="{{route('venta.edit', $venta->codigo)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hcodigoden="true"></i></a></td>
-	   <td> <a href="{{route('venta.show', $venta->codigo)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hcodigoden="true"></i></a></td>
-	   <td><form action="{{route('venta.destroy', $venta->codigo)}}" method="POST">
+	   <td align="center">{{$venta->id}}</td>
+	   <td align="center">{{$venta->created_at}}</td>
+       <td align="center">{{$venta->totalventa}}</td>
+	   <td align="center"> <a href="{{route('venta.edit', $venta->id)}}" class="btn btn-sm btn-default"><i  class="fa fa-pencil-square-o" aria-hcodigoden="true"></i></a></td>
+	   <td align="center"> <a href="{{route('venta.show', $venta->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hcodigoden="true"></i></a></td>
+	   <td align="center"><form action="{{route('venta.destroy', $venta->id)}}" method="POST">
        {{csrf_field()}} <!--Toque para que sea eliminado por la aplicacion-->
        <input type="hidden" name="_method" value="DELETE">	
-	   <button class="btn btn-labeled btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>	
+	   <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>	
 	   </form>
 	   </td>
 	   </tr>
@@ -53,7 +43,7 @@
 	</tbody>
 </table>
 <div class="col-md-11" align="center" >
-{!!$ventas_articulos->render() !!}
+{!!$ventas->render() !!}
 <?php 
 echo phpversion('tidy');
 ?>

@@ -4,7 +4,7 @@
 <div class="col-sm-12">
 <div class="form-group">
 {!!Form:: label('nit', 'Nit')!!}
-{!!Form::number('nit',null,['class'=>'form-control','placeholder' => 'Ej: 12324242', 'required'=>'required','onKeyPress'=>'return soloNumeros(event)'])!!}
+{!!Form::number('nit',null,['class'=>'form-control','placeholder' => 'Ej: 12324242','min'=>'1', 'required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 </div>
@@ -15,7 +15,7 @@
 <!--Nombre -->
 <div class="form-group">
 {!! Form:: label('nombreProveedor','Nombre del proveedor')!!}
-{!!Form::text('nombreProveedor',null,['class'=>'form-control', 'placeholder' => 'Ej: Tecnoquimica','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()','required'=>'required'])!!}
+{!!Form::text('nombreProveedor',null,['class'=>'form-control', 'placeholder' => 'Ej: Tecnoquimica','onkeypress'=>'return soloLetras(event)','onKeyUp'=>'this.value = this.value.toUpperCase()','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-4">

@@ -36,9 +36,9 @@ class VentasController extends Controller
         // ->select('articulos.nombre', 'articulos.id')
         // ->get();
       
-        $ventas_articulos = Venta_articulo::orderBy('id')->paginate('5');;
+        $ventas = Venta::orderBy('id')->paginate(5);
       
-        return  view('venta.index', compact('ventas_articulos'));// SE carga en vista y le pasamos la variable
+        return  view('venta.index', compact('ventas'));// SE carga en vista y le pasamos la variable
    
    
     }
@@ -77,7 +77,7 @@ class VentasController extends Controller
 
        
 
-     
+        // yo iba a hacer esto así jaja
         for($x = 0; $x < $request->cantidadarticulos; $x++) {
              
         $venta_articulo= new Venta_articulo;
@@ -101,10 +101,21 @@ return redirect()->route('venta.index')
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function show($codigo)
+    public function show($id)
     {
-        $venta = Venta::find($codigo); // Busca un Producto por medio del  id-
-        return view('venta.show', compact('venta'));
+        // a esto le falta acomodar lo de las llaves foraneas
+        // por que se lalama ventun?, primer vez que veo que se llama asi pana
+       
+        $venta = Venta::find($id); 
+      
+
+        $detalles = DB::table('venta_articulo')
+        ->join('articulos','articulos.id','=', 'venta_articulo.articulo_id')
+        ->select('venta_articulo.*','articulos.nombre')->where('venta_articulo.venta_id', '=', $venta->id)
+        ->get();
+        
+    //  return $detalles;
+        return view('venta.show', compact('venta', 'detalles'));
     }
 
     /**
@@ -113,9 +124,9 @@ return redirect()->route('venta.index')
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function edit($codigo)
+    public function edit($id)
     {
-        $venta = Venta::find($codigo); // Busca un Producto por medio del  id-
+        $venta = Venta::find($id); // Busca un Producto por medio del  id-
         
         return view('venta.edit', compact('venta'));
     }

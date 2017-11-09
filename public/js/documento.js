@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $('#btn-venta').on('click', function() {
-
         if ($('#codigo').val() == '') {
 
             toastr.error('El campo de codigo esta vacio.', 'Venta!.')
@@ -9,25 +8,39 @@ $(document).ready(function() {
 
         for (i = 0; i < listcodigo.length; i++) {
             if (listcodigo[i] == $('#codigo').val()) {
-
                 toastr.warning('No se puede agregar el mismo codigo.', 'Venta!.')
                 return false;
             }
         }
 
         addRowSale();
+
     });
 });
 var listcodigo = new Array();
-/*==========================VALIDACIONES============================*/
+
+// function soloLetras() {
+//     if (event.keyCode > 45 && event.keyCode < 57) event.returnValue = false;
+
+//     // } else {
+
+//     //     toastr.warning('No se puede agregar numeros en este campo.')
+//     // }
+// }
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
+}
 
 
-/************    Valida  que solo permita letras ************/
 function soloLetras(e) {
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLowerCase();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-    especiales = [8, 37, 39, 46];
+    especiales = "8-37-39-46";
 
     tecla_especial = false
     for (var i in especiales) {
@@ -37,11 +50,11 @@ function soloLetras(e) {
         }
     }
 
-    if (letras.indexOf(tecla) == -1 && !tecla_especial)
-        toastr.warning('No se puede agregar numeros en este campo.')
-    return false;
+    if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+        toastr.warning('No se puede agregar numeros, caracteres en este campo.')
+        return false;
+    }
 }
-
 /************    Valida  que solo permita numeros ************/
 function soloNumeros(evt) {
     if (window.event) { //asignamos el valor de la tecla a keynum
@@ -53,7 +66,6 @@ function soloNumeros(evt) {
     if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6) {
         return true;
     } else {
-
         toastr.warning('No se puede agregar letras en este campo.')
         return false;
     }
@@ -73,25 +85,23 @@ function addRowSale() {
                     var totaIva = parseFloat(el.precioventa) * parseFloat(el.iva) / 100;
                     var total = parseFloat(el.precioventa) + totaIva;
                     var row = '<tr id="fila' + el.id + '">\n\
-    <td ><input readonly="readonly" type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
-    <td ><input style="width:50px"  type="text" id="cantidad' + el.id + '" name="cantidad[]" onkeyup="totalizar(' + el.id + ') " value="1"></td>\n\
-    <td ><input readonly="readonly" type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
-    <td ><input readonly="readonly" style="width:100px" type="text" id="precio_u' + el.id + '" name="precio_u[]" value="' + el.precioventa + '"></td>\n\
-    <td ><input readonly="readonly"function style="width:100px" type="text" id="sub_t' + el.id + '" name="sub_t[]" value="' + el.precioventa + '"></td>\n\
-    <td ><input readonly="readonly"style="width:30px" type="text" id="iva' + el.id + '" name="iva[]" value="' + el.iva + '"></td>\n\
-    <td ><input readonly="readonly" style="width:100px" type="text" id="total' + el.id + '" name="total[]" value="' + total + '"></td>\n\
-    <td ><a id="btn-borrar' + el.id + '" class="btn btn-danger btn-xs" onclick="deleteRow(' + el.id + ')" ><i class="fa fa-trash" ></i></a></td>\n\
+    <td align="center"><input readonly="readonly" style="border:none;text-align:center"  type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
+    <td align="center"><input min="1" required style="width:50px;border:none;text-align:center"  type="text" id="cantidad' + el.id + '" name="cantidad[]" onkeyup="totalizar(' + el.id + ');isNumberKey(event)" value="1"></td>\n\
+    <td align="center"><input style="border:none;text-align:center" readonly="readonly"   type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
+    <td align="center"><input readonly="readonly" style="width:80px;border:none;text-align:center" type="text" id="precio_u' + el.id + '" name="precio_u[]" value="' + el.precioventa + '"></td>\n\
+    <td align="center"><input readonly="readonly"  style="width:100px;border:none;text-align:center" type="text" id="sub_t' + el.id + '" name="sub_t[]" value="' + el.precioventa + '"></td>\n\
+    <td align="center"><input readonly="readonly"  style="width:30px;border:none;text-align:center" type="text" id="iva' + el.id + '" name="iva[]" value="' + el.iva + '"></td>\n\
+    <td align="center"><input readonly="readonly" style="width:80px;border:none;text-align:center" type="text" step="0.01" id="total' + el.id + '" name="total[]" value="' + total + '"></td>\n\
+    <td align="center"><a style="text-align:center" id="btn-borrar' + el.id + '" class="btn btn-danger btn-xs" onclick="deleteRow(' + el.id + ')" ><i class="fa fa-trash" ></i></a></td>\n\
     </tr>';
 
                     $('#tbl-venta tbody').append(row);
                     var c = parseInt($('#venta').val()) + 1;
                     $('#venta').val(c);
                     $('#totalVenta').val(parseFloat($('#totalVenta').val()) + total);
-
                     listcodigo.push($('#codigo').val());
-
-
-                    toastr.info('Se ha agregado un articulo.', 'Venta!.')
+                    toastr.info('Solo se puede modificar el campo de Cantidad!.')
+                    toastr.success('Se ha agregado un articulo a la Venta!.')
                 });
 
             } else {
@@ -129,21 +139,22 @@ function addRowBuy() {
 function totalizar(id) {
 
     var cantidad = $('#cantidad' + id).val();
+
     if (cantidad != '') {
 
         var precio = $('#precio_u' + id).val();
 
-        var subtotal = parseFloat(precio) * parseFloat(cantidad);
+        var subtotal = parseFloat(precio).toFixed(2) * parseFloat(cantidad).toFixed(2);
         $('#sub_t' + id).val(subtotal);
 
-        var totalIva = (subtotal * parseFloat($('#iva' + id).val())) / 100;
+        var totalIva = (subtotal * parseFloat($('#iva' + id).val()).toFixed(2)) / 100;
         var total = subtotal + totalIva;
         $('#total' + id).val(total);
 
 
         var totalVenta = 0;
         var fila = $("#tbl-venta > tbody > tr").each(function(index, element) {
-            var idfila = element.id.replace("fila", "#total");
+            var idfila = element.id.replace("fila", "#total"); /*Debe ser este*/
             totalVenta += parseInt($(idfila).val());
 
         });
@@ -153,31 +164,41 @@ function totalizar(id) {
         $('#total' + id).val(0);
     }
 
+
 }
 /*--------- Eliminar fila por medio del id-------------*/
-function deleteRow(id) {
+function deleteRow(id, e) {
 
     if ($('#fila' + id).remove()) {
-        total = parseFloat($('#total' + id).val());
-        eliminar = parseFloat($('#totalVenta').val()) - total;
-        if (isNaN(eliminar)) {
+        file = $('#venta').val() - 1;
+        $('#venta').val(file)
+        $('#codigo').val('');
+        var totalVenta = 0;
+        var fila = $("#tbl-venta > tbody > tr").each(function(index, element) {
+            var idfila = element.id.replace("fila", "#total"); /*Debe ser este*/
+            totalVenta = parseInt($(idfila).val());
 
+        });
+        $('#totalVenta').val(totalVenta);
+
+        listcodigo.pop();
+
+
+        if (isNaN(totalVenta)) {
             $('#totalVenta').val(0);
-
-            $('#codigo').val('');
-
         } else {
-            $('#totalVenta').val(eliminar);
+            $('#totalVenta').val(e);
 
         }
-
         toastr.success('Se ha eliminado correctamente', '!El articulo.')
+
+
+        $('#totalVenta').val(totalVenta);
 
         for (i = 0; i < listcodigo.length; i++) {
             if (listcodigo[i] == id) {
 
                 listcodigo.splice(i);
-                $('#venta').val(i) - 1;
                 return false;
 
             }
@@ -186,11 +207,31 @@ function deleteRow(id) {
 }
 
 /************   Cuando se vaya a guarda primero se consulta que el contador sea mayor a cero si no es asi, se envia un mersaje y se cancela el guardado ************/
+
+
+// function confirmacion() {
+
+//     var confirmacion = confirm('Esta segura(o) de guardar la venta')
+//     var mensaje;
+
+//     if ((confirmacion == true) && ($('#codigo').val() !== '')) {
+
 $('#enviarVenta').on("click", function() {
+
     if ($('#venta').val() < 1) {
 
-        toastr.warning('No se puede agregar la vanta', '!No hay ningun articulo agregado.')
-        return false;
 
+        toastr.warning('No se puede agregar la venta', '!No hay ningun articulo agregado.')
+        return false;
     }
+
+
 });
+
+//     } else {
+
+//         return false;
+
+//     }
+//     document.getElementById("#enviarVentas").innerHTML = mensaje;
+// }
