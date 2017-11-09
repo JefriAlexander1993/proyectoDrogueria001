@@ -2,7 +2,7 @@
 <div class="col-sm-2">
 <div class="form-group row has-success">
 {!! Form::label('nuip','Numero de cedula.')!!}
-{!!Form::number('nuip',null,['class'=>'form-control','min'=>'11','placeholder'=>'Ej: 66.345.234','onkeypress'=>'return soloNumeros(event)','id'=>'nuip','required'=>'required'])!!}
+{!!Form::number('nuip',null,['class'=>'form-control','min'=>'11','placeholder'=>'Ej: 66.345.234','onkeypress'=>'return isNumberKey(event)','id'=>'nuip','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-3">
