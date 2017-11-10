@@ -32,7 +32,6 @@
         <th class="text-center">Nombre</th>
         <th class="text-center">Rubro</th>
         <th class="text-center">Marca</th>
-        <th class="text-center">Cantidad</th>
         <th class="text-center">Precio_U</th>
         <th class="text-center">Iva</th>
         <th class="text-center">Precio_V</th>
@@ -50,7 +49,6 @@
        <td class="text-center">{{$articulo->nombre}}</td>
        <td class="text-center">{{$articulo->rubro}}</td>
        <td class="text-center">{{$articulo->marca}}</td>
-       <td class="text-center">{{$articulo->cantidad}}</td>
        <td class="text-center">{{$articulo->preciounitario}}</td>
        <td class="text-center">{{$articulo->iva}}</td>
        <td class="text-center">{{$articulo->precioventa}}</td>

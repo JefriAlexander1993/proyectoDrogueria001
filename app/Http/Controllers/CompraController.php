@@ -161,11 +161,15 @@ class CompraController extends Controller
         return back()->with('info', 'La compra fue eliminado');
     }
 
-    public function getCompraById($id)
+    public function getCompraByCodigo($codigo)
     {
-             
-        $compra=DB::table('compras')->where('id', $id)->get(['id', 'created_at', 'nombre',
-            'cantidad', 'valorunitario', 'iva']);
+            
+        echo 'hola mundo';
+        $compra=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre',
+        'cantidad', 'precioventa', 'iva']);
+
+        dd($compra);
+        exit();
         if(count($compra)>0){
             $answer=array(
                 "datos" => $compra,

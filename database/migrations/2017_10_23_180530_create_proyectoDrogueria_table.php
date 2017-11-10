@@ -79,7 +79,7 @@ Schema::create('proveedores', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('nuip')->unique();
         $table->string('nombre');
-        $table->string('telefono')->nullable();
+        $table->string('telefono');
         $table->string('direccion')->nullable();
         $table->string('correoelectronico',160)->nullable();
         $table->string('observacion')->nullable();

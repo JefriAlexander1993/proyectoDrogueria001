@@ -1,32 +1,32 @@
 <div class="row">
 <div class="col-sm-2">
 <div class="form-group row has-success">
-{!! Form::label('nuip','Numero de cedula.')!!}
-{!!Form::number('nuip',null,['class'=>'form-control','min'=>'11','placeholder'=>'Ej: 66.345.234','onkeypress'=>'return isNumberKey(event)','id'=>'nuip','required'=>'required'])!!}
+{!! Form::label('nuip','Numero de cedula(*).')!!}
+{!!Form::number('nuip',null,['class'=>'form-control','title'=>'Ingresa un numero de cedula, no registrado.','min'=>'11','placeholder'=>'Ej: 66.345.234','onkeypress'=>'return isNumberKey(event)','id'=>'nuip','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
-{!! Form::label('nombre','Nombre del cliente.')!!}
-{!!Form::text('nombre',null,['class'=>'form-control','onblur'=>'limpia()','title'=>'Solo se permite numeros','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()','placeholder'=>'Ej: Juan Perez','id'=>'nombreCliente','required'=>'required' ])!!}
+{!! Form::label('nombre','Nombre del cliente(*).')!!}
+{!!Form::text('nombre',null,['class'=>'form-control','title'=>'Ingresa un nombre.','onblur'=>'limpia()','title'=>'Ingresa un nombre(s) y apellido(s) ','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()','placeholder'=>'Ej: Juan Perez','id'=>'nombreCliente','required'=>'required' ])!!}
 </div>
 </div>
 <div class="col-sm-2">
 <div class="form-group row has-success">
-{!! Form::label('telefono','Telefono.')!!}
-{!!Form::text('telefono',null,['class'=>'form-control','onkeypress'=>'return soloNumeros(event)','placeholder'=>'Ej: 3207697523','id'=>'telefonoCliente','required'=>'required'])!!}
+{!! Form::label('telefono','Telefono(*).')!!}
+{!!Form::text('telefono',null,['class'=>'form-control','title'=>'Ingresa un numero de celular.','onkeypress'=>'return soloNumeros(event)','placeholder'=>'Ej: 3207697523','id'=>'telefonoCliente','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-2">
 <div class="form-group row has-success">
 {!! Form::label('direccion','Direccion.')!!}
-{!!Form::text('direccion',null,['class'=>'form-control', 'placeholder'=>'Ej: Cra 10a #24-22', 'id'=>'direccion'])!!}
+{!!Form::text('direccion',null,['class'=>'form-control','title'=>'Ingresa una dirección', 'placeholder'=>'Ej: Cra 10a #24-22', 'id'=>'direccion'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
 {!!Form::label('correoelectronico','Correo Electronico.')!!}
-{!!Form::text('correoelectronico', null,['class'=>'form-control', 'placeholder'=>'Ej: ejemplo@correo.com','id'=>'emailCliente'])!!}
+{!!Form::text('correoelectronico', null,['class'=>'form-control','title'=>'Ingresa un correo electronico','placeholder'=>'Ej: ejemplo@correo.com','id'=>'emailCliente'])!!}
 </div>
 </div>
 </div>
@@ -35,7 +35,7 @@
 <div class="col-sm-12">
 <div class="form-group row has-success">
 {!!Form::label('observacion','Observacion.')!!}
-{!!Form::textarea('observacion',null,['class'=>'form-control','placeholder'=>'Ej: Llamar al cliente cada 5 de mes.', 'id'=>'obCliente'])!!}
+{!!Form::textarea('observacion',null,['class'=>'form-control','title'=>'Ingresa una observación que debas recordar.','placeholder'=>'Ej: Llamar al cliente cada 5 de mes.', 'id'=>'obCliente'])!!}
 </div> 
 </div> 
 </div> 

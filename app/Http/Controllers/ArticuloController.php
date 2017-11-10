@@ -152,6 +152,8 @@ class ArticuloController extends Controller
        $pivot->articulo_id= $art_id;
        $pivot->proveedor_id= $prov_id;
        $pivot->save();
+       return redirect()->route('articulo.index', $pivot)
+       ->with('info', 'El articulo fue actualizado.');
 
        
         
@@ -175,7 +177,7 @@ class ArticuloController extends Controller
     {
              
         $articulo=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre',
-             'cantidad', 'precioventa', 'iva']);
+             'precioventa', 'iva']);
         if(count($articulo)>0){
             $answer=array(
                 "datos" => $articulo,

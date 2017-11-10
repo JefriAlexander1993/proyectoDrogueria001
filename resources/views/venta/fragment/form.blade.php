@@ -5,8 +5,8 @@
 <div class="row">
 <div class="col-sm-12">
 <div class="form-group">
-{!!Form:: label('codigo','Codigo')!!}
-{!!Form::number('codigo',null,['class'=>'form-control','id'=>'codigo', 'name'=>'codigo', 'onkeypress'=>'return isNumberKey(event)','min'=>'1', 'title'=>'Ingresa un codigo de un articulo existente'])!!}
+{!!Form:: label('codigo','Codigo(*)')!!}
+{!!Form::number('codigo',null,['class'=>'form-control', 'placeholder'=>'Ej: 12' ,'id'=>'codigo', 'name'=>'codigo', 'onkeypress'=>'return isNumberKey(event)','min'=>'1', 'title'=>'Ingresa un codigo de un articulo existente'])!!}
 </div>
 </div>
 </div>

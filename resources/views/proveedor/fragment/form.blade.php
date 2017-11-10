@@ -3,8 +3,8 @@
 <div class="row">
 <div class="col-sm-12">
 <div class="form-group">
-{!!Form:: label('nit', 'Nit')!!}
-{!!Form::number('nit',null,['class'=>'form-control','placeholder' => 'Ej: 12324242','min'=>'1', 'required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
+{!!Form:: label('nit', 'Nit(*).')!!}
+{!!Form::number('nit',null,['class'=>'form-control','title'=>'Ingresa el nit de proveedor.','placeholder' => 'Ej: 12324242','min'=>'1', 'required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 </div>
@@ -14,15 +14,15 @@
 <div class="col-sm-8">
 <!--Nombre -->
 <div class="form-group">
-{!! Form:: label('nombreProveedor','Nombre del proveedor')!!}
-{!!Form::text('nombreProveedor',null,['class'=>'form-control', 'placeholder' => 'Ej: Tecnoquimica','onkeypress'=>'return soloLetras(event)','onKeyUp'=>'this.value = this.value.toUpperCase()','required'=>'required'])!!}
+{!! Form:: label('nombreProveedor','Nombre del proveedor(*).')!!}
+{!!Form::text('nombreProveedor',null,['class'=>'form-control','title'=>'Nombre del proveedor del articulo.', 'placeholder' => 'Ej: Tecnoquimica','onkeypress'=>'return soloLetras(event)','onKeyUp'=>'this.value = this.value.toUpperCase()','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-4">
 <!--Precio de compra -->
 <div class="form-group">
-{!! Form:: label('nombreRepresentante','Nombre de representante')!!}
-{!!Form::text('nombreRepresentante',null,['class'=>'form-control','required'=>'required','placeholder' => 'Ej: Fredy Alan Mora Chavéz','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
+{!! Form:: label('nombreRepresentante','Nombre de representante(*).')!!}
+{!!Form::text('nombreRepresentante',null,['class'=>'form-control','title'=>'Nombre del representante del proveedor','required'=>'required','placeholder' => 'Ej: Fredy Alan Mora Chavéz','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
 </div>
 </div>
 </div>
@@ -32,22 +32,22 @@
 <!--Cantidad -->
 <div class="form-group">
 {!!Form:: label('direccion','Dirección')!!}
-{!!Form::text('direccion',null,['class'=>'form-control', 'placeholder' => 'Ej: Calle 5 13-18'])!!}
+{!!Form::text('direccion',null,['class'=>'form-control','title'=>'Dirección del proveedor.', 'placeholder' => 'Ej: Calle 5 13-18'])!!}
 </div>
 </div>
 
 <div class="col-sm-4">
 <!-- iva -->
 <div class="form-group">
-{!! Form:: label('telefono','Teléfono')!!}
-{!!Form::text('telefono',null,['class'=>'form-control','placeholder' => 'Ej: 3245341234','onKeyPress'=>'return soloNumeros(event)'])!!}
+{!! Form:: label('telefono','Teléfono(*)')!!}
+{!!Form::text('telefono',null,['class'=>'form-control','title'=>'Numero telefono del representante o proveedor.','placeholder' => 'Ej: 3245341234','onKeyPress'=>'return soloNumeros(event)'])!!}
 </div>
 </div>
 <div class="col-sm-4">
 <!--Precio de venta -->
 <div class="form-group">
 {!! Form:: label('email','Email')!!}
-{!!Form::text('email',null,['class'=>'form-control','placeholder' => 'Eje: alan@gmail.com' ])!!}
+{!!Form::text('email',null,['class'=>'form-control','title'=>'Correo electronico del proveedor.','placeholder' => 'Eje: alan@gmail.com' ])!!}
 </div>
 </div>
 </div>
@@ -58,7 +58,8 @@
 <!-- Fecha vencimiento -->
 <div class="form-group">
 {!! Form:: label('observacion','Observación')!!}
-{!!Form::textarea('observacion', null,['size' => '145x3'],['class'=>'form-control', 'placeholder' => 'Ej: El representante solo pasa los sabados a las 4pm.'])!!}
+{!!Form::textarea('observacion', null,['class'=>'form-control', 'title'=>'Observación respecto al proveedor.','placeholder' => 'Ej: El representante solo pasa los sabados a las 4pm.'])!!}
+</div>
 </div>
 </div>
 

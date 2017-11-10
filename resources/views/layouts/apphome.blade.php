@@ -9,6 +9,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{asset('../../ic/medicina.png')}}">
      <title>
     SISTEMA DE INFORMACIÓN 
     </title>
@@ -23,13 +24,14 @@
 <body>
 <div id="app">
 
-        <nav class="navbar navbar-default navbar-static-top">
-        
+       <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
+               
 <!--               ul -->
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -38,9 +40,7 @@
                 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                   
-  <strong>  SISTEMA DE CONTROL J & D<strong>
-                   
+                    <img   width="95px"    src="{{asset('../../ic/logo.png')}}" class="img-fluid"></img>    
                     </a>
                 </div>
                  <div class="collapse navbar-collapse" id="app-navbar-collapse">

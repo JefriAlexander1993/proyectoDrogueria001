@@ -29,7 +29,7 @@ Route::get("/backup","backupController@index")->name('backup');
         Route::resource('articulo', 'ArticuloController');
         Route::resource('inventario', 'InventarioController');
         Route::get('articulo/getArticulo/{codigo}' , 'ArticuloController@getArticuloByCodigo')->name('articulo.getcodigo');
-        // Route::get('compra/getArticulo/{codigocompra}' ,'CompraController@getCompraByCodigo')->name('compra.getcodigocompra');
+        Route::get('compra/getArticulo/{codigo}' ,'CompraController@getCompraByCodigo')->name('compra.getcodigocompra');
         Route::get("/cajapdf","PdfController@cajasPDF");  
         Route::get("/proveedorpdf","PdfController@proveedoresPDF");  
         Route::get("/productopdf","PdfController@productosPDF");  

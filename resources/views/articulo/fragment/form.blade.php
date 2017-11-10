@@ -6,20 +6,20 @@
 <div class="row">
 <div class="col-sm-5">
 <div class="form-group row has-success">
-{!! Form::label('codigo','Ingrese el codigo.')!!}
-{!!Form::number('codigo',null,['class'=>'form-control' , 'placeholder'=>'Ej: 12345657' ,'min'=>'1', 'onkeypress'=>'return isNumberKey(event)','required'=>'required'])!!}
+{!! Form::label('codigo','Ingrese el codigo(*).')!!}
+{!!Form::number('codigo',null,['class'=>'form-control','title'=>'Ingresa el codigo del articulo','placeholder'=>'Ej: 12345657' ,'min'=>'1', 'onkeypress'=>'return isNumberKey(event)','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-2">
 <div class="form-group row has-success">
-{!! Form::label('fechavencimiento','Fecha de vencimiento.')!!}
-{!!Form::date('fechavencimiento',null,['class'=>'form-control', 'placeholder'=>'Ej: 23/10/2017','required'=>'required'])!!}
+{!! Form::label('fechavencimiento','Fecha de vencimiento(*).')!!}
+{!!Form::date('fechavencimiento',null,['class'=>'form-control', 'title'=>'Elige un fecha de vencimiento', 'placeholder'=>'Ej: 23/10/2017','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-5">
 <div class="form-group row has-success">
-{!! Form::label('nombre','Nombre.')!!}
-{!!Form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Ej: Acetaminofen','required'=>'required', 'onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()','id'=>'nombreArticulo','title'=>'Ingresa el nombre del articulo'])!!}
+{!! Form::label('nombre','Nombre(*).')!!}
+{!!Form::text('nombre',null,['class'=>'form-control','title'=>'Ingresa el nombre del articulo','placeholder'=>'Ej: Acetaminofen','required'=>'required', 'onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()','id'=>'nombreArticulo','title'=>'Ingresa el nombre del articulo'])!!}
 </div>
 </div>
 </div>
@@ -28,25 +28,19 @@
 <div class="col-sm-4">
 <div class="form-group row has-success">
 {!! Form::label('rubro','Rubro.')!!}
-{!!Form::text('rubro',null,['class'=>'form-control', 'placeholder'=>'Ej: Farmacia','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
-</div>
-</div>
-<div class="col-sm-2">
-<div class="form-group row has-success">
-{!! Form::label('marca','Marca.')!!}
-{!!Form::text('marca',null,['class'=>'form-control','required'=>'required','onkeypress'=>'return soloLetras(event)' ])!!}
-</div>
-</div>
-<div class="col-sm-2">
-<div class="form-group row has-success">
-{!! Form::label('cantidad','Cantidad.')!!}
-{!!Form::text('cantidad',null,['class'=>'form-control','required'=>'required','onKeyPress'=>'return soloNumeros(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
+{!!Form::text('rubro',null,['class'=>'form-control','title'=>'Elige un rubro', 'placeholder'=>'Ej: Farmacia','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
 </div>
 </div>
 <div class="col-sm-4">
 <div class="form-group row has-success">
-{!! Form::label('proveedor','Proveedor')!!}
-{!!Form::select('proveedor',$proveedores, null,['class'=>'form-control','name'=>'proveedor','placeholder'=>'Elije un proveedor'])!!}
+{!! Form::label('marca','Marca.')!!}
+{!!Form::text('marca',null,['class'=>'form-control','title'=>'Elige un marca.','required'=>'required','onkeypress'=>'return soloLetras(event)' ])!!}
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group row has-success">
+{!! Form::label('proveedor','Proveedor(*).')!!}
+{!!Form::select('proveedor',$proveedores, null,['class'=>'form-control','title'=>'Elige tu proveedor.','name'=>'proveedor','placeholder'=>'Elije un proveedor'])!!}
 </div>
 </div>
 </div>
@@ -54,26 +48,26 @@
 <div class="row">
 <div class="col-sm-3">
 <div class="form-group row has-success">
-{!! Form::label('preciounitario','Precio unitario.')!!}
-{!!Form::number('preciounitario',null,['class'=>'form-control','min'=>'1' ,'step'=>'0.01','placeholder'=>'Ej: 1000','required'=>'required', 'onkeypress'=>'return isNumberKey(event)'])!!}
+{!! Form::label('preciounitario','Precio unitario(*).')!!}
+{!!Form::number('preciounitario',null,['class'=>'form-control','title'=>'Precio unitario de articulo.','min'=>'1' ,'step'=>'0.01','placeholder'=>'Ej: 1000','required'=>'required', 'onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
-{!! Form::label('iva','Iva.')!!}
+{!! Form::label('iva','Iva(*).')!!}
 {!!Form::number('iva',null,['class'=>'form-control','step'=>'0.01','min'=>'1','onkeypress'=>'return isNumberKey(event)','placeholder'=>'Ej: 19', 'title'=>'Si va ingresar decimales que sea con . Ej :14.6'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
-{!!Form::label('precioventa','Precio de venta.')!!}
-{!!Form::number('precioventa', null,['class'=>'form-control','min'=>'1' ,'step'=>'0.01', 'placeholder'=>'Ej: 1200', 'align'=>'center','required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
+{!!Form::label('precioventa','Precio de venta(*).')!!}
+{!!Form::number('precioventa', null,['class'=>'form-control','title'=>'Precio de venta del articulo.','min'=>'1' ,'step'=>'0.01', 'placeholder'=>'Ej: 1200', 'align'=>'center','required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
-{!!Form::label('stockmin','Stock minimo.')!!}
-{!!Form::number('stockmin',null,['class'=>'form-control','placeholder'=>'Ej: 20 ','min'=>'1' , 'align'=>'center','required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
+{!!Form::label('stockmin','Stock minimo(*).')!!}
+{!!Form::number('stockmin',null,['class'=>'form-control','title'=>'Stock minimo de la cantidad del articulo','placeholder'=>'Ej: 20 ','min'=>'1' , 'align'=>'center','required'=>'required','onkeypress'=>'return isNumberKey(event)'])!!}
 </div>
 </div>
 </div> 
