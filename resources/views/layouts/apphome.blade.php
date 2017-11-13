@@ -40,7 +40,7 @@
                 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                    <img   width="95px"    src="{{asset('../../ic/logo.png')}}" class="img-fluid"></img>    
+                   <strong>Sistema de control JDG.</strong>
                     </a>
                 </div>
                  <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -57,16 +57,24 @@
                                                @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                  <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                          <a href="{{ route('perfil.show','1')}}">
+                                                <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Perfil      
+                                              
+                                        </a>
+
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                               <i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;&nbsp;Cerrar
+                                              
                                         </a>
+                                           
+                                        
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}

@@ -87,7 +87,7 @@ function soloNumeros(evt) {
     if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6) {
         return true;
     } else {
-        toastr.warning('No se puede agregar letras en este campo.')
+        toastr.warning('Unicamente permite ingresar numeros de Nuip.')
         return false;
     }
 }

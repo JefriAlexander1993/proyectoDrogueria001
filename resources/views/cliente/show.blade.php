@@ -8,11 +8,11 @@
 </div>
 <div class="panel-body">
 <div class="col-md-12">
-<p><strong>Codigo:&nbsp;</strong>{{$cliente->nombre}}</p> <!-- Imprimir el nombre del cliente-->
-<p>Descripcion:&nbsp;{{$cliente->telefono}}</p><!-- Descripcion corta-->
-<p>Marca:&nbsp;{!!$cliente->direccion!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Rubro:&nbsp;{!!$cliente->correoelectronico!!}</p> <!-- Descripcion larga y se va interpretar--><!-- Descripcion larga y se va interpretar-->
-<p>Stock:&nbsp;{!!$cliente->observacion!!}</p> <!-- Descripcion larga y se va interpretar-->
+<p><strong>Nombre:&nbsp;</strong>{{$cliente->nombre}}</p> <!-- Imprimir el nombre del cliente-->
+<p><strong>Telefono:&nbsp;</strong>{{$cliente->telefono}}</p><!-- Telefono del cliente-->
+<p><strong>Direccion:&nbsp;</strong>{!!$cliente->direccion!!}</p> <!-- Direccion del cliente-->
+<p><strong>Correo Electronico:&nbsp;</strong>{!!$cliente->correoelectronico!!}</p> <!-- Correo electronico del cliente-->
+<p><strong>Observacion:&nbsp;</strong>{!!$cliente->observacion!!}</p> <!-- Descripcion larga y se va interpretar-->
 </div>
 </div>
 </div>

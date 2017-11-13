@@ -10,7 +10,7 @@
 </div>
 <div class="form-group">
     <label for="password">Contraseña</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+    <input type="password" class="form-control" required id="password" placeholder="Password" name="password">
     @if(Route::currentRouteName() == 'entrust-gui::users.edit')
         <div class="alert alert-info">
           <span class="fa fa-info-circle"></span> Ingresa un nueva contraseña.

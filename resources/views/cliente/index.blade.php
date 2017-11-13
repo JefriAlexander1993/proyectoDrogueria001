@@ -1,4 +1,3 @@
-
 @extends('layouts.apphome')
 @section('content')
 

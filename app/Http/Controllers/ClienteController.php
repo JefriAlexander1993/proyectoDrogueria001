@@ -141,7 +141,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
         $cliente->delete();
-        return back()->with('danger', 'El cliente fue eliminado');
+        return back()->with('danger', 'El cliente fue eliminado.');
     }
 
 

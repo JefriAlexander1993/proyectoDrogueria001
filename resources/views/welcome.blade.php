@@ -9,6 +9,8 @@
 
         <title>Sistema de control J & D</title>
 
+
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> -->
@@ -27,11 +29,16 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{{ asset('assets/bootstrap/js/ie-emulation-modes-warning.js') }}"></script>
 
+
+
     </head>
     <body>
+
+
  
  <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -56,6 +63,7 @@
                     @endauth
                 </div>
             @endif
+
           </div>
           </div>
              </li>
