@@ -5,7 +5,7 @@
 </div>
 
  <div class="panel1 panel-default1">
-      <div class="panel-heading"><strong>Editar perfil.</strong>&nbsp;&nbsp;<a href="{{route('perfil.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+      <div class="panel-heading"><strong>Editar perfil.</strong>&nbsp;&nbsp;<a href="{{route('perfil.show', $perfil->id)}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
    
      </div>
 <div class="panel-body">
