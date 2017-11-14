@@ -27,13 +27,10 @@
 <table class="table table-hover ">
 	<thead>
 		<tr>
-		<th class="text-center">Codigo</th>
-		<th class="text-center">Fecha de llegada</th>
-		<th class="text-center">Nombre</th>
-		<th class="text-center">Cant</th>
-		<th class="text-center">Precio de unitario</th>
-		<th class="text-center">Iva</th>
-		<th class="text-center">Valor Total</th>
+		<th class="text-center"># de Compra</th>
+		<th class="text-center">Fecha Compra</th>
+		<th class="text-center">Total Compra</th>
+		
 		
 		<th class="text-center" colspan="4" >Acción</th>	
 	
@@ -41,14 +38,11 @@
 	</thead>
 	<tbody>
 		@foreach ($compras as $compra)
+
 	   <tr>
 	   <td class="text-center">{{$compra->id}}</tdd>
 	   <td class="text-center">{{$compra->created_at}}</td>
-	   <td class="text-center">{{$compra->nombre}}</td>
-	   <td class="text-center">{{$compra->cantidad}}</td>
-       <td class="text-center">{{$compra->valorunitario}}</td>
-       <td class="text-center">{{$compra->iva}}</td>
-	   <td class="text-center">{{$compra->valortotal}}</td>
+	   <td class="text-center">{{$compra->totalCompra}}</td>
     
 	
 	   <td>@role('admin')<a href="{{route('compra.edit', $compra->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>@endrole</td>
@@ -60,7 +54,9 @@
 	   </form>@endrole('admin')
 	   </td>
 	   </tr>
+
 @endforeach
+
 	</tbody>
 </table>
 <div class="col-md-11" align="center" >

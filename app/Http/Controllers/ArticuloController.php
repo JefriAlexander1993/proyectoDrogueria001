@@ -10,7 +10,7 @@ use App\Http\Requests\ArticuloRequest;
 use PDF;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\Handler;
-
+use Illuminate\Support\Facades\Auth;
 
 class ArticuloController extends Controller
 {
@@ -24,7 +24,6 @@ class ArticuloController extends Controller
 
     public function index(Request $request)
     {
-        
         $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
         // return $articulo;
         return  view('articulo.index', compact('articulos'));// SE carga en vista y le pasamos la variable

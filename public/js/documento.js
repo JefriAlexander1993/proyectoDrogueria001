@@ -87,7 +87,7 @@ function soloNumeros(evt) {
     if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6) {
         return true;
     } else {
-        toastr.warning('No se puede agregar letras en este campo.')
+        toastr.warning('Unicamente permite ingresar numeros de Nuip.')
         return false;
     }
 }
@@ -160,27 +160,33 @@ function addRowBuy() {
             console.log(data);
             if (data.code === 200) {
                 $(data.datos).each(function(index, el) {
-                    // var totaIva = parseFloat(el.precioventa) * parseFloat(el.iva) / 100;
-                    // var total = parseFloat(el.precioventa) + totaIva;
+                     var totaIva = parseFloat(el.precioventa) * parseFloat(el.iva) / 100;
+                     var total = parseFloat(el.precioventa) + totaIva;
                     var row = '<tr id="fila' + el.id + '">\n\
-    <td align="center"><input style="border:none;text-align:center" readonly="readonly" type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
-    <td align="center"><input style="border:none;text-align:center" readonly="readonly" type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
-    <td align="center"><input style="border:none;text-align:center"  type="text" id="cantidad' + el.id + '" name="cantidad[]" value="' + el.cantidad + ' "></td>\n\
+    <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
+    <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
+    <td align="center"><input style="border:none;text-align:center"  type="text" id="cantidad' + el.id + '" name="cantidad[]" name="cantidad[]" onkeyup="totalizarCompra(' + el.id + ');isNumberKey(event)" value="1"></td>\n\
     <td align="center"><input style="border:none;text-align:center" type="text" id="precio_u' + el.id + '" name="precio_u[]" value="' + el.precioventa + '"></td>\n\
-    <td align="center"><input style="border:none;text-align:center" readonly="readonly"style="width:30px" type="text" id="iva' + el.id + '" name="iva[]" value="' + el.iva + '"></td>\n\
+    <td align="center"><input readonly="readonly"  style="width:100px;border:none;text-align:center" type="text" id="sub_t' + el.id + '" name="sub_t[]" value="' + el.precioventa + '"></td>\n\
+    <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly"style="width:30px" type="text" id="iva' + el.id + '" name="iva[]" value="' + el.iva + '"></td>\n\
+    <td align="center"><input readonly="readonly" style="border:none;text-align:center" type="text" step="0.01" id="total' + el.id + '" name="total[]" value="' + total + '"></td>\n\
     <td align="center"><a id="btn-borrar' + el.id + '" class="btn btn-danger btn-xs" onclick="deleteRow(' + el.id + ')" ><i class="fa fa-trash" ></i></a></td>\n\
     </tr>';
 
                     $('#tbl-compra tbody').append(row);
                     var c = parseInt($('#compra').val()) + 1;
                     $('#compra').val(c);
-                    // $('#totalVenta').val(parseFloat($('#totalVenta').val()) + total);
+                    $('#totalCompra').val(parseFloat($('#totalCompra').val()) + total);
+
 
                     listcodigo.push($('#codigo').val());
+                    toastr.info('Solo se puede modificar el campo de Cantidad!.')
+                    toastr.success('Se ha agregado un articulo en Compra!.')
+
+                    
 
 
-                    toastr.info('Se ha agregado un articulo.', 'Venta!.')
-                });
+                    });
 
             } else {
                 if (data.code === 600) {
@@ -253,13 +259,13 @@ function totalizarCompra(id) {
         $('#total' + id).val(total);
 
 
-        var totalVenta = 0;
+        var totalCompra = 0;
         var fila = $("#tbl-compra > tbody > tr").each(function(index, element) {
             var idfila = element.id.replace("fila", "#total");
-            totalVenta += parseInt($(idfila).val());
+            totalCompra += parseInt($(idfila).val());
 
         });
-        $('#totalVenta').val(totalVenta);
+        $('#totalCompra').val(totalCompra);
     } else {
         $('#sub_t' + id).val(0);
         $('#total' + id).val(0);
@@ -307,6 +313,7 @@ function deleteRow(id, e) {
         }
     }
 }
+
 
 
 

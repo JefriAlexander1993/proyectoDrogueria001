@@ -22,10 +22,10 @@
 </div>
 </div>
 <div class="col-sm-4" >
-<!-- <div class="form-group">
-{!!Form:: label('totalventa','Total de venta')!!}
-<input class="form-control" id="totalcompra" name="totalcompra" readonly="readonly" value="0" text-aling="right">
-</div> -->
+<div class="form-group">
+{!!Form:: label('totalcompra','Total de compra')!!}
+<input class="form-control" id="totalCompra" name="totalCompra" readonly="readonly" value="0" text-aling="right">
+</div>
 </div>
 </div>
 
@@ -38,8 +38,9 @@
 		<th class="text-center" >Nombre</th>
         <th class="text-center" style="width:10px">Cantidad</th>
 		<th class="text-center">Precio de Venta</th>
+		<th class="text-center">Sub-Total</th>
 		<th class="text-center">Iva</th>
-		<!-- <th class="text-center">Total</th> -->
+		<th class="text-center">Total</th>
 		<th class="text-center" colspan="3">Acción</th>	
         </tr>
 	</thead>
@@ -50,6 +51,6 @@
 
 </div>
 <div class="form-group text-center">
-{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;', array('type' => 'sublime', 'id'=>'enviarCompra', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
+{!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;', array('type' => 'sublime', 'id'=>'enviarCompra', 'class'=>'btn btn-primary btn-lg btn-block', 'onclick'=>'confirmacion()' ))!!}
 </div>
 </div>

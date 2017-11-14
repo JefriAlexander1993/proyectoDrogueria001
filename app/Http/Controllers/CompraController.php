@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Compra;
 use App\Compra_articulo;
+use App\Articulo;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductoRequest;
-use App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class CompraController extends Controller
@@ -29,7 +30,15 @@ class CompraController extends Controller
  
     public function index()
     {
+
+
+        // $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
         $compras = Compra::orderBy('id')->paginate('8');;
+        
+
+
+        
+
         // return $productos;
         return  view('compra.index', compact('compras'));// SE carga en vista y le pasamos la variable
     }
@@ -58,7 +67,9 @@ class CompraController extends Controller
         $id = Auth::id();
         $totalCompra=$request->totalCompra;
 
-        $compra->totalCompra=$totalCompra;
+        $compra = new Compra;
+
+        $compra->totalcompra=$totalCompra;
         $compra->users_id=$id;
         $compra->save();
 
@@ -66,22 +77,18 @@ class CompraController extends Controller
         $idV= DB::table('compras')->max('id');
         
      
-        $Compra_articulo= new Compra_articulo;
-
-       
-
         for($x = 0; $x < $request->cantidadarticulos; $x++) {
              
-        $Compra_articulo= new Compra_articulo;
+        $compra_articulo= new Compra_articulo;
         
-        $Compra_articulo->cantidad=$request->cantidad[$x];
-        $Compra_articulo->preciounitario=$request->precio_u[$x];
-        $Compra_articulo->subtotal=$request->sub_t[$x];
-        $Compra_articulo->total=$request->total[$x];
-        $Compra_articulo->venta_id=$idV;
-        $Compra_articulo->articulo_id=$request->codigo[$x];
+        $compra_articulo->cantidad=$request->cantidad[$x];
+        $compra_articulo->preciounitario=$request->precio_u[$x];
+        $compra_articulo->subtotal=$request->sub_t[$x];
+        $compra_articulo->total=$request->total[$x];
+        $compra_articulo->compra_id=$idV;
+        $compra_articulo->articulo_id=$request->codigo[$x];
    
-       $Compra_articulo->save();
+        $compra_articulo->save();
 
        }
         return redirect()->route('compra.index')
@@ -99,8 +106,17 @@ class CompraController extends Controller
     public function show($id)
     {
         
-        $compra = Producto::find($id); // Busca un Producto por medio del  id-
-         return view('compra.show', compact('compra'));
+        $compra = Articulo::find($id); // Busca un Articulo por medio del  id-
+
+
+        $detalles = DB::table('compra_articulo')
+        ->join('articulos','articulos.id','=', 'compra_articulo.articulo_id')
+        ->select('compra_articulo.*','articulos.nombre')->where('compra_articulo.compra_id', '=', $compra->id)
+        ->get();
+
+
+
+         return view('compra.show', compact('compra', 'detalles'));
     }
 
     /**
@@ -112,8 +128,9 @@ class CompraController extends Controller
     public function edit($id)
     {
         
-        $compra = Producto::find($id); // Busca un Producto por medio del  id-
+        $compra = Articulo::find($id); // Busca un Articulo por medio del  id-
         
+
         return view('compra.edit', compact('compra'));
     
     }
@@ -128,23 +145,14 @@ class CompraController extends Controller
     public function update(Request $request, $id)
     {
  
-        $compra = Producto::find($codigo);/*Buscar en Product*/
-        $compra->codigo=$request->codigo;
-        // $compra->fechaLlegada= $request->fechaLlegada;
-        $compra->nombre= $request->nombre;
-        $compra->rubio= $request->rubio;
-        $compra->nombreProveedor= $request->nombreProveedor;
-        $compra->precioUnitario= $request->precioUnitario;
-        $compra->cantidad= $request->cantidad;
-        $compra->totalCompra= $request->totalCompra;
-        $compra->iva= $request->iva;
-        $compra->precioVenta= $request->precioVenta;
-        $compra->fechaVencimiento= $request->fechaVencimiento;
-        $compra->stock= $request->stock;
-     /*$request->Validacion*/
+        $compra = new Venta; 
+        $compra->totalcompra=$request->totalcompra;
+       
+ 
+ 
         $compra->save();
-        return redirect()->route('.index')
-        ->with('info', 'La compra fue actualizado.');
+        return redirect()->route('compra.index')
+        ->with('info', 'La compra fue guardado.');
     }
 
     /**
@@ -161,27 +169,27 @@ class CompraController extends Controller
         return back()->with('info', 'La compra fue eliminado');
     }
 
-    public function getCompraByCodigo($codigo)
-    {
+    // public function getCompraByCodigo($codigo)
+    // {
             
-        echo 'hola mundo';
-        $compra=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre',
-        'cantidad', 'precioventa', 'iva']);
+    //     echo 'hola mundo';
+    //     $compra=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre',
+    //     'cantidad', 'precioventa', 'iva']);
 
-        dd($compra);
-        exit();
-        if(count($compra)>0){
-            $answer=array(
-                "datos" => $compra,
-                "code" => 200
-            ); 
-        }else{
-        $answer=array(
-            "error" => 'No existen datos con ese codigo.',
-            "code" => 600
-        ); 
-    }
-         return response()->json($answer);
+    //     dd($compra);
+    //     exit();
+    //     if(count($compra)>0){
+    //         $answer=array(
+    //             "datos" => $compra,
+    //             "code" => 200
+    //         ); 
+    //     }else{
+    //     $answer=array(
+    //         "error" => 'No existen datos con ese codigo.',
+    //         "code" => 600
+    //     ); 
+    // }
+    //      return response()->json($answer);
         
-    }
+    // }
 }

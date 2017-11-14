@@ -10,7 +10,7 @@
 <div class="panel-body">
 <div class="col-md-12">
 
-{!!Form::open(['route'=>'compra.create'])!!}<!--Se le pasa, la variable del metodo-->
+{!!Form::open(['route'=>'compra.store'])!!}<!--Se le pasa, la variable del metodo-->
 @include('compra.fragment.form') <!--Incluyo el formulario-->
 
 {!!Form::close()!!}

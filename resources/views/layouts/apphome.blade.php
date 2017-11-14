@@ -40,7 +40,7 @@
                 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                    <img   width="95px"    src="{{asset('../../ic/logo.png')}}" class="img-fluid"></img>    
+                   <strong>Sistema de control JDG.</strong>
                     </a>
                 </div>
                  <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -57,16 +57,24 @@
                                                @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                                  <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                          <a href="{{ route('perfil.show','1')}}">
+                                                <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Perfil      
+                                              
+                                        </a>
+
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                               <i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;&nbsp;Cerrar
+                                              
                                         </a>
+                                           
+                                        
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
@@ -93,7 +101,7 @@
       </div>
       </div>
       </div>
-
+      @role('admin','estandar')
  <div class="row">
     <div class="col-md-12"  >
             <div class="panel panel-default" >
@@ -101,11 +109,11 @@
                    <div class="panel-body" >   
 <div class="row"><!--Menú de navegación-->                   
     <div class="div1 col-md-2 " >
+
       <ul class="nav nav-pills nav-stacked">
         <li class="dropdown">
-        @role('admin')
         <a class="list-group-item" data-toggle="dropdown" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;Administración</a>
-        @endrole
+       
       <ul class="dropdown-menu">
         <li><a class="{{ (Request::is('*users*') ? 'active' : '') }}"></a> </li>
         <li><a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Usuarios</a> </li>
@@ -125,12 +133,13 @@
       
        </ul>
 </div> 
+
 <div class="col-md-10">   
     <br>
-  
     @yield('content')<!-- Espación para contenido-->
    </div> 
 </div> 
+@endrole
 </div> 
 </div> 
 </div> 

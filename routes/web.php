@@ -27,16 +27,19 @@ Route::get("/backup","backupController@index")->name('backup');
         Route::resource('caja','CajaController'); 
         Route::resource('compra', 'CompraController');
         Route::resource('articulo', 'ArticuloController');
+        Route::resource('perfil', 'PerfilController');
         Route::resource('inventario', 'InventarioController');
         Route::get('articulo/getArticulo/{codigo}' , 'ArticuloController@getArticuloByCodigo')->name('articulo.getcodigo');
-        Route::get('compra/getArticulo/{codigo}' ,'CompraController@getCompraByCodigo')->name('compra.getcodigocompra');
         Route::get("/cajapdf","PdfController@cajasPDF");  
         Route::get("/proveedorpdf","PdfController@proveedoresPDF");  
         Route::get("/productopdf","PdfController@productosPDF");  
         Route::get("/articulopdf","PdfController@articulosPDF"); 
         Route::get("/clientepdf","PdfController@clientesPDF"); 
         Route::get("/facturapdf","PdfController@facturaPDF"); 
+        Route::get("/perfil","PdfController@facturaPDF"); 
       
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users', 'UsersController@show');
