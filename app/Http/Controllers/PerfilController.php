@@ -59,6 +59,7 @@ class PerfilController extends Controller
         
         return view('perfil.edit', compact('perfil'));
     }
+  
 
     /**
      * Update the specified resource in storage.

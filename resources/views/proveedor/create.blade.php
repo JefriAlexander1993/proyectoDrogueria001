@@ -9,13 +9,10 @@
       </div>
 <div class="panel-body">
 <div class="col-md-12">
-
-{!!Form::open(['route'=>'proveedor.store'])!!}<!--Se le pasa, la variable del metodo-->
+{!!Form::open(['route'=>'proveedor.store'])!!}
 @include('proveedor.fragment.form') <!--Incluyo el formulario-->
 {!!Form::close()!!}
-
 </div>
 </div>
 </div>
-
 @endsection

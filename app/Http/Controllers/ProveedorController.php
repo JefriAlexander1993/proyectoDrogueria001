@@ -49,6 +49,8 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
+        
+        if(Proveedor::nitUnico($request->nit)){
        
        $proveedor = new Proveedor; 
        $proveedor->nit=$request->nit;
@@ -61,11 +63,17 @@ class ProveedorController extends Controller
        /*$request->Validacion*/
     //    dd($request);
        $proveedor->save();
-    
+
+    //    dd($proveedor);
        return redirect()->route('proveedor.index')
        ->with('info', 'El proveedor fue guardado.');
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//
+        }
+        else{
 
+            return redirect()->route('proveedor.create')
+            ->with('info', 'Ya existe un proveedor registrado con este nit.');
+        }
    
     }
 
@@ -104,7 +112,7 @@ class ProveedorController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $articulo =Proveedor::find($id);
+        $proveedor =Proveedor::find($id);
         $proveedor->nit=$request->nit;
         $proveedor->nombreproveedor=$request->nombreproveedor;
         $proveedor->nombrerepresentante=$request->nombrerepresentante;

@@ -354,18 +354,12 @@ $('#enviarCompra').on("click", function() {
     }
 });
 
-// $('#passwordPerfil').on("click", function() {
+// $('#reset').on("click", function(event) {
 
-//     var estadoActual = $('#passwordReset');
-
-//     if (estadoActual.disabled == 'true') {
-
-//         estadoActual.disabled = false;
-//     } else {
-//         estadoActual.disabled = true;
-
+//     var opcion = confirm("Deseas agregar mas información o cambiar tu conseña-");
+//     if (opcion == !true) {
+//         event.preventDefault();
 //     }
-
 // });
 
 

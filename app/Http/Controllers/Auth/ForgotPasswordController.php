@@ -31,10 +31,10 @@ class ForgotPasswordController extends Controller
     }
 
 
-    public function index(){
+    // public function index(){
       
-        return  view('auth.reset', compact('articulos'));// SE carga en vista y le pasamos la variable
+    //     return  view('auth.reset', compact('articulos'));// SE carga en vista y le pasamos la variable
         
         
-    } 
+    // } 
 }
