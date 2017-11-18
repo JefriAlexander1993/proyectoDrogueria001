@@ -92,7 +92,7 @@ class VentasController extends Controller
        // return $venta_articulo;
     }
 return redirect()->route('venta.index')
-->with('info', 'El venta fue guardado.');
+->with('info', 'La venta fue guardada.');
 
 }
     /**
@@ -148,7 +148,7 @@ return redirect()->route('venta.index')
         /*$request->Validacion*/
         $venta->save();
         return redirect()->route('venta.index')
-        ->with('info', 'El venta fue guardado.');
+        ->with('info', 'La venta fue guardada.');
     }
 
     /**
@@ -161,6 +161,6 @@ return redirect()->route('venta.index')
     {
         $venta = Venta::find($codigo);
         $venta->delete();
-        return back()->with('info', 'El venta fue eliminado');
+        return back()->with('info', 'La venta fue eliminada');
     }
 }

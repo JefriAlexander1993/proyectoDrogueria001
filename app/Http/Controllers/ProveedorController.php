@@ -22,9 +22,10 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $proveedors = Proveedor::orderBy('id')->paginate('5');;
+        
+        $proveedors = Proveedor::search2($request->nit)->orderBy('id')->paginate('8');
         return  view('proveedor.index', compact('proveedors'));// SE carga en vista y le pasamos la variable
         
     }
@@ -112,7 +113,9 @@ class ProveedorController extends Controller
      */
     public function update(Request $request,$id)
     {
+
         $proveedor =Proveedor::find($id);
+
         $proveedor->nit=$request->nit;
         $proveedor->nombreproveedor=$request->nombreproveedor;
         $proveedor->nombrerepresentante=$request->nombrerepresentante;
@@ -139,6 +142,6 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::find($id);
         $proveedor->delete();
-        return back()->with('info', 'El proveedor fue eliminado');
+        return back()->with('danger', 'El proveedor fue eliminado');
     }
 }

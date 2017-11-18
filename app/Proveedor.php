@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class proveedor extends Model
 { 
     protected $table = 'proveedores';
-    protected $fillable=['nit','nombreproveedor','nombrerepresentante','direccion','telefono','email','observacion'];
+    protected $fillable=['nit','nombreproveedor','nombrerepresentante','direccion','telefono','email','observacion',];
     
     public static function nitUnico($nit){
         

@@ -8,8 +8,6 @@
 </div>
 </div>
 </div>
-
-<!-- se unieron nombre y precio de compra-->
 <div class="row">
 <div class="col-sm-8">
 <!--Nombre -->
@@ -19,7 +17,7 @@
 </div>
 </div>
 <div class="col-sm-4">
-<!--Precio de compra -->
+<!--Nombre del Representante -->
 <div class="form-group">
 {!! Form:: label('nombrerepresentante','Nombre de representante(*).')!!}
 {!!Form::text('nombrerepresentante',null,['class'=>'form-control','title'=>'Nombre del representante del proveedor','required'=>'required','placeholder' => 'Ej: Fredy Alan Mora Chavéz','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
@@ -29,7 +27,7 @@
 <!--                          row 2                                             -->
 <div class="row">
 <div class="col-sm-4">
-<!--Cantidad -->
+<!--Direccion del proveedor -->
 <div class="form-group">
 {!!Form:: label('direccion','Dirección')!!}
 {!!Form::text('direccion',null,['class'=>'form-control','title'=>'Dirección del proveedor.', 'placeholder' => 'Ej: Calle 5 13-18'])!!}
@@ -37,7 +35,7 @@
 </div>
 
 <div class="col-sm-4">
-<!-- iva -->
+<!-- Telefono del proveedor -->
 <div class="form-group">
 {!! Form:: label('telefono','Teléfono(*)')!!}
 {!!Form::text('telefono',null,['class'=>'form-control','title'=>'Numero telefono del representante o proveedor.','placeholder' => 'Ej: 3245341234','onKeyPress'=>'return soloNumeros(event)'])!!}
@@ -55,7 +53,7 @@
 
 <div class="row">
 <div class="col-sm-12" >
-<!-- Fecha vencimiento -->
+<!-- Observacion cualquiera del proveedor -->
 <div class="form-group">
 {!! Form:: label('observacion','Observación')!!}
 {!!Form::textarea('observacion', null,['class'=>'form-control', 'title'=>'Observación respecto al proveedor.','placeholder' => 'Ej: El representante solo pasa los sabados a las 4pm.'])!!}
