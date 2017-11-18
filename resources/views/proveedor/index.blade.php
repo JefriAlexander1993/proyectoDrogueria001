@@ -1,7 +1,4 @@
 @extends('layouts.apphome')
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
    @section('content')
    @role('admin')
    <div class="col-sm-12">

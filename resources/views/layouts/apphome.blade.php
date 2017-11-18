@@ -119,7 +119,8 @@
         <li><a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Usuarios</a> </li>
         <li><a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Roles</a> </li>
         <li><a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class="fa fa-hand-paper-o" aria-hidden="true"></i>&nbsp;Permisos</a></li>               
-        <!-- <li><a href="#" class="list-group-item "><i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Backup</a></li>                -->
+        <!-- <li><a href="{{url('/reset') }} "class="list-group-item "><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Cambiar contraseña</a></li>               
+        <li><a href="#" class="list-group-item "><i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Backup</a></li>                -->
     
       </ul>
          </li>

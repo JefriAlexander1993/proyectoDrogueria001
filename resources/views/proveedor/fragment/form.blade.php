@@ -14,15 +14,15 @@
 <div class="col-sm-8">
 <!--Nombre -->
 <div class="form-group">
-{!! Form:: label('nombreProveedor','Nombre del proveedor(*).')!!}
-{!!Form::text('nombreProveedor',null,['class'=>'form-control','title'=>'Nombre del proveedor del articulo.', 'placeholder' => 'Ej: Tecnoquimica','onkeypress'=>'return soloLetras(event)','onKeyUp'=>'this.value = this.value.toUpperCase()','required'=>'required'])!!}
+{!! Form:: label('nombreproveedor','Nombre del proveedor(*).')!!}
+{!!Form::text('nombreproveedor',null,['class'=>'form-control','title'=>'Nombre del proveedor del articulo.', 'placeholder' => 'Ej: Tecnoquimica','onkeypress'=>'return soloLetras(event)','onKeyUp'=>'this.value = this.value.toUpperCase()','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-4">
 <!--Precio de compra -->
 <div class="form-group">
-{!! Form:: label('nombreRepresentante','Nombre de representante(*).')!!}
-{!!Form::text('nombreRepresentante',null,['class'=>'form-control','title'=>'Nombre del representante del proveedor','required'=>'required','placeholder' => 'Ej: Fredy Alan Mora Chavéz','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
+{!! Form:: label('nombrerepresentante','Nombre de representante(*).')!!}
+{!!Form::text('nombrerepresentante',null,['class'=>'form-control','title'=>'Nombre del representante del proveedor','required'=>'required','placeholder' => 'Ej: Fredy Alan Mora Chavéz','onkeypress'=>'return soloLetras(event)' ,'onKeyUp'=>'this.value = this.value.toUpperCase()'])!!}
 </div>
 </div>
 </div>
@@ -66,5 +66,4 @@
 
 <div class="form-group text-center">
 {!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
-
 </div>

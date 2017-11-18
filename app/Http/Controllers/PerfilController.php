@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\Handler;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class PerfilController extends Controller
 {
@@ -34,7 +35,7 @@ class PerfilController extends Controller
         $id = Auth::id();
 
          $perfil = DB::table('users')
-        ->select('name','email')->where('users.id', '=', $id)
+        ->select('id','name', 'email', 'password', 'pais', 'ciudad', 'fechaNacimiento', 'estudios', 'informacionPersonal')->where('users.id', '=', $id)
         ->first();
         
       
@@ -52,7 +53,9 @@ class PerfilController extends Controller
 
     {
         $id = Auth::id();
-        $perfil = perfil::find($id); 
+        $perfil = DB::table('users')
+        ->select('id','name', 'email', 'password', 'pais', 'ciudad', 'fechaNacimiento', 'estudios', 'informacionPersonal')->where('users.id', '=', $id)
+        ->first();
         
         return view('perfil.edit', compact('perfil'));
     }
@@ -69,16 +72,23 @@ class PerfilController extends Controller
     {
 
         $id = Auth::id();
-        $perfil = users::find($id); 
-        
+        $perfil = User::find($id);
+      
+        // $perfil->id=$id;
         $perfil->name=$request->name;
         $perfil->email=$request->email;
-        $perfil->password=$request->password;
+        $perfil->pais=$request->pais;
+        $perfil->ciudad=$request->ciudad;
+        $perfil->fechaNacimiento=$request->fechaNacimiento;
+        $perfil->estudios=$request->estudios;
+        $perfil->password=bcrypt($request->password);
+        $perfil->informacionPersonal=$request->informacionPersonal;
+       
+
  
  
-        /*$request->Validacion*/
         $perfil->save();
-        return redirect()->route('perfil.index')
+        return redirect()->route('perfil.show', $id)
         ->with('info', 'El perfil fue guardado.');
     }
 

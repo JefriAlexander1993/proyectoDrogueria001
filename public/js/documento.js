@@ -160,8 +160,8 @@ function addRowBuy() {
             console.log(data);
             if (data.code === 200) {
                 $(data.datos).each(function(index, el) {
-                     var totaIva = parseFloat(el.precioventa) * parseFloat(el.iva) / 100;
-                     var total = parseFloat(el.precioventa) + totaIva;
+                    var totaIva = parseFloat(el.precioventa) * parseFloat(el.iva) / 100;
+                    var total = parseFloat(el.precioventa) + totaIva;
                     var row = '<tr id="fila' + el.id + '">\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
@@ -183,10 +183,10 @@ function addRowBuy() {
                     toastr.info('Solo se puede modificar el campo de Cantidad!.')
                     toastr.success('Se ha agregado un articulo en Compra!.')
 
-                    
 
 
-                    });
+
+                });
 
             } else {
                 if (data.code === 600) {
@@ -353,3 +353,23 @@ $('#enviarCompra').on("click", function() {
         return false;
     }
 });
+
+// $('#passwordPerfil').on("click", function() {
+
+//     var estadoActual = $('#passwordReset');
+
+//     if (estadoActual.disabled == 'true') {
+
+//         estadoActual.disabled = false;
+//     } else {
+//         estadoActual.disabled = true;
+
+//     }
+
+// });
+
+
+// // function resetPassword(passwordReset) {
+
+
+// // }
