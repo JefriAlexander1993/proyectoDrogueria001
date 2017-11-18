@@ -11,11 +11,12 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Acoustep\EntrustGui\Contracts\HashMethodInterface;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Hash;
+use Illuminate\Foundation\Auth\User as Authenticatables;
 
 
 
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract, ValidatingModelInterface, HashMethodInterface
+class User extends Authenticatables implements AuthenticatableContract, CanResetPasswordContract, ValidatingModelInterface, HashMethodInterface
 {
 
   use Authenticatable, CanResetPassword, ValidatingModelTrait, EntrustUserTrait;

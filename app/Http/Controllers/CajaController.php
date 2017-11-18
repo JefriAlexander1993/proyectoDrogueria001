@@ -24,7 +24,7 @@ class CajaController extends Controller
  public function index()
     {
        
-        $cajas = Caja::orderBy('id')->paginate('8');;
+        $cajas = Caja::orderBy('id')->paginate('8');
       
         return  view('caja.index', compact('cajas'));// SE carga en vista y le pasamos la variable
        

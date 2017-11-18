@@ -1,10 +1,10 @@
 @extends('layouts.apphome')
 @section('content')
-<div class="col-md-3">
-</div>
+
 
  <div class="panel1 panel-default1">
-      <div class="panel-heading">Editar proveedor.&nbsp;&nbsp;<a href="{{route('proveedor.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+      <div class="panel-heading"><Strong>Editar proveedor</Strong>.&nbsp;&nbsp;<a href="{{route('proveedor.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+      	
      </div>
 <div class="panel-body">
 <div class="col-md-12">

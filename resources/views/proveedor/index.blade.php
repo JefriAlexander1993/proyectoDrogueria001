@@ -1,7 +1,4 @@
 @extends('layouts.apphome')
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
    @section('content')
    @role('admin')
    <div class="col-sm-12">
@@ -16,6 +13,13 @@
    @include('proveedor.fragment.aside') 
    </div>
    </div> 
+   {!!Form::open(['route'=>'proveedor.index', 'method'=>'GET','class'=>'navbar-form'])!!}
+<div class="col-sm-5 input-group">
+{!!Form::number('nit',null,['class'=>'form-control' , 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
+<span class="input-group-addon" id="search">
+<i class="fa fa-search" aria-hidden="true"></i>
+</span>
+</div>
 <div class="col-md-12 table-responsive">
 <table class="table table-hover ">
 	<thead>
@@ -35,7 +39,7 @@
 		@foreach ($proveedors as $proveedor)
 	   <tr>
        <td align="center">{{$proveedor->id}}</td>
-	   <td align="center">{{$proveedor->nit}}</td>
+	     <td align="center">{{$proveedor->nit}}</td>
        <td align="center">{{$proveedor->nombreproveedor}}</td>
        <td align="center">{{$proveedor->nombrerepresentante}}</td>
        <td align="center">{{$proveedor->direccion}}</td>

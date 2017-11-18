@@ -22,9 +22,10 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $proveedors = Proveedor::orderBy('id')->paginate('5');;
+        
+        $proveedors = Proveedor::search2($request->nit)->orderBy('id')->paginate('8');
         return  view('proveedor.index', compact('proveedors'));// SE carga en vista y le pasamos la variable
         
     }
@@ -36,7 +37,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        $articulos = Articulo::pluck('nombre','id');
+         $articulos = Articulo::pluck('nombre','id');
 
         return view('proveedor.create' , compact('articulos'));
     }
@@ -44,28 +45,29 @@ class ProveedorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  
      * @return \Illuminate\Http\Response
      */
-    public function store(ProveedorRequest $request)
+    public function store(Request $request)
     {
-        // dd($request);
+       
        $proveedor = new Proveedor; 
        $proveedor->nit=$request->nit;
-       $proveedor->nombreProveedor=$request->nombreProveedor;
-       $proveedor->nombreRepresentante=$request->nombreRepresentante;
+       $proveedor->nombreproveedor=$request->nombreproveedor;
+       $proveedor->nombrerepresentante=$request->nombrerepresentante;
        $proveedor->direccion=$request->direccion;
        $proveedor->telefono=$request->telefono;
        $proveedor->email=$request->email;
        $proveedor->observacion=$request->observacion;
        /*$request->Validacion*/
+    //    dd($request);
        $proveedor->save();
-
+    
        return redirect()->route('proveedor.index')
        ->with('info', 'El proveedor fue guardado.');
 //*Guardado todos los camppos guardados y mira si todos los capos son validos*//
 
-       return ;
+   
     }
 
     /**
@@ -101,12 +103,12 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function update(ProveedorRequest $request,$id)
+    public function update(Request $request,$id)
     {
-        $proveedor = new Proveedor; 
+        $proveedor =Proveedor::find($id);
         $proveedor->nit=$request->nit;
-        $proveedor->nombreProveedor=$request->nombreProveedor;
-        $proveedor->nombreRepresentante=$request->nombreRepresentante;
+        $proveedor->nombreproveedor=$request->nombreproveedor;
+        $proveedor->nombrerepresentante=$request->nombrerepresentante;
         $proveedor->direccion=$request->direccion;
         $proveedor->telefono=$request->telefono;
         $proveedor->email=$request->email;
@@ -130,6 +132,6 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::find($id);
         $proveedor->delete();
-        return back()->with('info', 'El proveedor fue eliminado');
+        return back()->with('danger', 'El proveedor fue eliminado');
     }
 }
