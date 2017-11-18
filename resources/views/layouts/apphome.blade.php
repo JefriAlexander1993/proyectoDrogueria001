@@ -101,7 +101,7 @@
       </div>
       </div>
       </div>
-
+      @role('admin','estandar')
  <div class="row">
     <div class="col-md-12"  >
             <div class="panel panel-default" >
@@ -109,17 +109,18 @@
                    <div class="panel-body" >   
 <div class="row"><!--Menú de navegación-->                   
     <div class="div1 col-md-2 " >
+
       <ul class="nav nav-pills nav-stacked">
         <li class="dropdown">
-        @role('admin')
         <a class="list-group-item" data-toggle="dropdown" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;Administración</a>
-        @endrole
+       
       <ul class="dropdown-menu">
         <li><a class="{{ (Request::is('*users*') ? 'active' : '') }}"></a> </li>
         <li><a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Usuarios</a> </li>
         <li><a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Roles</a> </li>
         <li><a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class="fa fa-hand-paper-o" aria-hidden="true"></i>&nbsp;Permisos</a></li>               
-        <!-- <li><a href="#" class="list-group-item "><i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Backup</a></li>                -->
+        <!-- <li><a href="{{url('/reset') }} "class="list-group-item "><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Cambiar contraseña</a></li>               
+        <li><a href="#" class="list-group-item "><i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Backup</a></li>                -->
     
       </ul>
          </li>
@@ -133,12 +134,13 @@
       
        </ul>
 </div> 
+
 <div class="col-md-10">   
     <br>
-  
     @yield('content')<!-- Espación para contenido-->
    </div> 
 </div> 
+@endrole
 </div> 
 </div> 
 </div> 

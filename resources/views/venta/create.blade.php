@@ -4,7 +4,7 @@
 @include('venta.fragment.error')
 </div>
 
-<div class="panel1  panel-success">
+<div class="panel  panel-success">
       <div class="panel-heading"><strong>Crear un nuevo venta.</strong>&nbsp;&nbsp;<a href="{{route('venta.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
       </div>
 <div class="panel-body">

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Inventario;
+use App\Articulo;
 use Illuminate\Http\Request;
-
+use App\Compra_articulo;
+use DB;
 class InventarioController extends Controller
 {
     public function __construct()
@@ -21,9 +22,17 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $inventarios = Inventario::orderBy('id')->paginate('8');;
-        // return $cliente;
-        return  view('inventario.index', compact('inventarios'));
+        // $articulos = Compra_articulo::orderBy('id')->paginate('8');;
+        // // return $cliente
+        // compra_articulo::orderBy('id')->paginate(8);
+        $detalles = 
+        DB::table('compra_articulo')
+        ->join('articulos','articulos.id','=','compra_articulo.articulo_id')
+        ->select('compra_articulo.cantidad','compra_articulo.preciounitario','articulos.nombre','articulos.codigo','articulos.precioventa','articulos.stockmin')
+        ->get();
+
+        // $detalles::orderBy('id')->paginate('8');
+        return  view('inventario.index', compact('detalles'));
     }
 
     /**

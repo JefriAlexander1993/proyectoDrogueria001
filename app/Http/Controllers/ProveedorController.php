@@ -105,7 +105,11 @@ class ProveedorController extends Controller
      */
     public function update(Request $request,$id)
     {
+<<<<<<< HEAD
         $proveedor =Proveedor::find($id);
+=======
+        $articulo =Proveedor::find($id);
+>>>>>>> 8e08f62a08297092afabec748fd9309a0438f950
         $proveedor->nit=$request->nit;
         $proveedor->nombreproveedor=$request->nombreproveedor;
         $proveedor->nombrerepresentante=$request->nombrerepresentante;

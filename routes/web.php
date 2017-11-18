@@ -1,6 +1,6 @@
 <?php
 use App\Http\Middleware\CheckPermission;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +29,8 @@ Route::get("/backup","backupController@index")->name('backup');
         Route::resource('articulo', 'ArticuloController');
         Route::resource('perfil', 'PerfilController');
         Route::resource('inventario', 'InventarioController');
+     
+        Route::get('/reset', 'CambioContraseñaController@index');
         Route::get('articulo/getArticulo/{codigo}' , 'ArticuloController@getArticuloByCodigo')->name('articulo.getcodigo');
         Route::get("/cajapdf","PdfController@cajasPDF");  
         Route::get("/proveedorpdf","PdfController@proveedoresPDF");  
@@ -37,6 +39,8 @@ Route::get("/backup","backupController@index")->name('backup');
         Route::get("/clientepdf","PdfController@clientesPDF"); 
         Route::get("/facturapdf","PdfController@facturaPDF"); 
         Route::get("/perfil","PdfController@facturaPDF"); 
+        Route::get("/facturapdf","PdfController@facturaPDF"); 
+        
       
 Auth::routes();
 

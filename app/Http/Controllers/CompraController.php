@@ -31,13 +31,8 @@ class CompraController extends Controller
     public function index()
     {
 
-
         // $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
         $compras = Compra::orderBy('id')->paginate('8');;
-        
-
-
-        
 
         // return $productos;
         return  view('compra.index', compact('compras'));// SE carga en vista y le pasamos la variable
@@ -75,6 +70,7 @@ class CompraController extends Controller
 
 
         $idV= DB::table('compras')->max('id');
+        $idA= DB::table('articulos')->max('id');
         
      
         for($x = 0; $x < $request->cantidadarticulos; $x++) {
@@ -89,6 +85,21 @@ class CompraController extends Controller
         $compra_articulo->articulo_id=$request->codigo[$x];
    
         $compra_articulo->save();
+        $cantCompra = DB::table('compra_articulo')->pluck('cantidad')->where('id','=', $idA);
+
+       return $cantCompra;
+
+
+        
+      
+    //    $cantCompra 
+    //     RETURN   $cantActual;
+
+        // DB::table('compra_articulo')
+        // ->where('id', $compra_articulo->id)
+        // ->update(['cantidad' => $cantActual]);
+
+     
 
        }
         return redirect()->route('compra.index')

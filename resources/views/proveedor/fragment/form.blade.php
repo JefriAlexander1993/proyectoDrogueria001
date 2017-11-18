@@ -64,5 +64,4 @@
 
 <div class="form-group text-center">
 {!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-primary btn-lg btn-block'))!!}
-
 </div>

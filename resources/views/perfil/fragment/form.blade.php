@@ -27,7 +27,7 @@
 </div>
 <div class="col-sm-3">
 <div class="form-group row has-success">
-{!! Form::label('fechaNacimiento','FechaNacimiento.')!!}
+{!! Form::label('fechaNacimiento','Fecha Nacimiento.')!!}
 {!!Form::date('fechaNacimiento',null,['class'=>'form-control','title'=>'FechaNacimiento.','id'=>'fechaNacimiento'])!!}
 </div>
 </div>
@@ -38,16 +38,24 @@
 </div>
 </div>
 </div>
-
+@permission('reset-password')
 <div class="row">
 <div class="col-sm-12">
 <div class="form-group row has-success" >
-{!! Form::label('informacionPersonal','InformacionPersonal.')!!}
+{!! Form::label('password','Contraseña.')!!}
+{!!Form::password('password',['class'=>'form-control','title'=>'Contraseña.','id'=>'password'])!!}
+</div>
+</div>
+</div>
+@endpermission
+<div class="row">
+<div class="col-sm-12">
+<div class="form-group row has-success" >
+{!! Form::label('informacionPersonal','Información adicionar.')!!}
 {!!Form::textarea('informacionPersonal',null,['class'=>'form-control','title'=>'InformacionPersonal.','id'=>'informacionPersonal'])!!}
 </div>
 </div>
 </div>
-
 
 <div class="form-group text-center">
 {!!Form::button('<i class="fa fa-floppy-o" aria-hidden="true"></i>', array('type' => 'submit', 'class'=>'btn btn-primary btn-lg btn-block'))!!}

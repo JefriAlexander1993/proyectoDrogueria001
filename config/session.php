@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'encrypt' => false, /**todo lo la sesión se encripta*/
+    'encrypt' => true, /**todo lo la sesión se encripta*/
 
     /*
     |--------------------------------------------------------------------------

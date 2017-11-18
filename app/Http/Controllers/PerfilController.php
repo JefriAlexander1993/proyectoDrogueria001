@@ -81,7 +81,9 @@ class PerfilController extends Controller
         $perfil->ciudad=$request->ciudad;
         $perfil->fechaNacimiento=$request->fechaNacimiento;
         $perfil->estudios=$request->estudios;
+        $perfil->password=bcrypt($request->password);
         $perfil->informacionPersonal=$request->informacionPersonal;
+       
 
  
  
