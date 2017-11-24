@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-<div class="col-sm-7" style="text-align:center"><h2><strong>LISTADO DE ARTICULOS.</strong></h2>
+<div class="col-sm-7" style="text-align:center"><h2><strong>INVENTARIO.</strong></h2>
 </div>
 <div class="col-sm-4">
 @include('inventario.fragment.aside') 
@@ -33,7 +33,7 @@
        
        <td class="text-center">{{$articulo->codigo}}</td>
        <td class="text-center">{{$articulo->nombre}}</td>
-       <td class="text-center">{{$articulo->cantidad}}</td>
+       <td class="text-center">{{$articulo->cantotal}}</td>
        <td class="text-center">{{$articulo->preciounitario}}</td>
        <td class="text-center">{{$articulo->precioventa}}</td>
        <td class="text-center">{{$articulo->stockmin}}</td>

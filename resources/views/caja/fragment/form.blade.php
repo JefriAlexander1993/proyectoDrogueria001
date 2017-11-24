@@ -2,23 +2,22 @@
 <div class="row">
 <div class="col-sm-6">
 <div class="form-group">
-{!!Form::label('nombreUsuario','Nombre del usuario de la caja')!!}
+{!!Form::label('nombreusuario','Nombre del usuario de la caja')!!}
 <?php $nombreUsuario = DB::table('users')->pluck('name');
- echo Form::select('nombreUsuario', $nombreUsuario, null,['class'=>'form-control', 'type'=>'text' ]);
+ echo Form::select('nombreusuario', $nombreUsuario, null,['class'=>'form-control', 'type'=>'text' ]);
 ?> 
 </div>
 </div>
 <div class="col-sm-6">
 <div class="form-group">
-{!! Form:: label('valorInicial','Valor inicial')!!}
-{!!Form::number('valorInicial',null,['class'=>'form-control' , 'placeholder'=>'100000'])!!} 
+{!! Form:: label('valorinicial','Valor inicial')!!}
+{!!Form::number('valorinicial',null,['class'=>'form-control' , 'placeholder'=>'100000'])!!} 
 </div>
 </div>
 <div class="col-sm-6">
 <div class="form-group">
-
-{!! Form:: label('valorFinal','Valor final')!!}
-{!!Form::number('$valorFinal',null,['class'=>'form-control',  'placeholder'=>'300000'])!!}
+{!! Form:: label('valorfinal','Valor final')!!}
+{!!Form::number('valorfinal',$sumVenta,['class'=>'form-control','disabled'=>'disabled' , 'placeholder'=>'300000'])!!}
 </div>
 </div>
 <div class="row">

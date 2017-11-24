@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Articulo;
 use Illuminate\Http\Request;
-use App\Compra_articulo;
+use App\compra_articulo;
 use DB;
 class InventarioController extends Controller
 {
@@ -22,15 +22,18 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        // $articulos = Compra_articulo::orderBy('id')->paginate('8');;
-        // // return $cliente
-        // compra_articulo::orderBy('id')->paginate(8);
-        $detalles = 
-        DB::table('compra_articulo')
+       
+         $art=DB::table('articulos')->pluck('codigo');
+        
+        $detalles = DB::table('compra_articulo')
         ->join('articulos','articulos.id','=','compra_articulo.articulo_id')
-        ->select('compra_articulo.cantidad','compra_articulo.preciounitario','articulos.nombre','articulos.codigo','articulos.precioventa','articulos.stockmin')
-        ->get();
+        ->select('compra_articulo.cantotal','compra_articulo.articulo_id','compra_articulo.preciounitario','articulos.nombre','articulos.codigo','articulos.precioventa','articulos.stockmin')
+        ->distinct()->get();
 
+        
+
+        // return $detalles;
+     
         // $detalles::orderBy('id')->paginate('8');
         return  view('inventario.index', compact('detalles'));
     }

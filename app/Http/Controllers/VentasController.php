@@ -31,14 +31,14 @@ class VentasController extends Controller
 
         // dd($ventas);
         
-        // $ventas = DB::table('venta_articulo')
+        $sumVenta = DB::table('ventas')->select('totalventa')->sum('totalventa');
         // ->join('articulos', 'articulos.id', '=', 'venta_articulo.articulo_id')
         // ->select('articulos.nombre', 'articulos.id')
         // ->get();
       
         $ventas = Venta::orderBy('id')->paginate(5);
       
-        return  view('venta.index', compact('ventas'));// SE carga en vista y le pasamos la variable
+        return  view('venta.index', compact('ventas', 'sumVenta'));// SE carga en vista y le pasamos la variable
    
    
     }

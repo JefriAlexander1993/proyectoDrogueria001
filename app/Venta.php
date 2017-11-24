@@ -16,4 +16,7 @@ class Venta extends Model
       {
           return $this->belongsTo('App\User');
       }
+
+
+      
     }

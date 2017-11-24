@@ -130,7 +130,7 @@
          <li><a href="{{route('proveedor.index')}}" class="list-group-item"><i class="fa fa-id-card-o " aria-hidden="true"></i>&nbsp;Proveedores</a></li>
          <li><a href="{{route('cliente.index')}}" class="list-group-item "><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Clientes</a></li>
          <li><a href="{{route('caja.index')}}" class="list-group-item"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Caja</a></li>    
-         <!-- <li><a href="{{route('inventario.index')}}" class="list-group-item"><i class="fa fa-archive" aria-hidden="true"></i>&nbsp;Inventario</a></li>    --> 
+         <li><a href="{{route('inventario.index')}}" class="list-group-item"><i class="fa fa-archive" aria-hidden="true"></i>&nbsp;Inventario</a></li>    
       
        </ul>
 </div> 

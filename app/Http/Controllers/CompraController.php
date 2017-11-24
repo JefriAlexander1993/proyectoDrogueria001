@@ -30,11 +30,12 @@ class CompraController extends Controller
  
     public function index()
     {
-
+ 
         // $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
         $compras = Compra::orderBy('id')->paginate('8');;
 
         // return $productos;
+        
         return  view('compra.index', compact('compras'));// SE carga en vista y le pasamos la variable
     }
     
@@ -67,37 +68,36 @@ class CompraController extends Controller
         $compra->totalcompra=$totalCompra;
         $compra->users_id=$id;
         $compra->save();
+        $idC=$compra->id;
 
 
-        $idV= DB::table('compras')->max('id');
-        $idA= DB::table('articulos')->max('id');
-        
-     
         for($x = 0; $x < $request->cantidadarticulos; $x++) {
              
         $compra_articulo= new Compra_articulo;
         
         $compra_articulo->cantidad=$request->cantidad[$x];
+        
+    
         $compra_articulo->preciounitario=$request->precio_u[$x];
         $compra_articulo->subtotal=$request->sub_t[$x];
         $compra_articulo->total=$request->total[$x];
-        $compra_articulo->compra_id=$idV;
+        $compra_articulo->compra_id=$idC;
         $compra_articulo->articulo_id=$request->codigo[$x];
-   
-        $compra_articulo->save();
-        $cantCompra = DB::table('compra_articulo')->pluck('cantidad')->where('id','=', $idA);
-
-       return $cantCompra;
-
-
         
-      
-    //    $cantCompra 
-    //     RETURN   $cantActual;
+        $canA = DB::table('articulos')
+        ->join('compra_articulo', 'articulos.id','=','compra_articulo.articulo_id')
+        ->select('compra_articulo.id')->where('articulo_id','=',$request->codigo[$x])->sum('cantidad');
+                
 
+        $compra_articulo->cantotal=$canA;
+        
+        $compra_articulo->save();
+       
+
+       
         // DB::table('compra_articulo')
         // ->where('id', $compra_articulo->id)
-        // ->update(['cantidad' => $cantActual]);
+        // ->update(['cantotal' => $canA]);
 
      
 

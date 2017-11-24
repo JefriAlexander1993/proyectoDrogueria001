@@ -19,4 +19,20 @@ class Caja extends Model
         return $this->belongsTo('App\Venta');
     }
 
+
+
+    public static  function objectToArray( $ventas ) {
+        
+          if(!is_object($ventas) && !is_array($ventas)) {
+        
+            return $ventas;
+        
+          }
+          
+          return array_map( 'objectToArray', (array) $ventas );
+        
+        }
+  
+    
+
 }

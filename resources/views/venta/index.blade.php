@@ -3,8 +3,18 @@
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
    @section('content')
-   <div class="col-sm-12">
+<div class="row">
+<div class="col-sm-8">
+<div class="form-group">
 <a href="{{route('venta.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+</div>
+</div>
+<div class="col-sm-2">
+<div class="form-group">
+{!!Form:: label('totalventa','Total de ventas')!!}
+<input class="form-control" style="align:right" disabled  value="<?php echo $sumVenta ?>"  type="text">
+</div>
+</div>
 </div>
 
 <div class="row">
@@ -49,9 +59,7 @@ echo phpversion('tidy');
 ?>
 </div>
 </div>
+</div>
+</div>
 
-</div>
-</div>
-               
-     
 @endsection

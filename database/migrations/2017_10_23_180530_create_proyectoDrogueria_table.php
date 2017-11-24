@@ -124,6 +124,7 @@ Schema::create('proveedores', function (Blueprint $table) {
         
         $table->increments('id');
         $table->integer('cantidad');
+        $table->integer('cantotal');
         $table->float('preciounitario');
         $table->float('subtotal');
         $table->float('total');

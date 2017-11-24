@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CajaRequest;
 use PDF;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class CajaController extends Controller
 
@@ -20,17 +21,36 @@ class CajaController extends Controller
 
     }
 
+ 
 
+        
  public function index()
     {
-       
+       $ventas = DB::table('ventas')
+        ->join('users', 'users.id', '=', 'ventas.users_id')
+        ->select('ventas.totalventa')
+        ->get();
+        
+    //     $arrayventa= Caja::objectToArray($ventas);
+              
+    //    return $arrayventa;
+    //     //   $sumArray  =  array_sum($ventas);
+    //     //   echo $sumArray ;
+            
+
+    // //  echo  $arrayventa;
+    //    exit();
+    
+
+
         $cajas = Caja::orderBy('id')->paginate('8');
       
         return  view('caja.index', compact('cajas'));// SE carga en vista y le pasamos la variable
        
     
 }
-    
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -39,13 +59,9 @@ class CajaController extends Controller
      */
     public function create()
     {
-        // $ventas = DB::table('venta_articulo')
-        // ->join('ventas', 'ventas.id', '=', 'venta_articulo.venta_id')
-        // ->select('ventas.totalventa')
-        // ->get();
-        
-        // dd($ventas);
-        return view('caja.create');
+        $idA=Auth::id();
+        $sumVenta = DB::table('ventas')->select('totalventa')->where('users_id','=',$idA)->sum('totalventa'); 
+        return view('caja.create', compact('sumVenta'));
     }
 
     /**
@@ -54,17 +70,21 @@ class CajaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CajaRequest $request)
+    public function store(Request $request)
     {
     
         $caja = new Caja;   /*Crear un instancia*/
         
-        $caja->nombreUsuario= $request->nombreUsuario;
-        $caja->valorInicial= $request->valorInicial;
-        $caja->valorFinal= $request->valorFinal;
+        $caja->nombreusuario= $request->nombreusuario;
+        $caja->valorinicial= $request->valorinicial;
+        $caja->valorfinal= $request->valorfinal;
+        $idA=Auth::id();
+        $sumVenta = DB::table('ventas')->select('totalventa')->where('users_id','=',$idA)->sum('totalventa');
+         
         $caja->ganancia= $request->ganancia;
-       
+
         $caja->save();
+
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue guardada.');
 
@@ -105,13 +125,13 @@ class CajaController extends Controller
      * @param  \App\cajas  $cajas
      * @return \Illuminate\Http\Response
      */
-    public function update(CajaRequest $request, $id)
+    public function update(Request $request, $id)
     {
         
         $caja =Caja::find($id);/*Buscar en caja*/
-        $caja->nombreUsuario= $request->nombreUsuario;
-        $caja->valorInicial= $request->valorInicial;
-        $caja->valorFinal= $request->valorFinal;
+        $caja->nombreusuario= $request->nombreusuario;
+        $caja->valorinicial= $request->valorinicial;
+        $caja->valorfinal= $request->valorfinal;
         $caja->ganancia= $request->ganancia;
 
      /*$request->Validacion*/
