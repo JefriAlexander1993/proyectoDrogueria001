@@ -29,11 +29,19 @@
         </thead>
     <tbody>
         @foreach ($detalles as $articulo)
-       <tr>
+       <tr   
+      
+       @if($articulo->cantidad <= $articulo->stockmin)
        
+       style="background-color:#EF5350;"
+       
+       @endif
+       
+       >
+    
        <td class="text-center">{{$articulo->codigo}}</td>
        <td class="text-center">{{$articulo->nombre}}</td>
-       <td class="text-center">{{$articulo->cantotal}}</td>
+       <td class="text-center">{{$articulo->cantidad}}</td>
        <td class="text-center">{{$articulo->preciounitario}}</td>
        <td class="text-center">{{$articulo->precioventa}}</td>
        <td class="text-center">{{$articulo->stockmin}}</td>
@@ -41,18 +49,7 @@
        @endforeach
         </tbody>
 </table>
-<div class="col-md-11" align="center" >
 
-<?php 
-echo phpversion('tidy');
-?>
-</div>
-
-<div class="col-md-11" align="center" >
-
-<?php 
-echo phpversion('tidy');
-?>
 </div>
 </div>
 </div>

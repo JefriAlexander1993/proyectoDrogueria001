@@ -10,7 +10,7 @@
 <div class="panel-body">
 <div class="col-md-12">
 {!!Form::model($caja,['route'=>['caja.update', $caja->id], 'method'=>'PUT']) !!}<!--Se le pasa, la variable del metodo-->
-@include('caja.fragment.form') <!--Incluyo el formulario-->
+@include('caja.fragment.formCierre') <!--Incluyo el formulario-->
 {!!Form::close()!!}
 </div>
 </div>

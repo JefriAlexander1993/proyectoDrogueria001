@@ -76,21 +76,18 @@ class CompraController extends Controller
         $compra_articulo= new Compra_articulo;
         
         $compra_articulo->cantidad=$request->cantidad[$x];
-        
-    
         $compra_articulo->preciounitario=$request->precio_u[$x];
         $compra_articulo->subtotal=$request->sub_t[$x];
         $compra_articulo->total=$request->total[$x];
         $compra_articulo->compra_id=$idC;
         $compra_articulo->articulo_id=$request->codigo[$x];
-        
-        $canA = DB::table('articulos')
-        ->join('compra_articulo', 'articulos.id','=','compra_articulo.articulo_id')
-        ->select('compra_articulo.id')->where('articulo_id','=',$request->codigo[$x])->sum('cantidad');
-                
+         
+        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first();
+        $articulo->cantidad += $request->cantidad[$x];
 
-        $compra_articulo->cantotal=$canA;
-        
+        $articulo->save();
+
+
         $compra_articulo->save();
        
 

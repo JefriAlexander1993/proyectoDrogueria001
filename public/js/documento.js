@@ -40,14 +40,7 @@ $(document).ready(function() {
 
 var listcodigo = new Array();
 
-// function soloLetras() {
-//     if (event.keyCode > 45 && event.keyCode < 57) event.returnValue = false;
 
-//     // } else {
-
-//     //     toastr.warning('No se puede agregar numeros en este campo.')
-//     // }
-// }
 function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -315,9 +308,6 @@ function deleteRow(id, e) {
 }
 
 
-
-
-
 /************   Cuando se vaya a guarda primero se consulta que el contador sea mayor a cero si no es asi,
                                  se envia un mersaje y se cancela el guardado ************/
 $('#enviarVenta').on("click", function() {
@@ -332,16 +322,7 @@ $('#enviarVenta').on("click", function() {
     }
 });
 
-// $('#enviarVenta').click(function(e) {
-//     var confimar = false;
-//     var confimar = confirm("Desea guardar.");
-//     if (confirmar == false) {
 
-//         e.preventDefault;
-//         // toastr.warning('No se puede agregar la compra', '!No hay ningun articulo agregado.')
-//         // return false;
-//     }
-// });
 
 $('#enviarCompra').on("click", function() {
     if ($('#compra').val() < 1) {
@@ -354,16 +335,3 @@ $('#enviarCompra').on("click", function() {
     }
 });
 
-// $('#reset').on("click", function(event) {
-
-//     var opcion = confirm("Deseas agregar mas información o cambiar tu conseña-");
-//     if (opcion == !true) {
-//         event.preventDefault();
-//     }
-// });
-
-
-// // function resetPassword(passwordReset) {
-
-
-// // }

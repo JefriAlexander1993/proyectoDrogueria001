@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Articulos;
+use App\Articulo;
 use Illuminate\Http\Request;
 use App\Venta;
 use App\Venta_articulo;
@@ -36,7 +36,7 @@ class VentasController extends Controller
         // ->select('articulos.nombre', 'articulos.id')
         // ->get();
       
-        $ventas = Venta::orderBy('id')->paginate(5);
+        $ventas = Venta::orderBy('id','desc' )->paginate(5);
       
         return  view('venta.index', compact('ventas', 'sumVenta'));// SE carga en vista y le pasamos la variable
    
@@ -86,7 +86,11 @@ class VentasController extends Controller
         $venta_articulo->total=$request->total[$x];
         $venta_articulo->venta_id=$idV;
         $venta_articulo->articulo_id=$request->codigo[$x];
-   
+            
+        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first();
+        $articulo->cantidad -= $request->cantidad[$x];
+
+        $articulo->save();
        $venta_articulo->save();
 
        // return $venta_articulo;

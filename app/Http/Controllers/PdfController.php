@@ -12,6 +12,7 @@ use App\Cliente;
 use App\Venta_articulo;
 use PDF;
 use App\Venta;
+use DB;
 
 class PdfController extends Controller
 {
@@ -80,12 +81,28 @@ class PdfController extends Controller
                 return $pdf4->stream('clientes.pdf');
         
             }
-            public function facturaPDF(Venta $venta)
+            public function facturaPDF($id)
         
             {
-                $venta_articulo = Venta_articulo::with('articulo')->where('venta_id', '=', $venta->id)->get();
-                // así lo tengo yo, no falta mas , falta lo de la variablepara el largo de la hoja
-                $pdf4 = PDF::loadView('informe.factura',['venta_articulo'=>$venta_articulo, 'venta' => $venta]);
+                $height=300;
+                $venta_articulo = venta_articulo::orderBy('id','asc')->find($id);
+                $venta=Venta::where('id','=', $venta_articulo->venta_id)->value('totalventa');
+
+              
+                $venta_articulos= DB::table('venta_articulo')
+                ->join('articulos','articulos.id','=', 'venta_articulo.articulo_id')
+                ->join('ventas','ventas.id','=','venta_articulo.venta_id') ->where('venta_articulo.venta_id','=', $venta_articulo ->id)
+                ->select('ventas.id','venta_articulo.cantidad','venta_articulo.preciounitario','venta_articulo.subtotal','venta_articulo.total','articulos.nombre','articulos.codigo', 'articulos.iva')
+                ->get();
+              
+              
+         
+          
+                
+                $height += sizeOf($venta_articulos);
+ 
+                  // así lo tengo yo, no falta mas , falta lo de la variablepara el largo de la hoja
+                $pdf4 = PDF::loadView('informe.factura',['venta_articulo'=>$venta_articulo, 'venta_articulos'=>$venta_articulos, 'venta' => $venta, 'height'=>$height]);
                 return $pdf4->stream('factura.pdf');
         
             }
