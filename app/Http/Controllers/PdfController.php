@@ -85,8 +85,11 @@ class PdfController extends Controller
         
             {
                 $height=300;
-                $venta_articulo = venta_articulo::orderBy('id','asc')->find($id);
-                $venta=Venta::where('id','=', $venta_articulo->venta_id)->value('totalventa');
+                $venta_articulo = venta::find($id);
+               
+                //Total de la venta
+                $venta= Venta::where('id','=', $venta_articulo->id)->value('totalventa');
+                
 
               
                 $venta_articulos= DB::table('venta_articulo')
