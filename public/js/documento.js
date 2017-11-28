@@ -335,3 +335,10 @@ $('#enviarCompra').on("click", function() {
     }
 });
 
+function fechavencimiento() {
+
+    if ($('#fecha').val() == $('#fechavencimiento').val()) {
+        $("#tr").css({ 'background': 'yellow' });
+        toastr.warning('El articulo (medicamento)', '!Debe ser retirado.')
+    }
+}

@@ -94,7 +94,7 @@ Schema::create('proveedores', function (Blueprint $table) {
     Schema::create('cajas', function (Blueprint $table) {
        
         $table->increments('id');
-        $table->string('nombreusuario')->unique();
+        $table->string('nombreusuario');
         $table->float('valorinicial')->default(0);
  
         $table->timestamps();
@@ -105,8 +105,8 @@ Schema::create('proveedores', function (Blueprint $table) {
     Schema::create('detalle_caja', function (Blueprint $table) {
         
         $table->increments('id');
-        $table->float('valorfinal')->default(0);
-        $table->float('ganancia')->default(0);
+        $table->float('valorfinal')->nullable();
+        $table->float('ganancia')->nullable();
 
         $table->integer('caja_id')->unsigned();       
         $table->integer('user_id')->unsigned();
@@ -207,13 +207,6 @@ Schema::create('venta_articulo', function (Blueprint $table) {
 
 
     }
-
-
-
-
-
-
-
 
     /**
      * Reverse the migrations.

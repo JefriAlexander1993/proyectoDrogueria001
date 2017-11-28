@@ -26,16 +26,21 @@ class CajaController extends Controller
 
         
  public function index()
+
     {
-       $ventas = DB::table('ventas')
-        ->join('users', 'users.id', '=', 'ventas.users_id')
-        ->select('ventas.totalventa')
+        
+        $cajas = Caja::orderBy('id')->paginate('8');
+     
+        $idA=Auth::id();
+        $detalles = DB::table('detalle_caja')
+        ->join('cajas', 'detalle_caja.caja_id', '=', 'cajas.id')
+        ->join('users', 'detalle_caja.user_id', '=', 'users.id')
+        ->select('cajas.id','cajas.nombreusuario','cajas.valorinicial','detalle_caja.valorfinal','detalle_caja.ganancia')
         ->get();
 
 
-        $cajas = Caja::orderBy('id')->paginate('8');
       
-        return  view('caja.index', compact('cajas'));// SE carga en vista y le pasamos la variable
+        return  view('caja.index', compact('cajas','detalles'));// SE carga en vista y le pasamos la variable
        
     
 }
@@ -74,9 +79,8 @@ class CajaController extends Controller
         $detalle_caja->user_id= $idA;
         $detalle_caja->caja_id=$caja->id; 
         $detalle_caja->save();
-      
+  
      
-
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue guardada.');
 
@@ -109,13 +113,13 @@ class CajaController extends Controller
   
 
         $sumVenta = DB::table('ventas')->select('totalventa')->where('users_id','=',$idA)->sum('totalventa');
-        // $cajainicial=  DB::table('cajas')->where('id' ,'=', $caja->id)->value('valorinicial');
-        // $ganancia =  $sumVenta - $cajainicial;
-        $cajainicial=  DB::table('detalle_caja')->where('id' ,'=', $caja->id)->value('valorinicial'); 
+     
+        $cajainicial=  DB::table('cajas')->where('id' ,'=', $caja->id)->value('valorinicial'); 
 
         $ganancia =  $sumVenta - $cajainicial;
-     
-        return view('caja.edit', compact('caja', 'sumVenta'));
+
+         
+        return view('caja.edit', compact('caja', 'sumVenta','ganancia'));
     
     }
 
@@ -130,16 +134,15 @@ class CajaController extends Controller
     {
         
         $caja =Caja::find($id);/*Buscar en caja*/
-       
-        
-        $detalle_caja=  DB::table('detalle_caja')->where('caja_id' ,'=', $caja->id)->get();
-        // $sumVenta = DB::table('ventas')->select('totalventa')->where('users_id','=',$idA)->sum('totalventa'); 
-
+            
+         $detalle_caja= detalle_caja::where('caja_id','=',$caja->id)->first();   
         $detalle_caja->valorfinal= $request->valorfinal;
         $detalle_caja->ganancia= $request->ganancia;
-
-     /*$request->Validacion*/
+ 
+        $detalle_caja->save();
         $caja->save();
+
+
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue actualizado.');
     }

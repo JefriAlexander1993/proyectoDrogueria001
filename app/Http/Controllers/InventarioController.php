@@ -22,16 +22,18 @@ class InventarioController extends Controller
      */
     public function index()
     {
-       
-        $detalles=Articulo::orderBy('id')->paginate('8');
-        return  view('inventario.index', compact('detalles'));
-
+        $fechaActual = date("m");
+        $fechavencimiento =$fechaActual-2;
         
-
-        // return $detalles;
-     
-        // $detalles::orderBy('id')->paginate('8');
-        return  view('inventario.index', compact('detalles'));
+    $fechacreate= Articulo::select('created_at')->get();
+    
+    $f=explode("-",$fechacreate);
+    $fecha =$f[1];
+ 
+        $detalles=Articulo::orderBy('id')->paginate('8');
+        return  view('inventario.index', compact('detalles','fechavencimiento','fecha'));
+       
+       
     }
 
   

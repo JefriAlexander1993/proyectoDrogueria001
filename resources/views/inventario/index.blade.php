@@ -1,5 +1,17 @@
 @extends('layouts.apphome')
 @section('content')
+<div class="row">
+<div class="col-sm-1">
+<div class="form-group">
+{!!Form::hidden('fecha', $fecha,['class'=>'form-control','type'=>'hidden','id'=>'fecha'])!!}
+</div>
+</div>
+<div class="col-sm-1">
+<div class="form-group">
+{!!Form::hidden('fechavencimiento', $fechavencimiento,['class'=>'form-control','id'=>'fechavencimiento'])!!}
+</div>
+</div>
+</div>
 
 <div class="col-sm-12">
   @role('admin')
@@ -25,16 +37,18 @@
         <th class="text-center">Precio Unitario</th>
         <th class="text-center">Precio Venta</th>
         <th class="text-center">Stock minimo </th>
+        <th class="text-center">Fecha vencimiento </th>
         </tr>
         </thead>
     <tbody>
         @foreach ($detalles as $articulo)
-       <tr   
+       <tr   id="tr"
+       onmouseover="return fechavencimiento()";
       
        @if($articulo->cantidad <= $articulo->stockmin)
        
        style="background-color:#EF5350;"
-       
+
        @endif
        
        >
@@ -45,6 +59,7 @@
        <td class="text-center">{{$articulo->preciounitario}}</td>
        <td class="text-center">{{$articulo->precioventa}}</td>
        <td class="text-center">{{$articulo->stockmin}}</td>
+       <td class="text-center">{{$articulo->fechavencimiento}}</td>
        </tr>
        @endforeach
         </tbody>
