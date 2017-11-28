@@ -26,19 +26,19 @@ class VentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()     // Funcion que envia al index de venta
     {
 
-        // dd($ventas);
+        
         
         $sumVenta = DB::table('ventas')->select('totalventa')->sum('totalventa');
-        // ->join('articulos', 'articulos.id', '=', 'venta_articulo.articulo_id')
-        // ->select('articulos.nombre', 'articulos.id')
-        // ->get();
+        // Suma el total de las ventas
+        
       
         $ventas = Venta::orderBy('id','desc' )->paginate(5);
-      
-        return  view('venta.index', compact('ventas', 'sumVenta'));// SE carga en vista y le pasamos la variable
+        
+
+        return  view('venta.index', compact('ventas', 'sumVenta'));// Se carga en vista y le pasamos la variable
    
    
     }
@@ -48,10 +48,10 @@ class VentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()        // Funcion encargada de enviar a la vista create de venta
     {
        
-        return view('venta.create');
+        return view('venta.create');    // Retorna al create de venta
     }
 
     /**
@@ -60,25 +60,20 @@ class VentasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // Funcion que almacena los datos de venta
     {   
-
-        // echo 'hola mundo';
-        // exit();
-     
-        $id = Auth::id();
+        $id = Auth::id();           // Obtiene el id del usuario que se encuentra interactuando con el sistema
         $totalVenta=$request->totalVenta;
-        $venta = new Venta; 
+        $venta = new Venta;         // Se crea un nuevo objeto tipo venta
         $venta->totalventa=$totalVenta;
         $venta->users_id=$id;
-        $venta->save();
+        $venta->save();             // Se almacenan los datos
      
        $idV= DB::table('ventas')->max('id');
 
-        // yo iba a hacer esto así jaja
-        for($x = 0; $x < $request->cantidadarticulos; $x++) {
+        for($x = 0; $x < $request->cantidadarticulos; $x++) { // Ciclo el cual almacena todos los articulos entrantes en la venta
              
-        $venta_articulo= new Venta_articulo;
+        $venta_articulo= new Venta_articulo;        // Se crea un nuevo objeto tipo venta_articulo
         
         $venta_articulo->cantidad=$request->cantidad[$x];
         $venta_articulo->preciounitario=$request->precio_u[$x];
@@ -87,16 +82,15 @@ class VentasController extends Controller
         $venta_articulo->venta_id=$idV;
         $venta_articulo->articulo_id=$request->codigo[$x];
             
-        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first();
+        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first(); // Se obtiene el articulo con igual codigo
         $articulo->cantidad -= $request->cantidad[$x];
 
-        $articulo->save();
-       $venta_articulo->save();
+        $articulo->save();                  // Se almacena el articulo
+       $venta_articulo->save();             // Se almacena la venta_articulo
 
-       // return $venta_articulo;
-    }
-return redirect()->route('venta.index')
-->with('info', 'La venta fue guardada.');
+       }
+return redirect()->route('venta.index')     // Redirige a la ruta venta.index (venta/index)
+->with('info', 'La venta fue guardada.');   // El sistema muestra un mensaje de  informacion "La venta fue guardada"
 
 }
     /**
@@ -105,12 +99,9 @@ return redirect()->route('venta.index')
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)       // Funcion que muestra la informacion de la venta
     {
-        // a esto le falta acomodar lo de las llaves foraneas
-        // por que se lalama ventun?, primer vez que veo que se llama asi pana
-       
-        $venta = Venta::find($id); 
+        $venta = Venta::find($id);  // Busca una venta por medio de su id
       
 
         $detalles = DB::table('venta_articulo')
@@ -118,8 +109,9 @@ return redirect()->route('venta.index')
         ->select('venta_articulo.*','articulos.nombre')->where('venta_articulo.venta_id', '=', $venta->id)
         ->get();
         
-    //  return $detalles;
-        return view('venta.show', compact('venta', 'detalles'));
+        // Se obtienen los detalles de la venta_articulo
+    
+        return view('venta.show', compact('venta', 'detalles'));    // Retorna a la vista show de venta con la variables venta y detalles
     }
 
     /**
@@ -128,11 +120,11 @@ return redirect()->route('venta.index')
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id)       // Funcion que encuentra una venta por medio del id
     {
-        $venta = Venta::find($id); // Busca un Producto por medio del  id-
+        $venta = Venta::find($id); // Busca una venta por medio del  id
         
-        return view('venta.edit', compact('venta'));
+        return view('venta.edit', compact('venta'));    // Retorna a la vista edit de venta con la variable venta
     }
 
     /**
@@ -142,17 +134,14 @@ return redirect()->route('venta.index')
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function update(VentaRequest $request, $codigo)
+    public function update(VentaRequest $request, $codigo)  // Funcion que actualiza los datos de la venta
     {
-        $venta = new Venta; 
+        $venta = new Venta;             // Se crea un objeto de tipo venta
         $venta->totalventa=$request->totalventa;
        
- 
- 
-        /*$request->Validacion*/
-        $venta->save();
-        return redirect()->route('venta.index')
-        ->with('info', 'La venta fue guardada.');
+        $venta->save();                 // Se almacena la informacion
+        return redirect()->route('venta.index')     // Redirige a la ruta venta.index (venta/index)
+        ->with('info', 'La venta fue guardada.');   // El sistema muestra un mensaje de informacion "La venta fue guardada"
     }
 
     /**
@@ -161,10 +150,10 @@ return redirect()->route('venta.index')
      * @param  \App\ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($codigo)
+    public function destroy($codigo)  // Funcion que elimina una venta por medio de un codigo
     {
-        $venta = Venta::find($codigo);
-        $venta->delete();
-        return back()->with('info', 'La venta fue eliminada');
+        $venta = Venta::find($codigo);      // Busca una venta por medio de su codigo
+        $venta->delete();                   // Elimina la venta
+        return back()->with('info', 'La venta fue eliminada'); // Retorna a la pagina anterior con el mensaje de informacion "La venta fue eliminada"
     }
 }

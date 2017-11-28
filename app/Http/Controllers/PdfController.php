@@ -26,7 +26,7 @@ class PdfController extends Controller
    
    
    
-    public function cajasPDF()
+    public function cajasPDF()          // Funcion que genera el pdf de caja
     
         {
             $cajas1 = Caja::all();
@@ -38,7 +38,7 @@ class PdfController extends Controller
         }
 
 
-         public function productosPDF()
+         public function productosPDF()          // Funcion que genera el pdf de productos
         
              {
                  $productos1 = Producto::all();
@@ -49,7 +49,7 @@ class PdfController extends Controller
         
              }
         
-        public function proveedoresPDF()
+        public function proveedoresPDF()          // Funcion que genera el pdf de proveedores
         
             {
                 $proveedores1 = Proveedor::all();
@@ -61,7 +61,7 @@ class PdfController extends Controller
 
 
 
-        public function articulosPDF()
+        public function articulosPDF()          // Funcion que genera el pdf de articulos
         
             {
                 $articulos1 = Articulo::all();
@@ -72,7 +72,7 @@ class PdfController extends Controller
             }
 
 
-            public function clientesPDF()
+            public function clientesPDF()          // Funcion que genera el pdf de clientes
         
             {
                 $clientes1 = Cliente::all();
@@ -81,7 +81,7 @@ class PdfController extends Controller
                 return $pdf4->stream('clientes.pdf');
         
             }
-            public function facturaPDF($id)
+            public function facturaPDF($id)          // Funcion que genera el pdf de factura
         
             {
                 $height=300;

@@ -20,18 +20,11 @@ class InventarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()     // Funcion encargada de enviar al index de inventario
     {
        
         $detalles=Articulo::orderBy('id')->paginate('8');
-        return  view('inventario.index', compact('detalles'));
-
-        
-
-        // return $detalles;
-     
-        // $detalles::orderBy('id')->paginate('8');
-        return  view('inventario.index', compact('detalles'));
+        return  view('inventario.index', compact('detalles'));      // Retorna a la vista index del inventario
     }
 
   

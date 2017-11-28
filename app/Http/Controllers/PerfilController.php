@@ -23,24 +23,24 @@ class PerfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()         // Funcion que envia al index de perfil
     {
 
-   	  return  view('perfil.index');
+   	  return  view('perfil.index');     // Retorna la vista index de perfil
     }
 
     
-    public function show()
+    public function show()          // Funcion que muestra la informacion del perfil
     {
-        $id = Auth::id();
+        $id = Auth::id();           // Se obtiene el id del usuario interactuando con el sistem
 
          $perfil = DB::table('users')
         ->select('id','name', 'email', 'password', 'pais', 'ciudad', 'fechaNacimiento', 'estudios', 'informacionPersonal')->where('users.id', '=', $id)
         ->first();
-        
+        // Se obtienen todos los datos del perfil
       
 
-           return view('perfil.show', compact('perfil'));
+           return view('perfil.show', compact('perfil'));       // Se retorna a la vista show de perfil
     }
 
     /**
@@ -49,15 +49,17 @@ class PerfilController extends Controller
      * @param  \App\perfiles  $perfiles
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit()          // Funcion que encuentra un cliente
 
-    {
-        $id = Auth::id();
+    {   
+        $id = Auth::id();           // Se obtiene el id del usuario que se encuentra interactuando con el sistema
         $perfil = DB::table('users')
         ->select('id','name', 'email', 'password', 'pais', 'ciudad', 'fechaNacimiento', 'estudios', 'informacionPersonal')->where('users.id', '=', $id)
         ->first();
-        
-        return view('perfil.edit', compact('perfil'));
+        // Se obtiene toda la informacion de ese usuario
+
+
+        return view('perfil.edit', compact('perfil'));  // Se retorna a la vista edit de perfil con la variable perfil
     }
   
 
@@ -68,14 +70,13 @@ class PerfilController extends Controller
      * @param  \App\perfiles  $perfiles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request) // Funcion que actualiza los datos del perfil (usuario)
 
     {
 
-        $id = Auth::id();
-        $perfil = User::find($id);
+        $id = Auth::id();               // Obtiene el id del usuario que se encuentra interactuando con el sistema
+        $perfil = User::find($id);      // Busca el usuario por medio del id
       
-        // $perfil->id=$id;
         $perfil->name=$request->name;
         $perfil->email=$request->email;
         $perfil->pais=$request->pais;
@@ -88,9 +89,9 @@ class PerfilController extends Controller
 
  
  
-        $perfil->save();
-        return redirect()->route('perfil.show', $id)
-        ->with('info', 'El perfil fue guardado.');
+        $perfil->save();                    // Actualiza los datos del perfil (usuario)
+        return redirect()->route('perfil.show', $id)        // Redirige a la ruta perfil.show (perfil/show) con la variable del id
+        ->with('info', 'El perfil fue guardado.');      // El sistema muestra un mensaje de informacion diciendo "El perfil fue guardado"
     }
 
     /**
