@@ -38,8 +38,8 @@ class Articulo extends Model
 
     public function scopeSearch($query, $codigo){
 
-return $query->where('codigo','LIKE',"%$codigo%");
-// return $query->where('type', $type);
+return $query->where('codigo','LIKE',"%$codigo%"); // Realiza la busqueda en base de datos de acuerdo al codigo
+
     }
    
 

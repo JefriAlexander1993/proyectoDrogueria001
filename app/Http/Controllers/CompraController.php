@@ -28,7 +28,7 @@ class CompraController extends Controller
      */
 
  
-    public function index()
+    public function index()     // Funcion que envia al index de compra
     {
  
         // $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
@@ -36,7 +36,7 @@ class CompraController extends Controller
 
         // return $productos;
         
-        return  view('compra.index', compact('compras'));// SE carga en vista y le pasamos la variable
+        return  view('compra.index', compact('compras'));// Se carga en vista y le pasamos la variable
     }
     
 
@@ -45,9 +45,9 @@ class CompraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()        // Funcion encargada de enviar a la vista create de compra
     {
-        return view('compra.create');
+        return view('compra.create'); // Retorna a la vista create de compra
     }
 
     /**
@@ -56,22 +56,22 @@ class CompraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)     // Funcion que almacena los datos de compra
     {
       
 
-        $id = Auth::id();
+        $id = Auth::id();       // Obtiene el id del usuario que esta interactuando con el sistema
         $totalCompra=$request->totalCompra;
 
-        $compra = new Compra;
+        $compra = new Compra;   // Crea un objeto tipo compra
 
         $compra->totalcompra=$totalCompra;
         $compra->users_id=$id;
-        $compra->save();
+        $compra->save();        // guarda los datos entrantes de la nueva compra
         $idC=$compra->id;
 
 
-        for($x = 0; $x < $request->cantidadarticulos; $x++) {
+        for($x = 0; $x < $request->cantidadarticulos; $x++) {   // Ciclo el cual almacena todos los articulos entrantes en la compra
              
         $compra_articulo= new Compra_articulo;
         
@@ -89,18 +89,9 @@ class CompraController extends Controller
 
 
         $compra_articulo->save();
-       
-
-       
-        // DB::table('compra_articulo')
-        // ->where('id', $compra_articulo->id)
-        // ->update(['cantotal' => $canA]);
-
-     
-
-       }
-        return redirect()->route('compra.index')
-         ->with('info', 'La compra fue guardada.');
+        }
+        return redirect()->route('compra.index')        // Redirige a la ruta compra.index (compra/index)
+         ->with('info', 'La compra fue guardada.');     // El sistema arroja el mensaje "La compra fue guardada"
 
 
 }
@@ -111,20 +102,20 @@ class CompraController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)       // Funcion que muestra la informacion de la compra
     {
         
-        $compra = Articulo::find($id); // Busca un Articulo por medio del  id-
+        $compra = Articulo::find($id); // Busca una compra por medio del  id
 
 
         $detalles = DB::table('compra_articulo')
         ->join('articulos','articulos.id','=', 'compra_articulo.articulo_id')
         ->select('compra_articulo.*','articulos.nombre')->where('compra_articulo.compra_id', '=', $compra->id)
         ->get();
+        // Se obtienen los detalles de la compra de acuerdo a su id
 
 
-
-         return view('compra.show', compact('compra', 'detalles'));
+         return view('compra.show', compact('compra', 'detalles'));  // Retorna a la vista show de compra con las variables compra y detalles
     }
 
     /**
@@ -133,13 +124,13 @@ class CompraController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id)       // Funcion que encuentra una compra por medio del id
     {
         
-        $compra = Articulo::find($id); // Busca un Articulo por medio del  id-
+        $compra = Articulo::find($id); // Busca un Articulo por medio del  id
         
 
-        return view('compra.edit', compact('compra'));
+        return view('compra.edit', compact('compra'));  // Retorna a la vista edit de compra con la variable compra
     
     }
 
@@ -150,15 +141,15 @@ class CompraController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)   // Funcion que encuentra una compra por medio del id
     {
  
-        $compra = new Venta; 
+        $compra = new Venta;        // Crea un nuevo objeto de tipo 
         $compra->totalcompra=$request->totalcompra;
        
  
  
-        $compra->save();
+        $compra->save();            // guarda los datos actualizados de la compra
         return redirect()->route('compra.index')
         ->with('info', 'La compra fue guardado.');
     }
@@ -169,35 +160,12 @@ class CompraController extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy( $id)   // Funcion encargada de eliminar compras por medio de una id
     {
        
-        $compra = Compra::find($id);
-        $compra->delete();
-        return back()->with('info', 'La compra fue eliminado');
+        $compra = Compra::find($id);        // Busca una compra por medio de su id
+        $compra->delete();                  // Elimina la compra encontrada
+        return back()->with('info', 'La compra fue eliminado'); // Retorna atras con un mensaje de informacion "La compra fue eliminada"
     }
 
-    // public function getCompraByCodigo($codigo)
-    // {
-            
-    //     echo 'hola mundo';
-    //     $compra=DB::table('articulos')->where('codigo', $codigo)->get(['id','codigo', 'nombre',
-    //     'cantidad', 'precioventa', 'iva']);
-
-    //     dd($compra);
-    //     exit();
-    //     if(count($compra)>0){
-    //         $answer=array(
-    //             "datos" => $compra,
-    //             "code" => 200
-    //         ); 
-    //     }else{
-    //     $answer=array(
-    //         "error" => 'No existen datos con ese codigo.',
-    //         "code" => 600
-    //     ); 
-    // }
-    //      return response()->json($answer);
-        
-    // }
-}
+    }

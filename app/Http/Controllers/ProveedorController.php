@@ -22,11 +22,11 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request)     // Funcion que dirige al index de proveedor
     {
         
         $proveedors = Proveedor::orderBy('id')->paginate('8');
-        return  view('proveedor.index', compact('proveedors'));// SE carga en vista y le pasamos la variable
+        return  view('proveedor.index', compact('proveedors'));// Se carga en vista y le pasamos la variable
         
     }
 
@@ -35,11 +35,11 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()            // Funcion encargada de enviar a la vista create de proveedor
     {
          $articulos = Articulo::pluck('nombre','id');
 
-        return view('proveedor.create' , compact('articulos'));
+        return view('proveedor.create' , compact('articulos'));     // Retorna la vista create de proveedor
     }
 
     /**
@@ -48,10 +48,10 @@ class ProveedorController extends Controller
      * @param  \Illuminate\Http\Request  
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // Funcion que almacena los datos de proveedor
     {
         
-        if(Proveedor::nitUnico($request->nit)){
+        if(Proveedor::nitUnico($request->nit)){     // Condicional si el proveedor posee un nit unico
        
        $proveedor = new Proveedor; 
        $proveedor->nit=$request->nit;
@@ -61,19 +61,17 @@ class ProveedorController extends Controller
        $proveedor->telefono=$request->telefono;
        $proveedor->email=$request->email;
        $proveedor->observacion=$request->observacion;
-       /*$request->Validacion*/
-    //    dd($request);
-       $proveedor->save();
 
-    //    dd($proveedor);
-       return redirect()->route('proveedor.index')
-       ->with('info', 'El proveedor fue guardado.');
-//*Guardado todos los camppos guardados y mira si todos los capos son validos*//
+       $proveedor->save();          // Se almacena la informacion
+
+       return redirect()->route('proveedor.index')      // Redirige a la ruta proveedor.index (proveedor/index)
+       ->with('info', 'El proveedor fue guardado.');    // El sistema muestra un mensaje de informacion "El proveedor fue guardado"
+
         }
-        else{
+        else{   // En caso de no ser un nit unico
 
-            return redirect()->route('proveedor.create')
-            ->with('info', 'Ya existe un proveedor registrado con este nit.');
+            return redirect()->route('proveedor.create')    // Redirige ala ruta  proveedor.index (proveedor/
+            ->with('info', 'Ya existe un proveedor registrado con este nit.'); // El sistema muestra un mensaje de informacion "Ya existe un proveedor registrado con este nit."
         }
    
     }
@@ -84,10 +82,10 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)       // Funcion que muestra la informacion del proveedor
     {
-        $proveedor = Proveedor::find($id); // Busca un Producto por medio del  id-
-        return view('proveedor.show', compact('proveedor'));
+        $proveedor = Proveedor::find($id); // Busca un proveedor por medio del  id
+        return view('proveedor.show', compact('proveedor'));    // Retorna a la vista show de proveedor con la variable proveedor
     }
 
     /**
@@ -96,11 +94,11 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id)       // Funcion que encuentra un proveedor por medio del id
     {
-        $proveedor = Proveedor::find($id); // Busca un Producto por medio del  id-
+        $proveedor = Proveedor::find($id); // Busca un proveedor por medio del  id
       
-        return view('proveedor.edit', compact('proveedor'));
+        return view('proveedor.edit', compact('proveedor'));    // Retorna a la vista edir de proveedor con la variable proveedor
         
     }
 
@@ -111,10 +109,10 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,$id)  // Funcion que actualiza los datos del proveedor
     {
 
-        $proveedor =Proveedor::find($id);
+        $proveedor =Proveedor::find($id);       // Busca un proveedor por medio de la id
 
         $proveedor->nit=$request->nit;
         
@@ -126,10 +124,9 @@ class ProveedorController extends Controller
         $proveedor->observacion=$request->observacion;
 
  
-        /*$request->Validacion*/
-        $proveedor->save();
-        return redirect()->route('proveedor.index')
-        ->with('info', 'El proveedor fue actualizado.');
+        $proveedor->save();         // Almacena la informacion a actualizar
+        return redirect()->route('proveedor.index') // Redirige a la ruta proveedor.index (proveedor/index)
+        ->with('info', 'El proveedor fue actualizado.');    // El sistema muestra un mensaje de informacion "El proveedor fue actualizado"
         
     }
 
@@ -139,10 +136,10 @@ class ProveedorController extends Controller
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)  // Funcion que elimina un proveedor por medio de una id
     {
-        $proveedor = Proveedor::find($id);
-        $proveedor->delete();
-        return back()->with('danger', 'El proveedor fue eliminado');
+        $proveedor = Proveedor::find($id);      // Busca al proveedor por medio de su id
+        $proveedor->delete();                   // Elimina al proveedor
+        return back()->with('danger', 'El proveedor fue eliminado');    // Retorna a la pagina anterior con el mensaje de informacion "El proveedor fue eliminado"
     }
 }

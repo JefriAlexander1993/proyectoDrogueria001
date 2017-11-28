@@ -20,7 +20,7 @@ class InventarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()     // Funcion encargada de enviar al index de inventario
     {
         $fechaActual = date("m");
         $fechavencimiento =$fechaActual-2;

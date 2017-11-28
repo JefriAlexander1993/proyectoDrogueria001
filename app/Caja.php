@@ -21,7 +21,7 @@ class Caja extends Model
 
 
 
-    public static  function objectToArray( $ventas ) {
+    public static  function objectToArray( $ventas ) { //Obtiene un objeto y lo convierte a texto (array)
         
           if(!is_object($ventas) && !is_array($ventas)) {
         
