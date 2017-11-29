@@ -51,7 +51,7 @@ class ProveedorController extends Controller
     public function store(Request $request) // Funcion que almacena los datos de proveedor
     {
         
-        if(Proveedor::nitUnico($request->nit)){     // Condicional si el proveedor posee un nit unico
+        if(Proveedor::nitUnico($request->nit) &&  Proveedor::nombreUnico($request->nombreproveedor)){     // Condicional si el proveedor posee un nit unico
        
        $proveedor = new Proveedor; 
        $proveedor->nit=$request->nit;
@@ -71,7 +71,7 @@ class ProveedorController extends Controller
         else{   // En caso de no ser un nit unico
 
             return redirect()->route('proveedor.create')    // Redirige ala ruta  proveedor.index (proveedor/
-            ->with('info', 'Ya existe un proveedor registrado con este nit.'); // El sistema muestra un mensaje de informacion "Ya existe un proveedor registrado con este nit."
+            ->with('info', 'Ya existe un proveedor registrado con este nit o con este nombre.'); // El sistema muestra un mensaje de informacion "Ya existe un proveedor registrado con este nit."
         }
    
     }

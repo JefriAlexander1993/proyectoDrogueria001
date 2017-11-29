@@ -20,4 +20,15 @@ class proveedor extends Model
         }
 
     }
+   
+    public static function nombreUnico($nombre){
+        
+        $nomproveedor = Proveedor::where('nombreproveedor', '=', $nombre)->count();
+        if($nomproveedor == 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }

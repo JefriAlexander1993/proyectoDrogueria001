@@ -28,6 +28,11 @@ class PerfilController extends Controller
 
    	  return  view('perfil.index');     // Retorna la vista index de perfil
     }
+    public function create()         // Funcion que envia al index de perfil
+    {
+
+   	  return  view('perfil.create');     // Retorna la vista index de perfil
+    }
 
     
     public function show()          // Funcion que muestra la informacion del perfil

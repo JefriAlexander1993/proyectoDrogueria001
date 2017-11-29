@@ -54,9 +54,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     Ingresar
                                 </button>
-
+                                <a href="{{ url('/register') }}"> Desea registar un usuario?<span class="sr-only">(current)</span></a></li> 
+               
                                 <!-- <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Olvidaste tu contraseña?
+                                   
                                 </a> -->
                             </div>
                         </div>

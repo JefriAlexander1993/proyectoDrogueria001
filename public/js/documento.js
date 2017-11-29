@@ -80,7 +80,7 @@ function soloNumeros(evt) {
     if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6) {
         return true;
     } else {
-        toastr.warning('Unicamente permite ingresar numeros de Nuip.')
+        toastr.warning('Unicamente permite ingresar numeros.')
         return false;
     }
 }
@@ -339,6 +339,7 @@ function fechavencimiento() {
 
     if ($('#fecha').val() == $('#fechavencimiento').val()) {
         $("#tr").css({ 'background': 'yellow' });
-        toastr.warning('El articulo (medicamento)', '!Debe ser retirado.')
+        // toastr.warning('El articulo (medicamento)', '!Debe ser retirado.')
     }
 }
+m

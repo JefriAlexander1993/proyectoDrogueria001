@@ -36,18 +36,17 @@ class PdfController extends Controller
             return $pdf->stream('cajas.pdf');
     
         }
+    public function comprasPDF()          // Funcion que genera el pdf de caja
+    
+        {
+            $cajas1 = Compras::all();
+            
+            $pdf = PDF::loadView('informe.cajas',['cajas1'=>$cajas1]);
+             
+            return $pdf->stream('cajas.pdf');
+    
+        }
 
-
-         public function productosPDF()          // Funcion que genera el pdf de productos
-        
-             {
-                 $productos1 = Producto::all();
-                
-                 $pdf1 = PDF::loadView('informe.productos',['productos1'=>$productos1]);
-                 
-                 return $pdf1->stream('productos.pdf');
-        
-             }
         
         public function proveedoresPDF()          // Funcion que genera el pdf de proveedores
         

@@ -3,7 +3,7 @@
 <div class="col-sm-12">
 @role('admin')
    <a href="{{route('compra.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
-   <a href="{{url('/productopdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+   <a href="{{url('/compraspdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 
    @endrole</div>  
 

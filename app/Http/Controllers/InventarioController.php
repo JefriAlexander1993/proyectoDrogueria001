@@ -36,5 +36,21 @@ class InventarioController extends Controller
        
     }
 
-  
+    public function create(){
+
+    return view('inventario.create');
+
+    }
+    public function edit(){
+
+        return view('inventario.edit');
+
+    }
+    public function show(){
+
+        return view('inventario.show');
+
+    }
+
+    
 }

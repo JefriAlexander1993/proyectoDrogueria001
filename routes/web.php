@@ -34,7 +34,7 @@ Route::get("/backup","backupController@index")->name('backup');
         Route::get('articulo/getArticulo/{codigo}' , 'ArticuloController@getArticuloByCodigo')->name('articulo.getcodigo');
         Route::get("/cajapdf","PdfController@cajasPDF");  
         Route::get("/proveedorpdf","PdfController@proveedoresPDF");  
-        Route::get("/productopdf","PdfController@productosPDF");  
+        Route::get("/compraspdf","PdfController@comprasPDF");  
         Route::get("/articulopdf","PdfController@articulosPDF"); 
         Route::get("/clientepdf","PdfController@clientesPDF"); 
         Route::get("/facturapdf","PdfController@facturaPDF"); 

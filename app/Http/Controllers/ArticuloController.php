@@ -53,7 +53,7 @@ class ArticuloController extends Controller
      */
     public function store(Request $request) //Funcion que se encarga de almacenar todos los datos del articulo
     {
-        
+        if(Articulo::codigoUnico($request->codigo)){ 
         $articulo = new articulo;   //Crea un nuevo articulo
         
         $articulo->codigo= $request->codigo;
@@ -79,7 +79,13 @@ class ArticuloController extends Controller
         return redirect()->route('articulo.index', $pivot)  //Redirige a la vista index de articulo
         ->with('info', 'El articulo fue guardado.');
 
-    
+        }else{
+
+            return redirect()->route('articulo.create')  // Se redirige a  la ruta cliente.create (cliente/create)
+            ->with('info', 'Ya existe un articulo con el codigo digitado.'); // El sistema arroja la informacion "Ya existe un cliente con el nuip digitado"
+
+        }
+
 
         }
     /**

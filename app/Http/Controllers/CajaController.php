@@ -144,7 +144,6 @@ class CajaController extends Controller
         $detalle_caja->save();
         $caja->save();
 
-
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue actualizado.');
     }
