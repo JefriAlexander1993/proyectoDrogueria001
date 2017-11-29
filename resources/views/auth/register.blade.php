@@ -66,6 +66,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Registrar
                                 </button>
+                                <a href="{{ url('/login') }}"> Ya posee una cuenta?<span class="sr-only">(current)</span></a>
                             </div>
                         </div>
                     </form>

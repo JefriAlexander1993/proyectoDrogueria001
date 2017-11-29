@@ -39,8 +39,8 @@
                     </button>
                 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                   <strong>Sistema de control JDG.</strong>
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                   <strong>Sistema de control J & D.</strong>
                     </a>
                 </div>
                  <div class="collapse navbar-collapse" id="app-navbar-collapse">

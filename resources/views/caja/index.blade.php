@@ -3,7 +3,7 @@
 
 <div class="col-sm-12">
 <a href="{{route('caja.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
-<a href="{{url('/cajapdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+<!-- <a href="{{url('/cajapdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> -->
 
 </div>
 

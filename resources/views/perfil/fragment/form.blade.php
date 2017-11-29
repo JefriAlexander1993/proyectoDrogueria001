@@ -2,13 +2,13 @@
 <div class="col-sm-6">
 <div class="form-group row has-success">
 {!! Form::label('name','Nombre(*).')!!}
-{!!Form::text('name',null,['class'=>'form-control','Nombre del usuario','disabled' => 'disabled','title'=>'Nombre.','id'=>'name','required'=>'required'])!!}
+{!!Form::text('name',null,['class'=>'form-control','Nombre del usuario','title'=>'Nombre.','id'=>'name','required'=>'required'])!!}
 </div>
 </div>
 <div class="col-sm-6">
 <div class="form-group row has-success">
 {!! Form::label('email','Correo Electronico(*).')!!}
-{!!Form::text('email',null,['class'=>'form-control','disabled' => 'disabled','title'=>'CorreoElectronico.','id'=>'email','required'=>'required'])!!}
+{!!Form::text('email',null,['class'=>'form-control','title'=>'CorreoElectronico.','id'=>'email','required'=>'required'])!!}
 </div>
 </div>
 </div>
@@ -43,7 +43,7 @@
 <div class="col-sm-12">
 <div class="form-group row has-success" >
 {!! Form::label('password','Contraseña.')!!}
-{!!Form::password('password',['class'=>'form-control','placeholder'=>'Nueva contraseña','required'=>'required','title'=>'Contraseña.','id'=>'password'])!!}
+{!!Form::password('password',['class'=>'form-control','placeholder'=>'Nueva contraseña','title'=>'Contraseña.','id'=>'password'])!!}
 </div>
 </div>
 </div>

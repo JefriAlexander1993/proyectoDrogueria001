@@ -136,6 +136,8 @@ Schema::create('proveedores', function (Blueprint $table) {
         $table->timestamps();
     });
 
+
+
          /*--------------------------COMPRA_ARTICULO------------------------------------*/
   
     
@@ -143,12 +145,11 @@ Schema::create('proveedores', function (Blueprint $table) {
         
         $table->increments('id');
         $table->integer('cantidad');
-        $table->integer('cantotal');
         $table->float('preciounitario');
         $table->float('subtotal');
         $table->float('total');
-        $table->integer('compra_id')->unsigned();       
-        $table->integer('articulo_id')->unsigned();
+        $table->integer('compra_id')->unsigned()->nullable();       
+        $table->integer('articulo_id')->unsigned()->nullable();
 
 
          $table->foreign('compra_id')->references('id')->on('compras')
@@ -190,8 +191,8 @@ Schema::create('venta_articulo', function (Blueprint $table) {
     $table->float('preciounitario');
     $table->float('subtotal');
     $table->float('total');
-    $table->integer('venta_id')->unsigned();       
-    $table->integer('articulo_id')->unsigned();
+    $table->integer('venta_id')->unsigned()->nullable();       
+    $table->integer('articulo_id')->unsigned()->nullable();
      
      $table->foreign('venta_id')->references('id')->on('ventas')
      ->onUpdate('cascade')->onDelete('cascade');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +35,8 @@ class usersController extends Controller
     public function show($id)
     {
         $user = user::find($id); // Busca un user por medio del  id-
-         return view('user.show', compact('user'));
+        
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -46,8 +48,8 @@ class usersController extends Controller
     public function edit($id)
     {
     
-        $user = user::find($id); // Busca un user por medio del  id-
-        
+        $user = User::find($id); // Busca un user por medio del  id-
+      
         return view('user.edit', compact('user'));
     
     }
@@ -62,7 +64,7 @@ class usersController extends Controller
     public function update(Request $request, $id)
     {
         
-        $user =user::find($id);/*Buscar en user*/
+        $user =User::find($id);/*Buscar en user*/
 
         $user->nuip= $request->nuip;
         $user->nombre= $request->nombre;

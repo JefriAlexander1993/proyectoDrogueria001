@@ -73,20 +73,24 @@ class VentasController extends Controller
 
         for($x = 0; $x < $request->cantidadarticulos; $x++) { // Ciclo el cual almacena todos los articulos entrantes en la venta
              
-        $venta_articulo= new Venta_articulo;        // Se crea un nuevo objeto tipo venta_articulo
+        $venta_articulo= new Venta_articulo;     
+
         
+
         $venta_articulo->cantidad=$request->cantidad[$x];
         $venta_articulo->preciounitario=$request->precio_u[$x];
         $venta_articulo->subtotal=$request->sub_t[$x];
         $venta_articulo->total=$request->total[$x];
-        $venta_articulo->venta_id=$idV;
-        $venta_articulo->articulo_id=$request->codigo[$x];
-            
-        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first(); // Se obtiene el articulo con igual codigo
+        $venta_articulo->venta_id= $venta->id;
+       
+        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first() ;
         $articulo->cantidad -= $request->cantidad[$x];
+        $venta_articulo->articulo_id=$articulo->id;
+        $articulo->save();  
 
-        $articulo->save();                  // Se almacena el articulo
-       $venta_articulo->save();             // Se almacena la venta_articulo
+
+      
+       $venta_articulo->save();
 
        }
 return redirect()->route('venta.index')     // Redirige a la ruta venta.index (venta/index)

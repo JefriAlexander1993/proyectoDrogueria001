@@ -15,7 +15,7 @@
 
 <div class="col-sm-12">
   @role('admin')
-<a href="{{url('/articulopdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+<a href="{{url('/articulopdf')}}" target="_blank class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 @endrole
 </div>
 

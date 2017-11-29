@@ -3,7 +3,7 @@
    @role('admin')
    <div class="col-sm-12">
    <a href="{{route('proveedor.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
-   <a href="{{url('/proveedorpdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+   <a href="{{url('/proveedorpdf')}}" target="_blank class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
    </div>
    @endrole 
    <div class="row">

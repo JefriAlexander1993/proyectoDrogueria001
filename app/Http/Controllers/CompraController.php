@@ -68,28 +68,31 @@ class CompraController extends Controller
         $compra->totalcompra=$totalCompra;
         $compra->users_id=$id;
         $compra->save();        // guarda los datos entrantes de la nueva compra
-        $idC=$compra->id;
+       
 
 
-        for($x = 0; $x < $request->cantidadarticulos; $x++) {   // Ciclo el cual almacena todos los articulos entrantes en la compra
-             
-        $compra_articulo= new Compra_articulo;
+       for($x = 0; $x < $request->cantidadarticulos; $x++) {   // Ciclo el cual almacena todos los articulos entrantes en la compra
+         
+          $compra_articulo= new Compra_articulo;     
+
         
+
         $compra_articulo->cantidad=$request->cantidad[$x];
         $compra_articulo->preciounitario=$request->precio_u[$x];
         $compra_articulo->subtotal=$request->sub_t[$x];
         $compra_articulo->total=$request->total[$x];
-        $compra_articulo->compra_id=$idC;
-        $compra_articulo->articulo_id=$request->codigo[$x];
-         
-        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first();
+        $compra_articulo->compra_id= $compra->id;
+       
+        $articulo =Articulo::where('codigo','=',$request->codigo[$x])->first() ;
         $articulo->cantidad += $request->cantidad[$x];
+        $compra_articulo->articulo_id=$articulo->id;
+        $articulo->save();  
 
-        $articulo->save();
 
+      
+       $compra_articulo->save();
 
-        $compra_articulo->save();
-        }
+    }
         return redirect()->route('compra.index')        // Redirige a la ruta compra.index (compra/index)
          ->with('info', 'La compra fue guardada.');     // El sistema arroja el mensaje "La compra fue guardada"
 

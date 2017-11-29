@@ -1,8 +1,8 @@
-@if(Session::has('info'))
+@if(Session::has('danger'))
 <div class="alert alert-info">
 <button type="button" class="close" data-dismiss="alert">
 &times;
 </button>
-{{Session::get('info')}}
+<i class="fa fa-exclamation-circle" aria-hidden="true"></i>{{Session::get('danger')}}
 </div>
 @endif

@@ -13,6 +13,9 @@ use App\Venta_articulo;
 use PDF;
 use App\Venta;
 use DB;
+use Compra_articulo;
+
+
 
 class PdfController extends Controller
 {
@@ -39,7 +42,7 @@ class PdfController extends Controller
     public function comprasPDF()          // Funcion que genera el pdf de caja
     
         {
-            $cajas1 = Compras::all();
+            $cajas1 = Compra_articulo::all();
             
             $pdf = PDF::loadView('informe.cajas',['cajas1'=>$cajas1]);
              

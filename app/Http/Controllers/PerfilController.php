@@ -78,6 +78,28 @@ class PerfilController extends Controller
     public function update(Request $request) // Funcion que actualiza los datos del perfil (usuario)
 
     {
+        if (is_null($request->password)) {  // Si el campo de contraseña es vacio entonces no se modificara la contraseña
+    
+
+        $id = Auth::id();               // Obtiene el id del usuario que se encuentra interactuando con el sistema
+        $perfil = User::find($id);      // Busca el usuario por medio del id
+      
+        $perfil->name=$request->name;
+        $perfil->email=$request->email;
+        $perfil->pais=$request->pais;
+        $perfil->ciudad=$request->ciudad;
+        $perfil->fechaNacimiento=$request->fechaNacimiento;
+        $perfil->estudios=$request->estudios;
+        $perfil->informacionPersonal=$request->informacionPersonal;
+       
+
+ 
+ 
+        $perfil->save();                    // Actualiza los datos del perfil (usuario)
+        return redirect()->route('perfil.show', $id)        // Redirige a la ruta perfil.show (perfil/show) con la variable del id
+        ->with('info', 'El perfil fue guardado.');      // El sistema muestra un mensaje de informacion diciendo "El perfil fue guardado"
+
+}else{                                  // En caso de no ser vacia entonces se modificara la contraseña
 
         $id = Auth::id();               // Obtiene el id del usuario que se encuentra interactuando con el sistema
         $perfil = User::find($id);      // Busca el usuario por medio del id
@@ -106,4 +128,5 @@ class PerfilController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+}
 }
