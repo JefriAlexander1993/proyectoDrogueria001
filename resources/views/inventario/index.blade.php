@@ -1,17 +1,6 @@
 @extends('layouts.apphome')
 @section('content')
-<div class="row">
-<div class="col-sm-1">
-<div class="form-group">
-{!!Form::hidden('fecha', $fecha,['class'=>'form-control','type'=>'hidden','id'=>'fecha'])!!}
-</div>
-</div>
-<div class="col-sm-1">
-<div class="form-group">
-{!!Form::hidden('fechavencimiento', $fechavencimiento,['class'=>'form-control','id'=>'fechavencimiento'])!!}
-</div>
-</div>
-</div>
+<!--  -->
 
 <div class="col-sm-12">
   @role('admin')
