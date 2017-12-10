@@ -2,7 +2,7 @@
 @section('content')
 <div class="panel1 panel-primary">
       <div class="panel-heading"><strong>Información del venta.</strong>&nbsp;&nbsp;&nbsp;
-      	<a href="{{route('venta.edit', $venta->id)}}" class="btn btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
+      	  
       	
 		  <a href="{{route('venta.index')}}" class="btn btn-default"><i class="fa fa-list-alt" aria-hidden="true"></i></a>  
 </div>

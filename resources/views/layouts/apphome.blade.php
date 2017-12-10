@@ -39,7 +39,7 @@
                     </button>
                 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
+                    <a class="navbar-brand" href="{{ url('/inventario') }}">
                    <strong>Sistema de control J & D.</strong>
                     </a>
                 </div>

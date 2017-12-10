@@ -118,9 +118,15 @@ class CajaController extends Controller
      
         $cajainicial=  DB::table('cajas')->where('id' ,'=', $caja->id)->value('valorinicial'); // seleciona el valor inicial de caja depediendo el id de la caja
 
+
         $ganancia =  $sumVenta - $cajainicial; // Se resta la suma de todas la ventas de dicho usuario, con la caja iniciar para saber la ganancia.
 
-         
+        
+        if ($ganancia < 0) {                    // En caso de que la ganancia sea negativa, multiplicarse por   
+            $ganancia = $ganancia * -1;         // -1 para volverse positivo
+        }        
+
+
         return view('caja.edit', compact('caja', 'sumVenta','ganancia'));
     
     }

@@ -2,7 +2,7 @@
 @section('content')
 
  <div class="panel1 panel-primary">
-      <div class="panel-heading"><strong>Información de la compra.</strong>&nbsp;&nbsp;&nbsp;@role('admin')<a href="{{route('compra.edit', $compra->id)}}" class="btn btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>@endrole
+      <div class="panel-heading"><strong>Información de la compra.</strong>&nbsp;&nbsp;&nbsp;@role('admin')@endrole
 
       	<a href="{{route('compra.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
 

@@ -85,6 +85,20 @@ function soloNumeros(evt) {
     }
 }
 
+function Numeros(string){//Solo numeros
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+    
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++)
+       if (filtro.indexOf(string.charAt(i)) != -1) 
+             //Se añaden a la salida los caracteres validos
+         out += string.charAt(i);
+    
+    //Retornar valor filtrado
+    return out;
+} 
+
 /*************    Adicionar filas de venta    ************/
 function addRowSale() {
 
@@ -100,7 +114,7 @@ function addRowSale() {
                     var total = parseFloat(el.precioventa) + totaIva;
                     var row = '<tr id="fila' + el.id + '">\n\
     <td getCompraById(><input readonly="readonly" style="border:none;text-align:center"  type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
-    <td align="center"><input min="1" required style="width:50px;border:none;text-align:center"  type="number" id="cantidad' + el.id + '" name="cantidad[]" onkeyup="totalizar(' + el.id + ');isNumberKey(event)" value="1"></td>\n\
+    <td align="center"><input min="1" required style="width:50px;border:none;text-align:center"  type="number" id="cantidad' + el.id + '" name="cantidad[]" onkeyup="totalizar(' + el.id + ');isNumberKey(event); this.value=Numeros(this.value)" value="1"></td>\n\
     <td align="center"><input style="border:none;text-align:center" readonly="readonly"   type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
     <td align="center"><input readonly="readonly" style="width:80px;border:none;text-align:center" type="text" id="precio_u' + el.id + '" name="precio_u[]" value="' + el.precioventa + '"></td>\n\
     <td align="center"><input readonly="readonly"  style="width:100px;border:none;text-align:center" type="text" id="sub_t' + el.id + '" name="sub_t[]" value="' + el.precioventa + '"></td>\n\
@@ -158,7 +172,7 @@ function addRowBuy() {
                     var row = '<tr id="fila' + el.id + '">\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
-    <td align="center"><input style="border:none;text-align:center"  type="text" id="cantidad' + el.id + '" name="cantidad[]" name="cantidad[]" onkeyup="totalizarCompra(' + el.id + ');isNumberKey(event)" value="1"></td>\n\
+    <td align="center"><input style="border:none;text-align:center"  type="number" id="cantidad' + el.id + '" min="1" pattern="^[0-9]+" name="cantidad[]" name="cantidad[]" onkeyup="totalizarCompra(' + el.id + ');isNumberKey(event); this.value=Numeros(this.value)" value="1"></td>\n\
     <td align="center"><input style="border:none;text-align:center" readonly="readonly" type="text" id="precio_u' + el.id + '" name="precio_u[]" value="' + el.precioventa + '"></td>\n\
     <td align="center"><input readonly="readonly"  style="width:100px;border:none;text-align:center" type="text" id="sub_t' + el.id + '" name="sub_t[]" value="' + el.precioventa + '"></td>\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly"style="width:30px" type="text" id="iva' + el.id + '" name="iva[]" value="' + el.iva + '"></td>\n\

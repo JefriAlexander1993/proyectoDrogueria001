@@ -108,8 +108,7 @@ class CompraController extends Controller
     public function show($id)       // Funcion que muestra la informacion de la compra
     {
         
-        $compra = Articulo::find($id); // Busca una compra por medio del  id
-
+        $compra = Compra::find($id); // Busca una compra por medio del  id
 
         $detalles = DB::table('compra_articulo')
         ->join('articulos','articulos.id','=', 'compra_articulo.articulo_id')
@@ -130,7 +129,7 @@ class CompraController extends Controller
     public function edit($id)       // Funcion que encuentra una compra por medio del id
     {
         
-        $compra = Articulo::find($id); // Busca un Articulo por medio del  id
+        $compra = Compra::find($id); // Busca un Articulo por medio del  id
         
 
         return view('compra.edit', compact('compra'));  // Retorna a la vista edit de compra con la variable compra
