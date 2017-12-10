@@ -14,14 +14,14 @@
    @include('compra.fragment.aside') 
    </div>
    </div> 
-<!-- {!!Form::open(['route'=>'compra.index', 'method'=>'GET','class'=>'navbar-form'])!!}
+{!!Form::open(['route'=>'compra.index', 'method'=>'GET','class'=>'navbar-form'])!!}
 <div class="col-sm-5 input-group">
 {!!Form::number('codigo',null,['class'=>'form-control' , 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
 <span class="input-group-addon" id="search">
 <i class="fa fa-search" aria-hidden="true"></i>
 </span>
 </div>
-{!!Form::close()!!} -->
+{!!Form::close()!!}
 
 <div class="col-md-12 table-responsive">
 <table class="table table-hover ">
@@ -45,8 +45,8 @@
 	   <td class="text-center">{{$compra->totalCompra}}</td>
     
 	
-	   <!-- <td>@role('admin')<a href="{{route('compra.edit', $compra->id)}}" class="btn btn-labeled btn-default"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></a>@endrole</td>
-	   <td> <a href="{{route('compra.show', $compra->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td> -->
+	   
+	   <td> <a href="{{route('compra.show', $compra->id)}}" class="btn btn-labeled btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 	   <td>@role('admin')<form action="{{route('compra.destroy', $compra->id)}}" method="POST">
        {{csrf_field()}} <!--Toque para que sea eliminado por la aplicacion-->
        <input type="hidden" name="_method" value="DELETE">	

@@ -1,6 +1,9 @@
 @extends('layouts.apphome')
 @section('content')
 
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+
 <div class="col-sm-12">
 @role('admin')
 <a href="{{route('articulo.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
@@ -25,7 +28,7 @@
 </div>
 {!!Form::close()!!}
 <div class="col-md-12 table-responsive" style="text-align:center" >
-<table class="table table-hover">
+<table class="table table-hover" id="tablaArticulo">
     <thead>
         <tr>
         <th class="text-center">Codigo</th>
@@ -42,6 +45,23 @@
     
         </tr>
         </thead>
+        <tfoot>
+        <tr>
+        <th class="text-center">Codigo</th>
+        <th class="text-center">Fecha vencimiento</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Rubro</th>
+        <th class="text-center">Marca</th>
+        <th class="text-center">Precio_U</th>
+        <th class="text-center">Iva</th>
+        <th class="text-center">Precio_V</th>
+        <th class="text-center">Stock minimo</th>
+        <th class="text-center">Fecha de creación</th>
+        <th class="text-center" colspan="3" >Acción</th>  
+    
+        </tr>
+        </tfoot>
+
     <tbody>
         @foreach ($articulos as $articulo)
        <tr>
@@ -78,7 +98,13 @@ echo phpversion('tidy');
 </div>
 </div>
 
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
+<script>
+  $(document).ready(function(){
+    $('#tablaArticulo').DataTable();
+});
+</script>
 
 
 @endsection

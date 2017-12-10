@@ -25,7 +25,7 @@
 </div>
 </div> 
 <div class="col-md-12 table-responsive">
-<table class="table table-hover ">
+	<table class="table table-hover ">
 	<thead>
 		<tr>
 		<th class="text-center">#Factura</th>
@@ -40,9 +40,9 @@
 	   <td align="center">{{$venta->id}}</td>
 	   <td align="center">{{$venta->created_at}}</td>
        <td align="center">{{$venta->totalventa}}</td>
-	   	<<!-- td align="center"><a class="btn btn btn-warning"  href="{{route('facturapdf', $venta->id)}}"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
-	   <td align="center"> <a href="{{route('venta.edit', $venta->id)}}" class="btn btn-sm btn-default"><i  class="fa fa-pencil-square-o" aria-hcodigoden="true"></i></a></td>
-	   <td align="center"> <a href="{{route('venta.show', $venta->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hcodigoden="true"></i></a></td> -->
+	   	<td align="center"><a class="btn btn btn-warning" target="_blank"   href="{{route('facturapdf', $venta->id)}}"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+	   
+	   <td align="center"> <a href="{{route('venta.show', $venta->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hcodigoden="true"></i></a></td>
 	   <td align="center"><form action="{{route('venta.destroy', $venta->id)}}" method="POST">
        {{csrf_field()}} <!--Toque para que sea eliminado por la aplicacion-->
        <input type="hidden" name="_method" value="DELETE">	

@@ -1,6 +1,6 @@
 @extends('layouts.apphome')
 @section('content')
-<!--  -->
+
 
 <div class="col-sm-12">
   @role('admin')
