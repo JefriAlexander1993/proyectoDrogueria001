@@ -19,7 +19,7 @@ class CreateProyectoDrogueriaTable extends Migration
     
      Schema::create('articulos', function (Blueprint $table) {    
      $table->increments('id');
-     $table->integer('codigo')->unique();
+     $table->string('codigo')->unique();
      $table->date('fechavencimiento');
      $table->string('nombre')->unique();
      $table->string('rubro')->nullable();

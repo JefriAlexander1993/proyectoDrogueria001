@@ -65,7 +65,7 @@ function soloLetras(e) {
     }
 
     if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-        toastr.warning('No se puede agregar numeros, caracteres en este campo.')
+        toastr.warning('No se puede agregar numeros, solo caracteres en este campo.')
         return false;
     }
 }
@@ -98,6 +98,9 @@ function Numeros(string){//Solo numeros
     //Retornar valor filtrado
     return out;
 } 
+
+
+
 
 /*************    Adicionar filas de venta    ************/
 function addRowSale() {

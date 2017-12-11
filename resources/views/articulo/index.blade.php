@@ -1,7 +1,7 @@
 @extends('layouts.apphome')
 @section('content')
 
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
 
 
 <div class="col-sm-12">
@@ -98,13 +98,8 @@ echo phpversion('tidy');
 </div>
 </div>
 
-<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-<script>
-  $(document).ready(function(){
-    $('#tablaArticulo').DataTable();
-});
-</script>
+
 
 
 @endsection

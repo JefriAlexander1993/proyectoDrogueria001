@@ -9,10 +9,10 @@
 <div class="panel-body">
 <div class="col-md-12">
 <p>Identificacion:&nbsp;{{$caja->id}}</p> <!-- id de la caja-->
-<p>Nombre del usuario de la caja:&nbsp;{{$caja->nombreUsuario}}</p><!-- Nombre usuario caja-->
-<p>Valor inicial:&nbsp;{{$caja->valorInicial}}</p> <!-- Valor inicial-->
-<p>Valor final:&nbsp;{{$caja->valorFinal}}</p> <!-- Valor final-->
-<p>Ganancia:&nbsp;{!!$caja->ganancia!!}</p> <!-- Ganancia del dia-->
+<p>Nombre del usuario de la caja:&nbsp;{{$caja->nombreusuario}}</p><!-- Nombre usuario caja-->
+<p>Valor inicial:&nbsp;{{$caja->valorinicial}}</p> <!-- Valor inicial-->
+<p>Valor final:&nbsp;{{$detalles->valorfinal}}</p> <!-- Valor final-->
+<p>Ganancia:&nbsp;{!!$detalles->ganancia!!}</p> <!-- Ganancia del dia-->
 
 </div>
 </div>

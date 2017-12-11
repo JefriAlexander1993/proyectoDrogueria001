@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 
+
+
     <head>
+
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +19,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
        </head>
-    <body>
+    <body background="/ic/logo.png">
 
 
  
@@ -56,7 +60,29 @@
        </div>
     </nav> 
 
- 
+<br>
+<br>
+<br>
+<blockquote>
+<font face="arial" color="green"><h1>Mision</h1></font>
+<font face="arial"><p>Droguería el Triunfo es una empresa de régimen simplificado, </br>
+que tiene como objetivo suministrar y ofrecer soluciones para las </br>
+necesidades de nuestros clientes. Contribuyendo a la calidad de</br>
+vida de las personas; entregando servicios de salud y de bienestar </br>
+en ambientes de amabilidad y respecto, satisfaciendo los </br>
+requerimientos de nuestra clientela y proveedores mediante la </br>
+comercialización de medicamentos populares, garantizando la</br>
+calidad, eficacia y competitividad.</p></font>
+</blockquote>
+
+<blockquote>
+<font face="arial" color="green"><h1>Vision</h1></font>
+<font face="arial"><p>La Droguería el Triunfo será una organización de continuo crecimiento para la
+satisfacción de nuestros clientes; logrando así un reconcomiendo por el buen servicio, a
+nivel municipal por trabajar con responsabilidad hacia nuestra comunidad, colaboradores,
+clientes y proveedores, siendo innovadora, efectiva, competitiva, líder en sector.</p>
+</font>
+</blockquote>
 
           <!-- <script src="{{ asset('assets/jquery/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>

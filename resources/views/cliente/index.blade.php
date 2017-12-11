@@ -5,7 +5,7 @@
   
 <a href="{{route('cliente.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
 @role('admin')
-<a href="{{url('/clientepdf')}}" target="_blank class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+<a href="{{url('/clientepdf')}}" target="_blank" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 @endrole
 </div>
 

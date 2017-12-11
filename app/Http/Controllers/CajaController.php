@@ -98,7 +98,11 @@ class CajaController extends Controller
     public function show($id)           // Funcion que muestra la informacion de la caja
     {
         $caja = Caja::find($id); // Busca un caja por medio del  id
-         return view('caja.show', compact('caja')); // Retorna a la vista show de caja con los datos de la caja que se busca
+
+
+        $detalles = Detalle_caja::find($id);
+
+         return view('caja.show', compact('caja', 'detalles')); // Retorna a la vista show de caja con los datos de la caja que se busca al igual que detalles
     }
 
     /**
