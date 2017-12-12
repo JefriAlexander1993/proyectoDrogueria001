@@ -100,8 +100,9 @@ class CajaController extends Controller
         $caja = Caja::find($id); // Busca un caja por medio del  id
 
 
-        $detalles = Detalle_caja::find($id);
-
+        $detalles = Detalle_caja::where('caja_id','=',$caja->id)->first();
+     
+        
          return view('caja.show', compact('caja', 'detalles')); // Retorna a la vista show de caja con los datos de la caja que se busca al igual que detalles
     }
 
@@ -122,7 +123,6 @@ class CajaController extends Controller
      
         $cajainicial=  DB::table('cajas')->where('id' ,'=', $caja->id)->value('valorinicial'); // seleciona el valor inicial de caja depediendo el id de la caja
 
-
         $ganancia =  $sumVenta - $cajainicial; // Se resta la suma de todas la ventas de dicho usuario, con la caja iniciar para saber la ganancia.
 
         
@@ -130,7 +130,7 @@ class CajaController extends Controller
             $ganancia = $ganancia * -1;         // -1 para volverse positivo
         }        
 
-
+        
         return view('caja.edit', compact('caja', 'sumVenta','ganancia'));
     
     }
@@ -147,12 +147,12 @@ class CajaController extends Controller
         
         $caja =Caja::find($id);/*Buscar en caja*/
             
-         $detalle_caja= detalle_caja::where('caja_id','=',$caja->id)->first();   
+        $detalle_caja= detalle_caja::where('caja_id','=',$caja->id)->first();   
         $detalle_caja->valorfinal= $request->valorfinal;
         $detalle_caja->ganancia= $request->ganancia;
  
         $detalle_caja->save();
-        $caja->save();
+        // $caja->save();
 
         return redirect()->route('caja.index')
         ->with('info', 'La caja fue actualizado.');

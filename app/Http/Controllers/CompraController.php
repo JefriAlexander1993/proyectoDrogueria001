@@ -32,7 +32,7 @@ class CompraController extends Controller
     {
  
         // $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
-        $compras = Compra::orderBy('id')->paginate('8');;
+        $compras = Compra::orderBy('id','desc')->paginate('8');;
 
         // return $productos;
         
