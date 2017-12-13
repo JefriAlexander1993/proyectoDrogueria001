@@ -85,19 +85,19 @@ function soloNumeros(evt) {
     }
 }
 
-function Numeros(string){//Solo numeros
+function Numeros(string) { //Solo numeros
     var out = '';
-    var filtro = '1234567890';//Caracteres validos
-    
+    var filtro = '1234567890'; //Caracteres validos
+
     //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
-    for (var i=0; i<string.length; i++)
-       if (filtro.indexOf(string.charAt(i)) != -1) 
-             //Se añaden a la salida los caracteres validos
-         out += string.charAt(i);
-    
-    //Retornar valor filtrado
+    for (var i = 0; i < string.length; i++)
+        if (filtro.indexOf(string.charAt(i)) != -1)
+        //Se añaden a la salida los caracteres validos
+            out += string.charAt(i);
+
+        //Retornar valor filtrado
     return out;
-} 
+}
 
 
 
@@ -137,7 +137,7 @@ function addRowSale() {
 
             } else {
                 if (data.code === 600) {
-                    toastr.error('data.error');
+                    toastr.error('No exite un articulo relacionado con ese codigo.');
                 } else {
                     toastr.error('error');
 
@@ -175,7 +175,7 @@ function addRowBuy() {
                     var row = '<tr id="fila' + el.id + '">\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="codigo' + el.id + '" name="codigo[]" value="' + el.codigo + '"></td>\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly" type="text" id="nombre' + el.id + '" name="nombre[]" value="' + el.nombre + '"></td>\n\
-    <td align="center"><input style="border:none;text-align:center"  type="number" id="cantidad' + el.id + '" min="1" pattern="^[0-9]+" name="cantidad[]" name="cantidad[]" onkeyup="totalizarCompra(' + el.id + ');isNumberKey(event); this.value=Numeros(this.value)" value="1"></td>\n\
+    <td align="center"><input style="border:none;text-align:center" required  type="number" id="cantidad' + el.id + '" min="1" pattern="^[0-9]+" name="cantidad[]" name="cantidad[]" onkeyup="totalizarCompra(' + el.id + ');isNumberKey(event); this.value=Numeros(this.value)" value="1"></td>\n\
     <td align="center"><input style="border:none;text-align:center" readonly="readonly" type="text" id="precio_u' + el.id + '" name="precio_u[]" value="' + el.precioventa + '"></td>\n\
     <td align="center"><input readonly="readonly"  style="width:100px;border:none;text-align:center" type="text" id="sub_t' + el.id + '" name="sub_t[]" value="' + el.precioventa + '"></td>\n\
     <td align="center"><input readonly="readonly" style="border:none;text-align:center" readonly="readonly"style="width:30px" type="text" id="iva' + el.id + '" name="iva[]" value="' + el.iva + '"></td>\n\
@@ -200,7 +200,7 @@ function addRowBuy() {
 
             } else {
                 if (data.code === 600) {
-                    toastr.error('data.error');
+                    toastr.error('No existe un articulo relacionado con ese codigo.');
                 } else {
                     toastr.error('error');
 
