@@ -6,7 +6,7 @@
 <div class="col-sm-12">
 <div class="form-group">
 {!!Form:: label('codigo','Codigo(*)')!!}
-{!!Form::number('codigo',null,['class'=>'form-control','placeholder'=>'Ej: 12','id'=>'codigo', 'name'=>'codigo' , 'title'=>'Ingresa un codigo de un articulo existente'])!!}
+{!!Form::number('codigo',null,['class'=>'form-control','placeholder'=>'Ej: 12', 'onKeyUp'=>'this.value = this.value.toUpperCase()','min'=>'1','id'=>'codigo', 'name'=>'codigo' , 'title'=>'Ingresa un codigo de un articulo existente'])!!}
 </div>
 </div>
 </div>

@@ -2,13 +2,13 @@
 <div class="col-sm-6">
 <div class="form-group">
 {!!Form::label('nombreusuario','Nombre del usuario de la caja')!!}
-{!!Form::text('nombreusuario',$name,['class'=>'form-control'])!!} 
+{!!Form::text('nombreusuario',$name,['class'=>'form-control','required'=>'required' ])!!} 
 </div>
 </div>
 <div class="col-sm-6">
 <div class="form-group">
 {!! Form:: label('valorinicial','Valor inicial')!!}
-{!!Form::number('valorinicial',null,['class'=>'form-control' , 'placeholder'=>'100000', 'id'=>'valorinicial','min'=>'1','required'=>'required', 'onkeypress'=>'return soloNumeros(event)'])!!} 
+{!!Form::number('valorinicial',null,['class'=>'form-control' ,'min'=>'1', 'required'=>'required','placeholder'=>'100000', 'id'=>'valorinicial','min'=>'1','required'=>'required', 'onkeypress'=>'return soloNumeros(event)'])!!} 
 </div>
 </div>
 </div>

@@ -21,7 +21,7 @@
    }
   </style>
 <center>
-<img class="" src="../public/ic/logo.png" alt="" data-src="/ic/logo.png" alt="" witdh="80" height="80">
+<!-- <img class="" src="../public/ic/logo.png" alt="" data-src="/ic/logo.png" alt="" witdh="80" height="80"> -->
         <?php  $fecha=date("j/n/Y");?>
 <br>
 <p align="center"><strong>Fecha:&nbsp;</strong><?php echo $fecha;?> </p> 

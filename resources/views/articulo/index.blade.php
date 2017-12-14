@@ -45,24 +45,7 @@
     
         </tr>
         </thead>
-        <tfoot>
-        <tr>
-        <th class="text-center">Codigo</th>
-        <th class="text-center">Fecha vencimiento</th>
-        <th class="text-center">Nombre</th>
-        <th class="text-center">Rubro</th>
-        <th class="text-center">Marca</th>
-        <th class="text-center">Precio_U</th>
-        <th class="text-center">Iva</th>
-        <th class="text-center">Precio_V</th>
-        <th class="text-center">Stock minimo</th>
-        <th class="text-center">Fecha de creación</th>
-        <th class="text-center" colspan="3" >Acción</th>  
-    
-        </tr>
-        </tfoot>
-
-    <tbody>
+         <tbody>
         @foreach ($articulos as $articulo)
        <tr>
        <td class="text-center">{{$articulo->codigo}}</td>
