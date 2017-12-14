@@ -28,11 +28,11 @@ class CompraController extends Controller
      */
 
  
-    public function index()     // Funcion que envia al index de compra
+    public function index(Request $request)     // Funcion que envia al index de compra
     {
  
         // $articulos = articulo::search($request->codigo)->orderBy('id')->paginate('8');
-        $compras = Compra::orderBy('id')->paginate('8');;
+        $compras = Compra::search($request->id)->orderBy('id')->paginate('8');
 
         // return $productos;
         
@@ -167,7 +167,7 @@ class CompraController extends Controller
        
         $compra = Compra::find($id);        // Busca una compra por medio de su id
         $compra->delete();                  // Elimina la compra encontrada
-        return back()->with('info', 'La compra fue eliminado'); // Retorna atras con un mensaje de informacion "La compra fue eliminada"
+        return back()->with('danger', 'La compra fue eliminada'); // Retorna atras con un mensaje de informacion "La compra fue eliminada"
     }
 
     }

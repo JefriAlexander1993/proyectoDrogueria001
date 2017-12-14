@@ -21,9 +21,9 @@ class Compra extends Model
         return $this->belongsTo('App\Proveedor');
     }
 
-public function scopeSearch($query, $codigo){  // Realiza la busqueda en base de datos de acuerdo al codigo
+public function scopeSearch($query, $id){  // Realiza la busqueda en base de datos de acuerdo al id
 
-return $query->where('codigo','LIKE',"%$codigo%");
+return $query->where('id','LIKE',"%$id%");
 
     }
     

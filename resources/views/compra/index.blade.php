@@ -3,7 +3,7 @@
 <div class="col-sm-12">
 @role('admin')
    <a href="{{route('compra.create')}}" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
-   <!-- <a href="{{url('/compraspdf')}}" class="btn btn btn-secondary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a> -->
+   
 
    @endrole</div>  
 
@@ -16,7 +16,7 @@
    </div> 
 {!!Form::open(['route'=>'compra.index', 'method'=>'GET','class'=>'navbar-form'])!!}
 <div class="col-sm-5 input-group">
-{!!Form::number('codigo',null,['class'=>'form-control' , 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
+{!!Form::number('id',null,['class'=>'form-control' , 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
 <span class="input-group-addon" id="search">
 <i class="fa fa-search" aria-hidden="true"></i>
 </span>

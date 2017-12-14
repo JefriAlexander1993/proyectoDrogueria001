@@ -21,7 +21,7 @@
 </div> 
 {!!Form::open(['route'=>'articulo.index', 'method'=>'GET','class'=>'navbar-form'])!!}
 <div class="col-sm-5 input-group">
-{!!Form::number('codigo',null,['class'=>'form-control' , 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
+{!!Form::number('codigo',null,['class'=>'form-control', 'placeholder'=>'Buscar..', 'aria-describedby'=>'search'])!!}
 <span class="input-group-addon" id="search">
 <i class="fa fa-search" aria-hidden="true"></i>
 </span>

@@ -85,7 +85,21 @@ function soloNumeros(evt) {
     }
 }
 
-function Numeros(string){//Solo numeros
+function Numeros(string){//Solo numeros positivos
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+    
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++)
+       if (filtro.indexOf(string.charAt(i)) != -1) 
+             //Se añaden a la salida los caracteres validos
+         out += string.charAt(i);
+    
+    //Retornar valor filtrado
+    return out;
+} 
+
+function Cantidad(string){//Solo numeros positivos
     var out = '';
     var filtro = '1234567890';//Caracteres validos
     
@@ -133,11 +147,11 @@ function addRowSale() {
                     listcodigo.push($('#codigo').val());
                     toastr.info('Solo se puede modificar el campo de Cantidad!.')
                     toastr.success('Se ha agregado un articulo a la Venta!.')
-                });
+                    });
 
             } else {
                 if (data.code === 600) {
-                    toastr.error('data.error');
+                    toastr.error('No se encuentra el codigo digitado.');
                 } else {
                     toastr.error('error');
 
@@ -200,7 +214,7 @@ function addRowBuy() {
 
             } else {
                 if (data.code === 600) {
-                    toastr.error('data.error');
+                    toastr.error('No se encuentra el codigo digitado');
                 } else {
                     toastr.error('error');
 

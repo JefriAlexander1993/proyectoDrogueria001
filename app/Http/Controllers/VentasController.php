@@ -26,7 +26,7 @@ class VentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()     // Funcion que envia al index de venta
+    public function index(Request $request)     // Funcion que envia al index de venta
     {
 
         
@@ -35,7 +35,7 @@ class VentasController extends Controller
         // Suma el total de las ventas
         
       
-        $ventas = Venta::orderBy('id','desc' )->paginate(5);
+        $ventas = Venta::search($request->id)->orderBy('id')->paginate('8');
         
 
         return  view('venta.index', compact('ventas', 'sumVenta'));// Se carga en vista y le pasamos la variable
@@ -158,6 +158,6 @@ return redirect()->route('venta.index')     // Redirige a la ruta venta.index (v
     {
         $venta = Venta::find($codigo);      // Busca una venta por medio de su codigo
         $venta->delete();                   // Elimina la venta
-        return back()->with('info', 'La venta fue eliminada'); // Retorna a la pagina anterior con el mensaje de informacion "La venta fue eliminada"
+        return back()->with('danger', 'La venta fue eliminada'); // Retorna a la pagina anterior con el mensaje de informacion "La venta fue eliminada"
     }
 }

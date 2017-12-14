@@ -31,4 +31,10 @@ class proveedor extends Model
         }
 
     }
+
+    public function scopeSearch($query, $nit){
+
+return $query->where('nit','LIKE',"%$nit%"); // Realiza la busqueda en base de datos de acuerdo al nit
+
+    }
 }

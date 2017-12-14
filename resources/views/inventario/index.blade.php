@@ -31,9 +31,7 @@
         </thead>
     <tbody>
         @foreach ($detalles as $articulo)
-       <tr   id="tr"
-       onmouseover="return fechavencimiento()";
-      
+       <tr      
        @if($articulo->cantidad <= $articulo->stockmin)
        
        style="background-color:#EF5350;"

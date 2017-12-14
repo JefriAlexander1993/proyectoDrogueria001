@@ -18,5 +18,12 @@ class Venta extends Model
       }
 
 
-      
+     public function scopeSearch($query, $id){
+
+return $query->where('id','LIKE',"%$id%"); // Realiza la busqueda en base de datos de acuerdo al id
+
+    }
+
+
+
     }

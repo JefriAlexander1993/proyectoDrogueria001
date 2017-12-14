@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-<!-- <link rel="shortcut icon" src="{{asset('../../ic/medicina.ico')}}" ></link>
-    -->
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,11 +12,9 @@
      <title>
     SISTEMA DE INFORMACIÓN 
     </title>
-    <!-- <i class="fa fa-medkit" aria-hidden="true"></i> -->
-    <!-- Styles -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    
     <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
-     <!-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">  -->
+     
      <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
 
 </head>
@@ -119,8 +116,7 @@
         <li><a href="{{ route('entrust-gui::users.index') }}" class="list-group-item "><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Usuarios</a> </li>
         <li><a href="{{ route('entrust-gui::roles.index') }}" class="list-group-item "><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Roles</a> </li>
         <li><a href="{{ route('entrust-gui::permissions.index') }} "class="list-group-item "><i class="fa fa-hand-paper-o" aria-hidden="true"></i>&nbsp;Permisos</a></li>               
-        <!-- <li><a href="{{url('/reset') }} "class="list-group-item "><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Cambiar contraseña</a></li>               
-        <li><a href="#" class="list-group-item "><i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Backup</a></li>                -->
+        
     
       </ul>
          </li>
@@ -164,9 +160,5 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/documento.js') }}"></script>
-
-    <!--  <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('js/jquery.min.js') }}"></script> -->
 </body>
 </html>
-

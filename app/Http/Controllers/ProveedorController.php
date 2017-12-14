@@ -25,7 +25,7 @@ class ProveedorController extends Controller
     public function index(Request $request)     // Funcion que dirige al index de proveedor
     {
         
-        $proveedors = Proveedor::orderBy('id')->paginate('8');
+        $proveedors = Proveedor::search($request->nit)->orderBy('id')->paginate('8');
         return  view('proveedor.index', compact('proveedors'));// Se carga en vista y le pasamos la variable
         
     }
