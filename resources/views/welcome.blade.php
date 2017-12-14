@@ -1,5 +1,5 @@
 <!doctype html>
-<html >
+<html lang="{{ app()->getLocale() }}">
 
 
 
@@ -15,11 +15,11 @@
 
 
 
-        
-        <link href="css/app.css" rel="stylesheet">
+        <!-- <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
        </head>
-    <body>
+    <body background="/ic/logo.png">
 
 
  
@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/inventario'"><strong>SISTEMA DE CONTROL J & D</strong></a>
+          <a class="navbar-brand" href="{{ url('/inventario') }}"><strong>SISTEMA DE CONTROL J & D</strong></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -42,10 +42,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                    <li class="active"> <a href="/inventario">PAGINA PRINCIPAL<span class="sr-only">(current)</span></a> </li>                
+                    <li class="active"> <a href="{{ url('/inventario') }}">PAGINA PRINCIPAL<span class="sr-only">(current)</span></a> </li>                
                     @else
-                    <li class="active">  <a href="login" >LOGIN<span class="sr-only">(current)</span></a> </li>
-                    <li class="active">  <a href="/register">REGISTRO<span class="sr-only">(current)</span></a></li> 
+                    <li class="active">  <a href="{{ route('login') }}" >LOGIN<span class="sr-only">(current)</span></a> </li>
+                    <li class="active">  <a href="{{ url('/register') }}">REGISTRO<span class="sr-only">(current)</span></a></li> 
                
                     @endauth
                 </div>
@@ -59,12 +59,6 @@
 
        </div>
     </nav> 
-<<<<<<< HEAD
-<div class="row"> 
-<div class="col-sm-12">
-<div class="navbar" >
-
-=======
 
 <br>
 <br>
@@ -73,8 +67,7 @@
 <div class="row"> 
 <div class="col-sm-12">
 <div class="navbar" >
-<img src="/ic/logo.png" class="img-responsive"  width="460" height="345">
->>>>>>> 1fbce8807dc52fa6126eddc409043131728afb35
+
 </div>
 </div>
 </div>
@@ -105,32 +98,13 @@ clientes y proveedores, siendo innovadora, efectiva, competitiva, líder en sect
 </div>
 </div>
 
-<<<<<<< HEAD
-   
-   <div id="footer">
-      <div class="container" style=" position:fixed;
-   left:0px;
-   bottom:0px;
-   height:55px;
-   width:100%;
-   background:darkseagreen">
-        <p class="text-center"><strong>Correo electrónico:</strong>frelan2211@gmail.com<br>
-        <strong>Dirección:</strong> Calle 26 #7a-42.</p>
-
-      </div>
-    </div>
-
-=======
           <!-- <script src="{{ asset('assets/jquery/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-
     {{-- dataTables --}}
     <script src="{{ asset('assets/dataTables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/dataTables/js/dataTables.bootstrap.min.js') }}"></script>
-
     {{-- Validator --}}
     <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="{{ asset('assets/bootstrap/js/ie10-viewport-bug-workaround.js') }}"></script>
    -->
@@ -150,6 +124,5 @@ clientes y proveedores, siendo innovadora, efectiva, competitiva, líder en sect
 
       </div>
     </div>
->>>>>>> 1fbce8807dc52fa6126eddc409043131728afb35
     </body>
 </html>
