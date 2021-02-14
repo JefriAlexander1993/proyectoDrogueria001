@@ -1,128 +1,123 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
+<head>
+    <title>Bienvenido</title>
 
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+</head>
+<body>
 
-
-    <head>
-
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-        <title>Sistema de control J & D</title>
-
-
-
-        <!-- <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-       </head>
-    <body background="/ic/logo.png">
-
-
- 
- <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{{ url('/inventario') }}"><strong>SISTEMA DE CONTROL J & D</strong></a>
+    <header class="header" id="header">
+        <div class="contenedor-logo" id="contenedor-logo">
+            <a href="" class="logo" id="logo"><i class="fas fa-code"></i><span>JM Programming</span></a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-            <div>
+        <div class="botones-header" id="botones-header">
             @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                    <li class="active"> <a href="{{ url('/inventario') }}">PAGINA PRINCIPAL<span class="sr-only">(current)</span></a> </li>                
-                    @else
-                    <li class="active">  <a href="{{ route('login') }}" >LOGIN<span class="sr-only">(current)</span></a> </li>
-                    <li class="active">  <a href="{{ url('/register') }}">REGISTRO<span class="sr-only">(current)</span></a></li> 
-               
-                    @endauth
-                </div>
+            <div class="">
+                @auth
+                <a href="{{ url('/home') }}">Home<span class="sr-only">(current)</span></a>
+                @else
+                <a href="{{ route('login') }}">Login<span class="sr-only">(current)</span></a>
+                <a href="{{ url('/register') }}">Registro<span class="sr-only">(current)</span></a>
+
+                @endauth
+            </div>
             @endif
 
-          </div>
-          </div>
-             </li>
-          </ul>
+
         </div>
+    </header>
 
-       </div>
-    </nav> 
+    <!-- 
+      <div class="modal">
+          <div class="modal-container">
+              <div class="modal-left">
+                  <h1 class="modal-title">Bienvenidos!</h1>
+                  <p class="modal-desc">Por favor digitalizar el email y la contraseña para insegrar al sistema.</p>
 
-<br>
-<br>
-<br>
+                    <form method="POST" action="{{ route('login') }}">
+                       @csrf
+                    
+                            <label for="email" class="input-label">{{ __('E-Mail Address') }}</label>
 
-<div class="row"> 
-<div class="col-sm-12">
-<div class="navbar" >
+                            <div class="input-block">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
-</div>
-</div>
-</div>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
 
+                            </div>
+                        
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-<div class="row"> 
-<div class="col-sm-6">
-<div class="navbar" >
-<h2 style="color:darkseagreen;align:center"><strong><u>Misión</u></strong></h2>
-<p ALIGN="justify">Droguería el Triunfo es una empresa de régimen simplificado,
-que tiene como objetivo suministrar y ofrecer soluciones para las 
-necesidades de nuestros clientes. Contribuyendo a la calidad de
-vida de las personas; entregando servicios de salud y de bienestar 
-en ambientes de amabilidad y respecto, satisfaciendo los requerimientos
-de nuestra clientela y proveedores mediante la comercialización
-de medicamentos populares, garantizando la calidad, eficacia y competitividad.</p></font>
-</div>
-</div>
+                         <div class="input-block">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
-<div class="col-sm-6">
-<div class="navbar" >
-<h2 style="color:darkseagreen"><strong><u>Visión</u></strong></h2>
-<p ALIGN="justify" >La Droguería el Triunfo será una organización de continuo crecimiento para la
-satisfacción de nuestros clientes; logrando así un reconcomiendo por el buen servicio, a
-nivel municipal por trabajar con responsabilidad hacia nuestra comunidad, colaboradores,
-clientes y proveedores, siendo innovadora, efectiva, competitiva, líder en sector.</p>
-</div>
-</div>
-</div>
-
-          <!-- <script src="{{ asset('assets/jquery/jquery-1.12.4.min.js') }}"></script>
-    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    {{-- dataTables --}}
-    <script src="{{ asset('assets/dataTables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/dataTables/js/dataTables.bootstrap.min.js') }}"></script>
-    {{-- Validator --}}
-    <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <script src="{{ asset('assets/bootstrap/js/ie10-viewport-bug-workaround.js') }}"></script>
-   -->
-   <div id="footer">
-      <div class="container" style=" position:fixed;
-   left:0px;
-   bottom:0px;
-   height:55px;
-   width:100%;
-   background:darkseagreen">
-
-
-        <p class="text-center"><strong>Correo electrónico:</strong>frelan2211@gmail.com<br>
-        <strong>Dirección:</strong> Calle 26 #7a-42.</p>
-
-
-
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                        
+                        </div>
+                          <div class="modal-buttons">
+                            <a href="" class="">¿Olvidaste tu contraseña?</a>
+                            <button class="input-button btn-block">Login</button>
+                          </div>
+                    </form> 
+                    <p class="sign-up">¿No tienes una cuenta?<a href="#" id="btn-registro-login"> Regístrate ahora</a></p>
+              </div>
+                    <div class="modal-right">
+                        <img src="{{ asset('assets/img/auth.jpeg') }}" alt="">
+                    </div>
+                    <button class="icon-button close-button">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                            <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
+                         </svg>
+                    </button>
+          </div>
       </div>
-    </div>
-    </body>
+      <div class="modal" id="modal-registro">
+          <div class="modal-container">
+              <div class="modal-left">
+                <h1 class="modal-title">Bienvenidos!</h1>
+                <p class="modal-desc">Digitalizar los datos requeridos para crear el usuario.</p>
+                <form method="POST" action="{{ route('register') }}">
+                       @csrf
+                 <div class="input-block">
+                  <label for="name" class="input-label">Nombre</label>
+                  <input type="text" name="name" id="name" placeholder="Name">
+                </div>
+                <div class="input-block">
+                  <label for="email" class="input-label">Email</label>
+                  <input type="email" name="email" id="email" placeholder="Email">
+                </div>
+                <div class="input-block">
+                  <label for="password" class="input-label">Password</label>
+                  <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="modal-buttons">
+                  <button class="input-button btn-block">Registro</button>
+                </div>
+                  </form> 
+              </div>
+              <div class="modal-right">
+                <img src="{{ asset('assets/img/auth.jpeg') }}" alt="">
+              </div>
+              <button class="icon-button close-button" id="model-close">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
+              </svg>
+                </button>
+          </div>
+      </div>-->
+    <main >
+    
+    </main>
+  <script src="{{asset('js/welcome.js')}}"></script>
+  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+  </body>
 </html>

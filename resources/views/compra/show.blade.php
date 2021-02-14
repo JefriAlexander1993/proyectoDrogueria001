@@ -1,30 +1,50 @@
-@extends('layouts.apphome')
+@extends('layouts.app3')
 @section('content')
 
- <div class="panel1 panel-primary">
-      <div class="panel-heading"><strong>Información de la compra.</strong>&nbsp;&nbsp;&nbsp;@role('admin')@endrole
-
-      	<a href="{{route('compra.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-
-
+<div class="row">
+    <div class="col-sm-10">
+        <strong>Información de la compra.</strong>
+    </div>
+    <div class="col-sm-2">
+        <strong>Listado de compras.</strong>
+        <a href="{{route('compra.index')}}" class="btn btn-block btn-warning "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+    </div>
 </div>
-<div class="panel-body">
-<div class="col-md-12">
+<hr>
+<div class="table-responsive-sm">
+    <table class="table" id="table-show-purchase">
+        <thead>
+            <tr>
 
-@foreach($detalles as $detalle)
----------------------------------------------------------------------------------------
-<p>Numero de venta:&nbsp;{{ $detalle->compra_id }}</p> 
-<p>Nombre:&nbsp;{{$detalle->nombre}}</p><!-- Descripcion corta-->
-<p>Cantidad:&nbsp;{{$detalle->cantidad}}</p><!-- Descripcion corta-->
-<p>Precio unitario:&nbsp;{!!$detalle->preciounitario!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Subtotal:&nbsp;{!!$detalle->subtotal!!}</p> <!-- Descripcion larga y se va interpretar-->
-<p>Total:&nbsp;{!!$detalle->total!!}</p> <!-- Descripcion larga y se va interpretar-->
+                <th class="text-center">Codigo del producto</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Cantidad</th>
+                <th class="text-center">Precio unitario</th>
+                <th class="text-center">Subtotal</th>
+                <th class="text-center">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($detalles as $detalle)
+            <tr>
 
-
-@endforeach
-
+                <td align="center">{{$detalle->codigo}}</td>
+                <td align="center">{{$detalle->nombre}}</td><!-- Descritdcion corta-->
+                <td align="center">{{$detalle->cantidad}}</td><!-- Descritdcion corta-->
+                <td align="center">{{$detalle->preciounitario}}</td> <!-- Descritdcion larga y se va intertdretar-->
+                <td align="center">{{$detalle->subtotal}}</td> <!-- Descritdcion larga y se va intertdretar-->
+                <td align="center">{{$detalle->total}}</td> <!-- Descritdcion larga y se va intertdretar-->
+                @endforeach
+            </tr>
+        </tbody>
+    </table>
 </div>
-</div>
+<hr>
+<br>
+<div class="row">
+    <div class="col-sm-10"><strong>Total compra:</strong></div>
+    <div class="col-sm-2"><b>$ {{$totalcompra}}</b></div>
 </div>
 
 @endsection
+

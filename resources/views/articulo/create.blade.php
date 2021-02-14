@@ -1,18 +1,23 @@
-@extends('layouts.apphome')
+@extends('layouts.app3')
 @section('content')
+<div class="row">
+    <div class="col-sm-10">
+        <strong>Crear un articulo.</strong>
+    </div>
+    <div class="col-sm-2">
 
-<div class="panel1  panel-success">
-<div class="panel-heading"><strong>Crear un nuevo articulo.</strong>&nbsp;&nbsp;
-	<a href="{{route('articulo.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+        <strong>Listado articulo:</strong>
+        <a href="{{route('articulo.index')}}" class="btn btn-xs btn-block btn-warning"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+
+    </div>
 </div>
-<div class="panel-body">
-<div class="col-md-12">
-<!-- @permmisions('store') -->
-{!!Form::open(['route'=>'articulo.store'])!!}<!--Se le pasa, la variable del metodo-->
-@include('articulo.fragment.form') <!--Incluyo el formulario-->
+<hr>
+{!!Form::open(['route'=>'articulo.store'])!!}
+<!--Se le pasa, la variable del metodo-->
+@include('articulo.fragment.form')
+<!--Incluyo el formulario-->
 {!!Form::close()!!}
-<!-- @endpermmisions -->
-</div>
-</div>
-</div>
+
+
 @endsection
+

@@ -4,10 +4,9 @@ use Esensi\Model\Contracts\ValidatingModelInterface;
 use Esensi\Model\Traits\ValidatingModelTrait;
 use Zizaco\Entrust\EntrustRole;
 
-class Role extends EntrustRole implements ValidatingModelInterface
+class Role extends EntrustRole 
 {
-  use ValidatingModelTrait;
-
+ 
   protected $throwValidationExceptions = true;
 
   protected $fillable = [

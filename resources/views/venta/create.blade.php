@@ -1,22 +1,29 @@
-@extends('layouts.apphome')
+@extends('layouts.app3')
 @section('content')
-<div class="col-sm-12">
-@include('venta.fragment.error')
+
+<strong>CREAR VENTA.</strong>
+<hr>
+<div class="row">
+    <div class="col-sm-6">
+        <strong>Ir al listado de venta:</strong>
+        <a href="{{route('venta.index')}}" class="btn btn-block btn-warning btn-xs" title="Listado de ventas"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+    </div>
+    <div class="col-sm-6">
+        <strong class="text-center">Crear cliente:</strong>
+        <a data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-block btn-primary btn-xs" title="Crear un cliente"><i class="fa fa-user"></i></a>
+
+    </div>
+
 </div>
 
-<div class="panel  panel-success">
-      <div class="panel-heading"><strong>Crear un nuevo venta.</strong>&nbsp;&nbsp;<a href="{{route('venta.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-      </div>
-<div class="panel-body">
-<div class="col-md-12">
-
-{!!Form::open(['route'=>'venta.store'])!!}<!--Se le pasa, la variable del metodo-->
-@include('venta.fragment.form') <!--Incluyo el formulario-->
-
+{!!Form::open(['route'=>'venta.store','id'=>'formsale','method'=>'POST'])!!}
+<!--Se le pasa, la variable del metodo-->
+{{csrf_field()}}
+@include('venta.fragment.form')
+<!--Incluyo el formulario-->
 {!!Form::close()!!}
-
+@include('venta.fragment.modal')
 </div>
 </div>
-</div>
-
 @endsection
+

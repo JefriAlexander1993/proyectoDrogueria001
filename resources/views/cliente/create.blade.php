@@ -1,18 +1,24 @@
-@extends('layouts.apphome')
+@extends('layouts.app3')
 @section('content')
+<div class="row">
+    <div class="col-sm-10">
+        <strong>CREAR CLIENTE</strong>
+    </div>
+    <div class="col-sm-2">
+        <strong>ir a listado cliente:</strong>
+        <a href="{{route('cliente.index')}}" class="btn btn-warning btn-block btn-xs" title="Listado de clientes"><i class="fas fa-list-alt"></i></a></a>
+    </div>
+</div>
+<hr>
 
-<div class="panel1  panel-success">
-<div class="panel-heading"><strong>Crear un nuevo cliente.</strong>&nbsp;&nbsp;
-	<a href="{{route('cliente.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-</div>
-<div class="panel-body">
-<div class="col-md-12">
-<!-- @permmisions('store') -->
-{!!Form::open(['route'=>'cliente.store'])!!}<!--Se le pasa, la variable del metodo-->
-@include('cliente.fragment.form') <!--Incluyo el formulario-->
+<strong>Acción:</strong>
+<a href="{{route('cliente.index')}}" class="btn btn-ligth btn-xs" title="Listado de clientes"><i class="fas fa-angle-left"></i></a>
+
+{!!Form::open(['route'=>'cliente.store','method'=>'POST'])!!}
+<!--Se le pasa, la variable del metodo-->
+@include('cliente.fragment.form')
+<!--Incluyo el formulario-->
 {!!Form::close()!!}
-<!-- @endpermmisions -->
-</div>
-</div>
-</div>
+
 @endsection
+

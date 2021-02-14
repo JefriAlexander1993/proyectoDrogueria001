@@ -50,7 +50,15 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-    {
+    {   
+        
+        if ($exception instanceof ModelNotFoundException &&
+        $request->wantsJson())
+        {
+            return response()->json([
+                'data' => 'Resource not found'
+            ], 404);
+        }
         return parent::render($request, $exception);
     }
 }

@@ -11,34 +11,13 @@ class Articulo extends Model
    
 
 
-    protected $fillable=['id','codigo','fechavencimiento','nombre', 'rubro','marca','cantidad',
+    protected $fillable=['id','codigo','fechafabricacion','fechavencimiento','nombre','cantidad',
     'preciounitario','iva','precioventa','stockmin'];
 
 
-    public function proveedor()
-    {
-        return $this->belongsToMany('App\Proveedor');
-    }
-    public function compra()
-    {
-        return $this->belongsToMany('App\Compra');
-    }
-    public function venta()
-    {
-        return $this->belongsToMany('App\Venta');
-    }
-    public function factura()
-    {
-        return $this->belongsToMany('App\Factura');
-    }
-    public function inventario()
-    {
-        return $this->belongsToMany('App\Inventario');
-    }
-
     public function scopeSearch($query, $codigo){
 
-return $query->where('codigo','LIKE',"%$codigo%"); // Realiza la busqueda en base de datos de acuerdo al codigo
+    return $query->where('codigo','LIKE',"%$codigo%"); // Realiza la busqueda en base de datos de acuerdo al codigo
 
     }
 
@@ -52,6 +31,20 @@ return $query->where('codigo','LIKE',"%$codigo%"); // Realiza la busqueda en bas
         }
 
     }
-   
+
+    public function proveedores()
+    {
+    
+        return $this->belongsToMany(Proveedor::class)->withTimestamps();
+    
+    }  
+
+    public function compras()
+    {
+    
+        return $this->belongsToMany('App\Compra')->withTimestamps();
+    
+    }  
+  
 
 }

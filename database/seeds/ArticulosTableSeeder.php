@@ -12,6 +12,6 @@ class ArticulosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Articulo::class,20)->create();  
+        factory(Articulo::class,5)->create();  
     }
 }

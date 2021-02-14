@@ -7,24 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Compra extends Model
 {
 
-
     protected $table = 'compras';
     protected $fillable=['totalCompra'];
       
-    public function articulo()
+
+    public function scopeSearch($query, $id){  // Realiza la busqueda en base de datos de acuerdo al id
+
+    return $query->where('id','LIKE',"%$id%");
+
+    }
+
+
+    public function articulos()
     {
-        return $this->belongsTo('App\Articulo');
-    }
-
-    public function proveedor()
-    {
-        return $this->belongsTo('App\Proveedor');
-    }
-
-public function scopeSearch($query, $id){  // Realiza la busqueda en base de datos de acuerdo al id
-
-return $query->where('id','LIKE',"%$id%");
-
-    }
     
+        return $this->belongsToMany('App\Articulo')->withTimestamps();
+    
+    }  
 }

@@ -1,32 +1,17 @@
-<?php namespace App;
+<?php 
 
-use Esensi\Model\Contracts\ValidatingModelInterface;
-use Esensi\Model\Traits\ValidatingModelTrait;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\Model;
+namespace App;
+
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use Acoustep\EntrustGui\Contracts\HashMethodInterface;
-use Illuminate\Auth\Notifications\ResetPassword;
-use Hash;
-use Illuminate\Foundation\Auth\User as Authenticatables;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
-
-
-class User extends Authenticatables implements AuthenticatableContract, CanResetPasswordContract, ValidatingModelInterface, HashMethodInterface
+class User extends Authenticatable implements MustVerifyEmail
 {
-
-  use Authenticatable, CanResetPassword, ValidatingModelTrait, EntrustUserTrait;
-
-
-
-
-  protected $throwValidationExceptions = true;
-
-    
+    use Notifiable;
+    use EntrustUserTrait; 
     /**
      * The database table used by the model.
      *
@@ -39,7 +24,7 @@ class User extends Authenticatables implements AuthenticatableContract, CanReset
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'pais', 'ciudad', 'fechaNacimiento', 'estudios', 'informacionPersonal'];
+    protected $fillable = ['id','name_user', 'email','email_verifield_at' ,'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -63,21 +48,14 @@ class User extends Authenticatables implements AuthenticatableContract, CanReset
         ],
     ];
 
-    public function entrustPasswordHash() 
+    public function generateToken()
     {
-        $this->password = Hash::make($this->password);
+        $this->api_token = str_random(60);
         $this->save();
-        
+
+        return $this->api_token;
     }
 
-       public function notify($token)
- {
-   $this->notify(new ResetPassword($token));
- }  
-   
 
 
-
-
- 
 }

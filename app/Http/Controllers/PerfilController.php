@@ -17,31 +17,16 @@ class PerfilController extends Controller
 
     }
     
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()         // Funcion que envia al index de perfil
-    {
-
-   	  return  view('perfil.index');     // Retorna la vista index de perfil
-    }
-    public function create()         // Funcion que envia al index de perfil
-    {
-
-   	  return  view('perfil.create');     // Retorna la vista index de perfil
-    }
 
     
-    public function show()          // Funcion que muestra la informacion del perfil
+    public function show($id)          // Funcion que muestra la informacion del perfil
     {
-        $id = Auth::id();           // Se obtiene el id del usuario interactuando con el sistem
+       // Se obtiene el id del usuario interactuando con el sistem
 
          $perfil = DB::table('users')
-        ->select('id','name', 'email', 'password', 'pais', 'ciudad', 'fechaNacimiento', 'estudios', 'informacionPersonal')->where('users.id', '=', $id)
-        ->first();
+                 ->where('users.id', '=', $id)
+                 ->select('id','name_user', 'email', 'password')->first();
+
         // Se obtienen todos los datos del perfil
       
 
@@ -54,12 +39,11 @@ class PerfilController extends Controller
      * @param  \App\perfiles  $perfiles
      * @return \Illuminate\Http\Response
      */
-    public function edit()          // Funcion que encuentra un cliente
-
+    public function edit($id)          // Funcion que encuentra un cliente
     {   
-        $id = Auth::id();           // Se obtiene el id del usuario que se encuentra interactuando con el sistema
+       // Se obtiene el id del usuario que se encuentra interactuando con el sistema
         $perfil = DB::table('users')
-        ->select('id','name', 'email', 'password', 'pais', 'ciudad', 'fechaNacimiento', 'estudios', 'informacionPersonal')->where('users.id', '=', $id)
+        ->select('id','name_user', 'email', 'password')->where('users.id', '=', $id)
         ->first();
         // Se obtiene toda la informacion de ese usuario
 
@@ -75,50 +59,25 @@ class PerfilController extends Controller
      * @param  \App\perfiles  $perfiles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request) // Funcion que actualiza los datos del perfil (usuario)
+    public function update(Request $request,$id) // Funcion que actualiza los datos del perfil (usuario)
 
     {
-        if (is_null($request->password)) {  // Si el campo de contraseña es vacio entonces no se modificara la contraseña
-    
+        $perfil = User::find($id); 
+                             // En caso de no ser 
 
-        $id = Auth::id();               // Obtiene el id del usuario que se encuentra interactuando con el sistema
-        $perfil = User::find($id);      // Busca el usuario por medio del id
-      
-        $perfil->name=$request->name;
-        $perfil->email=$request->email;
-        $perfil->pais=$request->pais;
-        $perfil->ciudad=$request->ciudad;
-        $perfil->fechaNacimiento=$request->fechaNacimiento;
-        $perfil->estudios=$request->estudios;
-        $perfil->informacionPersonal=$request->informacionPersonal;
-       
+        if (is_null($request->password)) {
+               return back()// Redirige a la ruta perfil.show (perfil/show) con la variable del id
+            ->with('error', 'El campo de password no se diligencio.');  
 
- 
- 
-        $perfil->save();                    // Actualiza los datos del perfil (usuario)
-        return redirect()->route('perfil.show', $id)        // Redirige a la ruta perfil.show (perfil/show) con la variable del id
-        ->with('info', 'El perfil fue guardado.');      // El sistema muestra un mensaje de informacion diciendo "El perfil fue guardado"
+             
+        }
 
-}else{                                  // En caso de no ser vacia entonces se modificara la contraseña
+            $perfil->password=bcrypt($request->password); 
+            $perfil->save();
 
-        $id = Auth::id();               // Obtiene el id del usuario que se encuentra interactuando con el sistema
-        $perfil = User::find($id);      // Busca el usuario por medio del id
-      
-        $perfil->name=$request->name;
-        $perfil->email=$request->email;
-        $perfil->pais=$request->pais;
-        $perfil->ciudad=$request->ciudad;
-        $perfil->fechaNacimiento=$request->fechaNacimiento;
-        $perfil->estudios=$request->estudios;
-        $perfil->password=bcrypt($request->password);
-        $perfil->informacionPersonal=$request->informacionPersonal;
-       
-
- 
- 
-        $perfil->save();                    // Actualiza los datos del perfil (usuario)
-        return redirect()->route('perfil.show', $id)        // Redirige a la ruta perfil.show (perfil/show) con la variable del id
-        ->with('info', 'El perfil fue guardado.');      // El sistema muestra un mensaje de informacion diciendo "El perfil fue guardado"
+            // Actualiza los datos del perfil (usuario)
+            return redirect()->route('inventario.index')        // Redirige a la ruta perfil.show (perfil/show) con la variable del id
+            ->with('info', 'Se realizo el cambio de contraseña, exitosamente.');      // El sistema muestra un mensaje de informacion diciendo "El perfil fue guardado"
     }
 
     /**
@@ -128,5 +87,4 @@ class PerfilController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-}
 }

@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class proveedor extends Model
 { 
     protected $table = 'proveedores';
-    protected $fillable=['nit','nombreproveedor','nombrerepresentante','direccion','telefono','email','observacion',];
+    protected $fillable=['nit','nombreproveedor','nombrerepresentante','email','observacion'];
     
     public static function nitUnico($nit){
         
@@ -31,10 +30,25 @@ class proveedor extends Model
         }
 
     }
+    public static function emailUnico($email){
+        
+        $nomproveedor = Proveedor::where('email', '=', $email)->count();
+        if($nomproveedor == 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
     public function scopeSearch($query, $nit){
 
-return $query->where('nit','LIKE',"%$nit%"); // Realiza la busqueda en base de datos de acuerdo al nit
+        return $query->where('nit','LIKE',"%$nit%"); // Realiza la busqueda en base de datos de acuerdo al nit
 
     }
+
+    public function articulos()
+    {
+       return $this->belongsToMany(Articulo::class)->withTimestamps();
+    }  
 }

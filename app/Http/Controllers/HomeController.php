@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Venta;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -19,10 +20,21 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('home');
+        
+    
+        $años = [];
+     
+        
+        for ($i=0; $i < 6; $i++) { 
+           $a= 2015 +$i;
+            array_push($años,$a); 
+        }
+     
+        return view('home',compact('años'));
     }
+
 }

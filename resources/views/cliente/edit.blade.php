@@ -1,19 +1,20 @@
-@extends('layouts.apphome')
+@extends('layouts.app3')
 @section('content')
-<div class="col-md-3">
-
+<div class="row">
+    <div class="col-sm-10">
+        <strong>EDITAR CLIENTE</strong>
+    </div>
+    <div class="col-sm-2">
+        <strong>ir a listado cliente:</strong>
+        <a href="{{route('cliente.index')}}" class="btn btn-warning btn-block btn-xs" title="Listado de clientes"><i class="fas fa-list-alt"></i></a></a>
+    </div>
 </div>
-
- <div class="panel1 panel-default1">
-      <div class="panel-heading"><strong>Editar cliente.</strong>&nbsp;&nbsp;<a href="{{route('cliente.index')}}" class="btn btn-default "><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-   
-     </div>
-<div class="panel-body">
-<div class="col-md-12">
-{!!Form::model($cliente,['route'=>['cliente.update', $cliente->id], 'method'=>'PUT']) !!}<!--Se le pasa, la variable del metodo-->
-@include('cliente.fragment.form') <!--Incluyo el formulario-->
+<hr>
+{!!Form::model($cliente,['route'=>['cliente.update', $cliente->id], 'method'=>'PUT']) !!}
+<!--Se le pasa, la variable del metodo-->
+@include('cliente.fragment.form')
+<!--Incluyo el formulario-->
 {!!Form::close()!!}
-</div>
-</div>
-</div>
+
 @endsection
+

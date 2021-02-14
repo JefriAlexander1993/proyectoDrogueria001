@@ -14,51 +14,35 @@ class CajaController extends Controller
 
 {
 
-
     public function __construct()
     {
         // Filtrar todos los métodos
         $this->middleware('auth');
-
     }
-
- 
-
         
- public function index()
-
+    public function index()
     {
         
         $cajas = Caja::orderBy('id')->paginate('8');
      
-        $idA=Auth::id();
+       // $idA=Auth::id();
         $detalles = DB::table('detalle_caja')
         ->join('cajas', 'detalle_caja.caja_id', '=', 'cajas.id')
         ->join('users', 'detalle_caja.user_id', '=', 'users.id')
         ->select('cajas.id','cajas.nombreusuario','cajas.valorinicial','detalle_caja.valorfinal','detalle_caja.ganancia')
         ->get();
 
-
-      
         return  view('caja.index', compact('cajas','detalles'));// SE carga en vista y le pasamos la variable
        
-    
-}
+    }
 
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create() // Funcion encargada de enviar a la vista create de caja
     {
         $idA=Auth::id();            // Se obtiene el id del usuario que esta interactuando con el sistema
-        $name=Auth::user()->name;   // Se obtiene el nombre del usuario que esta interactuando con el sistema
-        $sumVenta = DB::table('ventas')->select('totalventa')->where('users_id','=',$idA)->sum('totalventa'); 
+
         // Realiza la suma total de las ventas de acuerdo al id del usuario
-        return view('caja.create', compact('sumVenta', 'name')); // Retorna a la vista create con las variables sumVenta y name
+        return view('caja.create', ['sumVenta'=>DB::table('ventas')->select('totalventa')->where('users_id','=',$idA)->sum('totalventa'), 'name'=>Auth::user()->name]); // Retorna a la vista create con las variables sumVenta y name
     }
 
     /**
@@ -76,12 +60,11 @@ class CajaController extends Controller
         $caja->valorinicial= $request->valorinicial;
         $caja->save();      // Guarda los datos de caja
 
-        $detalle_caja = new detalle_caja; // Crea un objeto tipo detalle_caja
+        $detalle_caja = new Detalle_caja; // Crea un objeto tipo detalle_caja
         $detalle_caja->user_id= $idA;    
         $detalle_caja->caja_id=$caja->id; 
         $detalle_caja->save();            // Guarda los datos de detalle_caja
       
-     
 
         return redirect()->route('caja.index')  // Redirige a la ruta caja.index (caja/index)
         ->with('info', 'La caja fue guardada.');    // El sistema arroja la informacion "La caja fue guardada"
@@ -118,7 +101,6 @@ class CajaController extends Controller
         $idA=Auth::id();          // Obtiene la id del usuario que se encuentra interactuando con el sistema
         $caja = Caja::find($id); // Busca un caja por medio del  id
   
-
         $sumVenta = DB::table('ventas')->select('totalventa')->where('users_id','=',$idA)->sum('totalventa');//Suma toda las ventas realizadas por un determidado user
      
         $cajainicial=  DB::table('cajas')->where('id' ,'=', $caja->id)->value('valorinicial'); // seleciona el valor inicial de caja depediendo el id de la caja
@@ -166,8 +148,7 @@ class CajaController extends Controller
      */
     public function destroy($id)    // Funcion que elimina una caja por medio de una id
     {
-        $caja = Caja::find($id);    // Encuentra la caja por medio de su id
-        $caja->delete();            // Elimina la caja
+        $caja = Caja::find($id)->delete();  // Encuentra la caja por medio de su id     // Elimina la caja
         return back()->with('danger', 'La caja fue eliminado'); // Retorna atras (index) y arroja el mensaje "La caja fue eliminada"
     }
 

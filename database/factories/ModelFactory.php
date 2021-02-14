@@ -17,6 +17,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
     return [
+        'id' => $faker->numberBetween(1,100000),
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
@@ -24,109 +25,53 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Compra::class, function (Faker $faker) {
-
-    return [
-       
-        'codigo' => $faker->numberBetween(1,200),
-        'fechaLlegada' =>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'nombre' => $faker->realText($maxNbChars = 20),
-        'rubio' => $faker->realText($maxNbChars = 20),
-        'nombreProveedor'=>$faker->realText($maxNbChars = 20),
-        'precioUnitario' => $faker->numberBetween(1,100),
-        'cantidad' => $faker->numberBetween(1,100),
-        'totalCompra' => $faker->numberBetween(1,100),
-        'iva' => $faker->numberBetween(1,100),
-        'precioVenta'=> $faker->numberBetween(1,100),
-        'fechaVencimiento'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'stock'=> $faker->numberBetween(1,100),
-
-
-        
-    ];
-});
-
-$factory->define(App\Caja::class, function (Faker $faker) {
-
-    return [
-        
-        'nombreUsuario' => $faker->realText($maxNbChars = 20),
-        'valorInicial' => $faker->numberBetween(1,100),
-        'valorFinal' => $faker->numberBetween(1,100),
-        'ganancia' => $faker->numberBetween(1,100),
-        
-    ];
-});
-
-$factory->define(App\Proveedor::class, function (Faker $faker) {
-
-    return [
-        
-        'nit' => $faker->numberBetween(1,20),
-        'nombreProveedor' => $faker->realText($maxNbChars = 20),
-        'nombreRepresentante' => $faker->realText($maxNbChars =20),
-        'direccion' => $faker->realText($maxNbChars = 20),
-        'telefono' => $faker->realText($maxNbChars = 15),
-        'email' => $faker->realText($maxNbChars = 20),
-        'observacion' => $faker->text(40),   
-        
-    ];
-});
-
-$factory->define(App\Venta::class, function (Faker $faker) {
-
-    return [
-    
-        'fechaActual' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'numFactura' => $faker->numberBetween(1,30),
-        'usuario'=> $faker->realText($maxNbChars = 20),
-        'codigo' => $faker->numberBetween(1,30),
-        'nombreProducto' => $faker->realText($maxNbChars = 20),
-        'cantidad' => $faker->numberBetween(1,30),
-        'precioUnitario' => $faker->numberBetween(1,30),
-        'stock' => $faker->numberBetween(1,30),
-        'iva' => $faker->numberBetween(1,20),
-        'subTotal' => $faker->numberBetween(1,20),
-        'total' => $faker->numberBetween(1,20),
-  
-
-        
-    ];
-});
 
 $factory->define(App\Articulo::class, function (Faker $faker) {
 
     return [
-       
-        'codigo' => $faker->numberBetween(1,20),
+        'id' => $faker->numberBetween(1,10000),
+        'codigo' => $faker->numberBetween(1,10000),
+        'fechafabricacion' =>$faker->date($format = 'Y-m-d', $max = 'now'),
         'fechavencimiento' =>$faker->date($format = 'Y-m-d', $max = 'now'),
         'nombre' => $faker->realText($maxNbChars = 20),
-        'marca' => $faker->realText($maxNbChars =20),
-        'rubro' => $faker->realText($maxNbChars = 20),
-        'nombreProveedor'=>$faker->realText($maxNbChars = 20),
+        'cantidad'=> $faker->numberBetween(1,20),
         'preciounitario' => $faker->numberBetween(1,100),
+        'precioventa' => $faker->numberBetween(1,100),
+        'iva'=> $faker->numberBetween(1,20),
         'precioventa' => $faker->numberBetween(1,20),
         'stockmin' => $faker->numberBetween(1,20),
-       
+
     ];
 });
-
-        
 
 
 $factory->define(App\Cliente::class, function (Faker $faker) {
 
     return [
-       
-        'nombre' => $faker->realText($maxNbChars = 20),
-        'direccion' => $faker->realText($maxNbChars = 20),
-        'telefono' => $faker->realText($maxNbChars =20),
-        'correoElectronico' => $faker->realText($maxNbChars = 20),
-        'nombreMedicamento' => $faker->realText($maxNbChars = 20),
-        'observacion' => $faker->realText($maxNbChars = 20),
-
-
+        'id' => $faker->numberBetween(1,10000),
+        'nuip' => $faker->numberBetween(1,1000),
+        'primer_nombre' => $faker->realText($maxNbChars = 20),
+        'segundo_nombre'=> $faker->realText($maxNbChars = 20),
+        'primer_apellido' => $faker->realText($maxNbChars = 20),
+        'segundo_apellido'=> $faker->realText($maxNbChars = 20),
 
         
     ];
 });
+
+
+$factory->define(App\Proveedor::class, function (Faker $faker) {
+
+    return [
+        'id' => $faker->numberBetween(1,10000),
+        'nit' => $faker->numberBetween(1,10000),
+        'nombreproveedor' => $faker->realText($maxNbChars = 20),
+        'nombrerepresentante'=> $faker->realText($maxNbChars = 20),
+        'email' => $faker->unique()->safeEmail,
+        'observacion'=> $faker->realText($maxNbChars = 20),
+
+        
+    ];
+});
+
+

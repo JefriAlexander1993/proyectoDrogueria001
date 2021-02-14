@@ -3,21 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class cliente extends Model
-{
-   
+
+class Cliente extends Model {
+
      protected $table = 'clientes';
 
-     protected $fillable=['nuip','nombre','telefono','direccion','correoelectronico','observacion'];
+     protected $fillable=['nuip','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido','correoelectronico'];
 
 
 
+    public function scopeSearch1($query, $nuip){ // Realiza la busqueda en base de datos de acuerdo al nuip
 
-     public function scopeSearch1($query, $nuip){ // Realiza la busqueda en base de datos de acuerdo al nuip
-
-   return $query->where('nuip','LIKE',"%$nuip%");
+         return $query->where('nuip','LIKE',"%$nuip%");
 
 
     }
@@ -32,5 +30,27 @@ class cliente extends Model
         }
 
     }
+
+    public function creditos()
+    {
+        return $this->belongsToMany(Credito::class)->withTimestamps();
+
+    
+    }
+    public function direcciones()
+    {
+        return $this->belongsToMany(Direccion::class)->withTimestamps();
+
+    
+    }
+
+    public function tipo_telefonos()
+    {
+        return $this->belongsToMany(Tipos_telefonos::class)->withTimestamps();
+
+    
+    }
+
+ 
 
 }
